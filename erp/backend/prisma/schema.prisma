@@ -1,0 +1,347 @@
+// Schéma de la base de données de l'ERP location-entretien de linge (Sénégal)
+// Inspiré du métier d'ELIS : location-entretien de vêtements de travail, linge plat,
+// tapis et hygiène sanitaire, avec tournées de livraison/collecte.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Utilisateurs & sécurité
+// ---------------------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  COMMERCIAL
+  LOGISTIQUE
+  PRODUCTION
+  COMPTABILITE
+  RH
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(COMMERCIAL)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Clients & contrats
+// ---------------------------------------------------------------------------
+
+enum ContractStatus {
+  ACTIF
+  SUSPENDU
+  RESILIE
+}
+
+enum BillingFrequency {
+  MENSUEL
+  TRIMESTRIEL
+  ANNUEL
+}
+
+model Client {
+  id            Int        @id @default(autoincrement())
+  name          String
+  ninea         String? // Numéro d'Identification National des Entreprises et Associations
+  rccm          String? // Registre du Commerce et du Crédit Mobilier
+  sector        String? // secteur d'activité (hôtellerie, santé, agroalimentaire...)
+  phone         String?
+  email         String?
+  address       String?
+  city          String     @default("Dakar")
+  region        String     @default("Dakar")
+  contactName   String?
+  active        Boolean    @default(true)
+  createdAt     DateTime   @default(now())
+  sites         Site[]
+  contracts     Contract[]
+  invoices      Invoice[]
+  roundStops    RoundStop[]
+  stockItems    StockItem[]
+}
+
+model Site {
+  id            Int        @id @default(autoincrement())
+  client        Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId      Int
+  name          String
+  address       String
+  city          String     @default("Dakar")
+  region        String     @default("Dakar")
+  contactName   String?
+  contactPhone  String?
+  createdAt     DateTime   @default(now())
+  contracts     Contract[]
+  roundStops    RoundStop[]
+}
+
+model Contract {
+  id               Int              @id @default(autoincrement())
+  reference        String           @unique
+  client           Client           @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId         Int
+  site             Site?            @relation(fields: [siteId], references: [id])
+  siteId           Int?
+  startDate        DateTime
+  endDate          DateTime?
+  status           ContractStatus   @default(ACTIF)
+  billingFrequency BillingFrequency @default(MENSUEL)
+  notes            String?
+  createdAt        DateTime         @default(now())
+  lines            ContractLine[]
+  invoices         Invoice[]
+}
+
+model ContractLine {
+  id          Int         @id @default(autoincrement())
+  contract    Contract    @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  contractId  Int
+  articleType ArticleType @relation(fields: [articleTypeId], references: [id])
+  articleTypeId Int
+  quantity    Int
+  unitPrice   Float // prix de location-entretien par unité et par période, en FCFA
+}
+
+// ---------------------------------------------------------------------------
+// Articles & stock traçable (blanchisserie / production)
+// ---------------------------------------------------------------------------
+
+enum ArticleCategory {
+  VETEMENT_TRAVAIL
+  LINGE_PLAT
+  TAPIS
+  HYGIENE
+}
+
+model ArticleType {
+  id             Int             @id @default(autoincrement())
+  name           String
+  category       ArticleCategory
+  replacementCost Float // coût de remplacement en FCFA
+  rentalPrice    Float // prix de location-entretien de référence en FCFA
+  createdAt      DateTime        @default(now())
+  contractLines  ContractLine[]
+  stockItems     StockItem[]
+}
+
+enum StockItemStatus {
+  EN_STOCK
+  EN_SERVICE
+  EN_LAVAGE
+  HORS_SERVICE
+  PERDU
+}
+
+model StockItem {
+  id            Int             @id @default(autoincrement())
+  code          String          @unique // code-barres / puce RFID
+  articleType   ArticleType     @relation(fields: [articleTypeId], references: [id])
+  articleTypeId Int
+  client        Client?         @relation(fields: [clientId], references: [id])
+  clientId      Int?
+  status        StockItemStatus @default(EN_STOCK)
+  washCount     Int             @default(0)
+  lastWashDate  DateTime?
+  createdAt     DateTime        @default(now())
+  washCycles    WashCycle[]
+}
+
+enum WashResult {
+  OK
+  REBUT
+}
+
+model WashCycle {
+  id          Int        @id @default(autoincrement())
+  stockItem   StockItem  @relation(fields: [stockItemId], references: [id], onDelete: Cascade)
+  stockItemId Int
+  startedAt   DateTime   @default(now())
+  finishedAt  DateTime?
+  result      WashResult?
+  notes       String?
+}
+
+// ---------------------------------------------------------------------------
+// Facturation & finance
+// ---------------------------------------------------------------------------
+
+enum InvoiceStatus {
+  BROUILLON
+  ENVOYEE
+  PAYEE
+  EN_RETARD
+  ANNULEE
+}
+
+model Invoice {
+  id          Int            @id @default(autoincrement())
+  number      String         @unique
+  client      Client         @relation(fields: [clientId], references: [id])
+  clientId    Int
+  contract    Contract?      @relation(fields: [contractId], references: [id])
+  contractId  Int?
+  issueDate   DateTime       @default(now())
+  dueDate     DateTime
+  status      InvoiceStatus  @default(BROUILLON)
+  totalHT     Float          @default(0)
+  tvaRate     Float          @default(0.18) // TVA sénégalaise standard 18%
+  totalTVA    Float          @default(0)
+  totalTTC    Float          @default(0)
+  createdAt   DateTime       @default(now())
+  lines       InvoiceLine[]
+  payments    Payment[]
+}
+
+model InvoiceLine {
+  id          Int      @id @default(autoincrement())
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  invoiceId   Int
+  description String
+  quantity    Int      @default(1)
+  unitPrice   Float
+  amountHT    Float
+}
+
+enum PaymentMethod {
+  VIREMENT
+  ESPECES
+  MOBILE_MONEY
+  CHEQUE
+}
+
+model Payment {
+  id        Int           @id @default(autoincrement())
+  invoice   Invoice       @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  invoiceId Int
+  amount    Float
+  date      DateTime      @default(now())
+  method    PaymentMethod @default(MOBILE_MONEY)
+  reference String?
+}
+
+// ---------------------------------------------------------------------------
+// Logistique & tournées
+// ---------------------------------------------------------------------------
+
+enum VehicleStatus {
+  DISPONIBLE
+  EN_TOURNEE
+  MAINTENANCE
+  HORS_SERVICE
+}
+
+model Vehicle {
+  id       Int           @id @default(autoincrement())
+  plate    String        @unique
+  model    String
+  capacity Int // capacité en kg ou nombre de bacs
+  status   VehicleStatus @default(DISPONIBLE)
+  rounds   Round[]
+}
+
+model Driver {
+  id            Int      @id @default(autoincrement())
+  name          String
+  phone         String?
+  licenseNumber String?
+  active        Boolean  @default(true)
+  rounds        Round[]
+}
+
+enum RoundStatus {
+  PLANIFIEE
+  EN_COURS
+  TERMINEE
+  ANNULEE
+}
+
+model Round {
+  id        Int         @id @default(autoincrement())
+  name      String
+  date      DateTime
+  zone      String      @default("Dakar")
+  vehicle   Vehicle?    @relation(fields: [vehicleId], references: [id])
+  vehicleId Int?
+  driver    Driver?     @relation(fields: [driverId], references: [id])
+  driverId  Int?
+  status    RoundStatus @default(PLANIFIEE)
+  createdAt DateTime    @default(now())
+  stops     RoundStop[]
+}
+
+enum RoundStopStatus {
+  A_FAIRE
+  LIVRE
+  ECHEC
+}
+
+model RoundStop {
+  id           Int             @id @default(autoincrement())
+  round        Round           @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  roundId      Int
+  client       Client          @relation(fields: [clientId], references: [id])
+  clientId     Int
+  site         Site?           @relation(fields: [siteId], references: [id])
+  siteId       Int?
+  sequence     Int             @default(1)
+  status       RoundStopStatus @default(A_FAIRE)
+  plannedTime  DateTime?
+  notes        String?
+}
+
+// ---------------------------------------------------------------------------
+// Ressources humaines & paie (simplifié - droit du travail sénégalais)
+// ---------------------------------------------------------------------------
+
+enum EmployeeDepartment {
+  DIRECTION
+  COMMERCIAL
+  PRODUCTION
+  LOGISTIQUE
+  ADMINISTRATION
+  RH
+}
+
+model Employee {
+  id          Int                @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  position    String
+  department  EmployeeDepartment
+  hireDate    DateTime
+  phone       String?
+  email       String?
+  baseSalary  Float // salaire de base mensuel en FCFA
+  cnssNumber  String? // Caisse de Sécurité Sociale
+  ipresNumber String? // Institution de Prévoyance Retraite du Sénégal
+  active      Boolean            @default(true)
+  createdAt   DateTime           @default(now())
+  payrolls    Payroll[]
+}
+
+model Payroll {
+  id              Int      @id @default(autoincrement())
+  employee        Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId      Int
+  period          String // format "YYYY-MM"
+  baseSalary      Float
+  allowances      Float    @default(0) // primes, indemnités de transport, logement
+  cnssDeduction   Float    @default(0) // retenue CNSS (part salariale)
+  ipresDeduction  Float    @default(0) // retenue IPRES (retraite)
+  irppDeduction   Float    @default(0) // impôt sur le revenu des personnes physiques
+  netSalary       Float
+  createdAt       DateTime @default(now())
+
+  @@unique([employeeId, period])
+}
