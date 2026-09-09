@@ -43,6 +43,34 @@ Les onglets de saisie (`SAISIE_PROD`, `ARRETS`, `PLAN_ACTIONS`) et de référenc
 (`PARAMETRES`, `GLOSSAIRE`) restent tabulaires : ce sont des journaux et des
 référentiels, la restitution se fait ailleurs.
 
+## Le cockpit interactif
+
+L'onglet `COCKPIT` tient sur un seul écran : les douze indicateurs en bandeau,
+puis huit graphiques visibles simultanément (suivi journalier, Pareto, cascade
+des pertes, tendance 13 mois, comparaison des lignes, comparaison des équipes,
+top 5 des causes, avancement du plan d'actions).
+
+Cinq menus déroulants le pilotent : **année**, **mois**, **ligne**, **équipe** et
+**indicateur suivi**. Ce dernier est le levier d'interaction principal — choisir
+« Qualité au premier passage » plutôt que « TRS » change d'un coup le suivi
+journalier, la tendance sur 13 mois, les deux comparaisons et jusqu'aux titres
+des graphiques. Le cockpit se lit donc de la même façon quel que soit
+l'indicateur analysé.
+
+## Dashboard web
+
+`dashboard.html` est la version web du cockpit, publiée comme page interactive :
+filtres cliquables, infobulles au survol de chaque point, graphiques en SVG,
+grille SQCDP cliquable qui épingle une journée sur le suivi journalier. Elle
+contient un instantané des données (`dashboard_data.json`) — la regénérer après
+une nouvelle saisie :
+
+```bash
+cd generateur && python3 export_json.py
+```
+
+puis réassembler `dashboard.html` à partir des données mises à jour.
+
 ## Régénérer le classeur
 
 ```bash

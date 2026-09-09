@@ -4,6 +4,7 @@ from openpyxl.styles import Alignment, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.formatting.rule import FormulaRule
 from common import *
+import refs as R
 import data as D
 
 FIRST, LAST = 5, 404
@@ -37,8 +38,8 @@ FORMULES = {
     "P": ('=IF($G{r}="","",IF($G{r}>=60,"Arrêt majeur — analyse 5 pourquoi",'
           'IF($G{r}>=30,"À analyser en revue quotidienne",'
           'IF($K{r}="Planifié","Arrêt planifié","Aléa courant"))))'),
-    "Q": ('=IF($A{r}="",0,IF(AND(OR(COCKPIT!$H$4="Toutes",$C{r}=COCKPIT!$H$4),'
-          'OR(COCKPIT!$K$4="Toutes",$B{r}=COCKPIT!$K$4)),1,0))'),
+    "Q": ('=IF($A{r}="",0,IF(AND(OR({FL}="Toutes",$C{r}={FL}),'
+          'OR({FE}="Toutes",$B{r}={FE})),1,0))'),
 }
 
 
@@ -67,7 +68,7 @@ def build(wb, arrets):
 
     for r in range(FIRST, LAST + 1):
         for lt, formule in FORMULES.items():
-            ws["%s%d" % (lt, r)] = formule.format(r=r)
+            ws["%s%d" % (lt, r)] = formule.format(r=r, FL=R.F_LIGNE, FE=R.F_EQUIPE)
         ws.row_dimensions[r].height = 15
 
     cause = {c[0]: c for c in D.CAUSES}

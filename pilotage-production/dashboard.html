@@ -1,0 +1,857 @@
+<title>Cockpit Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#eef1f4; --panel:#ffffff; --panel-2:#f7f9fb; --rule:#d3dae1; --rule-2:#e5eaef;
+  --ink:#0d1620; --ink-2:#54677a; --ink-3:#8496a6;
+  --accent:#1f6fb2; --accent-soft:#e4eef7;
+  --good:#1e7b34; --good-bg:#dff0e4; --warn:#9c6500; --warn-bg:#fbeecd; --bad:#b01919; --bad-bg:#fadedd;
+  --s1:#2a78d6; --s2:#eb6834; --s1-fill:rgba(42,120,214,.13);
+  --grid:#e2e8ee; --shadow:0 1px 2px rgba(13,22,32,.06),0 8px 24px -12px rgba(13,22,32,.18);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#10151a; --panel:#19202a; --panel-2:#1e2732; --rule:#2c3845; --rule-2:#242e3a;
+    --ink:#eef3f8; --ink-2:#9aabbb; --ink-3:#6e8093;
+    --accent:#4a9ade; --accent-soft:#1c2b3a;
+    --good:#3faa5c; --good-bg:#17301f; --warn:#d99a1a; --warn-bg:#33280e; --bad:#e06a6a; --bad-bg:#361a1a;
+    --s1:#3987e5; --s2:#d95926; --s1-fill:rgba(57,135,229,.16);
+    --grid:#28323e; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#10151a; --panel:#19202a; --panel-2:#1e2732; --rule:#2c3845; --rule-2:#242e3a;
+  --ink:#eef3f8; --ink-2:#9aabbb; --ink-3:#6e8093;
+  --accent:#4a9ade; --accent-soft:#1c2b3a;
+  --good:#3faa5c; --good-bg:#17301f; --warn:#d99a1a; --warn-bg:#33280e; --bad:#e06a6a; --bad-bg:#361a1a;
+  --s1:#3987e5; --s2:#d95926; --s1-fill:rgba(57,135,229,.16);
+  --grid:#28323e; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;
+     -webkit-font-smoothing:antialiased}
+.wrap{max-width:1560px;margin:0 auto;padding:0 20px 56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;
+         text-transform:uppercase;color:var(--ink-3)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- en-tête + rail de filtres ---------- */
+header{padding:26px 0 16px}
+.titleline{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+h1{font-size:25px;font-weight:600;letter-spacing:-.015em}
+.ctx{font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+.ctx b{color:var(--ink);font-weight:500}
+.rail{position:sticky;top:0;z-index:30;background:var(--ground);
+      border-bottom:1px solid var(--rule);margin:0 -20px;padding:10px 20px;
+      display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld label{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.11em;
+           text-transform:uppercase;color:var(--ink-3)}
+select,.btn{font-family:var(--sans);font-size:13px;color:var(--ink);background:var(--panel);
+        border:1px solid var(--rule);border-radius:3px;padding:6px 26px 6px 9px;appearance:none;
+        background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+        background-position:calc(100% - 14px) 52%,calc(100% - 9px) 52%;background-size:5px 5px;
+        background-repeat:no-repeat;cursor:pointer;min-width:170px}
+.btn{background-image:none;padding:6px 12px;min-width:0;font-size:12px}
+select:hover,.btn:hover{border-color:var(--accent)}
+select:focus-visible,.btn:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.rail .spacer{margin-left:auto}
+.reset{font-size:11.5px;color:var(--ink-2);background:none;border:none;cursor:pointer;
+       padding:6px 2px;font-family:var(--sans);text-decoration:underline;text-underline-offset:3px}
+.reset:hover{color:var(--accent)}
+.scope{font-family:var(--mono);font-size:11px;color:var(--ink-2);padding-bottom:7px}
+
+/* ---------- bandeau d'indicateurs ---------- */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--rule-2);
+      border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:20px}
+.kpi{background:var(--panel);padding:10px 12px 11px;display:flex;flex-direction:column;gap:2px;
+     border-left:3px solid var(--ink-3);cursor:default}
+.kpi.g{border-left-color:var(--good)} .kpi.w{border-left-color:var(--warn)} .kpi.b{border-left-color:var(--bad)}
+.kpi .k{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.07em;
+        text-transform:uppercase;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v{font-family:var(--mono);font-size:23px;font-weight:600;letter-spacing:-.02em;
+        font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi.g .v{color:var(--good)} .kpi.w .v{color:var(--warn)} .kpi.b .v{color:var(--bad)}
+.kpi .t{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);display:flex;gap:7px}
+.kpi .t .dx{font-weight:600}
+
+/* ---------- sections & panneaux ---------- */
+section{margin-top:30px}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:11px;flex-wrap:wrap}
+.shead h2{font-size:13px;font-weight:600;letter-spacing:.01em}
+.shead .sub{font-size:11.5px;color:var(--ink-3)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:14px 16px 10px}
+.panel.lift{box-shadow:var(--shadow)}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:2px}
+.phead h3{font-size:12.5px;font-weight:600}
+.phead .note{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 2px;
+        font-family:var(--mono);font-size:10.5px;color:var(--ink-2)}
+.legend i{display:inline-block;width:13px;height:2.5px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.legend i.dot{width:8px;height:8px;border-radius:50%}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--ink-3) 0 4px,transparent 4px 7px);height:2px}
+figure{margin:0}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);fill:var(--ink-2)}
+.gridline{stroke:var(--grid);stroke-width:1}
+.axis{stroke:var(--rule);stroke-width:1}
+
+/* ---------- grille SQCDP ---------- */
+.sq{display:grid;grid-template-columns:auto auto 1fr auto;gap:5px 12px;align-items:center}
+.sqrow{display:contents}
+.sqletter{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink);
+          width:26px;height:26px;display:grid;place-items:center;background:var(--panel-2);
+          border:1px solid var(--rule);border-radius:3px}
+.sqname{font-size:11.5px;color:var(--ink-2);white-space:nowrap}
+.sqcells{display:grid;grid-template-columns:repeat(31,1fr);gap:2px}
+.sqc{aspect-ratio:1;border-radius:2px;background:var(--rule-2);cursor:pointer;border:none;padding:0;
+     transition:transform .08s ease}
+.sqc.g{background:var(--good)} .sqc.w{background:var(--warn)} .sqc.b{background:var(--bad)}
+.sqc:hover{transform:scale(1.35);z-index:2;position:relative}
+.sqc.sel{outline:2px solid var(--ink);outline-offset:1px;z-index:3;position:relative}
+.sqtally{font-family:var(--mono);font-size:11px;display:flex;gap:9px;white-space:nowrap}
+.sqtally b{font-weight:600}
+.sqhead{display:grid;grid-template-columns:repeat(31,1fr);gap:2px;font-family:var(--mono);
+        font-size:8.5px;color:var(--ink-3);text-align:center}
+.sqfoot{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;padding-top:11px;
+        border-top:1px solid var(--rule-2);font-size:11.5px;color:var(--ink-2)}
+.sqfoot .sw{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+/* ---------- listes ---------- */
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{text-align:left;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+   text-transform:uppercase;color:var(--ink-3);padding:0 10px 7px 0;border-bottom:1px solid var(--rule)}
+td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule-2);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;padding-right:0;white-space:nowrap}
+.chip{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 6px;
+      border-radius:3px;letter-spacing:.03em;white-space:nowrap}
+.chip.g{background:var(--good-bg);color:var(--good)} .chip.w{background:var(--warn-bg);color:var(--warn)}
+.chip.b{background:var(--bad-bg);color:var(--bad)}
+.chip.n{background:var(--panel-2);color:var(--ink-2);border:1px solid var(--rule)}
+.bar{height:5px;background:var(--rule-2);border-radius:3px;overflow:hidden;min-width:52px;margin-top:5px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.pb{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+
+/* ---------- infobulle ---------- */
+#tip{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .1s;
+     background:var(--panel);border:1px solid var(--rule);border-radius:4px;box-shadow:var(--shadow);
+     padding:9px 11px;font-size:12px;max-width:280px}
+#tip.on{opacity:1}
+#tip .tt{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;
+         text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+#tip .tr{display:flex;justify-content:space-between;gap:16px;line-height:1.55}
+#tip .tr span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
+#tip .tsw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
+       font-size:11.5px;color:var(--ink-3);display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
+.hidden{display:none!important}
+@media (max-width:1180px){.kpis{grid-template-columns:repeat(3,1fr)}.g3,.g2{grid-template-columns:1fr}}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.wrap{padding:0 12px 40px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="titleline">
+    <h1>Cockpit de pilotage — production</h1>
+    <div class="ctx" id="ctx"></div>
+  </div>
+</header>
+
+<div class="rail">
+  <div class="fld"><label for="fl">Ligne</label><select id="fl"></select></div>
+  <div class="fld"><label for="fe">Équipe</label><select id="fe"></select></div>
+  <div class="fld"><label for="fi">Indicateur suivi</label><select id="fi"></select></div>
+  <div class="fld"><label for="fp">Période</label><select id="fp"></select></div>
+  <div class="spacer"></div>
+  <div class="scope" id="scope"></div>
+  <button class="reset" id="reset" type="button">Réinitialiser</button>
+</div>
+
+<div class="kpis" id="kpis"></div>
+
+<section>
+  <div class="shead">
+    <span class="eyebrow">01</span>
+    <h2>Le mois jour par jour</h2>
+    <span class="sub">Une case par jour et par axe. Survolez pour le détail de la journée, cliquez pour l'épingler sur le suivi journalier.</span>
+  </div>
+  <div class="panel lift">
+    <div class="sq" id="sq"></div>
+    <div class="sqfoot">
+      <span><i class="sw" style="background:var(--good)"></i>Objectif tenu</span>
+      <span><i class="sw" style="background:var(--warn)"></i>Vigilance — entre la cible et le seuil d'alerte</span>
+      <span><i class="sw" style="background:var(--bad)"></i>Écart — cause à nommer au point 5 minutes</span>
+      <span><i class="sw" style="background:var(--rule-2)"></i>Pas de production saisie</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="eyebrow">02</span><h2>Rendement et pertes</h2></div>
+  <div class="grid g2">
+    <div class="panel">
+      <div class="phead"><h3 id="runTitle">Suivi journalier</h3><span class="note" id="runNote"></span></div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>Valeur du jour</span>
+        <span><i style="background:var(--s2)"></i>Moyenne mobile 7 jours</span>
+        <span><i class="dash"></i>Cible</span>
+        <span><i class="dash" style="opacity:.55"></i>Limites de variation courante (±2σ)</span>
+      </div>
+      <figure><svg id="run" viewBox="0 0 720 268" role="img" aria-labelledby="runTitle"></svg></figure>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3>Où part le temps</h3><span class="note" id="parNote"></span></div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>Minutes perdues</span>
+        <span><i class="dot" style="background:var(--s2)"></i>Part cumulée</span>
+      </div>
+      <figure><svg id="par" viewBox="0 0 720 268" role="img" aria-label="Pareto des pertes de temps"></svg></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="eyebrow">03</span><h2>Décomposition et comparaisons</h2></div>
+  <div class="grid g3">
+    <div class="panel">
+      <div class="phead"><h3>Cascade des pertes</h3><span class="note">min</span></div>
+      <figure><svg id="cas" viewBox="0 0 460 300" role="img" aria-label="Cascade du temps d'ouverture au temps utile"></svg></figure>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3 id="cmpLTitle">Comparaison des lignes</h3></div>
+      <figure><svg id="cmpL" viewBox="0 0 460 140" role="img" aria-label="Comparaison par ligne"></svg></figure>
+      <div class="phead" style="margin-top:14px"><h3 id="cmpETitle">Comparaison des équipes</h3></div>
+      <figure><svg id="cmpE" viewBox="0 0 460 140" role="img" aria-label="Comparaison par équipe"></svg></figure>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3>Pertes par famille 5M</h3><span class="note">arrêts subis</span></div>
+      <figure><svg id="fam" viewBox="0 0 460 300" role="img" aria-label="Pertes par famille 5M"></svg></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="eyebrow">04</span><h2>Ce qu'il faut traiter</h2></div>
+  <div class="grid g2">
+    <div class="panel">
+      <div class="phead"><h3>Causes d'arrêt subi</h3><span class="note">hors arrêts planifiés</span></div>
+      <table><thead><tr><th>Code</th><th>Cause</th><th class="n">Minutes</th><th class="n">Occ.</th><th class="n">Durée moy.</th><th class="n">Part</th></tr></thead>
+      <tbody id="causes"></tbody></table>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3>Actions prioritaires</h3><span class="note">criticité décroissante</span></div>
+      <table><thead><tr><th>Problème</th><th>Pilote</th><th class="n">Criticité</th><th class="n">Avancement</th></tr></thead>
+      <tbody id="actions"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Les filtres pilotent l'ensemble du tableau de bord. Cibles et seuils d'alerte proviennent de l'onglet PARAMETRES du classeur.</span>
+  <span class="num" id="stamp"></span>
+</footer>
+</div>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script id="d" type="application/json">{"meta":{"site":"Site de démonstration","atelier":"UAP Assemblage-Usinage","periode":"Janvier 2026","genere":"2026-09-09"},"objectifs":[{"code":"TRS","lib":"Taux de rendement synthétique (TRS / OEE)","unite":"%","cible":0.75,"alerte":0.7,"sens":1},{"code":"DISPO","lib":"Taux de disponibilité","unite":"%","cible":0.9,"alerte":0.85,"sens":1},{"code":"PERF","lib":"Taux de performance (cadence)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"QUAL","lib":"Taux de qualité au premier passage (RFT)","unite":"%","cible":0.99,"alerte":0.98,"sens":1},{"code":"TRG","lib":"Taux de rendement global (TRG)","unite":"%","cible":0.6,"alerte":0.55,"sens":1},{"code":"SERVICE","lib":"Taux de service (quantité programmée)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"PPM","lib":"Non-conformités internes","unite":"ppm","cible":2000,"alerte":5000,"sens":-1},{"code":"PRESENCE","lib":"Taux de présence","unite":"%","cible":0.95,"alerte":0.92,"sens":1},{"code":"ACCIDENT","lib":"Accidents avec arrêt (cumul mois)","unite":"nb","cible":0,"alerte":0,"sens":-1},{"code":"RETARD","lib":"Actions correctives en retard","unite":"nb","cible":0,"alerte":2,"sens":-1},{"code":"MTTR","lib":"Temps moyen de réparation (MTTR)","unite":"min","cible":30,"alerte":45,"sens":-1},{"code":"MTBF","lib":"Temps moyen entre pannes (MTBF)","unite":"min","cible":240,"alerte":180,"sens":1},{"code":"AUDIT5S","lib":"Score d'audit 5S","unite":"%","cible":0.8,"alerte":0.7,"sens":1},{"code":"POLYV","lib":"Taux de polyvalence de l'équipe","unite":"%","cible":0.7,"alerte":0.6,"sens":1}],"lignes":["Ligne 1 - Assemblage","Ligne 2 - Usinage","Ligne 3 - Conditionnement"],"equipes":["Équipe A (matin)","Équipe B (après-midi)","Équipe C (nuit)"],"causes":{"PLA-01":{"lib":"Pause légale et relève de poste","fam":"Milieu","type":"Planifié","rub":"Arrêts planifiés"},"PLA-02":{"lib":"Maintenance préventive planifiée","fam":"Machine","type":"Planifié","rub":"Arrêts planifiés"},"PLA-03":{"lib":"Réunion, formation ou audit planifié","fam":"Main d'œuvre","type":"Planifié","rub":"Arrêts planifiés"},"PAN-01":{"lib":"Panne mécanique","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-02":{"lib":"Panne électrique ou capteur","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-03":{"lib":"Défaut automatisme / supervision","fam":"Machine","type":"Subi","rub":"Pannes"},"CDS-01":{"lib":"Changement de série (outillage)","fam":"Méthode","type":"Subi","rub":"Changement de série"},"CDS-02":{"lib":"Attente outillage ou moyen de contrôle","fam":"Méthode","type":"Subi","rub":"Changement de série"},"REG-01":{"lib":"Réglage qualité en cours de série","fam":"Méthode","type":"Subi","rub":"Réglages et micro-arrêts"},"REG-02":{"lib":"Micro-arrêts, bourrage, purge","fam":"Machine","type":"Subi","rub":"Réglages et micro-arrêts"},"MAT-01":{"lib":"Rupture d'approvisionnement matière","fam":"Matière","type":"Subi","rub":"Manque matière"},"MAT-02":{"lib":"Matière non conforme (rebut fournisseur)","fam":"Matière","type":"Subi","rub":"Manque matière"},"PER-01":{"lib":"Absence non remplacée","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"PER-02":{"lib":"Accompagnement / montée en compétence","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"LOG-01":{"lib":"Attente cariste / évacuation en-cours","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"LOG-02":{"lib":"Saturation aval / stock plein","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"ESS-01":{"lib":"Essai, prototype, série pilote","fam":"Méthode","type":"Subi","rub":"Autres arrêts subis"}},"jours":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":49,"cds":32,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4631,"conf":4547,"ret":37,"reb":47,"dem":4982,"effP":12,"effR":11,"acc":0,"presq":1,"top":"Panne mécanique — Assemblage","subi":81},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":14,"mat":10,"per":0,"aut":17,"npan":0,"prod":3339,"conf":3288,"ret":22,"reb":29,"dem":3559,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente cariste / évacuation en-cours — Usinage","subi":41},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":53,"cds":0,"reg":13,"mat":19,"per":29,"aut":15,"npan":1,"prod":3421,"conf":3376,"ret":20,"reb":25,"dem":3430,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":129},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":29,"cds":0,"reg":0,"mat":0,"per":0,"aut":9,"npan":1,"prod":2864,"conf":2835,"ret":13,"reb":16,"dem":2848,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":38},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":26,"cds":18,"reg":14,"mat":0,"per":15,"aut":0,"npan":1,"prod":4144,"conf":4110,"ret":15,"reb":19,"dem":4252,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":73},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":23,"cds":35,"reg":8,"mat":17,"per":0,"aut":9,"npan":1,"prod":2229,"conf":2217,"ret":5,"reb":7,"dem":2267,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Changement de série (outillage) — Usinage","subi":92},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":16,"per":17,"aut":9,"npan":0,"prod":4577,"conf":4499,"ret":35,"reb":43,"dem":4772,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":42},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":42,"cds":17,"reg":0,"mat":12,"per":0,"aut":9,"npan":1,"prod":2376,"conf":2342,"ret":15,"reb":19,"dem":2455,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":80},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":24,"cds":18,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5611,"conf":5543,"ret":30,"reb":38,"dem":5992,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":42},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":7,"mat":23,"per":0,"aut":14,"npan":0,"prod":3207,"conf":3178,"ret":13,"reb":16,"dem":3394,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":44},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":37,"cds":0,"reg":12,"mat":19,"per":24,"aut":10,"npan":1,"prod":4056,"conf":4027,"ret":13,"reb":16,"dem":4040,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":102},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":23,"cds":0,"reg":0,"mat":0,"per":0,"aut":20,"npan":1,"prod":2739,"conf":2689,"ret":22,"reb":28,"dem":2946,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":43},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":38,"cds":34,"reg":8,"mat":0,"per":25,"aut":0,"npan":1,"prod":3784,"conf":3723,"ret":27,"reb":34,"dem":3826,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":105},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":32,"cds":20,"reg":13,"mat":21,"per":0,"aut":17,"npan":1,"prod":2470,"conf":2437,"ret":14,"reb":19,"dem":2475,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":103},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":0,"cds":0,"reg":0,"mat":23,"per":14,"aut":10,"npan":0,"prod":3704,"conf":3663,"ret":18,"reb":23,"dem":3834,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":47},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":86,"cds":25,"reg":0,"mat":16,"per":0,"aut":13,"npan":1,"prod":1728,"conf":1714,"ret":6,"reb":8,"dem":1773,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":140},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":29,"cds":28,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5227,"conf":5195,"ret":14,"reb":18,"dem":5541,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":57},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":14,"mat":28,"per":0,"aut":18,"npan":0,"prod":2975,"conf":2924,"ret":22,"reb":29,"dem":3101,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":60},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":18,"cds":0,"reg":9,"mat":23,"per":19,"aut":17,"npan":1,"prod":4115,"conf":4053,"ret":27,"reb":35,"dem":4434,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Rupture d'approvisionnement matière — Assemblage","subi":86},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":42,"cds":0,"reg":0,"mat":0,"per":0,"aut":19,"npan":1,"prod":2529,"conf":2498,"ret":13,"reb":18,"dem":2700,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":61},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":42,"cds":17,"reg":9,"mat":0,"per":22,"aut":0,"npan":1,"prod":4987,"conf":4937,"ret":22,"reb":28,"dem":5009,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":90},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":30,"cds":32,"reg":11,"mat":13,"per":0,"aut":12,"npan":1,"prod":2800,"conf":2780,"ret":9,"reb":11,"dem":2789,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Changement de série (outillage) — Usinage","subi":98},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":15,"per":14,"aut":15,"npan":0,"prod":4257,"conf":4235,"ret":9,"reb":13,"dem":4375,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":44},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":20,"cds":29,"reg":0,"mat":18,"per":0,"aut":14,"npan":1,"prod":2504,"conf":2463,"ret":18,"reb":23,"dem":2531,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente outillage ou moyen de contrôle — Usinage","subi":81},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":32,"cds":20,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4329,"conf":4268,"ret":27,"reb":34,"dem":4521,"effP":12,"effR":12,"acc":1,"presq":0,"top":"Panne mécanique — Assemblage","subi":52},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":0,"cds":0,"reg":5,"mat":21,"per":0,"aut":16,"npan":0,"prod":2889,"conf":2857,"ret":14,"reb":18,"dem":2990,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":42},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":47,"cds":0,"reg":14,"mat":25,"per":29,"aut":8,"npan":1,"prod":3566,"conf":3533,"ret":14,"reb":19,"dem":3813,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":123},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":49,"cds":0,"reg":0,"mat":0,"per":0,"aut":11,"npan":1,"prod":2451,"conf":2436,"ret":6,"reb":9,"dem":2597,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Panne électrique ou capteur — Usinage","subi":60},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":36,"cds":33,"reg":12,"mat":0,"per":25,"aut":0,"npan":1,"prod":4609,"conf":4526,"ret":37,"reb":46,"dem":4563,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":106},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":50,"cds":20,"reg":13,"mat":29,"per":0,"aut":9,"npan":1,"prod":2526,"conf":2488,"ret":17,"reb":21,"dem":2722,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":121},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":15,"per":31,"aut":19,"npan":0,"prod":4406,"conf":4348,"ret":26,"reb":32,"dem":4463,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":65},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":90,"cds":22,"reg":0,"mat":11,"per":0,"aut":18,"npan":1,"prod":2018,"conf":1997,"ret":9,"reb":12,"dem":2026,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":141},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":38,"cds":20,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4852,"conf":4813,"ret":17,"reb":22,"dem":5031,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":58},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":0,"cds":0,"reg":12,"mat":18,"per":0,"aut":17,"npan":0,"prod":2881,"conf":2866,"ret":6,"reb":9,"dem":2960,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":47},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":19,"cds":0,"reg":14,"mat":26,"per":31,"aut":13,"npan":1,"prod":3012,"conf":2960,"ret":23,"reb":29,"dem":3173,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":103},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":25,"cds":0,"reg":0,"mat":0,"per":0,"aut":14,"npan":1,"prod":2404,"conf":2370,"ret":15,"reb":19,"dem":2510,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":39},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":21,"cds":37,"reg":11,"mat":0,"per":13,"aut":0,"npan":1,"prod":4779,"conf":4721,"ret":26,"reb":32,"dem":5159,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Changement de série (outillage) — Assemblage","subi":82},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":35,"cds":20,"reg":5,"mat":15,"per":0,"aut":19,"npan":1,"prod":2989,"conf":2962,"ret":12,"reb":15,"dem":3197,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":94},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":20,"per":24,"aut":23,"npan":0,"prod":4242,"conf":4212,"ret":13,"reb":17,"dem":4267,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":67},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":31,"cds":33,"reg":0,"mat":17,"per":0,"aut":13,"npan":1,"prod":2257,"conf":2216,"ret":18,"reb":23,"dem":2234,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente outillage ou moyen de contrôle — Usinage","subi":94},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":53,"cds":27,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5022,"conf":4941,"ret":36,"reb":45,"dem":5130,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":80},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":8,"mat":20,"per":0,"aut":11,"npan":0,"prod":3212,"conf":3170,"ret":18,"reb":24,"dem":3253,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":39}],"arrets":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":49},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":32},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":10},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":19},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":29},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":15},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":53},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":9},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":29},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":26},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":18},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":14},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":15},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":8},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":17},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":9},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":23},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":35},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":16},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":17},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":9},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":9},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":42},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":17},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":12},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":24},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":18},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":7},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":23},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":14},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":19},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":24},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":10},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":37},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":12},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":20},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":23},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":38},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":34},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":8},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":25},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":21},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":32},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":23},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":14},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":10},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":13},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":86},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":25},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":16},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":29},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":28},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":28},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":18},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":23},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":19},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":17},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":18},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":9},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":19},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":42},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":42},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":17},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":9},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":22},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":11},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":13},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":12},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":30},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":32},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":15},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":14},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":15},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":14},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":20},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":29},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":18},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":32},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":20},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":21},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":16},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":25},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":29},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":8},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":47},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":11},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":49},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":36},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":33},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":12},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":25},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":29},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":9},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":50},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":15},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":31},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":19},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":18},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":90},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":22},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":11},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":38},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":20},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":12},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":18},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":26},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":31},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":13},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":19},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":14},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":25},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":21},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":37},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":11},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":13},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":15},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":19},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":35},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":20},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":24},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":23},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":13},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":31},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":33},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":17},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":53},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":27},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":8},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":20},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":11}],"actions":[{"date":"2026-01-08","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Arrêts répétés du convoyeur d'alimentation : 185 min perdues sur la semaine 2","ipr":36,"fam":"Machine","cause":"Capteur de position encrassé par les copeaux ; nettoyage absent du plan de maintenance préventive","act":"Ajouter le nettoyage hebdomadaire du capteur au plan préventif et former les deux équipes","nat":"Préventive (D7)","pil":"DURAND M.","cible":"2026-01-22","av":0.6,"st":"En cours","gain":14000},{"date":"2026-01-09","src":"Qualité client","zone":"Ligne 2 - Usinage","pb":"Réclamation client : cote de perçage hors tolérance sur le lot OF-01018 (12 pièces)","ipr":40,"fam":"Méthode","cause":"Absence de contrôle de la première pièce après changement d'outil coupant","act":"Rendre bloquante la validation première pièce après tout changement d'outil (autocontrôle + visa)","nat":"Corrective (D5)","pil":"LEROY S.","cible":"2026-01-16","av":1.0,"st":"Terminée","gain":22000},{"date":"2026-01-13","src":"Sécurité","zone":"Ligne 1 - Assemblage","pb":"Accident avec arrêt : coupure à la main lors de l'évacuation des chutes","ipr":15,"fam":"Milieu","cause":"Bac d'évacuation des chutes sans protection, gants inadaptés au risque de coupure","act":"Installer un bac fermé et déployer des gants anti-coupure niveau C sur les deux lignes","nat":"Corrective (D5)","pil":"BAKARI F.","cible":"2026-01-20","av":1.0,"st":"Terminée","gain":0},{"date":"2026-01-14","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Temps de changement de série moyen de 38 min contre 25 min au standard","ipr":30,"fam":"Méthode","cause":"Outillage et moyens de contrôle non préparés avant l'arrêt machine (pas de séparation interne/externe)","act":"Déployer un chantier SMED : préparation externe systématique et chariot de changement dédié","nat":"Amélioration","pil":"MARCHAND J.","cible":"2026-02-13","av":0.35,"st":"En cours","gain":31000},{"date":"2026-01-16","src":"Audit 5S","zone":"Ligne 3 - Conditionnement","pb":"Zone de conditionnement notée 2,1/4 : allées encombrées par les en-cours","ipr":8,"fam":"Milieu","cause":"Limite d'en-cours non définie et non matérialisée au sol","act":"Définir un plafond d'en-cours, marquer les emplacements au sol et afficher la règle","nat":"Corrective (D5)","pil":"SOW I.","cible":"2026-01-30","av":0.5,"st":"En cours","gain":0},{"date":"2026-01-19","src":"Idée opérateur","zone":"Ligne 1 - Assemblage","pb":"Recherche d'outillage au poste d'assemblage : 5 à 8 min perdues par poste","ipr":10,"fam":"Milieu","cause":"Aucun emplacement dédié aux outils de réglage","act":"Réaliser un panneau d'ombres (shadow board) au poste d'assemblage","nat":"Amélioration","pil":"PETIT C.","cible":"2026-02-06","av":0.2,"st":"En cours","gain":6000},{"date":"2026-01-20","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Rupture matière sur REF-2002 : 55 min d'arrêt le 20/01","ipr":27,"fam":"Matière","cause":"Seuil de réapprovisionnement calculé sans tenir compte du délai fournisseur réel (8 j au lieu de 5 j)","act":"Recalculer les points de commande sur la base des délais réels et alerter à J-3","nat":"Préventive (D7)","pil":"NGOM A.","cible":"2026-02-03","av":0.0,"st":"À lancer","gain":9000},{"date":"2026-01-22","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Micro-arrêts récurrents en fin de poste (bourrage évacuation)","ipr":32,"fam":"Machine","cause":"Guide d'évacuation déréglé, aucun standard de contrôle en fin de poste","act":"Régler le guide et ajouter le point au standard de fin de poste","nat":"Corrective (D5)","pil":"GARNIER L.","cible":"2026-01-28","av":0.8,"st":"En cours","gain":7500}],"postes":[{"nom":"Conduite ligne 1","crit":3,"cible":3},{"nom":"Conduite ligne 2","crit":3,"cible":3},{"nom":"Conduite ligne 3","crit":2,"cible":2},{"nom":"Changement de série","crit":3,"cible":3},{"nom":"Contrôle qualité","crit":3,"cible":3},{"nom":"Retouche","crit":2,"cible":2},{"nom":"Maintenance 1er niveau","crit":3,"cible":2},{"nom":"Cariste / appro","crit":2,"cible":2},{"nom":"Emballage","crit":1,"cible":2},{"nom":"Saisie et reporting","crit":2,"cible":2},{"nom":"Animation 5 min","crit":2,"cible":2},{"nom":"Formation nouveaux","crit":1,"cible":2}],"equipe":[{"mat":"M-1042","nom":"DUPONT Marie","eq":"Équipe A (matin)","niv":[4,3,2,4,3,2,3,1,3,3,4,3]},{"mat":"M-1078","nom":"NGOM Abdoulaye","eq":"Équipe A (matin)","niv":[3,4,2,3,2,1,4,2,2,1,2,1]},{"mat":"M-1103","nom":"LEROY Sophie","eq":"Équipe A (matin)","niv":[2,3,3,2,4,3,1,1,3,4,3,2]},{"mat":"M-1156","nom":"BAKARI Fatou","eq":"Équipe A (matin)","niv":[3,2,1,3,3,4,2,3,2,1,1,0]},{"mat":"M-1201","nom":"PETIT Camille","eq":"Équipe A (matin)","niv":[1,1,2,0,2,2,0,3,3,0,0,0]},{"mat":"M-1233","nom":"MARCHAND Julien","eq":"Équipe B (après-midi)","niv":[4,3,3,4,2,2,3,2,3,3,3,2]},{"mat":"M-1245","nom":"SOW Ibrahima","eq":"Équipe B (après-midi)","niv":[2,4,2,3,3,1,2,4,2,1,1,1]},{"mat":"M-1290","nom":"GARNIER Louis","eq":"Équipe B (après-midi)","niv":[3,2,3,2,3,3,1,2,4,2,2,1]},{"mat":"M-1312","nom":"ROUX Émilie","eq":"Équipe B (après-midi)","niv":[1,2,1,1,2,3,0,1,3,0,0,0]},{"mat":"M-1355","nom":"FAYE Moussa","eq":"Équipe B (après-midi)","niv":[3,3,2,3,1,2,3,3,2,2,2,1]},{"mat":"M-1401","nom":"BERNARD Alice","eq":"Équipe C (nuit)","niv":[2,2,4,2,3,2,2,2,3,3,1,1]},{"mat":"M-1433","nom":"DIALLO Aminata","eq":"Équipe C (nuit)","niv":[1,1,3,1,2,3,1,2,2,1,0,0]}],"audit5s":[{"dom":"1S Débarrasser","crit":"Aucun objet, pièce ou en-cours inutile dans la zone","pond":2,"note":3,"n1":2},{"dom":"1S Débarrasser","crit":"Les en-cours ne dépassent pas la limite définie et affichée","pond":3,"note":2,"n1":2},{"dom":"1S Débarrasser","crit":"Aucun document obsolète affiché (version et date visibles)","pond":1,"note":3,"n1":3},{"dom":"1S Débarrasser","crit":"Les objets sans propriétaire sont identifiés et traités (zone rouge)","pond":1,"note":2,"n1":1},{"dom":"1S Débarrasser","crit":"Allées, accès machines et issues de secours totalement dégagés","pond":3,"note":3,"n1":3},{"dom":"2S Ranger","crit":"Chaque outil dispose d'un emplacement unique et identifié","pond":3,"note":2,"n1":2},{"dom":"2S Ranger","crit":"Marquage au sol présent, lisible et respecté","pond":2,"note":3,"n1":2},{"dom":"2S Ranger","crit":"EPI rangés, disponibles et à portée immédiate","pond":3,"note":4,"n1":3},{"dom":"2S Ranger","crit":"Stock au poste borné visuellement (mini / maxi)","pond":2,"note":2,"n1":1},{"dom":"2S Ranger","crit":"Un nouvel arrivant trouve un outil en moins de 30 secondes","pond":2,"note":2,"n1":2},{"dom":"3S Nettoyer","crit":"Sols, machines et postes propres en fin de poste","pond":2,"note":3,"n1":3},{"dom":"3S Nettoyer","crit":"Aucune fuite (huile, air, fluide) non traitée ou non signalée","pond":3,"note":3,"n1":2},{"dom":"3S Nettoyer","crit":"Matériel de nettoyage disponible, complet et en bon état","pond":1,"note":4,"n1":3},{"dom":"3S Nettoyer","crit":"Le nettoyage sert d'inspection : les anomalies sont remontées","pond":3,"note":2,"n1":1},{"dom":"3S Nettoyer","crit":"Les sources de salissure sont traitées à la source","pond":3,"note":1,"n1":1},{"dom":"4S Standardiser","crit":"Standard 5S écrit, illustré et affiché dans la zone","pond":2,"note":3,"n1":2},{"dom":"4S Standardiser","crit":"Responsabilités de nettoyage nommées et planifiées","pond":2,"note":2,"n1":2},{"dom":"4S Standardiser","crit":"Management visuel à jour (moins de 24 h)","pond":3,"note":2,"n1":1},{"dom":"4S Standardiser","crit":"Standards de travail accessibles et lisibles au poste","pond":3,"note":3,"n1":3},{"dom":"4S Standardiser","crit":"Les écarts au standard sont visibles de tous","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Audit réalisé au rythme prévu, sans exception","pond":2,"note":3,"n1":3},{"dom":"5S Progresser","crit":"Actions des audits précédents soldées dans les délais","pond":3,"note":2,"n1":1},{"dom":"5S Progresser","crit":"Les opérateurs proposent et mettent en œuvre des améliorations","pond":3,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le score progresse ou se maintient sur 3 audits","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le management reconnaît les progrès sur le terrain","pond":1,"note":3,"n1":3}]}</script>
+<script>window.__DATA__=JSON.parse(document.getElementById("d").textContent);</script>
+<script>
+const D = window.__DATA__;
+const OBJ = {}; D.objectifs.forEach(o => OBJ[o.code] = o);
+const $ = s => document.querySelector(s);
+const el = (t, c, x) => { const n = document.createElement(t); if (c) n.className = c;
+  if (x != null) n.textContent = x; return n; };
+
+/* ------------------------------------------------ formats */
+const pct = (v, d = 1) => v == null ? "—" : (v * 100).toFixed(d).replace(".", ",") + " %";
+const num = (v, d = 0) => v == null ? "—" : v.toLocaleString("fr-FR",
+  { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (v, f) => v == null ? "—" :
+  f === "pct" ? pct(v) : f === "ppm" ? num(Math.round(v)) + " ppm" :
+  f === "min" ? num(Math.round(v)) + " min" : num(v);
+const DJ = ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"];
+
+/* ------------------------------------------------ agrégation */
+function agg(rows) {
+  const a = { to:0, plan:0, subi:0, tu:0, prodTh:0, prod:0, conf:0, ret:0, reb:0, dem:0,
+              effP:0, effR:0, acc:0, presq:0, npan:0, pannes:0, n:0,
+              rub:{ Pannes:0, "Changement de série":0, "Réglages et micro-arrêts":0,
+                    "Manque matière":0, "Manque personnel":0, "Autres arrêts subis":0 } };
+  rows.forEach(r => {
+    a.to += r.to; a.plan += r.plan; a.subi += r.subi;
+    a.tu += r.conf / r.cad; a.prodTh += r.prod / r.cad;
+    a.prod += r.prod; a.conf += r.conf; a.ret += r.ret; a.reb += r.reb; a.dem += r.dem;
+    a.effP += r.effP; a.effR += r.effR; a.acc += r.acc; a.presq += r.presq;
+    a.npan += r.npan; a.pannes += r.pannes; a.n++;
+    a.rub["Pannes"] += r.pannes; a.rub["Changement de série"] += r.cds;
+    a.rub["Réglages et micro-arrêts"] += r.reg; a.rub["Manque matière"] += r.mat;
+    a.rub["Manque personnel"] += r.per; a.rub["Autres arrêts subis"] += r.aut;
+  });
+  a.tr = a.to - a.plan; a.tf = a.tr - a.subi;
+  a.perteCad = Math.max(0, a.tf - a.prodTh);
+  a.perteNQ = a.prodTh - a.tu;
+  return a;
+}
+const IND = {
+  TRS:      { lib: "TRS",                        f: "pct", c: a => a.tr ? a.tu / a.tr : null },
+  DISPO:    { lib: "Disponibilité",              f: "pct", c: a => a.tr ? a.tf / a.tr : null },
+  PERF:     { lib: "Performance",                f: "pct", c: a => a.tf ? a.prodTh / a.tf : null },
+  QUAL:     { lib: "Qualité au premier passage", f: "pct", c: a => a.prod ? a.conf / a.prod : null },
+  TRG:      { lib: "TRG",                        f: "pct", c: a => a.to ? a.tu / a.to : null },
+  SERVICE:  { lib: "Taux de service",            f: "pct", c: a => a.dem ? (a.conf + a.ret) / a.dem : null },
+  PRESENCE: { lib: "Taux de présence",           f: "pct", c: a => a.effP ? a.effR / a.effP : null },
+  PPM:      { lib: "Non-conformités",            f: "ppm", c: a => a.prod ? (a.prod - a.conf) / a.prod * 1e6 : null },
+  ACCIDENT: { lib: "Accidents",                  f: "num", c: a => a.acc },
+  MTBF:     { lib: "MTBF",                       f: "min", c: a => a.npan ? a.tf / a.npan : null },
+  MTTR:     { lib: "MTTR",                       f: "min", c: a => a.npan ? a.pannes / a.npan : null },
+};
+const SELECTABLE = ["TRS", "DISPO", "PERF", "QUAL", "TRG", "SERVICE", "PRESENCE"];
+const CARDS = ["TRS", "DISPO", "PERF", "QUAL", "TRG", "SERVICE",
+               "PPM", "PRESENCE", "ACCIDENT", "MTBF", "MTTR", "RETARD"];
+
+function statut(code, v) {
+  const o = OBJ[code]; if (!o || v == null) return "";
+  return o.sens === 1 ? (v >= o.cible ? "g" : v < o.alerte ? "b" : "w")
+                      : (v <= o.cible ? "g" : v > o.alerte ? "b" : "w");
+}
+const retards = () => D.actions.filter(a =>
+  a.st !== "Terminée" && a.st !== "Abandonnée" && new Date(a.cible) < new Date()).length;
+
+/* ------------------------------------------------ état */
+const jours = D.jours.map(r => ({ ...r, dt: new Date(r.d + "T00:00:00") }));
+const dmin = new Date(Math.min(...jours.map(r => +r.dt)));
+const AN = dmin.getFullYear(), MO = dmin.getMonth();
+const NBJ = new Date(AN, MO + 1, 0).getDate();
+const OFF = (new Date(AN, MO, 1).getDay() + 6) % 7;   /* 0 = lundi */
+const semaine = d => Math.ceil((d + OFF) / 7);
+const SEM = [...new Set(Array.from({ length: NBJ }, (_, i) => semaine(i + 1)))].sort((a, b) => a - b);
+
+const S = { ligne: "Toutes", equipe: "Toutes", indic: "TRS", per: "0", jour: null };
+const dansPer = d => S.per === "0" || semaine(d.getDate()) === +S.per;
+const filtre = () => jours.filter(r =>
+  (S.ligne === "Toutes" || r.ligne === S.ligne) &&
+  (S.equipe === "Toutes" || r.equipe === S.equipe) && dansPer(r.dt));
+const filtreMois = () => jours.filter(r =>
+  (S.ligne === "Toutes" || r.ligne === S.ligne) && (S.equipe === "Toutes" || r.equipe === S.equipe));
+const arretsF = () => D.arrets.filter(a => {
+  const d = new Date(a.d + "T00:00:00");
+  return (S.ligne === "Toutes" || a.ligne === S.ligne) &&
+         (S.equipe === "Toutes" || a.equipe === S.equipe) && dansPer(d) &&
+         D.causes[a.code].type !== "Planifié";
+});
+
+/* ------------------------------------------------ infobulle */
+const tip = $("#tip");
+function showTip(e, titre, lignes) {
+  tip.innerHTML = "";
+  tip.appendChild(el("div", "tt", titre));
+  lignes.forEach(([k, v, col]) => {
+    const r = el("div", "tr");
+    const g = el("span");
+    if (col) { const s = el("i", "tsw"); s.style.background = col; g.appendChild(s); }
+    g.appendChild(document.createTextNode(k));
+    r.appendChild(g); r.appendChild(el("span", null, v));
+    tip.appendChild(r);
+  });
+  tip.classList.add("on");
+  moveTip(e);
+}
+function moveTip(e) {
+  const b = tip.getBoundingClientRect();
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + b.width > innerWidth - 8) x = e.clientX - b.width - 14;
+  if (y + b.height > innerHeight - 8) y = e.clientY - b.height - 14;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => tip.classList.remove("on");
+
+/* ------------------------------------------------ helpers SVG */
+const NS = "http://www.w3.org/2000/svg";
+function mk(p, t, at, txt) {
+  const n = document.createElementNS(NS, t);
+  for (const k in at) if (at[k] != null) n.setAttribute(k, at[k]);
+  if (txt != null) n.textContent = txt;
+  p.appendChild(n); return n;
+}
+const clear = s => { while (s.firstChild) s.removeChild(s.firstChild); };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+/* ================================================ bandeau d'indicateurs */
+function renderKpis() {
+  const a = agg(filtre()), box = $("#kpis"); box.innerHTML = "";
+  CARDS.forEach(code => {
+    const isRet = code === "RETARD";
+    const v = isRet ? retards() : IND[code].c(a);
+    const lib = isRet ? "Actions en retard" : IND[code].lib;
+    const f = isRet ? "num" : IND[code].f;
+    const st = statut(code, v);
+    const o = OBJ[code];
+    const k = el("div", "kpi " + st);
+    k.appendChild(el("div", "k", lib));
+    k.appendChild(el("div", "v", fmt(v, f)));
+    const t = el("div", "t");
+    t.appendChild(el("span", null, "cible " + fmt(o ? o.cible : null, f)));
+    k.appendChild(t);
+    k.tabIndex = 0;
+    const det = [["Valeur", fmt(v, f)], ["Cible", fmt(o.cible, f)],
+                 ["Seuil d'alerte", fmt(o.alerte, f)],
+                 ["Sens", o.sens === 1 ? "plus haut = mieux" : "plus bas = mieux"]];
+    k.onmouseenter = e => showTip(e, lib, det);
+    k.onmousemove = moveTip; k.onmouseleave = hideTip;
+    k.onfocus = () => { const r = k.getBoundingClientRect();
+      showTip({ clientX: r.left, clientY: r.bottom }, lib, det); };
+    k.onblur = hideTip;
+    box.appendChild(k);
+  });
+}
+
+/* ================================================ grille SQCDP */
+const AXES = [["S", "Sécurité"], ["Q", "Qualité"], ["C", "Coût / rendement"],
+              ["D", "Délai / service"], ["P", "Personnel"]];
+function statutJour(rows) {
+  if (!rows.length) return [null, null, null, null, null];
+  const a = agg(rows);
+  const q = OBJ.QUAL, t = OBJ.TRS, s = OBJ.SERVICE, p = OBJ.PRESENCE;
+  const lvl = (v, o) => v == null ? null : v >= o.cible ? "g" : v >= o.alerte ? "w" : "b";
+  return [
+    a.acc > 0 ? "b" : a.presq > 0 ? "w" : "g",
+    lvl(a.prod ? a.conf / a.prod : null, q),
+    lvl(a.tr ? a.tu / a.tr : null, t),
+    lvl(a.dem ? (a.conf + a.ret) / a.dem : null, s),
+    lvl(a.effP ? a.effR / a.effP : null, p),
+  ];
+}
+function renderSq() {
+  const box = $("#sq"); box.innerHTML = "";
+  const parJour = [];
+  for (let d = 1; d <= NBJ; d++) {
+    const dt = new Date(AN, MO, d);
+    const rows = filtreMois().filter(r => r.dt.getDate() === d);
+    parJour.push({ d, dt, rows, st: statutJour(rows), a: rows.length ? agg(rows) : null });
+  }
+  /* ligne d'en-tête : numéros de jour alignés sur les cases */
+  box.appendChild(el("div"));
+  box.appendChild(el("div"));
+  const head = el("div", "sqhead");
+  parJour.forEach(j2 => head.appendChild(el("span", null, j2.d % 2 ? String(j2.d) : "")));
+  box.appendChild(head);
+  box.appendChild(el("div"));
+
+  AXES.forEach(([lettre, nom], i) => {
+    const L = el("div", "sqletter", lettre); L.title = nom;
+    box.appendChild(L);
+    box.appendChild(el("div", "sqname", nom));
+    const cells = el("div", "sqcells");
+    parJour.forEach(j2 => {
+      const c = el("button", "sqc " + (j2.st[i] || ""));
+      if (!dansPer(j2.dt)) c.style.opacity = ".3";
+      if (S.jour === j2.d) c.classList.add("sel");
+      const etat = { g: "objectif tenu", w: "vigilance", b: "écart" }[j2.st[i]] || "pas de production";
+      c.setAttribute("aria-label", nom + ", " + j2.d + " : " + etat);
+      c.onmouseenter = e => {
+        const l = [["Statut " + nom.toLowerCase(),
+                    etat.charAt(0).toUpperCase() + etat.slice(1),
+                    { g: css("--good"), w: css("--warn"), b: css("--bad") }[j2.st[i]]]];
+        if (j2.a) l.push(["TRS", pct(j2.a.tr ? j2.a.tu / j2.a.tr : null)],
+                         ["Qualité", pct(j2.a.prod ? j2.a.conf / j2.a.prod : null)],
+                         ["Service", pct(j2.a.dem ? (j2.a.conf + j2.a.ret) / j2.a.dem : null)],
+                         ["Minutes perdues", num(j2.a.subi)],
+                         ["Accidents", num(j2.a.acc)]);
+        showTip(e, DJ[j2.dt.getDay()] + " " + j2.d, l);
+      };
+      c.onmousemove = moveTip; c.onmouseleave = hideTip;
+      c.onclick = () => { S.jour = S.jour === j2.d ? null : j2.d; render(); };
+      cells.appendChild(c);
+    });
+    box.appendChild(cells);
+    const tally = el("div", "sqtally");
+    [["g", "--good"], ["w", "--warn"], ["b", "--bad"]].forEach(([k, v]) => {
+      const n = parJour.filter(x => x.st[i] === k && dansPer(x.dt)).length;
+      const sp = el("span"); sp.style.color = css(v);
+      sp.appendChild(el("b", null, String(n)));
+      tally.appendChild(sp);
+    });
+    box.appendChild(tally);
+  });
+}
+
+/* ================================================ suivi journalier */
+function renderRun() {
+  const s = $("#run"); clear(s);
+  const W = 720, H = 268, ml = 46, mr = 14, mt = 12, mb = 30;
+  const iw = W - ml - mr, ih = H - mt - mb;
+  const ind = IND[S.indic], o = OBJ[S.indic];
+  const pts = [];
+  for (let d = 1; d <= NBJ; d++) {
+    const rows = filtreMois().filter(r => r.dt.getDate() === d && dansPer(r.dt));
+    if (rows.length) pts.push({ d, v: ind.c(agg(rows)), dt: new Date(AN, MO, d) });
+  }
+  const vals = pts.filter(p => p.v != null).map(p => p.v);
+  const N = pts.length;
+  $("#runTitle").textContent = "Suivi journalier — " + ind.lib;
+  if (!vals.length) { mk(s, "text", { x: W / 2, y: H / 2, "text-anchor": "middle" },
+    "Aucune donnée sur ce périmètre"); $("#runNote").textContent = ""; return; }
+  const moy = vals.reduce((a, b) => a + b, 0) / vals.length;
+  const sd = Math.sqrt(vals.reduce((a, b) => a + (b - moy) ** 2, 0) / Math.max(1, vals.length - 1));
+  const lcs = Math.min(1, moy + 2 * sd), lci = Math.max(0, moy - 2 * sd);
+  /* moyenne mobile 7 jours */
+  pts.forEach((p, i) => {
+    const w = pts.slice(Math.max(0, i - 6), i + 1).filter(x => x.v != null).map(x => x.v);
+    p.mm = w.length >= 3 ? w.reduce((a, b) => a + b, 0) / w.length : null;
+  });
+  const lo = Math.min(...vals, o.cible, lci) , hi = Math.max(...vals, o.cible, lcs);
+  const pad = (hi - lo) * .16 || .04;
+  const y0 = Math.max(0, lo - pad), y1 = Math.min(1.02, hi + pad);
+  const X = i => ml + (N > 1 ? i / (N - 1) : .5) * iw;
+  const Y = v => mt + ih - (v - y0) / (y1 - y0) * ih;
+
+  for (let t = 0; t <= 4; t++) {
+    const v = y0 + (y1 - y0) * t / 4, y = Y(v);
+    mk(s, "line", { x1: ml, x2: ml + iw, y1: y, y2: y, class: "gridline" });
+    mk(s, "text", { x: ml - 8, y: y + 3.5, "text-anchor": "end", "font-size": 10 }, pct(v, 0));
+  }
+  const pas = Math.max(1, Math.round(N / 12));
+  pts.forEach((p, i) => { if (i % pas === 0)
+    mk(s, "text", { x: X(i), y: H - 12, "text-anchor": "middle", "font-size": 9.5 }, p.d); });
+  mk(s, "text", { x: ml + iw / 2, y: H, "text-anchor": "middle", "font-size": 9,
+    fill: css("--ink-3") }, "jours de production");
+  mk(s, "line", { x1: ml, x2: ml + iw, y1: mt + ih, y2: mt + ih, class: "axis" });
+
+  const dash = (v, op, w) => mk(s, "line", { x1: ml, x2: ml + iw, y1: Y(v), y2: Y(v),
+    stroke: css("--ink-3"), "stroke-width": w, "stroke-dasharray": "5 4", opacity: op });
+  dash(lcs, .45, 1); dash(lci, .45, 1); dash(o.cible, .9, 1.6);
+  mk(s, "text", { x: ml + 4, y: Y(o.cible) - 6, "font-size": 9.5,
+    fill: css("--ink-2") }, "cible " + pct(o.cible));
+
+  const path = (key, col, w) => {
+    let d = "", open = false;
+    pts.forEach((p, i) => {
+      const v = p[key];
+      if (v == null) { open = false; return; }
+      d += (open ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1) + " ";
+      open = true;
+    });
+    if (d) mk(s, "path", { d, fill: "none", stroke: col, "stroke-width": w,
+      "stroke-linecap": "round", "stroke-linejoin": "round" });
+  };
+  path("mm", css("--s2"), 2);
+  path("v", css("--s1"), 2);
+  pts.forEach((p, i) => { if (p.v != null)
+    mk(s, "circle", { cx: X(i), cy: Y(p.v), r: S.jour === p.d ? 5.5 : 3.2,
+      fill: css("--s1"), stroke: css("--panel"), "stroke-width": 2 }); });
+
+  const iSel = pts.findIndex(p => p.d === S.jour);
+  if (iSel >= 0) mk(s, "line", { x1: X(iSel), x2: X(iSel), y1: mt, y2: mt + ih,
+    stroke: css("--ink"), "stroke-width": 1, opacity: .35 });
+  const hover = mk(s, "line", { x1: 0, x2: 0, y1: mt, y2: mt + ih, stroke: css("--ink-3"),
+    "stroke-width": 1, opacity: 0 });
+  const cap = mk(s, "rect", { x: ml, y: mt, width: iw, height: ih, fill: "transparent" });
+  cap.style.cursor = "crosshair";
+  const idxAt = cx => {
+    const r = s.getBoundingClientRect();
+    const u = ((cx - r.left) / r.width * W - ml) / iw;
+    return Math.max(0, Math.min(N - 1, Math.round(u * (N - 1))));
+  };
+  cap.onmousemove = e => {
+    const i = idxAt(e.clientX), p = pts[i];
+    hover.setAttribute("x1", X(i)); hover.setAttribute("x2", X(i));
+    hover.setAttribute("opacity", .5);
+    showTip(e, DJ[p.dt.getDay()] + " " + p.d + " — " + ind.lib,
+      [[ind.lib, fmt(p.v, ind.f), css("--s1")],
+       ["Moyenne mobile 7 j", fmt(p.mm, ind.f), css("--s2")],
+       ["Cible", fmt(o.cible, ind.f)],
+       ["Limites ±2σ", pct(lci) + " – " + pct(lcs)]]);
+  };
+  cap.onmouseleave = () => { hover.setAttribute("opacity", 0); hideTip(); };
+  cap.onclick = e => {
+    const p = pts[idxAt(e.clientX)];
+    S.jour = S.jour === p.d ? null : p.d; render();
+  };
+  $("#runNote").textContent = "moyenne " + pct(moy) + " · σ " + pct(sd);
+}
+
+/* ================================================ Pareto */
+function renderPar() {
+  const s = $("#par"); clear(s);
+  const W = 720, H = 268, ml = 42, mr = 14, mt = 14, mb = 44;
+  const iw = W - ml - mr, ih = H - mt - mb;
+  const a = agg(filtre());
+  const COURT = { "Pannes": "Pannes", "Changement de série": "Chgt série",
+    "Réglages et micro-arrêts": "Réglages", "Manque matière": "Matière",
+    "Manque personnel": "Personnel", "Autres arrêts subis": "Autres",
+    "Perte de cadence": "Cadence", "Pertes non-qualité": "Non-qualité" };
+  const items = Object.entries(a.rub).map(([k, v]) => ({ k, v }));
+  items.push({ k: "Perte de cadence", v: a.perteCad }, { k: "Pertes non-qualité", v: a.perteNQ });
+  items.sort((x, y) => y.v - x.v);
+  const tot = items.reduce((s2, i) => s2 + i.v, 0);
+  $("#parNote").textContent = num(Math.round(tot)) + " min perdues";
+  if (!tot) { mk(s, "text", { x: W / 2, y: H / 2, "text-anchor": "middle" }, "Aucune perte enregistrée"); return; }
+  const bw = iw / items.length;
+  const maxShare = Math.max(...items.map(i => i.v / tot));
+  const y1 = Math.max(1, Math.ceil(maxShare * 10) / 10);
+  const Y = v => mt + ih - v / y1 * ih;
+  for (let t = 0; t <= 5; t++) {
+    const v = y1 * t / 5, y = Y(v);
+    mk(s, "line", { x1: ml, x2: ml + iw, y1: y, y2: y, class: "gridline" });
+    mk(s, "text", { x: ml - 8, y: y + 3.5, "text-anchor": "end", "font-size": 10 }, pct(v, 0));
+  }
+  mk(s, "line", { x1: ml, x2: ml + iw, y1: mt + ih, y2: mt + ih, class: "axis" });
+  let cum = 0; const cpts = [];
+  items.forEach((it, i) => {
+    const x = ml + i * bw + bw * .17, w = bw * .66;
+    const sh = it.v / tot, y = Y(sh);
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x, y, width: w, height: Math.max(0, mt + ih - y), rx: 3, fill: css("--s1") });
+    mk(g, "text", { x: x + w / 2, y: y - 6, "text-anchor": "middle", "font-size": 10,
+      fill: css("--ink"), "font-weight": 600 }, num(Math.round(it.v)));
+    mk(s, "text", { x: x + w / 2, y: mt + ih + 16, "text-anchor": "middle", "font-size": 10,
+      fill: css("--ink-2") }, COURT[it.k] || it.k);
+    cum += sh; cpts.push([x + w / 2, Y(cum), it, cum, sh]);
+    g.onmouseenter = e => showTip(e, it.k, [["Minutes perdues", num(Math.round(it.v)), css("--s1")],
+      ["Part du total", pct(sh)], ["Part cumulée", pct(cum)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+    g.style.cursor = "default";
+  });
+  mk(s, "path", { d: cpts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" "),
+    fill: "none", stroke: css("--s2"), "stroke-width": 2, "stroke-linejoin": "round" });
+  cpts.forEach(p => mk(s, "circle", { cx: p[0], cy: p[1], r: 3.4, fill: css("--s2"),
+    stroke: css("--panel"), "stroke-width": 2 }));
+  const i80 = cpts.findIndex(p => p[3] >= .8);
+  if (i80 >= 0) {
+    mk(s, "line", { x1: ml, x2: ml + iw, y1: Y(.8), y2: Y(.8), stroke: css("--ink-3"),
+      "stroke-width": 1, "stroke-dasharray": "4 4", opacity: .6 });
+    mk(s, "text", { x: ml + 4, y: Y(.8) - 5, "font-size": 9.5, fill: css("--ink-2") },
+      "80 % des pertes : " + (i80 + 1) + " causes");
+  }
+}
+
+/* ================================================ cascade des pertes */
+function renderCas() {
+  const s = $("#cas"); clear(s);
+  const W = 460, H = 300, ml = 132, mr = 46, mt = 8, mb = 22;
+  const iw = W - ml - mr;
+  const a = agg(filtre());
+  if (!a.to) { mk(s, "text", { x: W / 2, y: H / 2, "text-anchor": "middle" }, "Aucune donnée"); return; }
+  const P = [];
+  const push = (lib, base, val, jalon) => P.push({ lib, base, val, jalon });
+  push("Temps d'ouverture", 0, a.to, 1);
+  push("Arrêts planifiés", a.to - a.plan, a.plan, 0);
+  push("Temps requis", 0, a.tr, 1);
+  let c = a.tr;
+  [["Pannes machine", a.rub["Pannes"]], ["Changement de série", a.rub["Changement de série"]],
+   ["Réglages, micro-arrêts", a.rub["Réglages et micro-arrêts"]],
+   ["Manque matière", a.rub["Manque matière"]], ["Manque personnel", a.rub["Manque personnel"]],
+   ["Autres arrêts subis", a.rub["Autres arrêts subis"]]].forEach(([l, v]) => {
+    c -= v; push(l, c, v, 0);
+  });
+  push("Temps de marche", 0, a.tf, 1);
+  let c2 = a.tf;
+  c2 -= a.perteCad; push("Perte de cadence", c2, a.perteCad, 0);
+  c2 -= a.perteNQ; push("Pertes non-qualité", c2, a.perteNQ, 0);
+  push("Temps utile", 0, a.tu, 1);
+
+  const bh = (H - mt - mb) / P.length;
+  const X = v => ml + v / a.to * iw;
+  P.forEach((p, i) => {
+    const y = mt + i * bh + bh * .16, h = bh * .68;
+    const x = X(p.base), w = Math.max(1.5, X(p.base + p.val) - X(p.base));
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x, y, width: w, height: h, rx: 2.5,
+      fill: p.jalon ? css("--accent") : css("--s2"), opacity: p.jalon ? 1 : .9 });
+    mk(s, "text", { x: ml - 8, y: y + h / 2 + 3.5, "text-anchor": "end", "font-size": 9.5,
+      fill: p.jalon ? css("--ink") : css("--ink-2"),
+      "font-weight": p.jalon ? 600 : 400 }, p.lib);
+    mk(s, "text", { x: Math.min(W - 2, x + w + 6), y: y + h / 2 + 3.5, "font-size": 9.5,
+      fill: css("--ink-2") }, num(Math.round(p.val)));
+    g.onmouseenter = e => showTip(e, p.lib, [["Minutes", num(Math.round(p.val))],
+      ["Part du temps d'ouverture", pct(p.val / a.to)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  mk(s, "line", { x1: ml, x2: ml, y1: mt, y2: H - mb, class: "axis" });
+}
+
+/* ================================================ comparaisons horizontales */
+function barsH(svgId, titleId, groupes, titre) {
+  const s = $(svgId); clear(s);
+  if (titleId) $(titleId).textContent = titre;
+  const W = 460, ml = 128, mr = 52, mt = 6;
+  const rows = groupes.filter(g => g.v != null);
+  const H = Math.max(70, mt + rows.length * 34 + 10);
+  s.setAttribute("viewBox", "0 0 " + W + " " + H);
+  const ind = IND[S.indic], o = OBJ[S.indic];
+  if (!rows.length) { mk(s, "text", { x: W / 2, y: 34, "text-anchor": "middle", "font-size": 11 },
+    "Aucune donnée sur ce périmètre"); return; }
+  const iw = W - ml - mr;
+  const hi = Math.max(o.cible, ...rows.map(r => r.v)) * 1.08;
+  rows.forEach((r, i) => {
+    const y = mt + i * 34 + 6, h = 15;
+    mk(s, "rect", { x: ml, y, width: iw, height: h, rx: 3, fill: css("--rule-2") });
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x: ml, y, width: Math.max(2, r.v / hi * iw), height: h, rx: 3,
+      fill: statut(S.indic, r.v) === "b" ? css("--bad")
+          : statut(S.indic, r.v) === "w" ? css("--warn") : css("--s1") });
+    mk(s, "text", { x: ml - 8, y: y + h - 3, "text-anchor": "end", "font-size": 10 },
+      r.lib.length > 20 ? r.lib.slice(0, 19) + "…" : r.lib);
+    mk(s, "text", { x: ml + iw + 6, y: y + h - 3, "font-size": 10.5, fill: css("--ink"),
+      "font-weight": 600 }, fmt(r.v, ind.f));
+    const xc = ml + o.cible / hi * iw;
+    mk(s, "line", { x1: xc, x2: xc, y1: y - 3, y2: y + h + 3, stroke: css("--ink"),
+      "stroke-width": 1.6, opacity: .55 });
+    g.onmouseenter = e => showTip(e, r.lib, [[ind.lib, fmt(r.v, ind.f)],
+      ["Cible", fmt(o.cible, ind.f)],
+      ["Écart", (r.v >= o.cible ? "+" : "") + pct(r.v - o.cible)],
+      ["Jours saisis", num(r.n)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  mk(s, "text", { x: ml, y: H - 3, "font-size": 9, fill: css("--ink-3") },
+    "│ repère = cible " + fmt(o.cible, ind.f));
+}
+
+/* ================================================ familles 5M */
+function renderFam() {
+  const s = $("#fam"); clear(s);
+  const W = 460, H = 300, ml = 106, mr = 52, mt = 10, mb = 16;
+  const par = {};
+  arretsF().forEach(a => {
+    const f = D.causes[a.code].fam;
+    par[f] = par[f] || { min: 0, n: 0 };
+    par[f].min += a.min; par[f].n++;
+  });
+  const rows = Object.entries(par).map(([k, v]) => ({ k, ...v })).sort((a, b) => b.min - a.min);
+  const tot = rows.reduce((s2, r) => s2 + r.min, 0);
+  if (!tot) { mk(s, "text", { x: W / 2, y: H / 2, "text-anchor": "middle" }, "Aucun arrêt subi"); return; }
+  const iw = W - ml - mr, bh = (H - mt - mb) / Math.max(5, rows.length);
+  const hi = rows[0].min;
+  rows.forEach((r, i) => {
+    const y = mt + i * bh + bh * .22, h = Math.min(22, bh * .5);
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x: ml, y, width: Math.max(2, r.min / hi * iw), height: h, rx: 3, fill: css("--s1") });
+    mk(s, "text", { x: ml - 8, y: y + h / 2 + 3.5, "text-anchor": "end", "font-size": 10 }, r.k);
+    mk(s, "text", { x: ml + r.min / hi * iw + 7, y: y + h / 2 + 3.5, "font-size": 10,
+      fill: css("--ink"), "font-weight": 600 }, num(r.min));
+    mk(s, "text", { x: ml, y: y + h + 12, "font-size": 9, fill: css("--ink-3") },
+      r.n + " arrêt" + (r.n > 1 ? "s" : "") + " · " + pct(r.min / tot, 0) + " des pertes");
+    g.onmouseenter = e => showTip(e, r.k, [["Minutes perdues", num(r.min), css("--s1")],
+      ["Nombre d'arrêts", num(r.n)], ["Durée moyenne", num(r.min / r.n, 1) + " min"],
+      ["Part des arrêts subis", pct(r.min / tot)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  mk(s, "line", { x1: ml, x2: ml, y1: mt, y2: H - mb, class: "axis" });
+}
+
+/* ================================================ tableaux */
+function renderTables() {
+  const par = {};
+  arretsF().forEach(a => {
+    par[a.code] = par[a.code] || { min: 0, n: 0 };
+    par[a.code].min += a.min; par[a.code].n++;
+  });
+  const rows = Object.entries(par).map(([c, v]) => ({ c, ...v })).sort((a, b) => b.min - a.min);
+  const tot = rows.reduce((s, r) => s + r.min, 0);
+  const tb = $("#causes"); tb.innerHTML = "";
+  rows.slice(0, 6).forEach(r => {
+    const tr = el("tr");
+    const code = el("td"); code.appendChild(el("span", "chip n", r.c)); tr.appendChild(code);
+    tr.appendChild(el("td", null, D.causes[r.c].lib));
+    tr.appendChild(el("td", "n", num(r.min)));
+    tr.appendChild(el("td", "n", num(r.n)));
+    tr.appendChild(el("td", "n", num(r.min / r.n, 1)));
+    tr.appendChild(el("td", "n", pct(r.min / tot, 0)));
+    tb.appendChild(tr);
+  });
+  if (!rows.length) {
+    const tr = el("tr"); const td = el("td", null, "Aucun arrêt subi sur ce périmètre");
+    td.colSpan = 6; tr.appendChild(td); tb.appendChild(tr);
+  }
+
+  const ta = $("#actions"); ta.innerHTML = "";
+  D.actions.filter(a => a.st !== "Terminée" && a.st !== "Abandonnée")
+    .sort((a, b) => b.ipr - a.ipr).slice(0, 5).forEach(a => {
+      const tr = el("tr");
+      const p = el("td");
+      p.appendChild(el("div", null, a.pb));
+      const meta = el("div", "pb", a.zone + " · échéance " +
+        new Date(a.cible).toLocaleDateString("fr-FR"));
+      p.appendChild(meta);
+      tr.appendChild(p);
+      tr.appendChild(el("td", null, a.pil));
+      const c = el("td", "n");
+      c.appendChild(el("span", "chip " + (a.ipr >= 30 ? "b" : a.ipr >= 20 ? "w" : "n"), String(a.ipr)));
+      tr.appendChild(c);
+      const av = el("td", "n");
+      av.appendChild(el("div", null, pct(a.av, 0)));
+      const bar = el("div", "bar"); const fillr = el("i");
+      fillr.style.width = (a.av * 100) + "%"; bar.appendChild(fillr); av.appendChild(bar);
+      tr.appendChild(av);
+      ta.appendChild(tr);
+    });
+}
+
+/* ================================================ orchestration */
+function renderCompare() {
+  const ind = IND[S.indic];
+  const grp = (cle, liste) => liste.map(v => {
+    const rows = jours.filter(r => r[cle] === v && dansPer(r.dt) &&
+      (cle === "ligne" ? (S.equipe === "Toutes" || r.equipe === S.equipe)
+                       : (S.ligne === "Toutes" || r.ligne === S.ligne)));
+    return { lib: v, n: rows.length, v: rows.length ? ind.c(agg(rows)) : null };
+  });
+  barsH("#cmpL", "#cmpLTitle", grp("ligne", D.lignes), "Lignes — " + ind.lib);
+  barsH("#cmpE", "#cmpETitle", grp("equipe", D.equipes), "Équipes — " + ind.lib);
+}
+
+function renderScope() {
+  const f = filtre();
+  const j = new Set(f.map(r => r.d)).size;
+  $("#scope").textContent = j + " jour" + (j > 1 ? "s" : "") + " de production · " +
+    f.length + " enregistrement" + (f.length > 1 ? "s" : "") +
+    (S.jour ? " · jour épinglé : " + S.jour : "");
+}
+
+function render() {
+  renderKpis(); renderSq(); renderRun(); renderPar();
+  renderCas(); renderCompare(); renderFam(); renderTables(); renderScope();
+}
+
+/* ------------------------------------------------ contrôles */
+function opt(sel, vals, cur) {
+  sel.innerHTML = "";
+  vals.forEach(([v, l]) => {
+    const o = el("option", null, l); o.value = v;
+    if (v === cur) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+opt($("#fl"), [["Toutes", "Toutes les lignes"]].concat(D.lignes.map(l => [l, l])), S.ligne);
+opt($("#fe"), [["Toutes", "Toutes les équipes"]].concat(D.equipes.map(l => [l, l])), S.equipe);
+opt($("#fi"), SELECTABLE.map(c => [c, IND[c].lib]), S.indic);
+opt($("#fp"), [["0", "Mois complet"]].concat(SEM.map(w => [String(w), "Semaine " + w])), S.per);
+
+$("#fl").onchange = e => { S.ligne = e.target.value; render(); };
+$("#fe").onchange = e => { S.equipe = e.target.value; render(); };
+$("#fi").onchange = e => { S.indic = e.target.value; render(); };
+$("#fp").onchange = e => { S.per = e.target.value; S.jour = null; render(); };
+$("#reset").onclick = () => {
+  S.ligne = "Toutes"; S.equipe = "Toutes"; S.indic = "TRS"; S.per = "0"; S.jour = null;
+  $("#fl").value = "Toutes"; $("#fe").value = "Toutes"; $("#fi").value = "TRS"; $("#fp").value = "0";
+  render();
+};
+addEventListener("keydown", e => { if (e.key === "Escape" && S.jour) { S.jour = null; render(); } });
+
+$("#ctx").innerHTML = "<b>" + D.meta.site + "</b> · " + D.meta.atelier + " · <b>" +
+  D.meta.periode + "</b>";
+$("#stamp").textContent = "Données du " + new Date(D.meta.genere).toLocaleDateString("fr-FR");
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => render());
+render();
+</script>

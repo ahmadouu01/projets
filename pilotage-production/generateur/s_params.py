@@ -131,8 +131,10 @@ def build(wb):
         ("Filtre lignes", ["Toutes"] + D.LIGNES),
         ("Filtre équipes", ["Toutes"] + D.EQUIPES),
         ("Rubriques de perte", D.RUBRIQUES), ("Mois", D.MOIS),
+        ("Indicateur suivi", [i[0] for i in D.INDICATEURS]),
+        ("Code objectif associé", [i[1] for i in D.INDICATEURS]),
     ]
-    block(28, 39, "Listes de choix normalisées", [l[0] for l in listes], NLST,
+    block(28, 41, "Listes de choix normalisées", [l[0] for l in listes], NLST,
           [[listes[j][1][i] if i < len(listes[j][1]) else None for j in range(len(listes))]
            for i in range(NLST)])
 
@@ -140,7 +142,7 @@ def build(wb):
                 "I": 26, "J": 22, "K": 20, "L": 2.5, "M": 12, "N": 26, "O": 12, "P": 11,
                 "Q": 2.5, "R": 10, "S": 36, "T": 14, "U": 11, "V": 24, "W": 2.5,
                 "X": 24, "Y": 10, "Z": 12, "AA": 2.5})
-    for i in range(28, 40):
+    for i in range(28, 42):
         ws.column_dimensions[gcl(i)].width = 19
     ws.freeze_panes = "A7"
 
@@ -159,7 +161,8 @@ def build(wb):
     for name, col in [("LST_FAM5M", "AB"), ("LST_SOURCES", "AC"), ("LST_NATURES", "AD"),
                       ("LST_STATUTS", "AE"), ("LST_EFFICACITE", "AF"), ("LST_OUINON", "AG"),
                       ("LST_CONTROLE", "AH"), ("LST_SQCDP", "AI"), ("LST_F_LIGNES", "AJ"),
-                      ("LST_F_EQUIPES", "AK"), ("LST_RUBRIQUES", "AL"), ("LST_MOIS", "AM")]:
+                      ("LST_F_EQUIPES", "AK"), ("LST_RUBRIQUES", "AL"), ("LST_MOIS", "AM"),
+                      ("LST_INDICATEURS", "AN")]:
         dyn(name, col, R0, NLST)
 
     dv = DataValidation(type="whole", operator="between", formula1="1", formula2="3",

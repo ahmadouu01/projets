@@ -2,6 +2,7 @@
 """Onglet CALC : moteur de calcul du cockpit (series, Pareto, cascade, historique)."""
 from openpyxl.styles import Alignment
 from common import *
+import refs as R
 import data as D
 
 SP = "SAISIE_PROD"
@@ -108,8 +109,9 @@ def build(wb):
 
     # ---------------------------------------------------- filtres resolus
     h("A3", "PÉRIMÈTRE RÉSOLU")
-    lignes = [("Année", "=COCKPIT!$B$4", "0"), ("Mois", "=COCKPIT!$D$4", "0"),
-              ("Ligne", "=COCKPIT!$H$4", None), ("Équipe", "=COCKPIT!$K$4", None),
+    lignes = [("Année", "=" + R.F_ANNEE, "0"),
+              ("Mois", '=IFERROR(MATCH(%s,PARAMETRES!$AM$7:$AM$18,0),1)' % R.F_MOIS, "0"),
+              ("Ligne", "=" + R.F_LIGNE, None), ("Équipe", "=" + R.F_EQUIPE, None),
               ("Début de période", "=DATE($B$3,$B$4,1)", DATE),
               ("Fin de période", "=EOMONTH($B$7,0)", DATE),
               ("Jours de production saisis", "=COUNT($M$%d:$M$%d)" % (JOUR0, JOURN), "0")]
@@ -150,6 +152,23 @@ def build(wb):
              '=INDEX(PARAMETRES!${c}$16:${c}$29,MATCH("{k}",PARAMETRES!$A$16:$A$29,0))'.format(c=col, k=code),
              PCT)
 
+    h("AB41", "INDICATEUR SUIVI DANS LE COCKPIT")
+    label(ws, "AB42", "Libellé sélectionné", bold=False, size=9)
+    cell("AC42", '=' + R.F_INDIC)
+    label(ws, "AB43", "Rang dans la liste", bold=False, size=9)
+    cell("AC43", '=IFERROR(MATCH($AC$42,PARAMETRES!$AN$7:$AN$26,0),1)', "0")
+    label(ws, "AB44", "Cible de l'indicateur suivi", bold=False, size=9)
+    cell("AC44", '=IFERROR(INDEX(PARAMETRES!$D$16:$D$29,MATCH(INDEX(PARAMETRES!$AO$7:$AO$26,$AC$43),'
+                 'PARAMETRES!$A$16:$A$29,0)),"")', PCT)
+    label(ws, "AB45", "Titre du graphique principal", bold=False, size=9)
+    cell("AC45", '="Suivi journalier — "&$AC$42&"   (cible "&TEXT($AC$44,"0.0%")&")"')
+    label(ws, "AB46", "Titre de la comparaison", bold=False, size=9)
+    cell("AC46", '="Comparaison des lignes — "&$AC$42')
+    label(ws, "AB47", "Titre de la tendance", bold=False, size=9)
+    cell("AC47", '="Tendance sur 13 mois — "&$AC$42')
+    label(ws, "AB48", "Libellé de la période", bold=False, size=9)
+    cell("AC48", '=%s&" "&TEXT(%s,"0000")' % (R.F_MOIS, R.F_ANNEE))
+
     # ---------------------------------------------------- serie journaliere
     band(ws, JOUR0 - 2, 1, 27, "SÉRIE JOURNALIÈRE DU MOIS SÉLECTIONNÉ  —  valeurs, séries de graphique et statuts du management visuel")
     entetes = ["Jour", "Date", "Temps utile", "Temps requis", "Temps de marche",
@@ -188,7 +207,17 @@ def build(wb):
                          'IF(($H{r}+$I{r})/$J{r}>=$AC$37,2,3)))').format(r=r, p=prod)
         ws["AA%d" % r] = ('=IF(OR($B{r}="",{p},$T{r}=0),"",IF($U{r}/$T{r}>=$AC$38,1,'
                           'IF($U{r}/$T{r}>=$AC$39,2,3)))').format(r=r, p=prod)
-        for col in ("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AA").split():
+        sel = ('=IFERROR(IF($B{r}="","",CHOOSE($AC$43,$C{r}/$D{r},$E{r}/$D{r},'
+               '$C{r}*($G{r}/$H{r})/$E{r},$H{r}/$G{r},$C{r}/$F{r},($H{r}+$I{r})/$J{r},'
+               '$U{r}/$T{r})),"")').format(r=r)
+        ws["AE%d" % r] = sel
+        ws["AF%d" % r] = '=IF($AE%d="",NA(),$AE%d)' % (r, r)
+        ws["AG%d" % r] = '=IF($B%d="",NA(),$AC$44)' % r
+        s7 = max(JOUR0, r - 6)
+        ws["AH%d" % r] = ('=IF(COUNT($AE%d:$AE%d)<3,NA(),AVERAGE($AE%d:$AE%d))'
+                          % (s7, r, s7, r))
+        for col in ("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AA "
+                    "AE AF AG AH").split():
             c = ws["%s%d" % (col, r)]
             c.font = f(9)
             c.alignment = Alignment(horizontal="center", vertical="center")
@@ -199,6 +228,8 @@ def build(wb):
                 c.number_format = PCT
             elif col in ("W", "X", "Y", "Z", "AA"):
                 c.number_format = "0"
+            elif col in ("AE", "AF", "AG", "AH"):
+                c.number_format = PCT
             elif col != "A":
                 c.number_format = NUM
         ws.row_dimensions[r].height = 14
@@ -254,8 +285,11 @@ def build(wb):
     # ---------------------------------------------------- TRS par ligne / equipe
     def bloc_axe(r0, rn, titre, ref_col, saisie_col, param_col):
         band(ws, r0 - 2, 1, 12, titre)
-        header_row(ws, r0 - 1, ["Libellé", "Temps utile", "Temps requis", "TRS",
-                                "TRS (graphique)", "", "", "", "", "", "", ""], height=26)
+        header_row(ws, r0 - 1, ["Libellé", "Temps utile", "Temps requis",
+                                "Indicateur suivi", "Indicateur (graphique)",
+                                "Temps de marche", "Temps d'ouverture", "Qté produite",
+                                "Qté conforme", "Qté retouchée", "Qté demandée",
+                                "Effectif prévu", "Effectif présent"], height=26)
         for i in range(rn - r0 + 1):
             r = r0 + i
             ws["A%d" % r] = ('=IF(PARAMETRES!${p}{pr}="","",PARAMETRES!${p}{pr})'
@@ -265,9 +299,19 @@ def build(wb):
                     '=IF($A{r}="","",SUMIFS({s}!${c}${f}:${c}${l},{s}!$A${f}:$A${l},">="&$B$7,'
                     '{s}!$A${f}:$A${l},"<="&$B$8,{s}!${x}${f}:${x}${l},$A{r}))'
                 ).format(r=r, s=SP, c=src, f=SR, l=SL, x=saisie_col)
-            ws["D%d" % r] = '=IF(OR($A{r}="",$C{r}=0),"",$B{r}/$C{r})'.format(r=r)
+            for col, src in (("F", "AD"), ("G", "F"), ("H", "P"), ("I", "Q"),
+                             ("J", "R"), ("K", "T"), ("L", "U"), ("M", "V")):
+                ws["%s%d" % (col, r)] = (
+                    '=IF($A{r}="","",SUMIFS({s}!${c}${f}:${c}${l},{s}!$A${f}:$A${l},">="&$B$7,'
+                    '{s}!$A${f}:$A${l},"<="&$B$8,{s}!${x}${f}:${x}${l},$A{r}))'
+                ).format(r=r, s=SP, c=src, f=SR, l=SL, x=saisie_col)
+            ws["D%d" % r] = ('=IFERROR(IF($A{r}="","",CHOOSE($AC$43,$B{r}/$C{r},$F{r}/$C{r},'
+                             '$B{r}*($H{r}/$I{r})/$F{r},$I{r}/$H{r},$B{r}/$G{r},'
+                             '($I{r}+$J{r})/$K{r},IFERROR($M{r}/$L{r},""))),"")').format(r=r)
             ws["E%d" % r] = '=IF($D{r}="",NA(),$D{r})'.format(r=r)
-            for col2, fmt in (("A", None), ("B", NUM), ("C", NUM), ("D", PCT), ("E", PCT)):
+            for col2, fmt in (("A", None), ("B", NUM), ("C", NUM), ("D", PCT), ("E", PCT),
+                              ("F", NUM), ("G", NUM), ("H", NUM), ("I", NUM), ("J", NUM),
+                              ("K", NUM), ("L", NUM1), ("M", NUM1)):
                 c = ws["%s%d" % (col2, r)]
                 c.font = f(9)
                 c.border = BOX
@@ -285,7 +329,8 @@ def build(wb):
                               "Temps de marche", "Temps d'ouverture", "Qté produite",
                               "Qté conforme", "Qté retouchée", "Qté demandée", "Accidents",
                               "TRS", "Disponibilité", "Performance", "Qualité RFT", "TRG",
-                              "Taux de service", "TRS (graphique)", "Cible (graphique)"],
+                              "Taux de service", "Indicateur (graphique)",
+                              "Cible (graphique)", "Indicateur suivi"],
                height=32)
     for i in range(MOIN - MOI0 + 1):
         r = MOI0 + i
@@ -305,16 +350,18 @@ def build(wb):
         ws["O%d" % r] = '=IFERROR($H{r}/$G{r},"")'.format(r=r)
         ws["P%d" % r] = '=IFERROR($C{r}/$F{r},"")'.format(r=r)
         ws["Q%d" % r] = '=IFERROR(($H{r}+$I{r})/$J{r},"")'.format(r=r)
-        ws["R%d" % r] = '=IF($L{r}="",NA(),$L{r})'.format(r=r)
-        ws["S%d" % r] = '=$AC$3'
-        for col2 in "ABCDEFGHIJKLMNOPQRS":
+        ws["T%d" % r] = ('=IFERROR(CHOOSE($AC$43,$L{r},$M{r},$N{r},$O{r},$P{r},$Q{r},'
+                         '""),"")').format(r=r)
+        ws["R%d" % r] = '=IF($T{r}="",NA(),$T{r})'.format(r=r)
+        ws["S%d" % r] = '=IF($T{r}="",NA(),$AC$44)'.format(r=r)
+        for col2 in "ABCDEFGHIJKLMNOPQRST":
             c = ws["%s%d" % (col2, r)]
             c.font = f(9, k == 0)
             c.border = BOX
             c.alignment = Alignment(horizontal="center", vertical="center")
             if col2 == "B":
                 c.number_format = "mmm yyyy"
-            elif col2 in "LMNOPQRS":
+            elif col2 in "LMNOPQRST":
                 c.number_format = PCT
             elif col2 != "A":
                 c.number_format = NUM
@@ -460,6 +507,7 @@ def build(wb):
     widths(ws, {"A": 30, "B": 14, "C": 13, "D": 13, "E": 14, "F": 26, "G": 13, "H": 12,
                 "I": 13, "J": 13, "K": 11, "L": 13, "M": 11, "N": 11, "O": 15, "P": 10,
                 "Q": 10, "R": 14, "S": 16, "T": 12, "U": 12, "V": 13,
-                "W": 9, "X": 9, "Y": 9, "Z": 9, "AA": 9, "AB": 34, "AC": 14})
+                "W": 9, "X": 9, "Y": 9, "Z": 9, "AA": 9, "AB": 34, "AC": 16,
+                "AE": 13, "AF": 15, "AG": 13, "AH": 17})
     page(ws)
     return ws

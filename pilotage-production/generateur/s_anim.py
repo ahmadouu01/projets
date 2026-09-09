@@ -12,6 +12,7 @@ from openpyxl.drawing.line import LineProperties
 from openpyxl.utils import get_column_letter as gcl
 from common import *
 import s_calc as C
+import refs as R
 
 NC = 46                      # colonnes du board
 D1, D31 = 8, 38              # colonnes des 31 jours
@@ -36,14 +37,14 @@ def build(wb):
         ws.column_dimensions[gcl(col)].width = 3.3
 
     title_band(ws, 1, NC, "MANAGEMENT VISUEL  —  POINT 5 MINUTES",
-               '=PARAMETRES!$C$5&"   |   "&PARAMETRES!$C$6&"   |   "&COCKPIT!$E$4&'
+               '=PARAMETRES!$C$5&"   |   "&PARAMETRES!$C$6&"   |   "&CALC!$AC$48&'
                '"   |   Édition du "&TEXT(TODAY(),"dd/mm/yyyy")', height=38)
     ws["A1"].font = Font(name=FONT, size=19, bold=True, color=WHITE)
     ws["A2"].font = f(10, False, "4A5A6A", italic=True)
 
     # ---------------------------------------------------------- bandeau contexte
-    ctx = [("Périmètre", '=COCKPIT!$H$4', 1, 12),
-           ("Équipe", '=COCKPIT!$K$4', 13, 23),
+    ctx = [("Périmètre", '=' + R.F_LIGNE, 1, 12),
+           ("Équipe", '=' + R.F_EQUIPE, 13, 23),
            ("Jours de production saisis", '=CALC!$B$9', 24, 34),
            ("Actions ouvertes en retard", '=PLAN_ACTIONS!$D$6', 35, 46)]
     for lib, formule, c1, c2 in ctx:
@@ -141,6 +142,7 @@ def build(wb):
         ws.cell(row=r0, column=k).fill = fill(NAVY)
 
     blocs = [(1, 11, 0, "TRS"), (12, 22, 1, "QUAL"), (23, 33, 2, "SERVICE")]
+    # index de la jauge dans CALC -> ligne de statut du bloc technique du cockpit
     for c1, c2, idx, code in blocs:
         _jauge(ws, wb, c1, r0 + 1, C.GAU0 + idx)
         rv = r0 + 12
@@ -157,7 +159,7 @@ def build(wb):
         for val, coul, bg in ((1, GREEN, GREEN_BG), (2, AMBER, AMBER_BG), (3, RED, RED_BG)):
             ws.conditional_formatting.add(
                 "%s%d:%s%d" % (gcl(c1), rv, gcl(c2), rv),
-                FormulaRule(formula=['COCKPIT!$Y$%d=%d' % (6 + idx * 3, val)],
+                FormulaRule(formula=['COCKPIT!$AE$%d=%d' % (R.CARTE_ROW[code], val)],
                             font=Font(name=FONT, size=24, bold=True, color=coul), fill=fill(bg)))
         ws.row_dimensions[rv].height = 32
         ws.row_dimensions[rv + 1].height = 16

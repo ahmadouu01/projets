@@ -64,6 +64,17 @@ OUINON = ["Oui", "Non", "S.O."]
 OKNOK = ["OK", "NOK", "S.O."]
 SQCDP = ["Sécurité", "Qualité", "Coût", "Délai", "Personnel"]
 
+# (libellé affiché dans le sélecteur du cockpit, code objectif de PARAMETRES)
+INDICATEURS = [
+    ("TRS", "TRS"),
+    ("Disponibilité", "DISPO"),
+    ("Performance", "PERF"),
+    ("Qualité au premier passage", "QUAL"),
+    ("TRG", "TRG"),
+    ("Taux de service", "SERVICE"),
+    ("Taux de présence", "PRESENCE"),
+]
+
 OBJECTIFS = [
     # code, indicateur, unite, cible, alerte, sens(1=plus haut mieux), source
     ("TRS",      "Taux de rendement synthétique (TRS / OEE)", "%",   0.75, 0.70,  1, "Objectif budget 2026 — direction industrielle"),

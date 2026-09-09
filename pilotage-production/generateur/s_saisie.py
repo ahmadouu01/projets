@@ -5,6 +5,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.formatting.rule import FormulaRule, ColorScaleRule, DataBarRule
 from openpyxl.utils import get_column_letter as gcl
 from common import *
+import refs as R
 import data as D
 
 FIRST, LAST = 5, 204          # lignes de donnees
@@ -93,8 +94,8 @@ FORMULES = {
            'IF($P{r}<>$Q{r}+$R{r}+$S{r},"Produite ≠ conforme + retouchée + rebutée",'
            'IF($Q{r}>$P{r},"Conforme > produite",'
            'IF($V{r}>$U{r},"Présents > prévus","OK"))))))))'),
-    "AS": ('=IF($A{r}="",0,IF(AND(OR(COCKPIT!$H$4="Toutes",$C{r}=COCKPIT!$H$4),'
-           'OR(COCKPIT!$K$4="Toutes",$B{r}=COCKPIT!$K$4)),1,0))'),
+    "AS": ('=IF($A{r}="",0,IF(AND(OR({FL}="Toutes",$C{r}={FL}),'
+           'OR({FE}="Toutes",$B{r}={FE})),1,0))'),
 }
 
 
@@ -139,7 +140,7 @@ def build(wb, saisie):
 
     for r in range(FIRST, LAST + 1):
         for lt, formule in FORMULES.items():
-            ws["%s%d" % (lt, r)] = formule.format(r=r)
+            ws["%s%d" % (lt, r)] = formule.format(r=r, FL=R.F_LIGNE, FE=R.F_EQUIPE)
         ws.row_dimensions[r].height = 15
     apply_range(ws, "O%d:O%d" % (FIRST, LAST), font=f(9, color=GREEN), fillc=REF_BG,
                 numfmt="0.0", align="center")
