@@ -158,7 +158,70 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 @media (max-width:1180px){.kpis{grid-template-columns:repeat(3,1fr)}.g3,.g2{grid-template-columns:1fr}}
 @media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.wrap{padding:0 12px 40px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- barre de source & import ---------- */
+.srcbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:9px 12px;
+        background:var(--panel);border:1px solid var(--rule);border-radius:4px;margin-top:14px}
+.srcbar .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.srcbar .dot.demo{background:var(--warn)}
+.srcbar .txt{font-size:12.5px;color:var(--ink-2)}
+.srcbar .txt b{color:var(--ink);font-weight:600}
+.srcbar .sp{margin-left:auto}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+#imp{margin-top:12px}
+.drop{border:1.5px dashed var(--rule);border-radius:4px;padding:22px 18px;text-align:center;
+      background:var(--panel-2);transition:border-color .12s,background .12s}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop h4{margin:0 0 5px;font-size:13.5px;font-weight:600}
+.drop p{margin:0;font-size:12px;color:var(--ink-2)}
+.drop .or{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--ink-3);margin:12px 0 8px}
+textarea{width:100%;min-height:96px;font-family:var(--mono);font-size:11.5px;line-height:1.5;
+         color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+         padding:9px 10px;resize:vertical}
+textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.impcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;margin-top:16px}
+.maprow{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;
+        padding:5px 0;border-bottom:1px solid var(--rule-2)}
+.maprow:last-child{border-bottom:none}
+.maprow .fname{font-size:12px}
+.maprow .fname .req{color:var(--bad);font-weight:600;margin-left:3px}
+.maprow .fprev{font-family:var(--mono);font-size:10px;color:var(--ink-3);
+               white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.maprow select{min-width:0;width:100%;font-size:12px;padding:4px 22px 4px 7px}
+.maprow select.ok{border-color:var(--good)}
+.maprow select.miss{border-color:var(--bad);background:var(--bad-bg)}
+.msg{font-size:12.5px;padding:9px 11px;border-radius:3px;margin-top:12px}
+.msg.err{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad)}
+.msg.ok{background:var(--good-bg);color:var(--good);border:1px solid var(--good)}
+.msg.info{background:var(--panel-2);color:var(--ink-2);border:1px solid var(--rule)}
+.tabs{display:flex;gap:2px;margin-bottom:12px;border-bottom:1px solid var(--rule)}
+.tab{font-family:var(--sans);font-size:12.5px;padding:7px 13px;background:none;border:none;
+     border-bottom:2px solid transparent;color:var(--ink-2);cursor:pointer;margin-bottom:-1px}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.tab:hover{color:var(--ink)}
+
+/* ---------- matrice de charge ---------- */
+.mx{display:grid;gap:2px;font-family:var(--mono);font-size:11px}
+.mx .hd{font-size:9.5px;color:var(--ink-3);text-align:center;padding-bottom:2px;
+        letter-spacing:.05em;text-transform:uppercase}
+.mx .rl{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);
+        padding-right:8px;text-align:right;white-space:nowrap;
+        overflow:hidden;text-overflow:ellipsis}
+.mxc{border-radius:2px;padding:7px 4px;text-align:center;font-variant-numeric:tabular-nums;
+     font-weight:500;cursor:default;border:1.5px solid transparent}
+.mxc.over{border-color:var(--bad);font-weight:600}
+.mxleg{display:flex;align-items:center;gap:9px;margin-top:11px;font-size:11px;
+       color:var(--ink-2);white-space:nowrap;flex-wrap:wrap}
+.mxleg .ramp{display:flex;height:9px;border-radius:2px;overflow:hidden;width:150px}
+.mxleg .ramp i{flex:1}
+
+/* ---------- Gantt ---------- */
+.gantt{overflow-x:auto}
+.gwrap{min-width:640px}
 </style>
+
 
 <div class="wrap">
 <header>
@@ -168,11 +231,47 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
   </div>
 </header>
 
+<div class="srcbar">
+  <span class="dot" id="srcDot"></span>
+  <span class="txt" id="srcTxt"></span>
+  <span class="sp"></span>
+  <button class="btn primary" id="impOpen" type="button">Importer mes extractions</button>
+  <button class="btn" id="tplBtn" type="button">Modèle de colonnes</button>
+  <button class="btn hidden" id="demoBtn" type="button">Revenir à la démonstration</button>
+</div>
+
+<div class="panel hidden" id="imp">
+  <div class="tabs" id="impTabs"></div>
+  <div id="impStep1">
+    <div class="drop" id="drop">
+      <h4>Déposez vos extractions ERP ici</h4>
+      <p>Fichiers .xlsx, .xls, .csv ou .txt — un fichier par jeu de données.
+         <button class="reset" id="pick" type="button">ou parcourir</button></p>
+      <input type="file" id="file" multiple accept=".xlsx,.xls,.csv,.tsv,.txt" class="hidden">
+      <div class="or">ou collez directement</div>
+      <textarea id="paste" placeholder="Collez ici les cellules copiées depuis Excel ou depuis votre ERP (Ctrl+V), en gardant la ligne d'en-tête."></textarea>
+      <div style="margin-top:10px"><button class="btn primary" id="pasteGo" type="button">Analyser le contenu collé</button></div>
+    </div>
+    <div id="impMsg"></div>
+  </div>
+  <div id="impStep2" class="hidden">
+    <div class="phead"><h3 id="mapTitle"></h3><span class="note" id="mapNote"></span></div>
+    <div class="msg info">Vérifiez la correspondance entre les colonnes de votre fichier et les champs attendus.
+      Les champs marqués <span style="color:var(--bad);font-weight:600">•</span> sont obligatoires.</div>
+    <div class="impcols" id="mapCols"></div>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" id="mapGo" type="button">Charger ces données</button>
+      <button class="btn" id="mapCancel" type="button">Annuler</button>
+    </div>
+  </div>
+</div>
+
 <div class="rail">
   <div class="fld"><label for="fl">Ligne</label><select id="fl"></select></div>
   <div class="fld"><label for="fe">Équipe</label><select id="fe"></select></div>
   <div class="fld"><label for="fi">Indicateur suivi</label><select id="fi"></select></div>
   <div class="fld"><label for="fp">Période</label><select id="fp"></select></div>
+  <div class="fld"><label for="fr">Date de référence</label><input type="date" id="fr"></div>
   <div class="spacer"></div>
   <div class="scope" id="scope"></div>
   <button class="reset" id="reset" type="button">Réinitialiser</button>
@@ -242,7 +341,55 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 </section>
 
 <section>
-  <div class="shead"><span class="eyebrow">04</span><h2>Ce qu'il faut traiter</h2></div>
+  <div class="shead"><span class="eyebrow">04</span><h2>Encours et retards de production</h2>
+    <span class="sub" id="fluxSub"></span></div>
+  <div class="kpis" id="flux" style="grid-template-columns:repeat(6,1fr);margin-top:0"></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="panel">
+      <div class="phead"><h3>Encours par ligne</h3><span class="note">quantité restante à produire</span></div>
+      <figure><svg id="wip" viewBox="0 0 460 200" role="img" aria-label="Encours par ligne"></svg></figure>
+      <div class="phead" style="margin-top:14px"><h3>Âge de l'encours</h3><span class="note">jours depuis le lancement</span></div>
+      <figure><svg id="age" viewBox="0 0 460 150" role="img" aria-label="Âge de l'encours"></svg></figure>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3>Ordres de fabrication en retard</h3><span class="note" id="lateNote"></span></div>
+      <table><thead><tr><th>OF</th><th>Ligne</th><th>Client</th><th class="n">Reste</th><th class="n">Retard</th><th class="n">Avanc.</th></tr></thead>
+      <tbody id="late"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="eyebrow">05</span><h2>Charge et planification à venir</h2>
+    <span class="sub">Charge calculée sur la quantité restante et la cadence nominale du produit.</span></div>
+  <div class="grid g2">
+    <div class="panel">
+      <div class="phead"><h3>Taux de charge par ligne et par semaine</h3><span class="note">charge ÷ capacité</span></div>
+      <div class="mx" id="mx"></div>
+      <div class="mxleg">
+        <span>sous-charge</span>
+        <span class="ramp" id="mxramp"></span>
+        <span>surcharge</span>
+        <span style="margin-left:auto;color:var(--ink-3)" id="mxcap"></span>
+      </div>
+      <div class="phead" style="margin-top:18px"><h3>Charge hebdomadaire</h3><span class="note">heures</span></div>
+      <figure><svg id="load" viewBox="0 0 460 180" role="img" aria-label="Charge hebdomadaire"></svg></figure>
+    </div>
+    <div class="panel">
+      <div class="phead"><h3>Ordonnancement</h3><span class="note" id="ganttNote"></span></div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>En cours</span>
+        <span><i style="background:var(--ink-3)"></i>Planifié</span>
+        <span><i style="background:var(--bad)"></i>En retard</span>
+        <span><i class="dash"></i>Date de référence</span>
+      </div>
+      <div class="gantt"><div class="gwrap"><svg id="gantt" viewBox="0 0 700 460" role="img" aria-label="Ordonnancement des ordres de fabrication"></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="eyebrow">06</span><h2>Ce qu'il faut traiter</h2></div>
   <div class="grid g2">
     <div class="panel">
       <div class="phead"><h3>Causes d'arrêt subi</h3><span class="note">hors arrêts planifiés</span></div>
@@ -264,11 +411,15 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 </div>
 <div id="tip" role="status" aria-live="polite"></div>
 
-<script id="d" type="application/json">{"meta":{"site":"Site de démonstration","atelier":"UAP Assemblage-Usinage","periode":"Janvier 2026","genere":"2026-09-09"},"objectifs":[{"code":"TRS","lib":"Taux de rendement synthétique (TRS / OEE)","unite":"%","cible":0.75,"alerte":0.7,"sens":1},{"code":"DISPO","lib":"Taux de disponibilité","unite":"%","cible":0.9,"alerte":0.85,"sens":1},{"code":"PERF","lib":"Taux de performance (cadence)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"QUAL","lib":"Taux de qualité au premier passage (RFT)","unite":"%","cible":0.99,"alerte":0.98,"sens":1},{"code":"TRG","lib":"Taux de rendement global (TRG)","unite":"%","cible":0.6,"alerte":0.55,"sens":1},{"code":"SERVICE","lib":"Taux de service (quantité programmée)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"PPM","lib":"Non-conformités internes","unite":"ppm","cible":2000,"alerte":5000,"sens":-1},{"code":"PRESENCE","lib":"Taux de présence","unite":"%","cible":0.95,"alerte":0.92,"sens":1},{"code":"ACCIDENT","lib":"Accidents avec arrêt (cumul mois)","unite":"nb","cible":0,"alerte":0,"sens":-1},{"code":"RETARD","lib":"Actions correctives en retard","unite":"nb","cible":0,"alerte":2,"sens":-1},{"code":"MTTR","lib":"Temps moyen de réparation (MTTR)","unite":"min","cible":30,"alerte":45,"sens":-1},{"code":"MTBF","lib":"Temps moyen entre pannes (MTBF)","unite":"min","cible":240,"alerte":180,"sens":1},{"code":"AUDIT5S","lib":"Score d'audit 5S","unite":"%","cible":0.8,"alerte":0.7,"sens":1},{"code":"POLYV","lib":"Taux de polyvalence de l'équipe","unite":"%","cible":0.7,"alerte":0.6,"sens":1}],"lignes":["Ligne 1 - Assemblage","Ligne 2 - Usinage","Ligne 3 - Conditionnement"],"equipes":["Équipe A (matin)","Équipe B (après-midi)","Équipe C (nuit)"],"causes":{"PLA-01":{"lib":"Pause légale et relève de poste","fam":"Milieu","type":"Planifié","rub":"Arrêts planifiés"},"PLA-02":{"lib":"Maintenance préventive planifiée","fam":"Machine","type":"Planifié","rub":"Arrêts planifiés"},"PLA-03":{"lib":"Réunion, formation ou audit planifié","fam":"Main d'œuvre","type":"Planifié","rub":"Arrêts planifiés"},"PAN-01":{"lib":"Panne mécanique","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-02":{"lib":"Panne électrique ou capteur","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-03":{"lib":"Défaut automatisme / supervision","fam":"Machine","type":"Subi","rub":"Pannes"},"CDS-01":{"lib":"Changement de série (outillage)","fam":"Méthode","type":"Subi","rub":"Changement de série"},"CDS-02":{"lib":"Attente outillage ou moyen de contrôle","fam":"Méthode","type":"Subi","rub":"Changement de série"},"REG-01":{"lib":"Réglage qualité en cours de série","fam":"Méthode","type":"Subi","rub":"Réglages et micro-arrêts"},"REG-02":{"lib":"Micro-arrêts, bourrage, purge","fam":"Machine","type":"Subi","rub":"Réglages et micro-arrêts"},"MAT-01":{"lib":"Rupture d'approvisionnement matière","fam":"Matière","type":"Subi","rub":"Manque matière"},"MAT-02":{"lib":"Matière non conforme (rebut fournisseur)","fam":"Matière","type":"Subi","rub":"Manque matière"},"PER-01":{"lib":"Absence non remplacée","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"PER-02":{"lib":"Accompagnement / montée en compétence","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"LOG-01":{"lib":"Attente cariste / évacuation en-cours","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"LOG-02":{"lib":"Saturation aval / stock plein","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"ESS-01":{"lib":"Essai, prototype, série pilote","fam":"Méthode","type":"Subi","rub":"Autres arrêts subis"}},"jours":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":49,"cds":32,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4631,"conf":4547,"ret":37,"reb":47,"dem":4982,"effP":12,"effR":11,"acc":0,"presq":1,"top":"Panne mécanique — Assemblage","subi":81},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":14,"mat":10,"per":0,"aut":17,"npan":0,"prod":3339,"conf":3288,"ret":22,"reb":29,"dem":3559,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente cariste / évacuation en-cours — Usinage","subi":41},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":53,"cds":0,"reg":13,"mat":19,"per":29,"aut":15,"npan":1,"prod":3421,"conf":3376,"ret":20,"reb":25,"dem":3430,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":129},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":29,"cds":0,"reg":0,"mat":0,"per":0,"aut":9,"npan":1,"prod":2864,"conf":2835,"ret":13,"reb":16,"dem":2848,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":38},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":26,"cds":18,"reg":14,"mat":0,"per":15,"aut":0,"npan":1,"prod":4144,"conf":4110,"ret":15,"reb":19,"dem":4252,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":73},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":23,"cds":35,"reg":8,"mat":17,"per":0,"aut":9,"npan":1,"prod":2229,"conf":2217,"ret":5,"reb":7,"dem":2267,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Changement de série (outillage) — Usinage","subi":92},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":16,"per":17,"aut":9,"npan":0,"prod":4577,"conf":4499,"ret":35,"reb":43,"dem":4772,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":42},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":42,"cds":17,"reg":0,"mat":12,"per":0,"aut":9,"npan":1,"prod":2376,"conf":2342,"ret":15,"reb":19,"dem":2455,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":80},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":24,"cds":18,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5611,"conf":5543,"ret":30,"reb":38,"dem":5992,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":42},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":7,"mat":23,"per":0,"aut":14,"npan":0,"prod":3207,"conf":3178,"ret":13,"reb":16,"dem":3394,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":44},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":37,"cds":0,"reg":12,"mat":19,"per":24,"aut":10,"npan":1,"prod":4056,"conf":4027,"ret":13,"reb":16,"dem":4040,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":102},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":23,"cds":0,"reg":0,"mat":0,"per":0,"aut":20,"npan":1,"prod":2739,"conf":2689,"ret":22,"reb":28,"dem":2946,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":43},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":38,"cds":34,"reg":8,"mat":0,"per":25,"aut":0,"npan":1,"prod":3784,"conf":3723,"ret":27,"reb":34,"dem":3826,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":105},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":32,"cds":20,"reg":13,"mat":21,"per":0,"aut":17,"npan":1,"prod":2470,"conf":2437,"ret":14,"reb":19,"dem":2475,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":103},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":0,"cds":0,"reg":0,"mat":23,"per":14,"aut":10,"npan":0,"prod":3704,"conf":3663,"ret":18,"reb":23,"dem":3834,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":47},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":86,"cds":25,"reg":0,"mat":16,"per":0,"aut":13,"npan":1,"prod":1728,"conf":1714,"ret":6,"reb":8,"dem":1773,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":140},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":29,"cds":28,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5227,"conf":5195,"ret":14,"reb":18,"dem":5541,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":57},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":14,"mat":28,"per":0,"aut":18,"npan":0,"prod":2975,"conf":2924,"ret":22,"reb":29,"dem":3101,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":60},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":18,"cds":0,"reg":9,"mat":23,"per":19,"aut":17,"npan":1,"prod":4115,"conf":4053,"ret":27,"reb":35,"dem":4434,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Rupture d'approvisionnement matière — Assemblage","subi":86},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":42,"cds":0,"reg":0,"mat":0,"per":0,"aut":19,"npan":1,"prod":2529,"conf":2498,"ret":13,"reb":18,"dem":2700,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":61},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":42,"cds":17,"reg":9,"mat":0,"per":22,"aut":0,"npan":1,"prod":4987,"conf":4937,"ret":22,"reb":28,"dem":5009,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":90},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":30,"cds":32,"reg":11,"mat":13,"per":0,"aut":12,"npan":1,"prod":2800,"conf":2780,"ret":9,"reb":11,"dem":2789,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Changement de série (outillage) — Usinage","subi":98},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":15,"per":14,"aut":15,"npan":0,"prod":4257,"conf":4235,"ret":9,"reb":13,"dem":4375,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":44},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":20,"cds":29,"reg":0,"mat":18,"per":0,"aut":14,"npan":1,"prod":2504,"conf":2463,"ret":18,"reb":23,"dem":2531,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente outillage ou moyen de contrôle — Usinage","subi":81},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":32,"cds":20,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4329,"conf":4268,"ret":27,"reb":34,"dem":4521,"effP":12,"effR":12,"acc":1,"presq":0,"top":"Panne mécanique — Assemblage","subi":52},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":0,"cds":0,"reg":5,"mat":21,"per":0,"aut":16,"npan":0,"prod":2889,"conf":2857,"ret":14,"reb":18,"dem":2990,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":42},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":47,"cds":0,"reg":14,"mat":25,"per":29,"aut":8,"npan":1,"prod":3566,"conf":3533,"ret":14,"reb":19,"dem":3813,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":123},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":49,"cds":0,"reg":0,"mat":0,"per":0,"aut":11,"npan":1,"prod":2451,"conf":2436,"ret":6,"reb":9,"dem":2597,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Panne électrique ou capteur — Usinage","subi":60},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":36,"cds":33,"reg":12,"mat":0,"per":25,"aut":0,"npan":1,"prod":4609,"conf":4526,"ret":37,"reb":46,"dem":4563,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":106},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":50,"cds":20,"reg":13,"mat":29,"per":0,"aut":9,"npan":1,"prod":2526,"conf":2488,"ret":17,"reb":21,"dem":2722,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":121},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":15,"per":31,"aut":19,"npan":0,"prod":4406,"conf":4348,"ret":26,"reb":32,"dem":4463,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":65},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":90,"cds":22,"reg":0,"mat":11,"per":0,"aut":18,"npan":1,"prod":2018,"conf":1997,"ret":9,"reb":12,"dem":2026,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":141},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":38,"cds":20,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4852,"conf":4813,"ret":17,"reb":22,"dem":5031,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":58},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":0,"cds":0,"reg":12,"mat":18,"per":0,"aut":17,"npan":0,"prod":2881,"conf":2866,"ret":6,"reb":9,"dem":2960,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":47},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":19,"cds":0,"reg":14,"mat":26,"per":31,"aut":13,"npan":1,"prod":3012,"conf":2960,"ret":23,"reb":29,"dem":3173,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":103},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":25,"cds":0,"reg":0,"mat":0,"per":0,"aut":14,"npan":1,"prod":2404,"conf":2370,"ret":15,"reb":19,"dem":2510,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":39},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":21,"cds":37,"reg":11,"mat":0,"per":13,"aut":0,"npan":1,"prod":4779,"conf":4721,"ret":26,"reb":32,"dem":5159,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Changement de série (outillage) — Assemblage","subi":82},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":35,"cds":20,"reg":5,"mat":15,"per":0,"aut":19,"npan":1,"prod":2989,"conf":2962,"ret":12,"reb":15,"dem":3197,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":94},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":20,"per":24,"aut":23,"npan":0,"prod":4242,"conf":4212,"ret":13,"reb":17,"dem":4267,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":67},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":31,"cds":33,"reg":0,"mat":17,"per":0,"aut":13,"npan":1,"prod":2257,"conf":2216,"ret":18,"reb":23,"dem":2234,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente outillage ou moyen de contrôle — Usinage","subi":94},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":53,"cds":27,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5022,"conf":4941,"ret":36,"reb":45,"dem":5130,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":80},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":8,"mat":20,"per":0,"aut":11,"npan":0,"prod":3212,"conf":3170,"ret":18,"reb":24,"dem":3253,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":39}],"arrets":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":49},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":32},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":10},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":19},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":29},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":15},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":53},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":9},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":29},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":26},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":18},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":14},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":15},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":8},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":17},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":9},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":23},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":35},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":16},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":17},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":9},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":9},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":42},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":17},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":12},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":24},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":18},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":7},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":23},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":14},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":19},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":24},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":10},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":37},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":12},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":20},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":23},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":38},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":34},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":8},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":25},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":21},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":32},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":23},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":14},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":10},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":13},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":86},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":25},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":16},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":29},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":28},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":28},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":18},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":23},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":19},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":17},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":18},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":9},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":19},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":42},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":42},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":17},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":9},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":22},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":11},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":13},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":12},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":30},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":32},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":15},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":14},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":15},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":14},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":20},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":29},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":18},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":32},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":20},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":21},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":16},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":25},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":29},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":8},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":47},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":11},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":49},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":36},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":33},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":12},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":25},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":29},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":9},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":50},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":15},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":31},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":19},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":18},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":90},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":22},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":11},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":38},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":20},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":12},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":18},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":26},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":31},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":13},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":19},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":14},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":25},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":21},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":37},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":11},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":13},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":15},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":19},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":35},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":20},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":20},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":24},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":23},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":13},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":31},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":33},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":17},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":53},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":27},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":8},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":20},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":11}],"actions":[{"date":"2026-01-08","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Arrêts répétés du convoyeur d'alimentation : 185 min perdues sur la semaine 2","ipr":36,"fam":"Machine","cause":"Capteur de position encrassé par les copeaux ; nettoyage absent du plan de maintenance préventive","act":"Ajouter le nettoyage hebdomadaire du capteur au plan préventif et former les deux équipes","nat":"Préventive (D7)","pil":"DURAND M.","cible":"2026-01-22","av":0.6,"st":"En cours","gain":14000},{"date":"2026-01-09","src":"Qualité client","zone":"Ligne 2 - Usinage","pb":"Réclamation client : cote de perçage hors tolérance sur le lot OF-01018 (12 pièces)","ipr":40,"fam":"Méthode","cause":"Absence de contrôle de la première pièce après changement d'outil coupant","act":"Rendre bloquante la validation première pièce après tout changement d'outil (autocontrôle + visa)","nat":"Corrective (D5)","pil":"LEROY S.","cible":"2026-01-16","av":1.0,"st":"Terminée","gain":22000},{"date":"2026-01-13","src":"Sécurité","zone":"Ligne 1 - Assemblage","pb":"Accident avec arrêt : coupure à la main lors de l'évacuation des chutes","ipr":15,"fam":"Milieu","cause":"Bac d'évacuation des chutes sans protection, gants inadaptés au risque de coupure","act":"Installer un bac fermé et déployer des gants anti-coupure niveau C sur les deux lignes","nat":"Corrective (D5)","pil":"BAKARI F.","cible":"2026-01-20","av":1.0,"st":"Terminée","gain":0},{"date":"2026-01-14","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Temps de changement de série moyen de 38 min contre 25 min au standard","ipr":30,"fam":"Méthode","cause":"Outillage et moyens de contrôle non préparés avant l'arrêt machine (pas de séparation interne/externe)","act":"Déployer un chantier SMED : préparation externe systématique et chariot de changement dédié","nat":"Amélioration","pil":"MARCHAND J.","cible":"2026-02-13","av":0.35,"st":"En cours","gain":31000},{"date":"2026-01-16","src":"Audit 5S","zone":"Ligne 3 - Conditionnement","pb":"Zone de conditionnement notée 2,1/4 : allées encombrées par les en-cours","ipr":8,"fam":"Milieu","cause":"Limite d'en-cours non définie et non matérialisée au sol","act":"Définir un plafond d'en-cours, marquer les emplacements au sol et afficher la règle","nat":"Corrective (D5)","pil":"SOW I.","cible":"2026-01-30","av":0.5,"st":"En cours","gain":0},{"date":"2026-01-19","src":"Idée opérateur","zone":"Ligne 1 - Assemblage","pb":"Recherche d'outillage au poste d'assemblage : 5 à 8 min perdues par poste","ipr":10,"fam":"Milieu","cause":"Aucun emplacement dédié aux outils de réglage","act":"Réaliser un panneau d'ombres (shadow board) au poste d'assemblage","nat":"Amélioration","pil":"PETIT C.","cible":"2026-02-06","av":0.2,"st":"En cours","gain":6000},{"date":"2026-01-20","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Rupture matière sur REF-2002 : 55 min d'arrêt le 20/01","ipr":27,"fam":"Matière","cause":"Seuil de réapprovisionnement calculé sans tenir compte du délai fournisseur réel (8 j au lieu de 5 j)","act":"Recalculer les points de commande sur la base des délais réels et alerter à J-3","nat":"Préventive (D7)","pil":"NGOM A.","cible":"2026-02-03","av":0.0,"st":"À lancer","gain":9000},{"date":"2026-01-22","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Micro-arrêts récurrents en fin de poste (bourrage évacuation)","ipr":32,"fam":"Machine","cause":"Guide d'évacuation déréglé, aucun standard de contrôle en fin de poste","act":"Régler le guide et ajouter le point au standard de fin de poste","nat":"Corrective (D5)","pil":"GARNIER L.","cible":"2026-01-28","av":0.8,"st":"En cours","gain":7500}],"postes":[{"nom":"Conduite ligne 1","crit":3,"cible":3},{"nom":"Conduite ligne 2","crit":3,"cible":3},{"nom":"Conduite ligne 3","crit":2,"cible":2},{"nom":"Changement de série","crit":3,"cible":3},{"nom":"Contrôle qualité","crit":3,"cible":3},{"nom":"Retouche","crit":2,"cible":2},{"nom":"Maintenance 1er niveau","crit":3,"cible":2},{"nom":"Cariste / appro","crit":2,"cible":2},{"nom":"Emballage","crit":1,"cible":2},{"nom":"Saisie et reporting","crit":2,"cible":2},{"nom":"Animation 5 min","crit":2,"cible":2},{"nom":"Formation nouveaux","crit":1,"cible":2}],"equipe":[{"mat":"M-1042","nom":"DUPONT Marie","eq":"Équipe A (matin)","niv":[4,3,2,4,3,2,3,1,3,3,4,3]},{"mat":"M-1078","nom":"NGOM Abdoulaye","eq":"Équipe A (matin)","niv":[3,4,2,3,2,1,4,2,2,1,2,1]},{"mat":"M-1103","nom":"LEROY Sophie","eq":"Équipe A (matin)","niv":[2,3,3,2,4,3,1,1,3,4,3,2]},{"mat":"M-1156","nom":"BAKARI Fatou","eq":"Équipe A (matin)","niv":[3,2,1,3,3,4,2,3,2,1,1,0]},{"mat":"M-1201","nom":"PETIT Camille","eq":"Équipe A (matin)","niv":[1,1,2,0,2,2,0,3,3,0,0,0]},{"mat":"M-1233","nom":"MARCHAND Julien","eq":"Équipe B (après-midi)","niv":[4,3,3,4,2,2,3,2,3,3,3,2]},{"mat":"M-1245","nom":"SOW Ibrahima","eq":"Équipe B (après-midi)","niv":[2,4,2,3,3,1,2,4,2,1,1,1]},{"mat":"M-1290","nom":"GARNIER Louis","eq":"Équipe B (après-midi)","niv":[3,2,3,2,3,3,1,2,4,2,2,1]},{"mat":"M-1312","nom":"ROUX Émilie","eq":"Équipe B (après-midi)","niv":[1,2,1,1,2,3,0,1,3,0,0,0]},{"mat":"M-1355","nom":"FAYE Moussa","eq":"Équipe B (après-midi)","niv":[3,3,2,3,1,2,3,3,2,2,2,1]},{"mat":"M-1401","nom":"BERNARD Alice","eq":"Équipe C (nuit)","niv":[2,2,4,2,3,2,2,2,3,3,1,1]},{"mat":"M-1433","nom":"DIALLO Aminata","eq":"Équipe C (nuit)","niv":[1,1,3,1,2,3,1,2,2,1,0,0]}],"audit5s":[{"dom":"1S Débarrasser","crit":"Aucun objet, pièce ou en-cours inutile dans la zone","pond":2,"note":3,"n1":2},{"dom":"1S Débarrasser","crit":"Les en-cours ne dépassent pas la limite définie et affichée","pond":3,"note":2,"n1":2},{"dom":"1S Débarrasser","crit":"Aucun document obsolète affiché (version et date visibles)","pond":1,"note":3,"n1":3},{"dom":"1S Débarrasser","crit":"Les objets sans propriétaire sont identifiés et traités (zone rouge)","pond":1,"note":2,"n1":1},{"dom":"1S Débarrasser","crit":"Allées, accès machines et issues de secours totalement dégagés","pond":3,"note":3,"n1":3},{"dom":"2S Ranger","crit":"Chaque outil dispose d'un emplacement unique et identifié","pond":3,"note":2,"n1":2},{"dom":"2S Ranger","crit":"Marquage au sol présent, lisible et respecté","pond":2,"note":3,"n1":2},{"dom":"2S Ranger","crit":"EPI rangés, disponibles et à portée immédiate","pond":3,"note":4,"n1":3},{"dom":"2S Ranger","crit":"Stock au poste borné visuellement (mini / maxi)","pond":2,"note":2,"n1":1},{"dom":"2S Ranger","crit":"Un nouvel arrivant trouve un outil en moins de 30 secondes","pond":2,"note":2,"n1":2},{"dom":"3S Nettoyer","crit":"Sols, machines et postes propres en fin de poste","pond":2,"note":3,"n1":3},{"dom":"3S Nettoyer","crit":"Aucune fuite (huile, air, fluide) non traitée ou non signalée","pond":3,"note":3,"n1":2},{"dom":"3S Nettoyer","crit":"Matériel de nettoyage disponible, complet et en bon état","pond":1,"note":4,"n1":3},{"dom":"3S Nettoyer","crit":"Le nettoyage sert d'inspection : les anomalies sont remontées","pond":3,"note":2,"n1":1},{"dom":"3S Nettoyer","crit":"Les sources de salissure sont traitées à la source","pond":3,"note":1,"n1":1},{"dom":"4S Standardiser","crit":"Standard 5S écrit, illustré et affiché dans la zone","pond":2,"note":3,"n1":2},{"dom":"4S Standardiser","crit":"Responsabilités de nettoyage nommées et planifiées","pond":2,"note":2,"n1":2},{"dom":"4S Standardiser","crit":"Management visuel à jour (moins de 24 h)","pond":3,"note":2,"n1":1},{"dom":"4S Standardiser","crit":"Standards de travail accessibles et lisibles au poste","pond":3,"note":3,"n1":3},{"dom":"4S Standardiser","crit":"Les écarts au standard sont visibles de tous","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Audit réalisé au rythme prévu, sans exception","pond":2,"note":3,"n1":3},{"dom":"5S Progresser","crit":"Actions des audits précédents soldées dans les délais","pond":3,"note":2,"n1":1},{"dom":"5S Progresser","crit":"Les opérateurs proposent et mettent en œuvre des améliorations","pond":3,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le score progresse ou se maintient sur 3 audits","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le management reconnaît les progrès sur le terrain","pond":1,"note":3,"n1":3}]}</script>
+
+<script id="d" type="application/json">{"meta":{"site":"Site de démonstration","atelier":"UAP Assemblage-Usinage","periode":"Janvier 2026","genere":"2026-09-09"},"objectifs":[{"code":"TRS","lib":"Taux de rendement synthétique (TRS / OEE)","unite":"%","cible":0.75,"alerte":0.7,"sens":1},{"code":"DISPO","lib":"Taux de disponibilité","unite":"%","cible":0.9,"alerte":0.85,"sens":1},{"code":"PERF","lib":"Taux de performance (cadence)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"QUAL","lib":"Taux de qualité au premier passage (RFT)","unite":"%","cible":0.99,"alerte":0.98,"sens":1},{"code":"TRG","lib":"Taux de rendement global (TRG)","unite":"%","cible":0.6,"alerte":0.55,"sens":1},{"code":"SERVICE","lib":"Taux de service (quantité programmée)","unite":"%","cible":0.95,"alerte":0.9,"sens":1},{"code":"PPM","lib":"Non-conformités internes","unite":"ppm","cible":2000,"alerte":5000,"sens":-1},{"code":"PRESENCE","lib":"Taux de présence","unite":"%","cible":0.95,"alerte":0.92,"sens":1},{"code":"ACCIDENT","lib":"Accidents avec arrêt (cumul mois)","unite":"nb","cible":0,"alerte":0,"sens":-1},{"code":"RETARD","lib":"Actions correctives en retard","unite":"nb","cible":0,"alerte":2,"sens":-1},{"code":"MTTR","lib":"Temps moyen de réparation (MTTR)","unite":"min","cible":30,"alerte":45,"sens":-1},{"code":"MTBF","lib":"Temps moyen entre pannes (MTBF)","unite":"min","cible":240,"alerte":180,"sens":1},{"code":"AUDIT5S","lib":"Score d'audit 5S","unite":"%","cible":0.8,"alerte":0.7,"sens":1},{"code":"POLYV","lib":"Taux de polyvalence de l'équipe","unite":"%","cible":0.7,"alerte":0.6,"sens":1}],"lignes":["Ligne 1 - Assemblage","Ligne 2 - Usinage","Ligne 3 - Conditionnement"],"equipes":["Équipe A (matin)","Équipe B (après-midi)","Équipe C (nuit)"],"causes":{"PLA-01":{"lib":"Pause légale et relève de poste","fam":"Milieu","type":"Planifié","rub":"Arrêts planifiés"},"PLA-02":{"lib":"Maintenance préventive planifiée","fam":"Machine","type":"Planifié","rub":"Arrêts planifiés"},"PLA-03":{"lib":"Réunion, formation ou audit planifié","fam":"Main d'œuvre","type":"Planifié","rub":"Arrêts planifiés"},"PAN-01":{"lib":"Panne mécanique","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-02":{"lib":"Panne électrique ou capteur","fam":"Machine","type":"Subi","rub":"Pannes"},"PAN-03":{"lib":"Défaut automatisme / supervision","fam":"Machine","type":"Subi","rub":"Pannes"},"CDS-01":{"lib":"Changement de série (outillage)","fam":"Méthode","type":"Subi","rub":"Changement de série"},"CDS-02":{"lib":"Attente outillage ou moyen de contrôle","fam":"Méthode","type":"Subi","rub":"Changement de série"},"REG-01":{"lib":"Réglage qualité en cours de série","fam":"Méthode","type":"Subi","rub":"Réglages et micro-arrêts"},"REG-02":{"lib":"Micro-arrêts, bourrage, purge","fam":"Machine","type":"Subi","rub":"Réglages et micro-arrêts"},"MAT-01":{"lib":"Rupture d'approvisionnement matière","fam":"Matière","type":"Subi","rub":"Manque matière"},"MAT-02":{"lib":"Matière non conforme (rebut fournisseur)","fam":"Matière","type":"Subi","rub":"Manque matière"},"PER-01":{"lib":"Absence non remplacée","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"PER-02":{"lib":"Accompagnement / montée en compétence","fam":"Main d'œuvre","type":"Subi","rub":"Manque personnel"},"LOG-01":{"lib":"Attente cariste / évacuation en-cours","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"LOG-02":{"lib":"Saturation aval / stock plein","fam":"Milieu","type":"Subi","rub":"Autres arrêts subis"},"ESS-01":{"lib":"Essai, prototype, série pilote","fam":"Méthode","type":"Subi","rub":"Autres arrêts subis"}},"produits":{"REF-1001":{"des":"Carter aluminium A20","cad":15.0,"ppm":2000},"REF-1002":{"des":"Carter aluminium A30","cad":12.5,"ppm":2000},"REF-2001":{"des":"Support moteur S12","cad":9.0,"ppm":1500},"REF-2002":{"des":"Support moteur S18","cad":7.5,"ppm":1500},"REF-3001":{"des":"Kit conditionné K4","cad":22.0,"ppm":3000}},"jours":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":52,"cds":36,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4540,"conf":4458,"ret":36,"reb":46,"dem":4884,"effP":12,"effR":11,"acc":0,"presq":1,"top":"Panne mécanique — Assemblage","subi":88},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":5,"mat":12,"per":0,"aut":17,"npan":0,"prod":3398,"conf":3347,"ret":22,"reb":29,"dem":3622,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente cariste / évacuation en-cours — Usinage","subi":34},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":46,"cds":0,"reg":6,"mat":11,"per":18,"aut":10,"npan":1,"prod":3839,"conf":3789,"ret":22,"reb":28,"dem":3849,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":91},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":24,"cds":0,"reg":0,"mat":0,"per":0,"aut":15,"npan":1,"prod":2857,"conf":2828,"ret":13,"reb":16,"dem":2841,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":39},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":31,"cds":38,"reg":7,"mat":0,"per":11,"aut":0,"npan":1,"prod":3955,"conf":3923,"ret":14,"reb":18,"dem":4058,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Changement de série (outillage) — Assemblage","subi":87},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":22,"cds":19,"reg":6,"mat":12,"per":0,"aut":19,"npan":1,"prod":2337,"conf":2325,"ret":5,"reb":7,"dem":2377,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":78},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":10,"per":22,"aut":21,"npan":0,"prod":4450,"conf":4374,"ret":34,"reb":42,"dem":4640,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":53},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":52,"cds":16,"reg":0,"mat":26,"per":0,"aut":19,"npan":1,"prod":2158,"conf":2127,"ret":13,"reb":18,"dem":2229,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":113},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":33,"cds":17,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5499,"conf":5433,"ret":29,"reb":37,"dem":5873,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":50},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":14,"mat":14,"per":0,"aut":14,"npan":0,"prod":3223,"conf":3193,"ret":13,"reb":17,"dem":3410,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Réglage qualité en cours de série — Usinage","subi":42},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":21,"cds":0,"reg":13,"mat":21,"per":18,"aut":23,"npan":1,"prod":4128,"conf":4099,"ret":13,"reb":16,"dem":4112,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Essai, prototype, série pilote — Assemblage","subi":96},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":37,"cds":0,"reg":0,"mat":0,"per":0,"aut":17,"npan":1,"prod":2663,"conf":2615,"ret":21,"reb":27,"dem":2865,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":54},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":20,"cds":27,"reg":13,"mat":0,"per":24,"aut":0,"npan":1,"prod":4058,"conf":3993,"ret":29,"reb":36,"dem":4104,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Changement de série (outillage) — Assemblage","subi":84},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":23,"cds":18,"reg":13,"mat":15,"per":0,"aut":13,"npan":1,"prod":2647,"conf":2612,"ret":15,"reb":20,"dem":2653,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":82},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":0,"cds":0,"reg":0,"mat":14,"per":25,"aut":17,"npan":0,"prod":3604,"conf":3564,"ret":18,"reb":22,"dem":3731,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":56},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":91,"cds":18,"reg":0,"mat":21,"per":0,"aut":11,"npan":1,"prod":1720,"conf":1706,"ret":6,"reb":8,"dem":1764,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":141},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":39,"cds":13,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5296,"conf":5264,"ret":14,"reb":18,"dem":5614,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":52},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":8,"mat":20,"per":0,"aut":15,"npan":0,"prod":3108,"conf":3055,"ret":23,"reb":30,"dem":3240,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Matière non conforme (rebut fournisseur) — Usinage","subi":43},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":32,"cds":0,"reg":5,"mat":26,"per":32,"aut":17,"npan":1,"prod":3812,"conf":3754,"ret":26,"reb":32,"dem":4108,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Accompagnement / montée en compétence — Assemblage","subi":112},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":48,"cds":0,"reg":0,"mat":0,"per":0,"aut":18,"npan":1,"prod":2496,"conf":2466,"ret":13,"reb":17,"dem":2665,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":66},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":19,"cds":31,"reg":12,"mat":0,"per":19,"aut":0,"npan":1,"prod":5115,"conf":5063,"ret":23,"reb":29,"dem":5137,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Changement de série (outillage) — Assemblage","subi":81},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":29,"cds":25,"reg":10,"mat":23,"per":0,"aut":19,"npan":1,"prod":2735,"conf":2715,"ret":9,"reb":11,"dem":2724,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":106},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":19,"per":11,"aut":12,"npan":0,"prod":4278,"conf":4256,"ret":9,"reb":13,"dem":4396,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":42},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":30,"cds":32,"reg":0,"mat":10,"per":0,"aut":18,"npan":1,"prod":2441,"conf":2401,"ret":18,"reb":22,"dem":2468,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente outillage ou moyen de contrôle — Usinage","subi":90},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":100,"pannes":40,"cds":17,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4263,"conf":4203,"ret":27,"reb":33,"dem":4452,"effP":12,"effR":12,"acc":1,"presq":0,"top":"Panne mécanique — Assemblage","subi":57},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":100,"pannes":0,"cds":0,"reg":13,"mat":13,"per":0,"aut":8,"npan":0,"prod":2958,"conf":2925,"ret":14,"reb":19,"dem":3061,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Réglage qualité en cours de série — Usinage","subi":34},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":44,"cds":0,"reg":13,"mat":28,"per":28,"aut":9,"npan":1,"prod":3577,"conf":3544,"ret":14,"reb":19,"dem":3825,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":122},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":18,"cds":0,"reg":0,"mat":0,"per":0,"aut":10,"npan":1,"prod":2657,"conf":2641,"ret":7,"reb":9,"dem":2817,"effP":8,"effR":8,"acc":0,"presq":1,"top":"Panne électrique ou capteur — Usinage","subi":28},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":53,"cds":18,"reg":6,"mat":0,"per":23,"aut":0,"npan":1,"prod":4692,"conf":4607,"ret":38,"reb":47,"dem":4645,"effP":12,"effR":11,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":100},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":52,"cds":22,"reg":7,"mat":22,"per":0,"aut":15,"npan":1,"prod":2550,"conf":2511,"ret":17,"reb":22,"dem":2747,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":118},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":29,"per":26,"aut":19,"npan":0,"prod":4300,"conf":4244,"ret":25,"reb":31,"dem":4356,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Rupture d'approvisionnement matière — Assemblage","subi":74},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":96,"cds":26,"reg":0,"mat":24,"per":0,"aut":16,"npan":1,"prod":1876,"conf":1857,"ret":8,"reb":11,"dem":1883,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":162},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":85,"pannes":38,"cds":20,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":4852,"conf":4813,"ret":17,"reb":22,"dem":5031,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":58},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":85,"pannes":0,"cds":0,"reg":14,"mat":14,"per":0,"aut":17,"npan":0,"prod":2898,"conf":2883,"ret":6,"reb":9,"dem":2978,"effP":8,"effR":7,"acc":0,"presq":0,"top":"Attente cariste / évacuation en-cours — Usinage","subi":45},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":100,"pannes":44,"cds":0,"reg":5,"mat":29,"per":19,"aut":13,"npan":1,"prod":2936,"conf":2886,"ret":22,"reb":28,"dem":3093,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Défaut automatisme / supervision — Assemblage","subi":110},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":100,"pannes":47,"cds":0,"reg":0,"mat":0,"per":0,"aut":7,"npan":1,"prod":2298,"conf":2265,"ret":14,"reb":19,"dem":2398,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":54},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":20,"cds":15,"reg":6,"mat":0,"per":27,"aut":0,"npan":1,"prod":4966,"conf":4906,"ret":27,"reb":33,"dem":5361,"effP":12,"effR":12,"acc":0,"presq":1,"top":"Absence non remplacée — Assemblage","subi":68},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":40,"cds":16,"reg":9,"mat":16,"per":0,"aut":10,"npan":1,"prod":3015,"conf":2987,"ret":12,"reb":16,"dem":3224,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne mécanique — Usinage","subi":91},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","ref":"REF-1002","cad":12.5,"to":480,"plan":40,"pannes":0,"cds":0,"reg":0,"mat":15,"per":20,"aut":14,"npan":0,"prod":4447,"conf":4415,"ret":14,"reb":18,"dem":4473,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Accompagnement / montée en compétence — Assemblage","subi":49},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","ref":"REF-2002","cad":7.5,"to":480,"plan":40,"pannes":49,"cds":22,"reg":0,"mat":18,"per":0,"aut":10,"npan":1,"prod":2225,"conf":2184,"ret":18,"reb":23,"dem":2202,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Panne électrique ou capteur — Usinage","subi":99},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","ref":"REF-1001","cad":15.0,"to":480,"plan":40,"pannes":34,"cds":19,"reg":0,"mat":0,"per":0,"aut":0,"npan":1,"prod":5398,"conf":5311,"ret":39,"reb":48,"dem":5515,"effP":12,"effR":12,"acc":0,"presq":0,"top":"Panne mécanique — Assemblage","subi":53},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","ref":"REF-2001","cad":9.0,"to":480,"plan":40,"pannes":0,"cds":0,"reg":5,"mat":13,"per":0,"aut":16,"npan":0,"prod":3252,"conf":3209,"ret":19,"reb":24,"dem":3293,"effP":8,"effR":8,"acc":0,"presq":0,"top":"Attente cariste / évacuation en-cours — Usinage","subi":34}],"arrets":[{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":52},{"d":"2026-01-02","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":36},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":12},{"d":"2026-01-02","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":11},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":18},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":10},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":46},{"d":"2026-01-05","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":6},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":15},{"d":"2026-01-05","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":24},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":31},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":38},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":7},{"d":"2026-01-06","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":11},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":6},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":12},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":19},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":22},{"d":"2026-01-06","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":19},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":10},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":22},{"d":"2026-01-07","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":21},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":19},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":52},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":16},{"d":"2026-01-07","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":26},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":33},{"d":"2026-01-08","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":17},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":14},{"d":"2026-01-08","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":14},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":21},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":18},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":23},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":21},{"d":"2026-01-09","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":17},{"d":"2026-01-09","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":37},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":20},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":27},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":13},{"d":"2026-01-12","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":24},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":15},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":13},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":23},{"d":"2026-01-12","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":18},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":14},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":25},{"d":"2026-01-13","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":17},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":11},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":91},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":18},{"d":"2026-01-13","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":21},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":39},{"d":"2026-01-14","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":13},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":8},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":20},{"d":"2026-01-14","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":15},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":26},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":32},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":17},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":32},{"d":"2026-01-15","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":18},{"d":"2026-01-15","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":48},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":19},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":31},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":12},{"d":"2026-01-16","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":19},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":10},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":23},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":19},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":29},{"d":"2026-01-16","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":25},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":19},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":11},{"d":"2026-01-19","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":12},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":18},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":30},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":32},{"d":"2026-01-19","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":10},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":40},{"d":"2026-01-20","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":17},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":13},{"d":"2026-01-20","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":8},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":28},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":28},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":9},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":44},{"d":"2026-01-21","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":13},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":10},{"d":"2026-01-21","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":18},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":53},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":18},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":6},{"d":"2026-01-22","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":23},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":7},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":22},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":15},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":52},{"d":"2026-01-22","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":22},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":29},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":26},{"d":"2026-01-23","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":19},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":16},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":96},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":26},{"d":"2026-01-23","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":24},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":38},{"d":"2026-01-26","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":20},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-03","min":45},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":14},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":14},{"d":"2026-01-26","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":17},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":29},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":19},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":13},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PAN-03","min":44},{"d":"2026-01-27","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-02","min":60},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":7},{"d":"2026-01-27","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":47},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":20},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":15},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"REG-02","min":6},{"d":"2026-01-28","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PER-01","min":27},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":9},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":16},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":10},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PAN-01","min":40},{"d":"2026-01-28","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"CDS-01","min":16},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"MAT-01","min":15},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"PER-02","min":20},{"d":"2026-01-29","ligne":"Ligne 1 - Assemblage","equipe":"Équipe B (après-midi)","code":"ESS-01","min":14},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"LOG-02","min":10},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"PAN-02","min":49},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"CDS-02","min":22},{"d":"2026-01-29","ligne":"Ligne 2 - Usinage","equipe":"Équipe A (matin)","code":"MAT-01","min":18},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"PAN-01","min":34},{"d":"2026-01-30","ligne":"Ligne 1 - Assemblage","equipe":"Équipe A (matin)","code":"CDS-01","min":19},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"PLA-01","min":40},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"REG-01","min":5},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"MAT-02","min":13},{"d":"2026-01-30","ligne":"Ligne 2 - Usinage","equipe":"Équipe B (après-midi)","code":"LOG-01","min":16}],"ofs":[{"of":"OF-24101","ligne":"Ligne 2 - Usinage","ref":"REF-2002","des":"Support moteur S18","client":"NORDIC MACHINES","qte":2700,"fait":2697,"debP":"2025-12-16","finP":"2025-12-18","debR":"2025-12-16","finR":"2025-12-18","statut":"Soldé","prio":"Normale"},{"of":"OF-24102","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"GROUPE VALTEC","qte":3780,"fait":3774,"debP":"2025-12-17","finP":"2025-12-22","debR":"2025-12-17","finR":"2025-12-22","statut":"Soldé","prio":"Haute"},{"of":"OF-24103","ligne":"Ligne 3 - Conditionnement","ref":"REF-1002","des":"Carter aluminium A30","client":"SIDER INDUSTRIE","qte":6000,"fait":5991,"debP":"2025-12-19","finP":"2025-12-23","debR":"2025-12-19","finR":"2025-12-23","statut":"Soldé","prio":"Normale"},{"of":"OF-24104","ligne":"Ligne 2 - Usinage","ref":"REF-1001","des":"Carter aluminium A20","client":"MECAPLUS","qte":8100,"fait":8088,"debP":"2025-12-22","finP":"2025-12-23","debR":"2025-12-22","finR":"2025-12-23","statut":"Soldé","prio":"Urgente"},{"of":"OF-24105","ligne":"Ligne 1 - Assemblage","ref":"REF-3001","des":"Kit conditionné K4","client":"ATLANTIQUE EQUIP.","qte":13200,"fait":13185,"debP":"2025-12-22","finP":"2025-12-24","debR":"2025-12-22","finR":"2025-12-25","statut":"Soldé","prio":"Normale"},{"of":"OF-24106","ligne":"Ligne 3 - Conditionnement","ref":"REF-2002","des":"Support moteur S18","client":"AUTOMOTIVE SA","qte":4950,"fait":4932,"debP":"2025-12-24","finP":"2025-12-29","debR":"2025-12-24","finR":"2025-12-29","statut":"Soldé","prio":"Normale"},{"of":"OF-24107","ligne":"Ligne 2 - Usinage","ref":"REF-2001","des":"Support moteur S12","client":"NORDIC MACHINES","qte":6480,"fait":6480,"debP":"2025-12-25","finP":"2025-12-29","debR":"2025-12-25","finR":"2025-12-29","statut":"Soldé","prio":"Haute"},{"of":"OF-24108","ligne":"Ligne 1 - Assemblage","ref":"REF-1002","des":"Carter aluminium A30","client":"GROUPE VALTEC","qte":9750,"fait":9747,"debP":"2025-12-29","finP":"2025-12-30","debR":"2025-12-29","finR":"2025-12-30","statut":"Soldé","prio":"Normale"},{"of":"OF-24109","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"SIDER INDUSTRIE","qte":4500,"fait":4494,"debP":"2025-12-29","finP":"2025-12-31","debR":"2025-12-29","finR":"2025-12-31","statut":"Soldé","prio":"Urgente"},{"of":"OF-24110","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"MECAPLUS","qte":7920,"fait":7911,"debP":"2025-12-30","finP":"2026-01-02","debR":"2025-12-30","finR":"2026-01-05","statut":"Soldé","prio":"Normale"},{"of":"OF-24111","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"ATLANTIQUE EQUIP.","qte":3150,"fait":3138,"debP":"2026-01-01","finP":"2026-01-05","debR":"2026-01-01","finR":"2026-01-05","statut":"Soldé","prio":"Normale"},{"of":"OF-24112","ligne":"Ligne 3 - Conditionnement","ref":"REF-2001","des":"Support moteur S12","client":"AUTOMOTIVE SA","qte":4320,"fait":4305,"debP":"2026-01-02","finP":"2026-01-05","debR":"2026-01-02","finR":"2026-01-05","statut":"Soldé","prio":"Haute"},{"of":"OF-24113","ligne":"Ligne 2 - Usinage","ref":"REF-1002","des":"Carter aluminium A30","client":"NORDIC MACHINES","qte":6750,"fait":6732,"debP":"2026-01-05","finP":"2026-01-07","debR":"2026-01-05","finR":"2026-01-07","statut":"Soldé","prio":"Normale"},{"of":"OF-24114","ligne":"Ligne 1 - Assemblage","ref":"REF-1001","des":"Carter aluminium A20","client":"GROUPE VALTEC","qte":9000,"fait":9000,"debP":"2026-01-05","finP":"2026-01-08","debR":"2026-01-05","finR":"2026-01-08","statut":"Soldé","prio":"Urgente"},{"of":"OF-24115","ligne":"Ligne 3 - Conditionnement","ref":"REF-3001","des":"Kit conditionné K4","client":"SIDER INDUSTRIE","qte":14520,"fait":14517,"debP":"2026-01-07","finP":"2026-01-12","debR":"2026-01-07","finR":"2026-01-13","statut":"Soldé","prio":"Normale"},{"of":"OF-24116","ligne":"Ligne 2 - Usinage","ref":"REF-2002","des":"Support moteur S18","client":"MECAPLUS","qte":5400,"fait":5394,"debP":"2026-01-09","finP":"2026-01-12","debR":"2026-01-09","finR":"2026-01-12","statut":"Soldé","prio":"Normale"},{"of":"OF-24117","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"ATLANTIQUE EQUIP.","qte":7020,"fait":7011,"debP":"2026-01-12","finP":"2026-01-14","debR":"2026-01-12","finR":"2026-01-14","statut":"Soldé","prio":"Haute"},{"of":"OF-24118","ligne":"Ligne 3 - Conditionnement","ref":"REF-1002","des":"Carter aluminium A30","client":"AUTOMOTIVE SA","qte":3750,"fait":3738,"debP":"2026-01-12","finP":"2026-01-15","debR":"2026-01-12","finR":"2026-01-15","statut":"Soldé","prio":"Normale"},{"of":"OF-24119","ligne":"Ligne 2 - Usinage","ref":"REF-1001","des":"Carter aluminium A20","client":"NORDIC MACHINES","qte":5400,"fait":5385,"debP":"2026-01-13","finP":"2026-01-19","debR":"2026-01-13","finR":"2026-01-19","statut":"Soldé","prio":"Urgente"},{"of":"OF-24120","ligne":"Ligne 1 - Assemblage","ref":"REF-3001","des":"Kit conditionné K4","client":"GROUPE VALTEC","qte":9240,"fait":9222,"debP":"2026-01-15","finP":"2026-01-16","debR":"2026-01-15","finR":"2026-01-19","statut":"Soldé","prio":"Normale"},{"of":"OF-24121","ligne":"Ligne 3 - Conditionnement","ref":"REF-2002","des":"Support moteur S18","client":"SIDER INDUSTRIE","qte":3600,"fait":3600,"debP":"2026-01-19","finP":"2026-01-21","debR":"2026-01-19","finR":"2026-01-21","statut":"Soldé","prio":"Normale"},{"of":"OF-24122","ligne":"Ligne 2 - Usinage","ref":"REF-2001","des":"Support moteur S12","client":"MECAPLUS","qte":4860,"fait":4857,"debP":"2026-01-19","finP":"2026-01-22","debR":"2026-01-19","finR":"2026-01-22","statut":"Soldé","prio":"Haute"},{"of":"OF-24123","ligne":"Ligne 1 - Assemblage","ref":"REF-1002","des":"Carter aluminium A30","client":"ATLANTIQUE EQUIP.","qte":7500,"fait":7494,"debP":"2026-01-20","finP":"2026-01-26","debR":"2026-01-20","finR":"2026-01-26","statut":"Soldé","prio":"Normale"},{"of":"OF-24124","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"AUTOMOTIVE SA","qte":9900,"fait":9891,"debP":"2026-01-21","finP":"2026-01-22","debR":"2026-01-21","finR":"2026-01-22","statut":"Soldé","prio":"Urgente"},{"of":"OF-24125","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"NORDIC MACHINES","qte":15840,"fait":15828,"debP":"2026-01-23","finP":"2026-01-26","debR":"2026-01-23","finR":"2026-01-27","statut":"Soldé","prio":"Normale"},{"of":"OF-24126","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"GROUPE VALTEC","qte":5850,"fait":5835,"debP":"2026-01-26","finP":"2026-01-29","debR":"2026-01-26","finR":"2026-01-29","statut":"Soldé","prio":"Normale"},{"of":"OF-24127","ligne":"Ligne 1 - Assemblage","ref":"REF-1002","des":"Carter aluminium A30","client":"SIDER INDUSTRIE","qte":3750,"fait":2025,"debP":"2026-01-19","finP":"2026-01-23","debR":"2026-01-19","finR":"","statut":"En cours","prio":"Haute"},{"of":"OF-24128","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"MECAPLUS","qte":5400,"fait":3834,"debP":"2026-01-20","finP":"2026-01-21","debR":"2026-01-20","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24129","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"ATLANTIQUE EQUIP.","qte":9240,"fait":1663,"debP":"2026-01-22","finP":"2026-01-26","debR":"2026-01-22","finR":"","statut":"En cours","prio":"Urgente"},{"of":"OF-24130","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"AUTOMOTIVE SA","qte":3600,"fait":1260,"debP":"2026-01-23","finP":"2026-01-26","debR":"2026-01-23","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24131","ligne":"Ligne 3 - Conditionnement","ref":"REF-2001","des":"Support moteur S12","client":"NORDIC MACHINES","qte":4860,"fait":2527,"debP":"2026-01-26","finP":"2026-01-30","debR":"2026-01-26","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24132","ligne":"Ligne 2 - Usinage","ref":"REF-1002","des":"Carter aluminium A30","client":"GROUPE VALTEC","qte":7500,"fait":5175,"debP":"2026-01-27","finP":"2026-01-28","debR":"2026-01-27","finR":"","statut":"En cours","prio":"Haute"},{"of":"OF-24133","ligne":"Ligne 1 - Assemblage","ref":"REF-1001","des":"Carter aluminium A20","client":"SIDER INDUSTRIE","qte":9900,"fait":1584,"debP":"2026-01-28","finP":"2026-01-30","debR":"2026-01-28","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24134","ligne":"Ligne 3 - Conditionnement","ref":"REF-3001","des":"Kit conditionné K4","client":"MECAPLUS","qte":15840,"fait":5227,"debP":"2026-01-30","finP":"2026-02-02","debR":"2026-01-30","finR":"","statut":"En cours","prio":"Urgente"},{"of":"OF-24135","ligne":"Ligne 2 - Usinage","ref":"REF-2002","des":"Support moteur S18","client":"ATLANTIQUE EQUIP.","qte":5850,"fait":2925,"debP":"2026-02-02","finP":"2026-02-06","debR":"2026-01-31","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24136","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"AUTOMOTIVE SA","qte":2700,"fait":1809,"debP":"2026-02-02","finP":"2026-02-03","debR":"2026-01-31","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24137","ligne":"Ligne 3 - Conditionnement","ref":"REF-1002","des":"Carter aluminium A30","client":"NORDIC MACHINES","qte":4500,"fait":3780,"debP":"2026-02-04","finP":"2026-02-06","debR":"2026-01-31","finR":"","statut":"En cours","prio":"Haute"},{"of":"OF-24138","ligne":"Ligne 2 - Usinage","ref":"REF-1001","des":"Carter aluminium A20","client":"GROUPE VALTEC","qte":6300,"fait":1953,"debP":"2026-02-06","finP":"2026-02-09","debR":"2026-01-31","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24139","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"SIDER INDUSTRIE","qte":4320,"fait":0,"debP":"2026-02-02","finP":"2026-02-06","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24140","ligne":"Ligne 3 - Conditionnement","ref":"REF-1002","des":"Carter aluminium A30","client":"MECAPLUS","qte":6750,"fait":0,"debP":"2026-02-03","finP":"2026-02-04","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24141","ligne":"Ligne 2 - Usinage","ref":"REF-1001","des":"Carter aluminium A20","client":"ATLANTIQUE EQUIP.","qte":9000,"fait":0,"debP":"2026-02-05","finP":"2026-02-09","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24142","ligne":"Ligne 1 - Assemblage","ref":"REF-3001","des":"Kit conditionné K4","client":"AUTOMOTIVE SA","qte":14520,"fait":0,"debP":"2026-02-09","finP":"2026-02-12","debR":"","finR":"","statut":"Planifié","prio":"Haute"},{"of":"OF-24143","ligne":"Ligne 3 - Conditionnement","ref":"REF-2002","des":"Support moteur S18","client":"NORDIC MACHINES","qte":5400,"fait":0,"debP":"2026-02-09","finP":"2026-02-13","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24144","ligne":"Ligne 2 - Usinage","ref":"REF-2001","des":"Support moteur S12","client":"GROUPE VALTEC","qte":7020,"fait":0,"debP":"2026-02-10","finP":"2026-02-11","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24145","ligne":"Ligne 1 - Assemblage","ref":"REF-1002","des":"Carter aluminium A30","client":"SIDER INDUSTRIE","qte":3750,"fait":0,"debP":"2026-02-12","finP":"2026-02-16","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24146","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"MECAPLUS","qte":5400,"fait":0,"debP":"2026-02-16","finP":"2026-02-19","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24147","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"ATLANTIQUE EQUIP.","qte":9240,"fait":0,"debP":"2026-02-16","finP":"2026-02-20","debR":"","finR":"","statut":"Planifié","prio":"Haute"},{"of":"OF-24148","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"AUTOMOTIVE SA","qte":3600,"fait":0,"debP":"2026-02-17","finP":"2026-02-18","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24149","ligne":"Ligne 3 - Conditionnement","ref":"REF-2001","des":"Support moteur S12","client":"NORDIC MACHINES","qte":4860,"fait":0,"debP":"2026-02-19","finP":"2026-02-23","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24150","ligne":"Ligne 2 - Usinage","ref":"REF-1002","des":"Carter aluminium A30","client":"GROUPE VALTEC","qte":7500,"fait":0,"debP":"2026-02-23","finP":"2026-02-26","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24151","ligne":"Ligne 1 - Assemblage","ref":"REF-1001","des":"Carter aluminium A20","client":"SIDER INDUSTRIE","qte":9900,"fait":0,"debP":"2026-02-23","finP":"2026-02-27","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24152","ligne":"Ligne 3 - Conditionnement","ref":"REF-3001","des":"Kit conditionné K4","client":"MECAPLUS","qte":15840,"fait":0,"debP":"2026-02-24","finP":"2026-02-25","debR":"","finR":"","statut":"Planifié","prio":"Haute"},{"of":"OF-24153","ligne":"Ligne 2 - Usinage","ref":"REF-2002","des":"Support moteur S18","client":"ATLANTIQUE EQUIP.","qte":5850,"fait":0,"debP":"2026-02-26","finP":"2026-03-02","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24154","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"AUTOMOTIVE SA","qte":2700,"fait":0,"debP":"2026-03-02","finP":"2026-03-05","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24155","ligne":"Ligne 3 - Conditionnement","ref":"REF-1002","des":"Carter aluminium A30","client":"NORDIC MACHINES","qte":4500,"fait":0,"debP":"2026-03-02","finP":"2026-03-06","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24156","ligne":"Ligne 2 - Usinage","ref":"REF-1001","des":"Carter aluminium A20","client":"GROUPE VALTEC","qte":6300,"fait":0,"debP":"2026-03-03","finP":"2026-03-04","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24157","ligne":"Ligne 1 - Assemblage","ref":"REF-3001","des":"Kit conditionné K4","client":"SIDER INDUSTRIE","qte":10560,"fait":0,"debP":"2026-03-05","finP":"2026-03-09","debR":"","finR":"","statut":"Planifié","prio":"Haute"},{"of":"OF-24158","ligne":"Ligne 3 - Conditionnement","ref":"REF-2002","des":"Support moteur S18","client":"MECAPLUS","qte":4050,"fait":0,"debP":"2026-03-09","finP":"2026-03-12","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24159","ligne":"Ligne 2 - Usinage","ref":"REF-2001","des":"Support moteur S12","client":"ATLANTIQUE EQUIP.","qte":5400,"fait":0,"debP":"2026-03-09","finP":"2026-03-13","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24160","ligne":"Ligne 1 - Assemblage","ref":"REF-1002","des":"Carter aluminium A30","client":"AUTOMOTIVE SA","qte":8250,"fait":0,"debP":"2026-03-10","finP":"2026-03-11","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24161","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"NORDIC MACHINES","qte":10800,"fait":0,"debP":"2026-03-12","finP":"2026-03-16","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24162","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"GROUPE VALTEC","qte":17160,"fait":0,"debP":"2026-03-16","finP":"2026-03-19","debR":"","finR":"","statut":"Planifié","prio":"Haute"},{"of":"OF-24163","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"SIDER INDUSTRIE","qte":2250,"fait":0,"debP":"2026-03-16","finP":"2026-03-20","debR":"","finR":"","statut":"Planifié","prio":"Normale"},{"of":"OF-24164","ligne":"Ligne 3 - Conditionnement","ref":"REF-2001","des":"Support moteur S12","client":"MECAPLUS","qte":3240,"fait":0,"debP":"2026-03-18","finP":"2026-03-19","debR":"","finR":"","statut":"Planifié","prio":"Urgente"},{"of":"OF-24165","ligne":"Ligne 3 - Conditionnement","ref":"REF-1001","des":"Carter aluminium A20","client":"ATLANTIQUE EQUIP.","qte":6300,"fait":3150,"debP":"2026-01-12","finP":"2026-01-14","debR":"2026-01-12","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24166","ligne":"Ligne 2 - Usinage","ref":"REF-3001","des":"Kit conditionné K4","client":"AUTOMOTIVE SA","qte":10560,"fait":6652,"debP":"2026-01-13","finP":"2026-01-16","debR":"2026-01-13","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24167","ligne":"Ligne 1 - Assemblage","ref":"REF-2002","des":"Support moteur S18","client":"NORDIC MACHINES","qte":4050,"fait":3078,"debP":"2026-01-15","finP":"2026-01-19","debR":"2026-01-15","finR":"","statut":"En cours","prio":"Haute"},{"of":"OF-24168","ligne":"Ligne 3 - Conditionnement","ref":"REF-2001","des":"Support moteur S12","client":"GROUPE VALTEC","qte":5400,"fait":1835,"debP":"2026-01-19","finP":"2026-01-20","debR":"2026-01-19","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24169","ligne":"Ligne 2 - Usinage","ref":"REF-1002","des":"Carter aluminium A30","client":"SIDER INDUSTRIE","qte":8250,"fait":3877,"debP":"2026-01-20","finP":"2026-01-22","debR":"2026-01-20","finR":"","statut":"En cours","prio":"Urgente"},{"of":"OF-24170","ligne":"Ligne 1 - Assemblage","ref":"REF-1001","des":"Carter aluminium A20","client":"MECAPLUS","qte":10800,"fait":6480,"debP":"2026-01-22","finP":"2026-01-26","debR":"2026-01-22","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24171","ligne":"Ligne 3 - Conditionnement","ref":"REF-3001","des":"Kit conditionné K4","client":"ATLANTIQUE EQUIP.","qte":17160,"fait":12526,"debP":"2026-01-26","finP":"2026-01-30","debR":"2026-01-26","finR":"","statut":"En cours","prio":"Normale"},{"of":"OF-24172","ligne":"Ligne 2 - Usinage","ref":"REF-2002","des":"Support moteur S18","client":"AUTOMOTIVE SA","qte":2250,"fait":697,"debP":"2026-01-26","finP":"2026-01-27","debR":"2026-01-26","finR":"","statut":"En cours","prio":"Haute"},{"of":"OF-24173","ligne":"Ligne 1 - Assemblage","ref":"REF-2001","des":"Support moteur S12","client":"NORDIC MACHINES","qte":3240,"fait":1425,"debP":"2026-01-29","finP":"2026-02-02","debR":"2026-01-29","finR":"","statut":"En cours","prio":"Normale"}],"dateRef":"2026-01-31","actions":[{"date":"2026-01-08","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Arrêts répétés du convoyeur d'alimentation : 185 min perdues sur la semaine 2","ipr":36,"fam":"Machine","cause":"Capteur de position encrassé par les copeaux ; nettoyage absent du plan de maintenance préventive","act":"Ajouter le nettoyage hebdomadaire du capteur au plan préventif et former les deux équipes","nat":"Préventive (D7)","pil":"DURAND M.","cible":"2026-01-22","av":0.6,"st":"En cours","gain":14000},{"date":"2026-01-09","src":"Qualité client","zone":"Ligne 2 - Usinage","pb":"Réclamation client : cote de perçage hors tolérance sur le lot OF-01018 (12 pièces)","ipr":40,"fam":"Méthode","cause":"Absence de contrôle de la première pièce après changement d'outil coupant","act":"Rendre bloquante la validation première pièce après tout changement d'outil (autocontrôle + visa)","nat":"Corrective (D5)","pil":"LEROY S.","cible":"2026-01-16","av":1.0,"st":"Terminée","gain":22000},{"date":"2026-01-13","src":"Sécurité","zone":"Ligne 1 - Assemblage","pb":"Accident avec arrêt : coupure à la main lors de l'évacuation des chutes","ipr":15,"fam":"Milieu","cause":"Bac d'évacuation des chutes sans protection, gants inadaptés au risque de coupure","act":"Installer un bac fermé et déployer des gants anti-coupure niveau C sur les deux lignes","nat":"Corrective (D5)","pil":"BAKARI F.","cible":"2026-01-20","av":1.0,"st":"Terminée","gain":0},{"date":"2026-01-14","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Temps de changement de série moyen de 38 min contre 25 min au standard","ipr":30,"fam":"Méthode","cause":"Outillage et moyens de contrôle non préparés avant l'arrêt machine (pas de séparation interne/externe)","act":"Déployer un chantier SMED : préparation externe systématique et chariot de changement dédié","nat":"Amélioration","pil":"MARCHAND J.","cible":"2026-02-13","av":0.35,"st":"En cours","gain":31000},{"date":"2026-01-16","src":"Audit 5S","zone":"Ligne 3 - Conditionnement","pb":"Zone de conditionnement notée 2,1/4 : allées encombrées par les en-cours","ipr":8,"fam":"Milieu","cause":"Limite d'en-cours non définie et non matérialisée au sol","act":"Définir un plafond d'en-cours, marquer les emplacements au sol et afficher la règle","nat":"Corrective (D5)","pil":"SOW I.","cible":"2026-01-30","av":0.5,"st":"En cours","gain":0},{"date":"2026-01-19","src":"Idée opérateur","zone":"Ligne 1 - Assemblage","pb":"Recherche d'outillage au poste d'assemblage : 5 à 8 min perdues par poste","ipr":10,"fam":"Milieu","cause":"Aucun emplacement dédié aux outils de réglage","act":"Réaliser un panneau d'ombres (shadow board) au poste d'assemblage","nat":"Amélioration","pil":"PETIT C.","cible":"2026-02-06","av":0.2,"st":"En cours","gain":6000},{"date":"2026-01-20","src":"Écart quotidien","zone":"Ligne 2 - Usinage","pb":"Rupture matière sur REF-2002 : 55 min d'arrêt le 20/01","ipr":27,"fam":"Matière","cause":"Seuil de réapprovisionnement calculé sans tenir compte du délai fournisseur réel (8 j au lieu de 5 j)","act":"Recalculer les points de commande sur la base des délais réels et alerter à J-3","nat":"Préventive (D7)","pil":"NGOM A.","cible":"2026-02-03","av":0.0,"st":"À lancer","gain":9000},{"date":"2026-01-22","src":"Analyse Pareto TRS","zone":"Ligne 1 - Assemblage","pb":"Micro-arrêts récurrents en fin de poste (bourrage évacuation)","ipr":32,"fam":"Machine","cause":"Guide d'évacuation déréglé, aucun standard de contrôle en fin de poste","act":"Régler le guide et ajouter le point au standard de fin de poste","nat":"Corrective (D5)","pil":"GARNIER L.","cible":"2026-01-28","av":0.8,"st":"En cours","gain":7500}],"postes":[{"nom":"Conduite ligne 1","crit":3,"cible":3},{"nom":"Conduite ligne 2","crit":3,"cible":3},{"nom":"Conduite ligne 3","crit":2,"cible":2},{"nom":"Changement de série","crit":3,"cible":3},{"nom":"Contrôle qualité","crit":3,"cible":3},{"nom":"Retouche","crit":2,"cible":2},{"nom":"Maintenance 1er niveau","crit":3,"cible":2},{"nom":"Cariste / appro","crit":2,"cible":2},{"nom":"Emballage","crit":1,"cible":2},{"nom":"Saisie et reporting","crit":2,"cible":2},{"nom":"Animation 5 min","crit":2,"cible":2},{"nom":"Formation nouveaux","crit":1,"cible":2}],"equipe":[{"mat":"M-1042","nom":"DUPONT Marie","eq":"Équipe A (matin)","niv":[4,3,2,4,3,2,3,1,3,3,4,3]},{"mat":"M-1078","nom":"NGOM Abdoulaye","eq":"Équipe A (matin)","niv":[3,4,2,3,2,1,4,2,2,1,2,1]},{"mat":"M-1103","nom":"LEROY Sophie","eq":"Équipe A (matin)","niv":[2,3,3,2,4,3,1,1,3,4,3,2]},{"mat":"M-1156","nom":"BAKARI Fatou","eq":"Équipe A (matin)","niv":[3,2,1,3,3,4,2,3,2,1,1,0]},{"mat":"M-1201","nom":"PETIT Camille","eq":"Équipe A (matin)","niv":[1,1,2,0,2,2,0,3,3,0,0,0]},{"mat":"M-1233","nom":"MARCHAND Julien","eq":"Équipe B (après-midi)","niv":[4,3,3,4,2,2,3,2,3,3,3,2]},{"mat":"M-1245","nom":"SOW Ibrahima","eq":"Équipe B (après-midi)","niv":[2,4,2,3,3,1,2,4,2,1,1,1]},{"mat":"M-1290","nom":"GARNIER Louis","eq":"Équipe B (après-midi)","niv":[3,2,3,2,3,3,1,2,4,2,2,1]},{"mat":"M-1312","nom":"ROUX Émilie","eq":"Équipe B (après-midi)","niv":[1,2,1,1,2,3,0,1,3,0,0,0]},{"mat":"M-1355","nom":"FAYE Moussa","eq":"Équipe B (après-midi)","niv":[3,3,2,3,1,2,3,3,2,2,2,1]},{"mat":"M-1401","nom":"BERNARD Alice","eq":"Équipe C (nuit)","niv":[2,2,4,2,3,2,2,2,3,3,1,1]},{"mat":"M-1433","nom":"DIALLO Aminata","eq":"Équipe C (nuit)","niv":[1,1,3,1,2,3,1,2,2,1,0,0]}],"audit5s":[{"dom":"1S Débarrasser","crit":"Aucun objet, pièce ou en-cours inutile dans la zone","pond":2,"note":3,"n1":2},{"dom":"1S Débarrasser","crit":"Les en-cours ne dépassent pas la limite définie et affichée","pond":3,"note":2,"n1":2},{"dom":"1S Débarrasser","crit":"Aucun document obsolète affiché (version et date visibles)","pond":1,"note":3,"n1":3},{"dom":"1S Débarrasser","crit":"Les objets sans propriétaire sont identifiés et traités (zone rouge)","pond":1,"note":2,"n1":1},{"dom":"1S Débarrasser","crit":"Allées, accès machines et issues de secours totalement dégagés","pond":3,"note":3,"n1":3},{"dom":"2S Ranger","crit":"Chaque outil dispose d'un emplacement unique et identifié","pond":3,"note":2,"n1":2},{"dom":"2S Ranger","crit":"Marquage au sol présent, lisible et respecté","pond":2,"note":3,"n1":2},{"dom":"2S Ranger","crit":"EPI rangés, disponibles et à portée immédiate","pond":3,"note":4,"n1":3},{"dom":"2S Ranger","crit":"Stock au poste borné visuellement (mini / maxi)","pond":2,"note":2,"n1":1},{"dom":"2S Ranger","crit":"Un nouvel arrivant trouve un outil en moins de 30 secondes","pond":2,"note":2,"n1":2},{"dom":"3S Nettoyer","crit":"Sols, machines et postes propres en fin de poste","pond":2,"note":3,"n1":3},{"dom":"3S Nettoyer","crit":"Aucune fuite (huile, air, fluide) non traitée ou non signalée","pond":3,"note":3,"n1":2},{"dom":"3S Nettoyer","crit":"Matériel de nettoyage disponible, complet et en bon état","pond":1,"note":4,"n1":3},{"dom":"3S Nettoyer","crit":"Le nettoyage sert d'inspection : les anomalies sont remontées","pond":3,"note":2,"n1":1},{"dom":"3S Nettoyer","crit":"Les sources de salissure sont traitées à la source","pond":3,"note":1,"n1":1},{"dom":"4S Standardiser","crit":"Standard 5S écrit, illustré et affiché dans la zone","pond":2,"note":3,"n1":2},{"dom":"4S Standardiser","crit":"Responsabilités de nettoyage nommées et planifiées","pond":2,"note":2,"n1":2},{"dom":"4S Standardiser","crit":"Management visuel à jour (moins de 24 h)","pond":3,"note":2,"n1":1},{"dom":"4S Standardiser","crit":"Standards de travail accessibles et lisibles au poste","pond":3,"note":3,"n1":3},{"dom":"4S Standardiser","crit":"Les écarts au standard sont visibles de tous","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Audit réalisé au rythme prévu, sans exception","pond":2,"note":3,"n1":3},{"dom":"5S Progresser","crit":"Actions des audits précédents soldées dans les délais","pond":3,"note":2,"n1":1},{"dom":"5S Progresser","crit":"Les opérateurs proposent et mettent en œuvre des améliorations","pond":3,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le score progresse ou se maintient sur 3 audits","pond":2,"note":2,"n1":2},{"dom":"5S Progresser","crit":"Le management reconnaît les progrès sur le terrain","pond":1,"note":3,"n1":3}]}</script>
 <script>window.__DATA__=JSON.parse(document.getElementById("d").textContent);</script>
+<script>window.__DATA__=JSON.parse(document.getElementById("d").textContent);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-const D = window.__DATA__;
-const OBJ = {}; D.objectifs.forEach(o => OBJ[o.code] = o);
+const DEMO = window.__DATA__;
+let D = DEMO, SOURCE = "demo";
+const OBJ = {}; DEMO.objectifs.forEach(o => OBJ[o.code] = o);
 const $ = s => document.querySelector(s);
 const el = (t, c, x) => { const n = document.createElement(t); if (c) n.className = c;
   if (x != null) n.textContent = x; return n; };
@@ -329,15 +480,25 @@ const retards = () => D.actions.filter(a =>
   a.st !== "Terminée" && a.st !== "Abandonnée" && new Date(a.cible) < new Date()).length;
 
 /* ------------------------------------------------ état */
-const jours = D.jours.map(r => ({ ...r, dt: new Date(r.d + "T00:00:00") }));
-const dmin = new Date(Math.min(...jours.map(r => +r.dt)));
-const AN = dmin.getFullYear(), MO = dmin.getMonth();
-const NBJ = new Date(AN, MO + 1, 0).getDate();
-const OFF = (new Date(AN, MO, 1).getDay() + 6) % 7;   /* 0 = lundi */
+let jours = [], AN = 2026, MO = 0, NBJ = 31, OFF = 0, SEM = [1];
 const semaine = d => Math.ceil((d + OFF) / 7);
-const SEM = [...new Set(Array.from({ length: NBJ }, (_, i) => semaine(i + 1)))].sort((a, b) => a - b);
+const S = { ligne: "Toutes", equipe: "Toutes", indic: "TRS", per: "0", jour: null,
+            ref: new Date() };
 
-const S = { ligne: "Toutes", equipe: "Toutes", indic: "TRS", per: "0", jour: null };
+function rebuildData() {
+  jours = (D.jours || []).map(r => ({ ...r, dt: new Date(r.d + "T00:00:00") }));
+  if (jours.length) {
+    const dmin = new Date(Math.min(...jours.map(r => +r.dt)));
+    AN = dmin.getFullYear(); MO = dmin.getMonth();
+  } else { const n = new Date(); AN = n.getFullYear(); MO = n.getMonth(); }
+  NBJ = new Date(AN, MO + 1, 0).getDate();
+  OFF = (new Date(AN, MO, 1).getDay() + 6) % 7;
+  SEM = [...new Set(Array.from({ length: NBJ }, (_, i) => semaine(i + 1)))].sort((a, b) => a - b);
+  S.ref = D.dateRef ? new Date(D.dateRef + "T00:00:00") : new Date();
+  if (!D.lignes.includes(S.ligne)) S.ligne = "Toutes";
+  if (!D.equipes.includes(S.equipe)) S.equipe = "Toutes";
+  S.jour = null; S.per = "0";
+}
 const dansPer = d => S.per === "0" || semaine(d.getDate()) === +S.per;
 const filtre = () => jours.filter(r =>
   (S.ligne === "Toutes" || r.ligne === S.ligne) &&
@@ -798,6 +959,654 @@ function renderTables() {
     });
 }
 
+
+/* ================================================================
+   IMPORT DES EXTRACTIONS ERP
+   ================================================================ */
+const SCHEMAS = {
+  prod: { lib: "Production journalière", key: "jours", ch: [
+    ["d", "Date", 1, "date", ["date", "jour", "journee", "date de production"]],
+    ["ligne", "Ligne / ressource", 1, "txt", ["ligne", "ressource", "machine", "atelier", "equipement", "centre de charge"]],
+    ["equipe", "Équipe / poste", 0, "txt", ["equipe", "poste", "shift", "vacation"]],
+    ["ref", "Référence produit", 0, "txt", ["reference", "ref", "article", "code article", "reference produit"]],
+    ["to", "Temps d'ouverture (min)", 1, "num", ["temps d ouverture", "temps ouverture", "ouverture", "temps total", "to"]],
+    ["plan", "Arrêts planifiés (min)", 0, "num", ["arrets planifies", "arret planifie", "planifie", "pause"]],
+    ["pannes", "Pannes (min)", 0, "num", ["panne", "pannes", "arret machine", "breakdown"]],
+    ["cds", "Changement de série (min)", 0, "num", ["changement de serie", "changement", "setup", "chgt serie"]],
+    ["reg", "Réglages, micro-arrêts (min)", 0, "num", ["reglages", "reglage", "micro arrets", "micro arret"]],
+    ["mat", "Manque matière (min)", 0, "num", ["manque matiere", "matiere", "rupture matiere"]],
+    ["per", "Manque personnel (min)", 0, "num", ["manque personnel", "personnel", "absence"]],
+    ["aut", "Autres arrêts subis (min)", 0, "num", ["autres arrets", "autres", "divers"]],
+    ["npan", "Nombre de pannes", 0, "num", ["nombre de pannes", "nb pannes", "occurrences pannes"]],
+    ["cad", "Cadence (pièces/min)", 0, "num", ["cadence", "cadence nominale", "vitesse", "debit"]],
+    ["prod", "Quantité produite", 1, "num", ["quantite produite", "qte produite", "production", "qte lancee"]],
+    ["conf", "Quantité conforme", 1, "num", ["quantite conforme", "qte conforme", "conforme", "bon"]],
+    ["ret", "Quantité retouchée", 0, "num", ["quantite retouchee", "retouche", "rework"]],
+    ["reb", "Quantité rebutée", 0, "num", ["quantite rebutee", "rebut", "scrap", "dechet"]],
+    ["dem", "Quantité demandée", 0, "num", ["quantite demandee", "qte demandee", "besoin", "programme"]],
+    ["effP", "Effectif prévu", 0, "num", ["effectif prevu", "effectif theorique"]],
+    ["effR", "Effectif présent", 0, "num", ["effectif present", "effectif reel", "presents"]],
+    ["acc", "Accidents avec arrêt", 0, "num", ["accidents", "accident"]],
+    ["presq", "Presqu'accidents", 0, "num", ["presqu accidents", "presque accident", "situation dangereuse"]],
+  ]},
+  arrets: { lib: "Journal des arrêts", key: "arrets", ch: [
+    ["d", "Date", 1, "date", ["date", "jour", "date arret"]],
+    ["ligne", "Ligne / ressource", 1, "txt", ["ligne", "ressource", "machine", "equipement"]],
+    ["equipe", "Équipe / poste", 0, "txt", ["equipe", "poste", "shift"]],
+    ["code", "Code cause", 1, "txt", ["code cause", "code", "cause", "motif", "code arret", "code motif"]],
+    ["min", "Durée (minutes)", 1, "num", ["duree", "duree min", "minutes", "temps arret", "duree arret"]],
+  ]},
+  ofs: { lib: "Ordres de fabrication", key: "ofs", ch: [
+    ["of", "N° d'ordre de fabrication", 1, "txt", ["of", "numero of", "n of", "ordre", "ordre de fabrication", "numero ordre", "work order"]],
+    ["ligne", "Ligne / ressource", 1, "txt", ["ligne", "ressource", "machine", "centre de charge", "atelier"]],
+    ["ref", "Référence produit", 0, "txt", ["reference", "ref", "article", "code article"]],
+    ["des", "Désignation", 0, "txt", ["designation", "libelle", "description"]],
+    ["client", "Client", 0, "txt", ["client", "donneur d ordre", "compte"]],
+    ["qte", "Quantité à produire", 1, "num", ["quantite a produire", "quantite", "qte", "qte lancee", "quantite lancee", "qte prevue"]],
+    ["fait", "Quantité produite", 0, "num", ["quantite produite", "qte produite", "qte realisee", "realise", "quantite realisee"]],
+    ["debP", "Début prévu", 1, "date", ["debut prevu", "date debut prevue", "date de debut", "debut planifie", "date lancement prevue"]],
+    ["finP", "Fin prévue", 1, "date", ["fin prevue", "date fin prevue", "date de fin", "echeance", "date besoin", "date livraison"]],
+    ["debR", "Début réel", 0, "date", ["debut reel", "date debut reelle", "lancement reel"]],
+    ["finR", "Fin réelle", 0, "date", ["fin reelle", "date fin reelle", "date cloture", "solde le"]],
+    ["statut", "Statut", 0, "txt", ["statut", "etat", "status"]],
+    ["prio", "Priorité", 0, "txt", ["priorite", "urgence"]],
+  ]},
+};
+
+const norm = s => String(s == null ? "" : s).toLowerCase()
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  .replace(/[^a-z0-9]+/g, " ").trim();
+
+function score(col, alias) {
+  const c = norm(col), a = norm(alias);
+  if (!c || !a) return 0;
+  if (c === a) return 100 + a.length;
+  if (c.includes(a)) return 50 + a.length;
+  if (a.includes(c)) return 30 + c.length;
+  return 0;
+}
+function autoMap(schema, cols) {
+  const paires = [];
+  schema.ch.forEach(f => cols.forEach((c, ci) => {
+    const s = Math.max(...f[4].map(a => score(c, a)), score(c, f[1]));
+    if (s > 0) paires.push({ f: f[0], ci, s });
+  }));
+  paires.sort((a, b) => b.s - a.s);
+  const map = {}, prisCol = new Set();
+  paires.forEach(p => {
+    if (map[p.f] != null || prisCol.has(p.ci)) return;
+    map[p.f] = p.ci; prisCol.add(p.ci);
+  });
+  return map;
+}
+function detectSchema(cols) {
+  let best = null, bs = -1;
+  for (const k in SCHEMAS) {
+    const m = autoMap(SCHEMAS[k], cols);
+    const req = SCHEMAS[k].ch.filter(f => f[2]);
+    const ok = req.filter(f => m[f[0]] != null).length;
+    const s = ok / req.length + Object.keys(m).length / 100;
+    if (s > bs) { bs = s; best = k; }
+  }
+  return best;
+}
+
+/* ---- lecture de valeurs ---- */
+function toNum(v) {
+  if (v == null || v === "") return null;
+  if (typeof v === "number") return isFinite(v) ? v : null;
+  let s = String(v).replace(/[\s  ]/g, "").replace(/[^\d.,\-+]/g, "");
+  if (!s || s === "-" || s === "+") return null;
+  const lc = s.lastIndexOf(","), lp = s.lastIndexOf(".");
+  if (lc > -1 && lp > -1) s = lc > lp ? s.replace(/\./g, "").replace(",", ".") : s.replace(/,/g, "");
+  else if (lc > -1) s = s.replace(/\./g, "").replace(",", ".");
+  const n = parseFloat(s);
+  return isFinite(n) ? n : null;
+}
+function toDate(v) {
+  if (v == null || v === "") return null;
+  if (v instanceof Date) return isNaN(v) ? null : v;
+  if (typeof v === "number") {           /* série Excel */
+    if (v < 1 || v > 80000) return null;
+    return new Date(Math.round((v - 25569) * 86400000));
+  }
+  const s = String(v).trim();
+  let m = s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+  if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+  m = s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/);
+  if (m) { let y = +m[3]; if (y < 100) y += y < 70 ? 2000 : 1900;
+    return new Date(y, +m[2] - 1, +m[1]); }
+  const d = new Date(s);
+  return isNaN(d) ? null : d;
+}
+const iso = d => d ? d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") +
+  "-" + String(d.getDate()).padStart(2, "0") : "";
+
+/* ---- découpage du texte ---- */
+function splitRows(txt) {
+  const lignes = txt.replace(/\r\n?/g, "\n").split("\n").filter(l => l.trim() !== "");
+  if (!lignes.length) return [];
+  const cand = [["\t", 0], [";", 0], [",", 0], ["|", 0]];
+  cand.forEach(c => { c[1] = (lignes[0].match(new RegExp("\\" + c[0], "g")) || []).length; });
+  cand.sort((a, b) => b[1] - a[1]);
+  const sep = cand[0][1] > 0 ? cand[0][0] : "\t";
+  return lignes.map(l => {
+    const out = []; let cur = "", q = false;
+    for (let i = 0; i < l.length; i++) {
+      const c = l[i];
+      if (c === '"') { if (q && l[i + 1] === '"') { cur += '"'; i++; } else q = !q; }
+      else if (c === sep && !q) { out.push(cur); cur = ""; }
+      else cur += c;
+    }
+    out.push(cur);
+    return out.map(x => x.trim());
+  });
+}
+
+/* ---- état de l'import ---- */
+const IMP = { lots: [], idx: 0 };
+
+function ouvrirMapping(lots) {
+  IMP.lots = lots.filter(l => l.rows.length > 1); IMP.idx = 0;
+  if (!IMP.lots.length) { impMsg("err", "Aucune ligne exploitable n'a été trouvée. Vérifiez que la première ligne contient bien les en-têtes de colonnes."); return; }
+  $("#impStep1").classList.add("hidden");
+  $("#impStep2").classList.remove("hidden");
+  dessinerOnglets(); dessinerMapping();
+}
+function dessinerOnglets() {
+  const t = $("#impTabs"); t.innerHTML = "";
+  IMP.lots.forEach((l, i) => {
+    const b = el("button", "tab" + (i === IMP.idx ? " on" : ""),
+      l.nom + " · " + SCHEMAS[l.schema].lib);
+    b.type = "button";
+    b.onclick = () => { IMP.idx = i; dessinerOnglets(); dessinerMapping(); };
+    t.appendChild(b);
+  });
+}
+function dessinerMapping() {
+  const lot = IMP.lots[IMP.idx];
+  const sc = SCHEMAS[lot.schema];
+  $("#mapTitle").textContent = lot.nom;
+  $("#mapNote").textContent = (lot.rows.length - 1) + " lignes · " + lot.cols.length + " colonnes";
+  const box = $("#mapCols"); box.innerHTML = "";
+  const gauche = el("div"), droite = el("div");
+  const typeSel = el("div", "maprow");
+  const lbl = el("div", "fname"); lbl.appendChild(el("b", null, "Jeu de données"));
+  typeSel.appendChild(lbl);
+  const ts = el("select");
+  Object.keys(SCHEMAS).forEach(k => {
+    const o = el("option", null, SCHEMAS[k].lib); o.value = k;
+    if (k === lot.schema) o.selected = true; ts.appendChild(o);
+  });
+  ts.onchange = e => { lot.schema = e.target.value;
+    lot.map = autoMap(SCHEMAS[lot.schema], lot.cols); dessinerOnglets(); dessinerMapping(); };
+  typeSel.appendChild(ts);
+  gauche.appendChild(typeSel);
+
+  sc.ch.forEach((f, i) => {
+    const r = el("div", "maprow");
+    const n = el("div", "fname");
+    n.appendChild(document.createTextNode(f[1]));
+    if (f[2]) { const rq = el("span", "req", "•"); n.appendChild(rq); }
+    const prev = el("div", "fprev");
+    r.appendChild(n);
+    const s = el("select");
+    const vide = el("option", null, "— non utilisé —"); vide.value = ""; s.appendChild(vide);
+    lot.cols.forEach((c, ci) => {
+      const o = el("option", null, c || "colonne " + (ci + 1)); o.value = String(ci);
+      if (lot.map[f[0]] === ci) o.selected = true; s.appendChild(o);
+    });
+    const maj = () => {
+      const v = s.value === "" ? null : +s.value;
+      lot.map[f[0]] = v;
+      s.className = v == null ? (f[2] ? "miss" : "") : "ok";
+      const ex = v == null ? "" : (lot.rows.slice(1, 4).map(rr => rr[v]).filter(x => x !== "" && x != null)[0] || "");
+      prev.textContent = ex ? "ex. " + ex : "";
+    };
+    s.onchange = maj; maj();
+    r.appendChild(s);
+    (i % 2 ? droite : gauche).appendChild(r);
+    r.appendChild(prev);
+    r.style.gridTemplateColumns = "1fr 1fr";
+    prev.style.gridColumn = "1 / -1";
+  });
+  box.appendChild(gauche); box.appendChild(droite);
+}
+function impMsg(kind, txt) {
+  const m = $("#impMsg"); m.innerHTML = "";
+  if (txt) m.appendChild(el("div", "msg " + kind, txt));
+}
+
+function appliquerMapping() {
+  const sortie = {};
+  let total = 0, rejets = 0;
+  for (const lot of IMP.lots) {
+    const sc = SCHEMAS[lot.schema];
+    const manque = sc.ch.filter(f => f[2] && lot.map[f[0]] == null);
+    if (manque.length) {
+      IMP.idx = IMP.lots.indexOf(lot); dessinerOnglets(); dessinerMapping();
+      impMsg("err", "« " + lot.nom + " » : champ obligatoire non associé — " +
+        manque.map(f => f[1]).join(", ") + ".");
+      $("#impStep2").scrollIntoView({ behavior: "smooth", block: "start" });
+      return null;
+    }
+    const out = [];
+    lot.rows.slice(1).forEach(r => {
+      const o = {};
+      let ok = true;
+      sc.ch.forEach(f => {
+        const ci = lot.map[f[0]];
+        if (ci == null) { o[f[0]] = f[3] === "num" ? 0 : ""; return; }
+        const v = r[ci];
+        if (f[3] === "num") o[f[0]] = toNum(v) ?? 0;
+        else if (f[3] === "date") { const d = toDate(v); o[f[0]] = iso(d); if (f[2] && !d) ok = false; }
+        else o[f[0]] = v == null ? "" : String(v).trim();
+        if (f[2] && f[3] === "txt" && !o[f[0]]) ok = false;
+      });
+      if (ok) out.push(o); else rejets++;
+    });
+    sortie[sc.key] = (sortie[sc.key] || []).concat(out);
+    total += out.length;
+  }
+  return { sortie, total, rejets };
+}
+
+/* ---- construction du jeu de données ---- */
+function normaliserProd(rows) {
+  const cadRef = {};
+  Object.entries(DEMO.produits || {}).forEach(([k, v]) => cadRef[k] = v.cad);
+  return rows.map(r => {
+    const subi = r.pannes + r.cds + r.reg + r.mat + r.per + r.aut;
+    let cad = r.cad || cadRef[r.ref] || 0;
+    if (!cad) { const tf = r.to - r.plan - subi; cad = tf > 0 && r.prod ? r.prod / tf : 1; }
+    return { ...r, cad, subi, top: "" };
+  });
+}
+function construire(sortie) {
+  const d = JSON.parse(JSON.stringify(DEMO));
+  d.meta = { ...DEMO.meta, site: "Vos données", atelier: "Import ERP",
+             genere: iso(new Date()) };
+  if (sortie.jours) {
+    d.jours = normaliserProd(sortie.jours);
+    d.lignes = [...new Set(d.jours.map(r => r.ligne))].sort();
+    d.equipes = [...new Set(d.jours.map(r => r.equipe).filter(Boolean))].sort();
+  }
+  if (sortie.arrets) {
+    d.arrets = sortie.arrets.map(a => ({ ...a, min: a.min || 0 }));
+    const cs = { ...DEMO.causes };
+    [...new Set(d.arrets.map(a => a.code))].forEach(c => {
+      if (!cs[c]) cs[c] = { lib: c, fam: "Non classé", type: "Subi", rub: "Autres arrêts subis" };
+    });
+    d.causes = cs;
+  }
+  if (sortie.ofs) {
+    d.ofs = sortie.ofs;
+    if (!sortie.jours) d.lignes = [...new Set([...d.lignes, ...d.ofs.map(o => o.ligne)])].sort();
+  }
+  const toutes = [];
+  (d.jours || []).forEach(r => toutes.push(r.d));
+  (d.ofs || []).forEach(o => { if (o.finR) toutes.push(o.finR); if (o.debR) toutes.push(o.debR); });
+  d.dateRef = toutes.length ? toutes.sort().slice(-1)[0] : iso(new Date());
+  const dts = (d.jours || []).map(r => r.d).sort();
+  if (dts.length) {
+    const dd = new Date(dts[dts.length - 1] + "T00:00:00");
+    d.meta.periode = MOIS[dd.getMonth()] + " " + dd.getFullYear();
+  }
+  return d;
+}
+const MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet",
+              "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+
+/* ---- persistance locale ---- */
+const CLE = "cockpit.erp.v1";
+function sauver(d) {
+  try { localStorage.setItem(CLE, JSON.stringify(d)); return true; }
+  catch (e) { return false; }
+}
+function charger() {
+  try { const s = localStorage.getItem(CLE); return s ? JSON.parse(s) : null; }
+  catch (e) { return null; }
+}
+
+
+/* ================================================================
+   FLUX : ENCOURS, RETARDS, CHARGE ET PLANIFICATION
+   ================================================================ */
+const dOf = s => s ? new Date(s + "T00:00:00") : null;
+const nbj = (a, b) => Math.round((b - a) / 86400000);
+const lundi = d => { const x = new Date(d); x.setHours(0, 0, 0, 0);
+  x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; };
+const jjmm = d => String(d.getDate()).padStart(2, "0") + "/" +
+  String(d.getMonth() + 1).padStart(2, "0");
+
+const ofsAll = () => D.ofs || [];
+const ofsF = () => ofsAll().filter(o => S.ligne === "Toutes" || o.ligne === S.ligne);
+const solde = o => o.statut === "Soldé" || o.statut === "Terminé" || !!o.finR;
+const reste = o => Math.max(0, (o.qte || 0) - (o.fait || 0));
+const avanc = o => o.qte ? Math.min(1, (o.fait || 0) / o.qte) : 0;
+const enRetard = o => !solde(o) && dOf(o.finP) && dOf(o.finP) < S.ref;
+const enCours = o => !solde(o) && (/cours|lanc|demarr/i.test(o.statut || "") ||
+  (o.debR && dOf(o.debR) <= S.ref));
+const aVenir = o => !solde(o) && !enCours(o);
+const jRetard = o => Math.max(0, nbj(dOf(o.finP), S.ref));
+const age = o => o.debR ? Math.max(0, nbj(dOf(o.debR), S.ref)) : null;
+
+function cadOf(o) {
+  const p = (D.produits || {})[o.ref];
+  if (p && p.cad) return p.cad;
+  const rows = (D.jours || []).filter(r => r.ligne === o.ligne && r.cad);
+  if (rows.length) return rows.reduce((s, r) => s + r.cad, 0) / rows.length;
+  return 10;
+}
+const chargeH = o => reste(o) / cadOf(o) / 60;
+
+function capaLigne(l) {
+  const rows = (D.jours || []).filter(r => r.ligne === l);
+  if (!rows.length) return 40;
+  const nj = new Set(rows.map(r => r.d)).size || 1;
+  const min = rows.reduce((s, r) => s + (r.to - r.plan), 0);
+  return min / nj * 5 / 60;
+}
+function semaines(n) {
+  const w0 = lundi(S.ref), out = [];
+  for (let i = 0; i < n; i++) {
+    const a = new Date(w0); a.setDate(a.getDate() + i * 7);
+    const b = new Date(a); b.setDate(b.getDate() + 6);
+    out.push({ a, b, lib: "S" + noSemaine(a), court: jjmm(a) });
+  }
+  return out;
+}
+function noSemaine(d) {
+  const x = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  x.setUTCDate(x.getUTCDate() + 4 - (x.getUTCDay() || 7));
+  const y0 = new Date(Date.UTC(x.getUTCFullYear(), 0, 1));
+  return Math.ceil(((x - y0) / 86400000 + 1) / 7);
+}
+/* un OF est chargé sur la semaine de son début prévu ; le retard retombe sur la semaine en cours */
+function semaineDe(o, sems) {
+  const d = enCours(o) || enRetard(o) ? S.ref : dOf(o.debP) || S.ref;
+  for (let i = 0; i < sems.length; i++) if (d <= sems[i].b) return i;
+  return -1;
+}
+
+/* ---------------------------------------------- bandeau flux */
+function renderFlux() {
+  const os = ofsF();
+  const lat = os.filter(enRetard), wip = os.filter(enCours);
+  const sold = os.filter(solde);
+  const alH = sold.filter(o => o.finR && dOf(o.finR) <= dOf(o.finP)).length;
+  const cartes = [
+    ["OF en retard", num(lat.length), lat.length === 0 ? "g" : lat.length <= 3 ? "w" : "b",
+     "ordres au-delà de leur échéance"],
+    ["Quantité en retard", num(lat.reduce((s, o) => s + reste(o), 0)),
+     lat.length ? "b" : "g", "pièces restant à produire sur ces ordres"],
+    ["Retard moyen", lat.length ? num(lat.reduce((s, o) => s + jRetard(o), 0) / lat.length, 1) + " j" : "—",
+     lat.length ? "w" : "g", "écart moyen à l'échéance"],
+    ["OF en cours", num(wip.length), "", "ordres lancés et non soldés"],
+    ["Encours", num(wip.reduce((s, o) => s + reste(o), 0)),
+     "", "pièces restant à produire sur les ordres lancés"],
+    ["Respect du planning", sold.length ? pct(alH / sold.length, 0) : "—",
+     !sold.length ? "" : alH / sold.length >= .95 ? "g" : alH / sold.length >= .85 ? "w" : "b",
+     "ordres soldés à l'heure sur ordres soldés"],
+  ];
+  const box = $("#flux"); box.innerHTML = "";
+  cartes.forEach(([lib, v, st, aide]) => {
+    const k = el("div", "kpi " + st);
+    k.appendChild(el("div", "k", lib));
+    k.appendChild(el("div", "v", v));
+    k.appendChild(el("div", "t", aide));
+    k.querySelector(".t").style.whiteSpace = "normal";
+    k.querySelector(".t").style.lineHeight = "1.3";
+    box.appendChild(k);
+  });
+  $("#fluxSub").textContent = "Situation au " + S.ref.toLocaleDateString("fr-FR") +
+    " · " + os.length + " ordres de fabrication";
+  $("#lateNote").textContent = lat.length + " OF · " +
+    num(lat.reduce((s, o) => s + reste(o), 0)) + " pièces";
+}
+
+/* ---------------------------------------------- encours par ligne */
+function renderWip() {
+  const s = $("#wip"); clear(s);
+  const W = 460, ml = 118, mr = 58, mt = 8;
+  const lignes = D.lignes.filter(l => S.ligne === "Toutes" || l === S.ligne);
+  const rows = lignes.map(l => {
+    const os = ofsAll().filter(o => o.ligne === l && enCours(o));
+    return { l, q: os.reduce((a, o) => a + reste(o), 0), n: os.length };
+  });
+  const H = Math.max(90, mt + rows.length * 40 + 12);
+  s.setAttribute("viewBox", "0 0 " + W + " " + H);
+  const hi = Math.max(1, ...rows.map(r => r.q));
+  const iw = W - ml - mr;
+  rows.forEach((r, i) => {
+    const y = mt + i * 40 + 8, h = 17;
+    mk(s, "rect", { x: ml, y, width: iw, height: h, rx: 3, fill: css("--rule-2") });
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x: ml, y, width: Math.max(2, r.q / hi * iw), height: h, rx: 3, fill: css("--s1") });
+    mk(s, "text", { x: ml - 8, y: y + h - 4, "text-anchor": "end", "font-size": 10 },
+      r.l.length > 19 ? r.l.slice(0, 18) + "…" : r.l);
+    mk(s, "text", { x: ml + iw + 6, y: y + h - 4, "font-size": 10.5, fill: css("--ink"),
+      "font-weight": 600 }, num(r.q));
+    mk(s, "text", { x: ml, y: y + h + 13, "font-size": 9, fill: css("--ink-3") },
+      r.n + " OF en cours");
+    g.onmouseenter = e => showTip(e, r.l, [["Encours", num(r.q) + " pièces", css("--s1")],
+      ["Ordres lancés", num(r.n)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  if (!rows.length) mk(s, "text", { x: W / 2, y: 40, "text-anchor": "middle" }, "Aucun encours");
+}
+
+/* ---------------------------------------------- âge de l'encours */
+function renderAge() {
+  const s = $("#age"); clear(s);
+  const W = 460, H = 150, ml = 84, mr = 46, mt = 10, mb = 22;
+  const os = ofsF().filter(enCours);
+  const B = [[0, 2, "0 à 2 j"], [3, 5, "3 à 5 j"], [6, 10, "6 à 10 j"],
+             [11, 20, "11 à 20 j"], [21, 9999, "plus de 20 j"]];
+  const rows = B.map(([a, b, lib]) => {
+    const l = os.filter(o => { const g = age(o); return g != null && g >= a && g <= b; });
+    return { lib, n: l.length, q: l.reduce((x, o) => x + reste(o), 0), vieux: b > 100 };
+  });
+  const hi = Math.max(1, ...rows.map(r => r.n));
+  const iw = W - ml - mr, bh = (H - mt - mb) / rows.length;
+  rows.forEach((r, i) => {
+    const y = mt + i * bh + bh * .2, h = bh * .55;
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x: ml, y, width: Math.max(1.5, r.n / hi * iw), height: h, rx: 2.5,
+      fill: r.vieux || i >= 3 ? css("--s2") : css("--s1") });
+    mk(s, "text", { x: ml - 8, y: y + h / 2 + 3.5, "text-anchor": "end", "font-size": 9.5 }, r.lib);
+    mk(s, "text", { x: ml + r.n / hi * iw + 6, y: y + h / 2 + 3.5, "font-size": 10,
+      fill: css("--ink"), "font-weight": 600 }, r.n ? num(r.n) + " OF" : "—");
+    g.onmouseenter = e => showTip(e, "Encours de " + r.lib, [["Ordres", num(r.n)],
+      ["Pièces restantes", num(r.q)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  mk(s, "line", { x1: ml, x2: ml, y1: mt, y2: H - mb, class: "axis" });
+}
+
+/* ---------------------------------------------- OF en retard */
+function renderLate() {
+  const tb = $("#late"); tb.innerHTML = "";
+  const rows = ofsF().filter(enRetard).sort((a, b) => jRetard(b) - jRetard(a)).slice(0, 8);
+  if (!rows.length) {
+    const tr = el("tr"), td = el("td", null, "Aucun ordre en retard sur ce périmètre.");
+    td.colSpan = 6; tr.appendChild(td); tb.appendChild(tr); return;
+  }
+  rows.forEach(o => {
+    const tr = el("tr");
+    const c1 = el("td");
+    c1.appendChild(el("div", null, o.of));
+    c1.appendChild(el("div", "pb", o.ref + (o.prio && o.prio !== "Normale" ? " · " + o.prio : "")));
+    tr.appendChild(c1);
+    tr.appendChild(el("td", null, (o.ligne || "").replace(/^Ligne /, "L")));
+    tr.appendChild(el("td", null, o.client || "—"));
+    tr.appendChild(el("td", "n", num(reste(o))));
+    const r = jRetard(o);
+    const c5 = el("td", "n");
+    c5.appendChild(el("span", "chip " + (r > 10 ? "b" : r > 3 ? "w" : "n"), r + " j"));
+    tr.appendChild(c5);
+    const c6 = el("td", "n");
+    c6.appendChild(el("div", null, pct(avanc(o), 0)));
+    const bar = el("div", "bar"), f = el("i");
+    f.style.width = (avanc(o) * 100) + "%"; f.style.background = "var(--bad)";
+    bar.appendChild(f); c6.appendChild(bar); tr.appendChild(c6);
+    tb.appendChild(tr);
+  });
+}
+
+/* ---------------------------------------------- matrice de charge */
+function mixHex(a, b, t) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const [ar, ag, ab] = p(a), [br, bg, bb] = p(b);
+  const c = v => Math.round(v).toString(16).padStart(2, "0");
+  return "#" + c(ar + (br - ar) * t) + c(ag + (bg - ag) * t) + c(ab + (bb - ab) * t);
+}
+const sombre = () => matchMedia("(prefers-color-scheme: dark)").matches &&
+  document.documentElement.getAttribute("data-theme") !== "light" ||
+  document.documentElement.getAttribute("data-theme") === "dark";
+function couleurCharge(r) {
+  const mid = sombre() ? "#383835" : "#f0efec";
+  if (r == null) return mid;
+  if (r <= 1) return mixHex("#2a78d6", mid, Math.min(1, r / 1));
+  return mixHex(mid, "#d03b3b", Math.min(1, (r - 1) / .6));
+}
+function encreSur(hex) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
+  const [r, g, b] = p(hex).map(v => v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4);
+  return .2126 * r + .7152 * g + .0722 * b > .42 ? "#0d1620" : "#ffffff";
+}
+function renderMatrix() {
+  const box = $("#mx"); box.innerHTML = "";
+  const sems = semaines(6);
+  const lignes = D.lignes.filter(l => S.ligne === "Toutes" || l === S.ligne);
+  box.style.gridTemplateColumns = "minmax(70px,auto) repeat(" + sems.length + ",1fr)";
+  box.appendChild(el("div"));
+  sems.forEach(w => box.appendChild(el("div", "hd", w.lib)));
+  const os = ofsAll().filter(o => !solde(o));
+  lignes.forEach(l => {
+    box.appendChild(el("div", "rl", l.replace(/^Ligne /, "L")));
+    const capa = capaLigne(l);
+    sems.forEach((w, wi) => {
+      const lot = os.filter(o => o.ligne === l && semaineDe(o, sems) === wi);
+      const h = lot.reduce((s, o) => s + chargeH(o), 0);
+      const r = capa ? h / capa : null;
+      const bg = couleurCharge(lot.length ? r : 0);
+      const c = el("div", "mxc" + (r > 1 ? " over" : ""), lot.length ? pct(r, 0) : "—");
+      c.style.background = bg; c.style.color = encreSur(bg);
+      c.onmouseenter = e => showTip(e, l + " · semaine " + noSemaine(w.a),
+        [["Charge", num(h, 1) + " h"], ["Capacité", num(capa, 1) + " h"],
+         ["Taux de charge", r == null ? "—" : pct(r, 0)],
+         ["Ordres concernés", num(lot.length)]]);
+      c.onmousemove = moveTip; c.onmouseleave = hideTip;
+      box.appendChild(c);
+    });
+  });
+  const ramp = $("#mxramp"); ramp.innerHTML = "";
+  for (let i = 0; i <= 10; i++) {
+    const b = el("i"); b.style.background = couleurCharge(i / 10 * 1.6); ramp.appendChild(b);
+  }
+  $("#mxcap").textContent = "capacité " +
+    lignes.map(l => l.replace(/^Ligne (\d).*/, "L$1") + " " + num(capaLigne(l), 0) + " h")
+      .join(" · ") + " / semaine";
+}
+
+/* ---------------------------------------------- charge hebdomadaire */
+function renderLoad() {
+  const s = $("#load"); clear(s);
+  const W = 460, H = 180, ml = 42, mr = 14, mt = 14, mb = 34;
+  const iw = W - ml - mr, ih = H - mt - mb;
+  const sems = semaines(6);
+  const lignes = D.lignes.filter(l => S.ligne === "Toutes" || l === S.ligne);
+  const capa = lignes.reduce((a, l) => a + capaLigne(l), 0);
+  const os = ofsAll().filter(o => !solde(o) && (S.ligne === "Toutes" || o.ligne === S.ligne));
+  const rows = sems.map((w, wi) => {
+    const lot = os.filter(o => semaineDe(o, sems) === wi);
+    return { w, h: lot.reduce((a, o) => a + chargeH(o), 0), n: lot.length };
+  });
+  const hi = Math.max(capa * 1.1, ...rows.map(r => r.h)) * 1.05 || 1;
+  const Y = v => mt + ih - v / hi * ih;
+  for (let t = 0; t <= 3; t++) {
+    const v = hi * t / 3, y = Y(v);
+    mk(s, "line", { x1: ml, x2: ml + iw, y1: y, y2: y, class: "gridline" });
+    mk(s, "text", { x: ml - 7, y: y + 3.5, "text-anchor": "end", "font-size": 9.5 }, num(v, 0));
+  }
+  const bw = iw / rows.length;
+  rows.forEach((r, i) => {
+    const x = ml + i * bw + bw * .2, w = bw * .6, y = Y(r.h);
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x, y, width: w, height: Math.max(0, mt + ih - y), rx: 3,
+      fill: r.h > capa ? css("--bad") : css("--s1") });
+    mk(s, "text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", "font-size": 9.5,
+      fill: css("--ink"), "font-weight": 600 }, num(r.h, 0));
+    mk(s, "text", { x: x + w / 2, y: mt + ih + 14, "text-anchor": "middle", "font-size": 9.5 },
+      r.w.lib);
+    mk(s, "text", { x: x + w / 2, y: mt + ih + 25, "text-anchor": "middle", "font-size": 8.5,
+      fill: css("--ink-3") }, r.w.court);
+    g.onmouseenter = e => showTip(e, "Semaine " + noSemaine(r.w.a) + " — à partir du " + jjmm(r.w.a),
+      [["Charge", num(r.h, 1) + " h"], ["Capacité", num(capa, 1) + " h"],
+       ["Taux de charge", capa ? pct(r.h / capa, 0) : "—"], ["Ordres", num(r.n)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  mk(s, "line", { x1: ml, x2: ml + iw, y1: Y(capa), y2: Y(capa), stroke: css("--ink"),
+    "stroke-width": 1.6, "stroke-dasharray": "5 4", opacity: .75 });
+  mk(s, "text", { x: ml + 3, y: Y(capa) - 5, "font-size": 9.5, fill: css("--ink-2") },
+    "capacité " + num(capa, 0) + " h");
+  mk(s, "line", { x1: ml, x2: ml + iw, y1: mt + ih, y2: mt + ih, class: "axis" });
+}
+
+/* ---------------------------------------------- ordonnancement (Gantt) */
+function renderGantt() {
+  const s = $("#gantt"); clear(s);
+  const W = 700, ml = 168, mr = 16, mt = 30;
+  const os = ofsF().filter(o => !solde(o))
+    .sort((a, b) => dOf(a.debP) - dOf(b.debP) || (a.of > b.of ? 1 : -1))
+    .slice(0, 22);
+  const H = Math.max(140, mt + os.length * 18 + 26);
+  s.setAttribute("viewBox", "0 0 " + W + " " + H);
+  $("#ganttNote").textContent = os.length + " OF non soldés";
+  if (!os.length) { mk(s, "text", { x: W / 2, y: 60, "text-anchor": "middle" },
+    "Aucun ordre en cours ou planifié"); return; }
+  const t0 = new Date(Math.min(lundi(S.ref), ...os.map(o => +dOf(o.debP))));
+  const t1 = new Date(Math.max(+S.ref + 7 * 86400000, ...os.map(o => +dOf(o.finP))));
+  const span = Math.max(1, nbj(t0, t1));
+  const iw = W - ml - mr;
+  const X = d => ml + nbj(t0, d) / span * iw;
+  /* repères de semaine */
+  for (let w = lundi(t0); w <= t1; w.setDate(w.getDate() + 7)) {
+    const x = X(new Date(w));
+    mk(s, "line", { x1: x, x2: x, y1: mt - 12, y2: H - 18, stroke: css("--grid"), "stroke-width": 1 });
+    mk(s, "text", { x: x + 3, y: mt - 16, "font-size": 8.5, fill: css("--ink-3") },
+      "S" + noSemaine(new Date(w)));
+  }
+  os.forEach((o, i) => {
+    const y = mt + i * 18, h = 11;
+    const late = enRetard(o), cur = enCours(o);
+    const col = late ? css("--bad") : cur ? css("--s1") : css("--ink-3");
+    const x1 = X(dOf(o.debP)), x2 = Math.max(x1 + 3, X(dOf(o.finP)));
+    const g = mk(s, "g", {});
+    mk(g, "rect", { x: x1, y, width: x2 - x1, height: h, rx: 2.5, fill: col,
+      opacity: cur || late ? .95 : .55 });
+    if (avanc(o) > 0) mk(g, "rect", { x: x1, y: y + h - 3.5, width: (x2 - x1) * avanc(o),
+      height: 3.5, rx: 1.5, fill: css("--panel"), opacity: .85 });
+    mk(s, "text", { x: ml - 8, y: y + h - 1.5, "text-anchor": "end", "font-size": 9 },
+      o.of + "  " + (o.ligne || "").replace(/^Ligne (\d).*/, "L$1"));
+    g.onmouseenter = e => showTip(e, o.of + " — " + (o.des || o.ref),
+      [["Statut", late ? "En retard" : cur ? "En cours" : "Planifié", col],
+       ["Ligne", o.ligne], ["Client", o.client || "—"],
+       ["Prévu du", jjmm(dOf(o.debP)) + " au " + jjmm(dOf(o.finP))],
+       ["Quantité", num(o.fait || 0) + " / " + num(o.qte)],
+       ["Reste à produire", num(reste(o))],
+       ["Charge restante", num(chargeH(o), 1) + " h"],
+       late ? ["Retard", jRetard(o) + " j"] : ["Avancement", pct(avanc(o), 0)]]);
+    g.onmousemove = moveTip; g.onmouseleave = hideTip;
+  });
+  const xr = X(S.ref);
+  mk(s, "line", { x1: xr, x2: xr, y1: mt - 14, y2: H - 18, stroke: css("--ink"),
+    "stroke-width": 1.4, "stroke-dasharray": "4 3" });
+  mk(s, "text", { x: xr + 4, y: H - 6, "font-size": 9, fill: css("--ink-2") },
+    "réf. " + jjmm(S.ref));
+}
+
 /* ================================================ orchestration */
 function renderCompare() {
   const ind = IND[S.indic];
@@ -821,7 +1630,10 @@ function renderScope() {
 
 function render() {
   renderKpis(); renderSq(); renderRun(); renderPar();
-  renderCas(); renderCompare(); renderFam(); renderTables(); renderScope();
+  renderCas(); renderCompare(); renderFam();
+  renderFlux(); renderWip(); renderAge(); renderLate();
+  renderMatrix(); renderLoad(); renderGantt();
+  renderTables(); renderScope(); renderSource();
 }
 
 /* ------------------------------------------------ contrôles */
@@ -833,25 +1645,159 @@ function opt(sel, vals, cur) {
     sel.appendChild(o);
   });
 }
-opt($("#fl"), [["Toutes", "Toutes les lignes"]].concat(D.lignes.map(l => [l, l])), S.ligne);
-opt($("#fe"), [["Toutes", "Toutes les équipes"]].concat(D.equipes.map(l => [l, l])), S.equipe);
-opt($("#fi"), SELECTABLE.map(c => [c, IND[c].lib]), S.indic);
-opt($("#fp"), [["0", "Mois complet"]].concat(SEM.map(w => [String(w), "Semaine " + w])), S.per);
+function rebuildControls() {
+  opt($("#fl"), [["Toutes", "Toutes les lignes"]].concat(D.lignes.map(l => [l, l])), S.ligne);
+  opt($("#fe"), [["Toutes", "Toutes les équipes"]].concat(D.equipes.map(l => [l, l])), S.equipe);
+  opt($("#fi"), SELECTABLE.map(c => [c, IND[c].lib]), S.indic);
+  opt($("#fp"), [["0", "Mois complet"]].concat(SEM.map(w => [String(w), "Semaine " + w])), S.per);
+  $("#fr").value = iso(S.ref);
+}
 
 $("#fl").onchange = e => { S.ligne = e.target.value; render(); };
 $("#fe").onchange = e => { S.equipe = e.target.value; render(); };
 $("#fi").onchange = e => { S.indic = e.target.value; render(); };
 $("#fp").onchange = e => { S.per = e.target.value; S.jour = null; render(); };
+$("#fr").onchange = e => {
+  const d = e.target.value ? new Date(e.target.value + "T00:00:00") : null;
+  if (d && !isNaN(d)) { S.ref = d; render(); } else { e.target.value = iso(S.ref); }
+};
 $("#reset").onclick = () => {
   S.ligne = "Toutes"; S.equipe = "Toutes"; S.indic = "TRS"; S.per = "0"; S.jour = null;
-  $("#fl").value = "Toutes"; $("#fe").value = "Toutes"; $("#fi").value = "TRS"; $("#fp").value = "0";
-  render();
+  S.ref = D.dateRef ? new Date(D.dateRef + "T00:00:00") : new Date();
+  rebuildControls(); render();
 };
 addEventListener("keydown", e => { if (e.key === "Escape" && S.jour) { S.jour = null; render(); } });
 
-$("#ctx").innerHTML = "<b>" + D.meta.site + "</b> · " + D.meta.atelier + " · <b>" +
-  D.meta.periode + "</b>";
-$("#stamp").textContent = "Données du " + new Date(D.meta.genere).toLocaleDateString("fr-FR");
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => render());
-render();
+
+/* ------------------------------------------------ source de données */
+function renderSource() {
+  $("#ctx").innerHTML = "<b>" + D.meta.site + "</b> · " + D.meta.atelier + " · <b>" +
+    D.meta.periode + "</b>";
+  $("#stamp").textContent = "Données du " +
+    new Date(D.meta.genere + "T00:00:00").toLocaleDateString("fr-FR");
+  const n = (D.jours || []).length, a = (D.arrets || []).length, o = (D.ofs || []).length;
+  $("#srcDot").className = "dot" + (SOURCE === "demo" ? " demo" : "");
+  $("#srcTxt").innerHTML = SOURCE === "demo"
+    ? "<b>Jeu de démonstration</b> — remplacez-le par vos extractions ERP pour voir vos propres données."
+    : "<b>Vos données</b> — " + n + " lignes de production · " + a + " arrêts · " + o + " ordres de fabrication.";
+  $("#demoBtn").classList.toggle("hidden", SOURCE === "demo");
+}
+function appliquerDonnees(d, src) {
+  D = d; SOURCE = src;
+  rebuildData(); rebuildControls(); render();
+}
+
+/* ------------------------------------------------ import */
+const impPanel = $("#imp");
+$("#impOpen").onclick = () => {
+  impPanel.classList.toggle("hidden");
+  if (!impPanel.classList.contains("hidden")) {
+    $("#impStep1").classList.remove("hidden"); $("#impStep2").classList.add("hidden");
+    $("#impTabs").innerHTML = ""; impMsg("", "");
+    impPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+};
+$("#demoBtn").onclick = () => {
+  try { localStorage.removeItem(CLE); } catch (e) {}
+  appliquerDonnees(DEMO, "demo");
+};
+$("#pick").onclick = () => $("#file").click();
+$("#file").onchange = e => lireFichiers([...e.target.files]);
+const drop = $("#drop");
+["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => {
+  if (e.dataTransfer && e.dataTransfer.files.length) lireFichiers([...e.dataTransfer.files]);
+});
+$("#pasteGo").onclick = () => {
+  const t = $("#paste").value;
+  if (!t.trim()) { impMsg("err", "Collez d'abord le contenu à analyser."); return; }
+  const rows = splitRows(t);
+  if (rows.length < 2) { impMsg("err", "Le contenu collé doit comporter une ligne d'en-têtes puis au moins une ligne de données."); return; }
+  const cols = rows[0];
+  ouvrirMapping([{ nom: "Contenu collé", cols, rows,
+    schema: detectSchema(cols), map: {} }].map(l => (l.map = autoMap(SCHEMAS[l.schema], l.cols), l)));
+};
+async function lireFichiers(fs) {
+  const lots = [];
+  for (const f of fs) {
+    try {
+      let rows;
+      if (/\.(xlsx|xls|xlsm)$/i.test(f.name)) {
+        if (typeof XLSX === "undefined") {
+          impMsg("err", "La lecture des fichiers Excel n'est pas disponible ici. Enregistrez votre extraction en CSV, ou copiez-collez les cellules dans la zone ci-dessous.");
+          return;
+        }
+        const buf = await f.arrayBuffer();
+        const wb = XLSX.read(buf, { type: "array", cellDates: true });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: "", raw: true });
+        rows = rows.filter(r => r.some(c => c !== "" && c != null));
+      } else {
+        rows = splitRows(await f.text());
+      }
+      if (rows.length < 2) continue;
+      const cols = rows[0].map(c => String(c ?? ""));
+      const schema = detectSchema(cols);
+      lots.push({ nom: f.name, cols, rows, schema, map: autoMap(SCHEMAS[schema], cols) });
+    } catch (err) {
+      impMsg("err", "Impossible de lire « " + f.name + " » : " + err.message);
+      return;
+    }
+  }
+  if (!lots.length) { impMsg("err", "Aucun fichier exploitable. Attendu : .xlsx, .xls, .csv ou .txt avec une ligne d'en-têtes."); return; }
+  ouvrirMapping(lots);
+}
+$("#mapCancel").onclick = () => {
+  $("#impStep2").classList.add("hidden"); $("#impStep1").classList.remove("hidden");
+  $("#impTabs").innerHTML = "";
+};
+$("#mapGo").onclick = () => {
+  const res = appliquerMapping();
+  if (!res) return;
+  if (!res.total) { impMsg("err", "Aucune ligne valide n'a pu être lue. Vérifiez les colonnes de date et les colonnes obligatoires."); return; }
+  const d = construire(res.sortie);
+  appliquerDonnees(d, "erp");
+  const ok = sauver(d);
+  impPanel.classList.add("hidden");
+  $("#impStep2").classList.add("hidden"); $("#impStep1").classList.remove("hidden");
+  $("#paste").value = ""; $("#file").value = "";
+  const m = el("div", "msg ok", res.total + " lignes chargées" +
+    (res.rejets ? " · " + res.rejets + " lignes ignorées (date ou champ obligatoire illisible)" : "") +
+    (ok ? " · conservées dans ce navigateur" : " · non conservées : espace de stockage insuffisant"));
+  $("#srcTxt").parentNode.parentNode.insertBefore(m, $("#srcTxt").parentNode.nextSibling);
+  setTimeout(() => m.remove(), 9000);
+};
+
+/* modèle de colonnes */
+$("#tplBtn").onclick = async () => {
+  const lignes = [];
+  for (const k in SCHEMAS) {
+    lignes.push(SCHEMAS[k].lib.toUpperCase());
+    lignes.push(SCHEMAS[k].ch.map(f => f[1] + (f[2] ? " *" : "")).join(";"));
+    lignes.push("");
+  }
+  const txt = lignes.join("\n");
+  const dl = await claude.use("downloads").catch(() => null);
+  if (dl) {
+    try {
+      await dl.save({ filename: "modele-colonnes-cockpit.csv", data: txt });
+      return;
+    } catch (e) { /* refus ou indisponible : on bascule sur l'affichage */ }
+  }
+  impPanel.classList.remove("hidden");
+  $("#impStep1").classList.remove("hidden"); $("#impStep2").classList.add("hidden");
+  impMsg("info", "Colonnes attendues (les champs suivis d'une étoile sont obligatoires) — " +
+    Object.keys(SCHEMAS).map(k => SCHEMAS[k].lib + " : " +
+      SCHEMAS[k].ch.map(f => f[1] + (f[2] ? "*" : "")).join(", ")).join("  —  "));
+  impPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+};
+
+/* ------------------------------------------------ démarrage */
+const sauvegarde = charger();
+if (sauvegarde && sauvegarde.jours) { D = sauvegarde; SOURCE = "erp"; }
+rebuildData(); rebuildControls(); render();
 </script>

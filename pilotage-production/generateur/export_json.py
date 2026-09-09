@@ -2,6 +2,7 @@
 """Exporte les données du classeur vers un JSON pour le dashboard web."""
 import json, datetime as dt
 import data as D
+import of_demo
 
 saisie, arrets = D.generer()
 cad = {p[0]: p[2] for p in D.PRODUITS}
@@ -31,7 +32,9 @@ out = {
                    "alerte": o[4], "sens": o[5]} for o in D.OBJECTIFS],
     "lignes": D.LIGNES, "equipes": D.EQUIPES,
     "causes": {c[0]: {"lib": c[1], "fam": c[2], "type": c[3], "rub": c[4]} for c in D.CAUSES},
+    "produits": {p[0]: {"des": p[1], "cad": p[2], "ppm": p[3]} for p in D.PRODUITS},
     "jours": jours, "arrets": evts,
+    "ofs": of_demo.generer()[0], "dateRef": of_demo.generer()[1],
     "actions": [{"date": a["d"], "src": a["src"], "zone": a["zone"], "pb": a["pb"],
                  "ipr": a["g"] * a["fr"] * a["de"], "fam": a["fam"], "cause": a["cause"],
                  "act": a["act"], "nat": a["nat"], "pil": a["pil"], "cible": a["cible"],

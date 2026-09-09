@@ -61,9 +61,35 @@ l'indicateur analysé.
 
 `dashboard.html` est la version web du cockpit, publiée comme page interactive :
 filtres cliquables, infobulles au survol de chaque point, graphiques en SVG,
-grille SQCDP cliquable qui épingle une journée sur le suivi journalier. Elle
-contient un instantané des données (`dashboard_data.json`) — la regénérer après
-une nouvelle saisie :
+grille SQCDP cliquable qui épingle une journée sur le suivi journalier.
+
+### Charger ses propres extractions ERP
+
+La page accepte trois jeux de données, déposés en `.xlsx`, `.xls`, `.csv`, `.txt`,
+ou simplement collés depuis Excel :
+
+| Jeu | Ce qu'il alimente | Champs obligatoires |
+|---|---|---|
+| Production journalière | TRS et ses composantes, SQCDP, Pareto, cascade | date, ligne, temps d'ouverture, quantité produite, quantité conforme |
+| Journal des arrêts | causes d'arrêt, familles 5M | date, ligne, code cause, durée |
+| Ordres de fabrication | encours, retards, charge, ordonnancement | n° d'OF, ligne, quantité, début prévu, fin prévue |
+
+Le jeu de données est reconnu automatiquement d'après les en-têtes, et chaque
+colonne est associée au champ correspondant — l'association reste modifiable
+avant le chargement. Les formats français sont pris en charge : `1 234,56`,
+`31/01/2026`, ainsi que les dates sérielles d'Excel.
+
+Les données chargées restent dans le navigateur (`localStorage`) : elles ne
+partent sur aucun serveur et sont retrouvées à la réouverture de la page.
+
+### Date de référence
+
+Encours, retards et charge se calculent par rapport à une **date de référence**,
+réglable dans le bandeau de filtres et positionnée par défaut sur la donnée la
+plus récente du jeu chargé. C'est elle qui détermine ce qui est en retard, ce qui
+est en cours et ce qui reste à planifier.
+
+### Régénérer le jeu de démonstration
 
 ```bash
 cd generateur && python3 export_json.py
