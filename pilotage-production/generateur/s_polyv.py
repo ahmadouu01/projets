@@ -2,7 +2,7 @@
 """Onglet POLYVALENCE : matrice de competences ILUO et couverture des postes."""
 from openpyxl.styles import Alignment, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
-from openpyxl.formatting.rule import FormulaRule
+from openpyxl.formatting.rule import FormulaRule, DataBarRule
 from openpyxl.chart import BarChart, Reference
 from openpyxl.chart.series import SeriesLabel
 from openpyxl.chart.shapes import GraphicalProperties
@@ -182,6 +182,10 @@ def build(wb):
         ws.conditional_formatting.add(
             "E%d:P%d" % (FIRST, LAST),
             FormulaRule(formula=['E%d=%d' % (FIRST, niv)], fill=fill(bg), font=f(9, True, fg)))
+    ws.conditional_formatting.add(
+        "R%d:R%d" % (FIRST, LAST),
+        DataBarRule(start_type="num", start_value=0, end_type="num", end_value=1,
+                    color="2E6B4F", showValue=True))
     ws.conditional_formatting.add(
         "E%d:P%d" % (SYN + 6, SYN + 6),
         FormulaRule(formula=['E%d="Critique"' % (SYN + 6)], fill=fill(RED_BG), font=f(9, True, RED)))

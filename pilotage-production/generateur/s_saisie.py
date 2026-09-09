@@ -2,7 +2,7 @@
 """Onglet SAISIE_PROD : journal de production et calcul du TRS."""
 from openpyxl.styles import Alignment, Font, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
-from openpyxl.formatting.rule import FormulaRule, ColorScaleRule
+from openpyxl.formatting.rule import FormulaRule, ColorScaleRule, DataBarRule
 from openpyxl.utils import get_column_letter as gcl
 from common import *
 import data as D
@@ -181,7 +181,11 @@ def build(wb, saisie):
            error="Cette colonne n'accepte que des valeurs positives ou nulles.")
 
     # ------------------------------------------------ mises en forme conditionnelles
-    for col in ("AF", "AG", "AH", "AI", "AJ"):
+    ws.conditional_formatting.add(
+        "AI%d:AI%d" % (FIRST, LAST),
+        DataBarRule(start_type="num", start_value=0, end_type="num", end_value=1,
+                    color="1F6FB2", showValue=True))
+    for col in ("AF", "AG", "AH", "AJ"):
         ws.conditional_formatting.add(
             "%s%d:%s%d" % (col, FIRST, col, LAST),
             ColorScaleRule(start_type="num", start_value=0.5, start_color="F8B4B4",

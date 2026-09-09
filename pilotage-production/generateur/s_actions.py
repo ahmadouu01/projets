@@ -3,7 +3,7 @@
 import datetime as dt
 from openpyxl.styles import Alignment, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
-from openpyxl.formatting.rule import FormulaRule, ColorScaleRule
+from openpyxl.formatting.rule import FormulaRule, ColorScaleRule, DataBarRule, IconSetRule
 from common import *
 import data as D
 
@@ -147,9 +147,11 @@ def build(wb):
 
     ws.conditional_formatting.add(
         "I%d:I%d" % (FIRST, LAST),
-        ColorScaleRule(start_type="num", start_value=1, start_color="D6ECD8",
-                       mid_type="num", mid_value=30, mid_color="FDE9A9",
-                       end_type="num", end_value=80, end_color="F5A6A6"))
+        IconSetRule("3TrafficLights1", "num", [0, 20, 30], showValue=True, reverse=False))
+    ws.conditional_formatting.add(
+        "P%d:P%d" % (FIRST, LAST),
+        DataBarRule(start_type="num", start_value=0, end_type="num", end_value=1,
+                    color="2E9E5B", showValue=True))
     ws.conditional_formatting.add(
         "A%d:Y%d" % (FIRST, LAST),
         FormulaRule(formula=['AND($S%d<>"",$S%d>0,$Q%d<>"Terminée",$Q%d<>"Abandonnée")'

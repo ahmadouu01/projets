@@ -19,27 +19,27 @@ ALERTE = 'INDEX(PARAMETRES!$E$16:$E$29,MATCH("{c}",PARAMETRES!$A$16:$A$29,0))'
 # (code, titre, formule, format cellule, format TEXT, suffixe, colonne M-1 dans CALC)
 CARTES = [
     ("TRS",      "TRS DU MOIS\n(rendement synthétique)",
-     '=IFERROR(CALC!$V$20/CALC!$V$18,"")', PCT, '0.0%', "", "L"),
+     '=IFERROR(CALC!$AC$20/CALC!$AC$18,"")', PCT, '0.0%', "", "L"),
     ("DISPO",    "DISPONIBILITÉ",
-     '=IFERROR(CALC!$V$19/CALC!$V$18,"")', PCT, '0.0%', "", "M"),
+     '=IFERROR(CALC!$AC$19/CALC!$AC$18,"")', PCT, '0.0%', "", "M"),
     ("PERF",     "PERFORMANCE\n(tenue de cadence)",
-     '=IFERROR((CALC!$V$19-CALC!$V$16)/CALC!$V$19,"")', PCT, '0.0%', "", "N"),
+     '=IFERROR((CALC!$AC$19-CALC!$AC$16)/CALC!$AC$19,"")', PCT, '0.0%', "", "N"),
     ("QUAL",     "QUALITÉ AU PREMIER PASSAGE",
-     '=IFERROR(CALC!$V$23/CALC!$V$22,"")', PCT, '0.0%', "", "O"),
+     '=IFERROR(CALC!$AC$23/CALC!$AC$22,"")', PCT, '0.0%', "", "O"),
     ("TRG",      "TRG\n(sur temps d'ouverture)",
-     '=IFERROR(CALC!$V$20/CALC!$V$8,"")', PCT, '0.0%', "", "P"),
+     '=IFERROR(CALC!$AC$20/CALC!$AC$8,"")', PCT, '0.0%', "", "P"),
     ("SERVICE",  "TAUX DE SERVICE",
-     '=IFERROR((CALC!$V$23+CALC!$V$24)/CALC!$V$25,"")', PCT, '0.0%', "", "Q"),
+     '=IFERROR((CALC!$AC$23+CALC!$AC$24)/CALC!$AC$25,"")', PCT, '0.0%', "", "Q"),
     ("PPM",      "NON-CONFORMITÉS INTERNES",
-     '=IFERROR((CALC!$V$22-CALC!$V$23)/CALC!$V$22*1000000,"")', PPM, '#,##0', " ppm", None),
+     '=IFERROR((CALC!$AC$22-CALC!$AC$23)/CALC!$AC$22*1000000,"")', PPM, '#,##0', " ppm", None),
     ("PRESENCE", "TAUX DE PRÉSENCE",
-     '=IFERROR(CALC!$V$29/CALC!$V$28,"")', PCT, '0.0%', "", None),
+     '=IFERROR(CALC!$AC$29/CALC!$AC$28,"")', PCT, '0.0%', "", None),
     ("ACCIDENT", "ACCIDENTS AVEC ARRÊT",
-     '=CALC!$V$26', NUM, '0', "", None),
+     '=CALC!$AC$26', NUM, '0', "", None),
     ("MTBF",     "MTBF\n(temps entre pannes)",
-     '=IFERROR(CALC!$V$19/CALC!$V$27,"")', MIN, '#,##0', " min", None),
+     '=IFERROR(CALC!$AC$19/CALC!$AC$27,"")', MIN, '#,##0', " min", None),
     ("MTTR",     "MTTR\n(temps de réparation)",
-     '=IFERROR(CALC!$V$10/CALC!$V$27,"")', MIN, '#,##0', " min", None),
+     '=IFERROR(CALC!$AC$10/CALC!$AC$27,"")', MIN, '#,##0', " min", None),
     ("RETARD",   "ACTIONS EN RETARD",
      '=PLAN_ACTIONS!$D$6', NUM, '0', "", None),
 ]
@@ -149,55 +149,23 @@ def build(wb):
     band(ws, 18, 1, NC, "ANALYSE DE LA PERFORMANCE DU MOIS")
     _charts(ws)
 
-    # ---------------------------------------------------------- top 5
-    band(ws, 78, 1, NC, "TOP 5 DES CAUSES D'ARRÊT SUBI DU MOIS  —  source : journal des arrêts, hors arrêts planifiés")
-    spans = [(1, 2), (3, 4), (5, 9), (10, 11), (12, 13), (14, 15), (16, 18)]
-    for j, titre in enumerate(TOP_HDR):
-        c1, c2 = spans[j]
+    # ---------------------------------------------------------- causes et décisions
+    band(ws, 78, 1, NC, "CAUSES D'ARRÊT SUBI DU MOIS  ·  DÉCISIONS DE LA REVUE")
+    _chart_causes(ws)
+
+    dspans = [(10, 14), (15, 17), (18, 18)]
+    for j, titre in enumerate(["Décision prise", "Pilote", "Échéance"]):
+        c1, c2 = dspans[j]
         ws.merge_cells(start_row=79, start_column=c1, end_row=79, end_column=c2)
         c = ws.cell(row=79, column=c1, value=titre)
         c.font = f(8.5, True, WHITE)
         c.alignment = Alignment(horizontal="center", vertical="center")
         for k in range(c1, c2 + 1):
-            ws.cell(row=79, column=k).fill = fill(STEEL)
+            ws.cell(row=79, column=k).fill = fill(SLATE)
             ws.cell(row=79, column=k).border = BOX
     ws.row_dimensions[79].height = 22
     for i in range(5):
         r = 80 + i
-        src = C.TOP0 + i
-        vals = ['=CALC!$A$%d' % src, '=CALC!$B$%d' % src, '=CALC!$C$%d' % src,
-                '=CALC!$D$%d' % src, '=CALC!$E$%d' % src, '=CALC!$F$%d' % src,
-                '=CALC!$G$%d' % src]
-        fmts = ["0", None, None, NUM, NUM, NUM1, PCT]
-        for j, v in enumerate(vals):
-            c1, c2 = spans[j]
-            ws.merge_cells(start_row=r, start_column=c1, end_row=r, end_column=c2)
-            c = ws.cell(row=r, column=c1, value=v)
-            c.font = f(9.5)
-            c.number_format = fmts[j] or "General"
-            c.alignment = Alignment(horizontal="left" if fmts[j] is None else "center",
-                                    vertical="center", indent=1)
-            for k in range(c1, c2 + 1):
-                ws.cell(row=r, column=k).border = BOX
-                ws.cell(row=r, column=k).fill = fill(WHITE if i % 2 == 0 else ROWALT)
-        ws.row_dimensions[r].height = 17
-
-    # ---------------------------------------------------------- decisions
-    band(ws, 87, 1, NC, "DÉCISIONS ET ENGAGEMENTS DE LA REVUE  —  à renseigner pendant l'animation")
-    dspans = [(1, 5), (6, 11), (12, 13), (14, 15), (16, 18)]
-    for j, titre in enumerate(["Écart constaté (fait mesuré)", "Décision prise",
-                               "Pilote", "Échéance", "N° d'action associé"]):
-        c1, c2 = dspans[j]
-        ws.merge_cells(start_row=88, start_column=c1, end_row=88, end_column=c2)
-        c = ws.cell(row=88, column=c1, value=titre)
-        c.font = f(8.5, True, WHITE)
-        c.alignment = Alignment(horizontal="center", vertical="center")
-        for k in range(c1, c2 + 1):
-            ws.cell(row=88, column=k).fill = fill(SLATE)
-            ws.cell(row=88, column=k).border = BOX
-    ws.row_dimensions[88].height = 22
-    for i in range(5):
-        r = 89 + i
         for c1, c2 in dspans:
             ws.merge_cells(start_row=r, start_column=c1, end_row=r, end_column=c2)
             c = ws.cell(row=r, column=c1)
@@ -206,27 +174,50 @@ def build(wb):
             for k in range(c1, c2 + 1):
                 ws.cell(row=r, column=k).fill = fill(INPUT_BG)
                 ws.cell(row=r, column=k).border = BOX
-        ws.cell(row=r, column=14).number_format = DATE
-        ws.row_dimensions[r].height = 20
+        ws.cell(row=r, column=18).number_format = DATE
+        ws.row_dimensions[r].height = 22
     dv = DataValidation(type="list", formula1="LST_PILOTES", allow_blank=True)
     ws.add_data_validation(dv)
-    dv.add("L89:L93")
+    dv.add("O80:O84")
+    note(ws, "J86",
+         "Le graphique de gauche classe les causes d'arrêt subi du mois par minutes perdues. "
+         "Chaque cause récurrente doit se retrouver dans le plan d'actions avec un pilote et une date.",
+         "J86:R88")
 
-    note(ws, "A95",
+    note(ws, "A92",
          "Lecture des cartes :  vert = cible atteinte  •  orange = entre la cible et le seuil d'alerte  •  "
          "rouge = au-delà du seuil d'alerte.  Cibles et seuils sont définis dans l'onglet PARAMETRES. "
          "Règle d'animation : toute carte rouge donne lieu, le jour même, à une action ouverte dans le PLAN_ACTIONS "
          "avec un pilote nommé et une date cible. Le graphique de suivi journalier affiche la moyenne mobile 7 jours "
          "et les limites de contrôle (moyenne ± 2 écarts-types) : un point hors limite signale une cause spéciale à investiguer, "
          "à distinguer d'une variation courante du procédé.",
-         "A95:R97")
+         "A92:R94")
 
     for col in range(1, NC + 1):
         ws.column_dimensions[chr(64 + col) if col < 27 else "A"].width = 9.6
     ws.freeze_panes = "A5"
-    page(ws, "landscape", area="A1:R97")
+    page(ws, "landscape", area="A1:R94")
     ws.sheet_view.zoomScale = 80
     return ws
+
+
+def _chart_causes(ws):
+    calc = ws.parent["CALC"]
+    b = BarChart()
+    b.type = "bar"
+    b.title = "Top 5 des causes d'arrêt subi (minutes perdues)"
+    b.height, b.width = 8.4, 14.6
+    b.add_data(Reference(calc, min_col=4, min_row=C.TOP0, max_row=C.TOPN), titles_from_data=False)
+    b.set_categories(Reference(calc, min_col=3, min_row=C.TOP0, max_row=C.TOPN))
+    str_categories(b, "'CALC'!$C$%d:$C$%d" % (C.TOP0, C.TOPN))
+    b.series[0].tx = SeriesLabel(v="Minutes perdues")
+    b.series[0].graphicalProperties = GraphicalProperties(solidFill="C0392B")
+    b.gapWidth = 40
+    b.legend = None
+    b.dLbls = DataLabelList()
+    b.dLbls.showVal = True
+    b.x_axis.majorGridlines = None
+    ws.add_chart(b, "A79")
 
 
 def _serie(ch, i, color, width=20000, dash=None, marker=False, smooth=False):

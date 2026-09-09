@@ -3,7 +3,7 @@
 import datetime as dt
 from openpyxl.styles import Alignment, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
-from openpyxl.formatting.rule import FormulaRule, ColorScaleRule
+from openpyxl.formatting.rule import FormulaRule, ColorScaleRule, DataBarRule
 from openpyxl.chart import RadarChart, LineChart, Reference
 from openpyxl.chart.series import SeriesLabel
 from common import *
@@ -134,6 +134,10 @@ def build(wb):
                                       fill=fill(RED_BG), font=f(9, True, RED)))
         ws.conditional_formatting.add(rng, FormulaRule(formula=['$G%d="À consolider"' % SC],
                                       fill=fill(AMBER_BG), font=f(9, True, AMBER)))
+    ws.conditional_formatting.add(
+        "D%d:D%d" % (SC, SC + 5),
+        DataBarRule(start_type="num", start_value=0, end_type="num", end_value=1,
+                    color="6B8E23", showValue=True))
     ws.conditional_formatting.add(
         "E%d:E%d" % (FIRST, LAST),
         ColorScaleRule(start_type="num", start_value=0, start_color="F5A6A6",

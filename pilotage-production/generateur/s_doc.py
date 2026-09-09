@@ -4,6 +4,9 @@ from openpyxl.styles import Alignment, Border, Side
 from common import *
 
 ARCHI = [
+    ("ANIMATION", "Board de management visuel du point 5 minutes : grille SQCDP jour par jour, jauges, "
+     "compteur sécurité, où part le temps, trois actions prioritaires. Conçu pour être imprimé en A3 et affiché.",
+     "Quotidienne (5 min, debout)", "Superviseur et équipe", "Uniquement les décisions du jour"),
     ("COCKPIT", "Tableau de bord de la revue de performance : 12 indicateurs, 7 graphiques, top 5 des causes.",
      "Quotidienne (lecture)", "Superviseur", "Aucune saisie sauf les filtres et le bloc de décisions"),
     ("SAISIE_PROD", "Journal de production : une ligne par jour, par équipe et par ligne. Calcule le TRS et ses composantes.",
@@ -26,6 +29,8 @@ ARCHI = [
      "Automatique", "—", "Aucune — ne pas modifier"),
 ]
 
+VIDE_GRIS = "E9EDF1"
+
 LEGENDE = [
     (INPUT_BG, "0000FF", "Cellule à saisir", "Fond jaune, texte bleu : donnée saisie par l'utilisateur."),
     (CALC_BG, "1A1A1A", "Cellule calculée", "Fond bleu clair, texte noir : formule, ne pas écraser."),
@@ -33,11 +38,19 @@ LEGENDE = [
     (GREEN_BG, GREEN, "Objectif atteint", "La valeur est au niveau de la cible ou au-delà."),
     (AMBER_BG, AMBER, "Vigilance", "La valeur est entre la cible et le seuil d'alerte."),
     (RED_BG, RED, "Alerte", "La valeur a franchi le seuil d'alerte : action requise le jour même."),
+    ("2E9E5B", "FFFFFF", "Case SQCDP verte", "Journée conforme à l'objectif sur cet axe."),
+    ("E8A33D", "FFFFFF", "Case SQCDP orange", "Journée en vigilance : entre la cible et le seuil d'alerte."),
+    ("C0392B", "FFFFFF", "Case SQCDP rouge", "Journée en écart : la cause doit être nommée pendant le point 5 minutes."),
+    (VIDE_GRIS, "6B7A88", "Case SQCDP grise", "Aucune production saisie ce jour-là (week-end, arrêt, jour férié)."),
 ]
 
 RITUEL = [
-    ("Chaque fin de poste", "5 min", "Saisir la ligne du jour dans SAISIE_PROD et les arrêts dans ARRETS ; vérifier la colonne de contrôle de cohérence."),
-    ("Chaque matin", "5 min", "Lire le COCKPIT devant l'équipe : une carte rouge = une action ouverte le jour même dans PLAN_ACTIONS."),
+    ("Chaque fin de poste", "5 min", "Saisir la ligne du jour dans SAISIE_PROD et les arrêts dans ARRETS ; "
+     "vérifier la colonne de contrôle de cohérence. C'est la seule saisie qui alimente tout le reste."),
+    ("Chaque matin", "5 min", "Animer devant le board ANIMATION : la grille SQCDP donne le mois en un coup d'œil, "
+     "une case rouge appelle une décision immédiate consignée en bas du board."),
+    ("Chaque matin", "10 min", "Approfondir dans le COCKPIT si la grille SQCDP montre une dérive : "
+     "Pareto, cascade des pertes, comparaison entre lignes et entre équipes."),
     ("Chaque semaine", "30 min", "Revue du Pareto et de la cascade des pertes : choisir le chantier prioritaire, vérifier l'avancement des actions."),
     ("Chaque mois", "60 min", "Revue de performance : tendance 13 mois, audit 5S, matrice de polyvalence, efficacité des actions soldées."),
     ("Chaque trimestre", "—", "Révision des objectifs et des seuils d'alerte dans PARAMETRES au regard des résultats obtenus."),
@@ -55,6 +68,8 @@ DEMARRAGE = [
     "et les lignes 9 à 16 de PLAN_ACTIONS, puis effacer uniquement le contenu des colonnes jaunes (touche Suppr). "
     "Ne jamais supprimer les lignes elles-mêmes : les formules des colonnes calculées seraient perdues.",
     "7.  Dans le COCKPIT, positionner l'année et le mois de travail, puis démarrer la saisie quotidienne.",
+    "8.  Imprimer l'onglet ANIMATION en A3 paysage et l'afficher sur le lieu du point 5 minutes. "
+    "Il se met à jour seul à chaque saisie : il suffit de le réimprimer, ou de l'afficher sur un écran d'atelier.",
 ]
 
 GLOSSAIRE = [

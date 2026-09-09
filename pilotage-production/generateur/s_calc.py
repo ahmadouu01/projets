@@ -17,6 +17,9 @@ MOI0, MOIN = 88, 100               # historique 12 mois (+ mois courant)
 ACT0, ACTN = 103, 107              # repartition du plan d'actions
 CAU0, CAUN = 110, 149              # causes d'arret (referentiel)
 TOP0, TOPN = 152, 156              # top 5 des causes
+GAU0, GAUN = 161, 164              # jauges du management visuel
+ACH0, ACHN = 168, 287              # score des actions ouvertes
+TR3, TR3N = 290, 292               # top 3 des actions
 
 TOT = {                            # ligne du bloc de totaux -> colonne SAISIE_PROD
     8:  ("Temps d'ouverture TO (min)",        "F"),
@@ -54,19 +57,19 @@ RUBRIQUES = [
 ]
 
 CASCADE = [
-    ("Temps d'ouverture",          "0",                      "$V$8",  1),
-    ("Arrêts planifiés",           "$V$8-$V$9",              "$V$9",  0),
-    ("Temps requis",               "0",                      "$V$18", 1),
-    ("Pannes machine",             "$V$18-$V$10",            "$V$10", 0),
-    ("Changement de série",        "$V$18-SUM($V$10:$V$11)", "$V$11", 0),
-    ("Réglages, micro-arrêts",     "$V$18-SUM($V$10:$V$12)", "$V$12", 0),
-    ("Manque matière",             "$V$18-SUM($V$10:$V$13)", "$V$13", 0),
-    ("Manque personnel",           "$V$18-SUM($V$10:$V$14)", "$V$14", 0),
-    ("Autres arrêts subis",        "$V$18-SUM($V$10:$V$15)", "$V$15", 0),
-    ("Temps de marche",            "0",                      "$V$19", 1),
-    ("Perte de cadence",           "$V$19-$V$16",            "$V$16", 0),
-    ("Pertes non-qualité",         "$V$19-SUM($V$16:$V$17)", "$V$17", 0),
-    ("Temps utile",                "0",                      "$V$20", 1),
+    ("Temps d'ouverture",          "0",                      "$AC$8",  1),
+    ("Arrêts planifiés",           "$AC$8-$AC$9",              "$AC$9",  0),
+    ("Temps requis",               "0",                      "$AC$18", 1),
+    ("Pannes machine",             "$AC$18-$AC$10",            "$AC$10", 0),
+    ("Changement de série",        "$AC$18-SUM($AC$10:$AC$11)", "$AC$11", 0),
+    ("Réglages, micro-arrêts",     "$AC$18-SUM($AC$10:$AC$12)", "$AC$12", 0),
+    ("Manque matière",             "$AC$18-SUM($AC$10:$AC$13)", "$AC$13", 0),
+    ("Manque personnel",           "$AC$18-SUM($AC$10:$AC$14)", "$AC$14", 0),
+    ("Autres arrêts subis",        "$AC$18-SUM($AC$10:$AC$15)", "$AC$15", 0),
+    ("Temps de marche",            "0",                      "$AC$19", 1),
+    ("Perte de cadence",           "$AC$19-$AC$16",            "$AC$16", 0),
+    ("Pertes non-qualité",         "$AC$19-SUM($AC$16:$AC$17)", "$AC$17", 0),
+    ("Temps utile",                "0",                      "$AC$20", 1),
 ]
 
 
@@ -116,32 +119,45 @@ def build(wb):
         cell("B%d" % r, formule, fmt)
 
     # ---------------------------------------------------- reperes statistiques
-    h("U2", "REPÈRES STATISTIQUES  (colonne V)")
+    h("AB2", "REPÈRES STATISTIQUES  (colonne AC)")
     reperes = [
         ("Cible TRS", '=INDEX(PARAMETRES!$D$16:$D$29,MATCH("TRS",PARAMETRES!$A$16:$A$29,0))', PCT),
         ("Moyenne des TRS journaliers", '=IFERROR(AVERAGE($M$%d:$M$%d),"")' % (JOUR0, JOURN), PCT),
         ("Écart-type des TRS journaliers", '=IFERROR(STDEV($M$%d:$M$%d),"")' % (JOUR0, JOURN), PCT),
-        ("Limite de contrôle supérieure (moy. + 2σ)", '=IFERROR(MIN(1,$V$4+2*$V$5),"")', PCT),
-        ("Limite de contrôle inférieure (moy. - 2σ)", '=IFERROR(MAX(0,$V$4-2*$V$5),"")', PCT),
+        ("Limite de contrôle supérieure (moy. + 2σ)", '=IFERROR(MIN(1,$AC$4+2*$AC$5),"")', PCT),
+        ("Limite de contrôle inférieure (moy. - 2σ)", '=IFERROR(MAX(0,$AC$4-2*$AC$5),"")', PCT),
     ]
     for i, (lab, formule, fmt) in enumerate(reperes):
         r = 3 + i
-        label(ws, "U%d" % r, lab, bold=False, size=9)
-        cell("V%d" % r, formule, fmt)
+        label(ws, "AB%d" % r, lab, bold=False, size=9)
+        cell("AC%d" % r, formule, fmt)
 
     # ---------------------------------------------------- totaux de periode
     for r, (lab, col) in TOT.items():
-        label(ws, "U%d" % r, lab, bold=False, size=9)
-        cell("V%d" % r, "=" + _sumifs_periode(col), NUM)
-    label(ws, "U21", "— (réservé) —", bold=False, size=9, color=GREY)
+        label(ws, "AB%d" % r, lab, bold=False, size=9)
+        cell("AC%d" % r, "=" + _sumifs_periode(col), NUM)
+
+    # ---------------------------------------------------- seuils SQCDP
+    h("AB31", "SEUILS UTILISÉS PAR LE MANAGEMENT VISUEL")
+    seuils = [("QUAL", "Cible qualité RFT", "D"), ("QUAL", "Alerte qualité RFT", "E"),
+              ("TRS", "Cible TRS", "D"), ("TRS", "Alerte TRS", "E"),
+              ("SERVICE", "Cible taux de service", "D"), ("SERVICE", "Alerte taux de service", "E"),
+              ("PRESENCE", "Cible taux de présence", "D"), ("PRESENCE", "Alerte taux de présence", "E")]
+    for i, (code, lab, col) in enumerate(seuils):
+        r = 32 + i
+        label(ws, "AB%d" % r, lab, bold=False, size=9)
+        cell("AC%d" % r,
+             '=INDEX(PARAMETRES!${c}$16:${c}$29,MATCH("{k}",PARAMETRES!$A$16:$A$29,0))'.format(c=col, k=code),
+             PCT)
 
     # ---------------------------------------------------- serie journaliere
-    band(ws, JOUR0 - 2, 1, 19, "SÉRIE JOURNALIÈRE DU MOIS SÉLECTIONNÉ")
+    band(ws, JOUR0 - 2, 1, 27, "SÉRIE JOURNALIÈRE DU MOIS SÉLECTIONNÉ  —  valeurs, séries de graphique et statuts du management visuel")
     entetes = ["Jour", "Date", "Temps utile", "Temps requis", "Temps de marche",
                "Temps d'ouverture", "Qté produite", "Qté conforme", "Qté retouchée",
                "Qté demandée", "Accidents", "Arrêts subis", "TRS", "Cible",
                "Moyenne mobile 7 j", "LCS", "LCI", "TRS (graphique)",
-               "Moyenne mobile (graphique)"]
+               "Moyenne mobile (graphique)", "Effectif prévu", "Effectif présent",
+               "Presqu'accidents", "Statut S", "Statut Q", "Statut C", "Statut D", "Statut P"]
     header_row(ws, JOUR0 - 1, entetes, height=34)
     for i in range(JOURN - JOUR0 + 1):
         r = JOUR0 + i
@@ -149,25 +165,40 @@ def build(wb):
         ws["A%d" % r] = i + 1
         ws["B%d" % r] = '=IF($A%d>DAY($B$8),"",DATE($B$3,$B$4,$A%d))' % (r, r)
         for col, src in (("C", "AE"), ("D", "AB"), ("E", "AD"), ("F", "F"), ("G", "P"),
-                         ("H", "Q"), ("I", "R"), ("J", "T"), ("K", "X"), ("L", "AC")):
+                         ("H", "Q"), ("I", "R"), ("J", "T"), ("K", "X"), ("L", "AC"),
+                         ("T", "U"), ("U", "V"), ("V", "Y")):
             ws["%s%d" % (col, r)] = '=IF(%s="","",%s)' % (d, _sumifs(src, d))
         ws["M%d" % r] = '=IF(OR($B%d="",$D%d=0),"",$C%d/$D%d)' % (r, r, r, r)
-        ws["N%d" % r] = '=IF($B%d="",NA(),$V$3)' % r
+        ws["N%d" % r] = '=IF($B%d="",NA(),$AC$3)' % r
         s = max(JOUR0, r - 6)
         ws["O%d" % r] = '=IF(COUNT($M%d:$M%d)<3,"",AVERAGE($M%d:$M%d))' % (s, r, s, r)
-        ws["P%d" % r] = '=IF(OR($B%d="",$V$5=""),NA(),$V$6)' % r
-        ws["Q%d" % r] = '=IF(OR($B%d="",$V$5=""),NA(),$V$7)' % r
+        ws["P%d" % r] = '=IF(OR($B%d="",$AC$5=""),NA(),$AC$6)' % r
+        ws["Q%d" % r] = '=IF(OR($B%d="",$AC$5=""),NA(),$AC$7)' % r
         ws["R%d" % r] = '=IF($M%d="",NA(),$M%d)' % (r, r)
         ws["S%d" % r] = '=IF($O%d="",NA(),$O%d)' % (r, r)
-        for col in "ABCDEFGHIJKLMNOPQRS":
+        # statuts du management visuel : 1 vert, 2 orange, 3 rouge, "" sans production
+        prod = '$D%d=0' % r
+        ws["W%d" % r] = ('=IF(OR($B{r}="",{p}),"",IF($K{r}>0,3,IF($V{r}>0,2,1)))'
+                         .format(r=r, p=prod))
+        ws["X%d" % r] = ('=IF(OR($B{r}="",{p},$G{r}=0),"",IF($H{r}/$G{r}>=$AC$32,1,'
+                         'IF($H{r}/$G{r}>=$AC$33,2,3)))').format(r=r, p=prod)
+        ws["Y%d" % r] = ('=IF(OR($B{r}="",{p}),"",IF($M{r}>=$AC$34,1,IF($M{r}>=$AC$35,2,3)))'
+                         .format(r=r, p=prod))
+        ws["Z%d" % r] = ('=IF(OR($B{r}="",{p},$J{r}=0),"",IF(($H{r}+$I{r})/$J{r}>=$AC$36,1,'
+                         'IF(($H{r}+$I{r})/$J{r}>=$AC$37,2,3)))').format(r=r, p=prod)
+        ws["AA%d" % r] = ('=IF(OR($B{r}="",{p},$T{r}=0),"",IF($U{r}/$T{r}>=$AC$38,1,'
+                          'IF($U{r}/$T{r}>=$AC$39,2,3)))').format(r=r, p=prod)
+        for col in ("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AA").split():
             c = ws["%s%d" % (col, r)]
             c.font = f(9)
             c.alignment = Alignment(horizontal="center", vertical="center")
             c.border = BOX
             if col == "B":
                 c.number_format = DATE
-            elif col in "MNOPQRS":
+            elif col in ("M", "N", "O", "P", "Q", "R", "S"):
                 c.number_format = PCT
+            elif col in ("W", "X", "Y", "Z", "AA"):
+                c.number_format = "0"
             elif col != "A":
                 c.number_format = NUM
         ws.row_dimensions[r].height = 14
@@ -275,7 +306,7 @@ def build(wb):
         ws["P%d" % r] = '=IFERROR($C{r}/$F{r},"")'.format(r=r)
         ws["Q%d" % r] = '=IFERROR(($H{r}+$I{r})/$J{r},"")'.format(r=r)
         ws["R%d" % r] = '=IF($L{r}="",NA(),$L{r})'.format(r=r)
-        ws["S%d" % r] = '=$V$3'
+        ws["S%d" % r] = '=$AC$3'
         for col2 in "ABCDEFGHIJKLMNOPQRS":
             c = ws["%s%d" % (col2, r)]
             c.font = f(9, k == 0)
@@ -357,8 +388,78 @@ def build(wb):
                                     vertical="center", indent=1)
         ws.row_dimensions[r].height = 14
 
+    # ---------------------------------------------------- jauges
+    band(ws, GAU0 - 2, 1, 12, "JAUGES DU MANAGEMENT VISUEL  (valeur, reste, demi-cercle masqué)")
+    header_row(ws, GAU0 - 1, ["Indicateur", "Valeur", "Reste", "Masqué", "Cible",
+                              "Libellé affiché", "", "", "", "", "", ""], height=24)
+    jauges = [("Taux de rendement synthétique", '=IFERROR($AC$20/$AC$18,0)', "TRS"),
+              ("Qualité au premier passage", '=IFERROR($AC$23/$AC$22,0)', "QUAL"),
+              ("Taux de service", '=IFERROR(($AC$23+$AC$24)/$AC$25,0)', "SERVICE"),
+              ("Taux de présence", '=IFERROR($AC$29/$AC$28,0)', "PRESENCE")]
+    for i, (lib, formule, code) in enumerate(jauges):
+        r = GAU0 + i
+        ws["A%d" % r] = lib
+        ws["B%d" % r] = formule
+        ws["C%d" % r] = '=MAX(0,1-$B%d)' % r
+        ws["D%d" % r] = 1
+        ws["E%d" % r] = ('=INDEX(PARAMETRES!$D$16:$D$29,MATCH("%s",PARAMETRES!$A$16:$A$29,0))'
+                         % code)
+        ws["F%d" % r] = '=TEXT($B{r},"0.0%")&"   |   cible "&TEXT($E{r},"0.0%")'.format(r=r)
+        for col2, fmt in (("A", None), ("B", PCT), ("C", PCT), ("D", "0"), ("E", PCT), ("F", None)):
+            c = ws["%s%d" % (col2, r)]
+            c.font = f(9)
+            c.border = BOX
+            c.number_format = fmt or "General"
+            c.alignment = Alignment(horizontal="left" if fmt is None else "center",
+                                    vertical="center", indent=1)
+        ws.row_dimensions[r].height = 14
+
+    # ---------------------------------------------------- priorisation des actions
+    band(ws, ACH0 - 2, 1, 12, "PRIORISATION DES ACTIONS OUVERTES  (source : PLAN_ACTIONS)")
+    header_row(ws, ACH0 - 1, ["Criticité si action ouverte", "Valeur départagée", "", "", "",
+                              "", "", "", "", "", "", ""], height=24)
+    for i in range(ACHN - ACH0 + 1):
+        r = ACH0 + i
+        pa = 9 + i
+        ws["A%d" % r] = ('=IF(PLAN_ACTIONS!$E{p}="",0,IF(OR(PLAN_ACTIONS!$Q{p}="Terminée",'
+                         'PLAN_ACTIONS!$Q{p}="Abandonnée"),0,IF(PLAN_ACTIONS!$I{p}="",0,'
+                         'PLAN_ACTIONS!$I{p})))').format(p=pa)
+        ws["B%d" % r] = '=$A{r}+({n}-ROW())/100000'.format(r=r, n=ACHN + 1)
+        for col2 in "AB":
+            c = ws["%s%d" % (col2, r)]
+            c.font = f(9)
+            c.border = BOX
+            c.number_format = "0.00000"
+            c.alignment = Alignment(horizontal="center", vertical="center")
+        ws.row_dimensions[r].height = 13
+
+    band(ws, TR3 - 2, 1, 12, "TROIS ACTIONS PRIORITAIRES  (criticité la plus élevée parmi les actions ouvertes)")
+    header_row(ws, TR3 - 1, ["Rang", "N°", "Problème constaté", "Pilote", "Date cible",
+                             "Avancement", "Criticité", "Retard (j)", "Action décidée",
+                             "", "", ""], height=24)
+    for i in range(TR3N - TR3 + 1):
+        r = TR3 + i
+        m = 'MATCH(LARGE($B$%d:$B$%d,%d),$B$%d:$B$%d,0)' % (ACH0, ACHN, i + 1, ACH0, ACHN)
+        ok = 'LARGE($A$%d:$A$%d,%d)=0' % (ACH0, ACHN, i + 1)
+        srcs = [("B", "A"), ("C", "E"), ("D", "N"), ("E", "O"), ("F", "P"), ("G", "I"), ("H", "S"),
+                ("I", "L")]
+        ws["A%d" % r] = i + 1
+        for dst, src in srcs:
+            ws["%s%d" % (dst, r)] = ('=IF({ok},"",IFERROR(INDEX(PLAN_ACTIONS!${s}$9:${s}$128,{m}),""))'
+                                     .format(ok=ok, s=src, m=m))
+        for col2, fmt in (("A", "0"), ("B", None), ("C", None), ("D", None), ("E", DATE),
+                          ("F", PCT), ("G", "0"), ("H", "0"), ("I", None)):
+            c = ws["%s%d" % (col2, r)]
+            c.font = f(9)
+            c.border = BOX
+            c.number_format = fmt or "General"
+            c.alignment = Alignment(horizontal="left" if fmt is None else "center",
+                                    vertical="center", indent=1)
+        ws.row_dimensions[r].height = 14
+
     widths(ws, {"A": 30, "B": 14, "C": 13, "D": 13, "E": 14, "F": 26, "G": 13, "H": 12,
                 "I": 13, "J": 13, "K": 11, "L": 13, "M": 11, "N": 11, "O": 15, "P": 10,
-                "Q": 10, "R": 14, "S": 16, "U": 30, "V": 14, "X": 32})
+                "Q": 10, "R": 14, "S": 16, "T": 12, "U": 12, "V": 13,
+                "W": 9, "X": 9, "Y": 9, "Z": 9, "AA": 9, "AB": 34, "AC": 14})
     page(ws)
     return ws
