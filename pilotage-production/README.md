@@ -82,12 +82,22 @@ avant le chargement. Les formats français sont pris en charge : `1 234,56`,
 Les données chargées restent dans le navigateur (`localStorage`) : elles ne
 partent sur aucun serveur et sont retrouvées à la réouverture de la page.
 
+### Fichiers d'exemple
+
+Le dossier `exemples-erp/` contient trois extractions complètes et cohérentes
+(462 lignes de production sur quatre mois, 2 137 arrêts, 188 ordres de
+fabrication), en `.xlsx` et en `.csv`. Leurs en-têtes sont des intitulés d'ERP
+volontairement différents des noms internes du tableau de bord ; les trois
+fichiers sont reconnus et appariés à 100 % sans intervention.
+
 ### Date de référence
 
 Encours, retards et charge se calculent par rapport à une **date de référence**,
 réglable dans le bandeau de filtres et positionnée par défaut sur la donnée la
 plus récente du jeu chargé. C'est elle qui détermine ce qui est en retard, ce qui
-est en cours et ce qui reste à planifier.
+est en cours et ce qui reste à planifier — et c'est aussi elle qui fixe le mois
+analysé par les indicateurs, la grille SQCDP et le suivi journalier. Un jeu
+couvrant plusieurs mois se parcourt donc en déplaçant cette seule date.
 
 ### Régénérer le jeu de démonstration
 

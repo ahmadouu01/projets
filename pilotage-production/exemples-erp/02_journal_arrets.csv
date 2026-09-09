@@ -1,0 +1,2138 @@
+﻿Date;Heure début;Heure fin;Centre de charge;Equipe;Code motif d'arrêt;Libellé motif;Durée (mn)
+01/10/2025;06:57;07:37;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+01/10/2025;08:01;08:42;LA-01 Assemblage;Matin;MA-10;Panne mécanique;41
+01/10/2025;09:10;09:40;LA-01 Assemblage;Matin;CS-10;Changement de série;30
+01/10/2025;13:33;14:13;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+01/10/2025;14:51;15:15;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;24
+01/10/2025;15:24;15:35;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;11
+01/10/2025;16:04;16:26;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;22
+01/10/2025;06:57;07:37;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+01/10/2025;08:02;08:14;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;12
+01/10/2025;08:47;09:04;LU-02 Usinage;Matin;AP-20;Composant non conforme;17
+01/10/2025;09:38;09:58;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;20
+01/10/2025;10:35;11:18;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;43
+01/10/2025;11:32;12:00;LU-02 Usinage;Matin;CS-20;Attente outillage;28
+01/10/2025;13:37;14:17;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+01/10/2025;14:32;14:48;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;16
+01/10/2025;15:18;15:36;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;18
+01/10/2025;21:46;22:26;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+01/10/2025;22:43;23:21;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;38
+01/10/2025;23:45;00:01;LU-02 Usinage;Nuit;LO-20;Saturation aval;16
+01/10/2025;00:27;01:05;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;38
+01/10/2025;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+01/10/2025;08:10;08:33;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;23
+01/10/2025;08:47;09:25;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;38
+01/10/2025;09:47;10:24;LC-03 Conditionnement;Matin;CS-10;Changement de série;37
+01/10/2025;10:48;10:58;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;10
+02/10/2025;06:39;07:19;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+02/10/2025;07:53;08:25;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;32
+02/10/2025;08:59;09:10;LA-01 Assemblage;Matin;LO-20;Saturation aval;11
+02/10/2025;09:43;10:05;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;22
+02/10/2025;13:35;14:15;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+02/10/2025;14:24;14:35;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;11
+02/10/2025;14:53;15:26;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;33
+02/10/2025;15:45;16:02;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;17
+02/10/2025;16:27;16:58;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;31
+02/10/2025;06:28;07:08;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+02/10/2025;07:44;08:29;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;45
+02/10/2025;08:41;08:58;LU-02 Usinage;Matin;CS-20;Attente outillage;17
+02/10/2025;13:48;14:28;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+02/10/2025;14:54;15:33;LU-02 Usinage;Après-midi;CS-10;Changement de série;39
+02/10/2025;16:04;16:11;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;7
+02/10/2025;16:35;16:52;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;17
+02/10/2025;21:36;22:16;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+02/10/2025;22:38;22:46;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;8
+02/10/2025;23:18;23:29;LU-02 Usinage;Nuit;AP-20;Composant non conforme;11
+02/10/2025;00:06;00:23;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;17
+02/10/2025;00:40;01:26;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;46
+02/10/2025;06:54;07:34;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+02/10/2025;08:09;08:15;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;6
+02/10/2025;08:38;09:12;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;34
+02/10/2025;09:48;10:07;LC-03 Conditionnement;Matin;LO-20;Saturation aval;19
+02/10/2025;10:44;11:04;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;20
+02/10/2025;11:32;11:45;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;13
+03/10/2025;06:53;07:33;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+03/10/2025;07:45;08:54;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;69
+03/10/2025;09:27;09:38;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;11
+03/10/2025;10:14;10:35;LA-01 Assemblage;Matin;AP-20;Composant non conforme;21
+03/10/2025;11:09;11:21;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;12
+03/10/2025;11:29;12:12;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;43
+03/10/2025;13:35;14:15;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/10/2025;14:25;14:41;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;16
+03/10/2025;15:20;15:43;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;23
+03/10/2025;16:02;16:53;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;51
+03/10/2025;17:14;17:34;LA-01 Assemblage;Après-midi;CS-10;Changement de série;20
+03/10/2025;17:52;18:02;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;10
+03/10/2025;06:48;07:28;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+03/10/2025;07:41;08:51;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;70
+03/10/2025;09:09;09:34;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;25
+03/10/2025;09:42;10:25;LU-02 Usinage;Matin;MA-10;Panne mécanique;43
+03/10/2025;10:46;11:06;LU-02 Usinage;Matin;CS-10;Changement de série;20
+03/10/2025;13:58;14:38;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/10/2025;14:46;15:04;LU-02 Usinage;Après-midi;LO-20;Saturation aval;18
+03/10/2025;15:31;15:55;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;24
+03/10/2025;16:22;16:39;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;17
+03/10/2025;17:13;17:27;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;14
+03/10/2025;21:36;22:16;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+03/10/2025;22:48;23:08;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;20
+03/10/2025;23:38;23:57;LU-02 Usinage;Nuit;CS-20;Attente outillage;19
+03/10/2025;00:19;00:44;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;25
+03/10/2025;00:57;01:15;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;18
+03/10/2025;01:45;02:27;LU-02 Usinage;Nuit;MA-10;Panne mécanique;42
+03/10/2025;06:36;07:16;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+03/10/2025;07:26;08:37;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;71
+03/10/2025;09:02;09:33;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;31
+03/10/2025;09:52;09:58;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;6
+06/10/2025;06:34;07:14;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+06/10/2025;07:39;08:16;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;37
+06/10/2025;08:43;09:11;LA-01 Assemblage;Matin;CS-20;Attente outillage;28
+06/10/2025;09:33;09:49;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;16
+06/10/2025;09:57;10:15;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;18
+06/10/2025;10:24;10:45;LA-01 Assemblage;Matin;MA-10;Panne mécanique;21
+06/10/2025;13:56;14:36;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/10/2025;14:44;15:04;LA-01 Assemblage;Après-midi;CS-10;Changement de série;20
+06/10/2025;15:17;15:29;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;12
+06/10/2025;06:35;07:15;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+06/10/2025;07:28;07:37;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;9
+06/10/2025;07:57;08:27;LU-02 Usinage;Matin;MO-10;Absence non remplacée;30
+06/10/2025;08:47;08:56;LU-02 Usinage;Matin;LO-20;Saturation aval;9
+06/10/2025;09:29;09:58;LU-02 Usinage;Matin;MA-30;Défaut automatisme;29
+06/10/2025;13:41;14:21;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/10/2025;14:41;15:07;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;26
+06/10/2025;15:43;16:05;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+06/10/2025;16:13;16:39;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;26
+06/10/2025;16:58;17:30;LU-02 Usinage;Après-midi;CS-20;Attente outillage;32
+06/10/2025;17:57;18:18;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;21
+06/10/2025;21:43;22:23;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+06/10/2025;22:34;23:00;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;26
+06/10/2025;23:30;00:12;LU-02 Usinage;Nuit;MA-10;Panne mécanique;42
+06/10/2025;06:30;07:10;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+06/10/2025;07:47;08:08;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;21
+06/10/2025;08:23;08:58;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;35
+06/10/2025;09:08;09:29;LC-03 Conditionnement;Matin;CS-20;Attente outillage;21
+07/10/2025;06:48;07:28;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+07/10/2025;07:54;08:11;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;17
+07/10/2025;08:31;09:11;LA-01 Assemblage;Matin;MA-10;Panne mécanique;40
+07/10/2025;13:51;14:31;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/10/2025;14:53;15:12;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;19
+07/10/2025;15:38;16:07;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;29
+07/10/2025;16:18;16:30;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;12
+07/10/2025;07:00;07:40;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+07/10/2025;08:02;08:23;LU-02 Usinage;Matin;MA-30;Défaut automatisme;21
+07/10/2025;08:36;08:42;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;6
+07/10/2025;08:58;09:09;LU-02 Usinage;Matin;AP-20;Composant non conforme;11
+07/10/2025;09:45;09:56;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;11
+07/10/2025;10:31;10:56;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;25
+07/10/2025;13:46;14:26;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/10/2025;15:02;15:18;LU-02 Usinage;Après-midi;CS-20;Attente outillage;16
+07/10/2025;15:51;16:04;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;13
+07/10/2025;21:48;22:28;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+07/10/2025;22:58;23:04;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;6
+07/10/2025;23:38;00:01;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;23
+07/10/2025;00:27;00:35;LU-02 Usinage;Nuit;LO-20;Saturation aval;8
+07/10/2025;06:58;07:38;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+07/10/2025;08:15;08:34;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;19
+07/10/2025;08:53;09:03;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;10
+07/10/2025;09:25;10:08;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;43
+07/10/2025;10:34;11:14;LC-03 Conditionnement;Matin;CS-10;Changement de série;40
+08/10/2025;06:43;07:23;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+08/10/2025;07:55;08:40;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+08/10/2025;08:53;09:06;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;13
+08/10/2025;09:42;10:14;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;32
+08/10/2025;10:48;11:04;LA-01 Assemblage;Matin;LO-20;Saturation aval;16
+08/10/2025;13:30;14:10;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/10/2025;14:38;14:51;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;13
+08/10/2025;15:31;15:50;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;19
+08/10/2025;16:01;16:28;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;27
+08/10/2025;17:08;17:25;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;17
+08/10/2025;06:45;07:25;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+08/10/2025;07:52;08:37;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+08/10/2025;08:55;09:16;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;21
+08/10/2025;09:43;10:10;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;27
+08/10/2025;13:55;14:35;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/10/2025;15:08;15:57;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;49
+08/10/2025;16:34;17:11;LU-02 Usinage;Après-midi;CS-10;Changement de série;37
+08/10/2025;17:27;17:40;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;13
+08/10/2025;21:36;22:16;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+08/10/2025;22:27;22:54;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;27
+08/10/2025;23:29;23:46;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;17
+08/10/2025;00:18;00:35;LU-02 Usinage;Nuit;AP-20;Composant non conforme;17
+08/10/2025;01:04;01:17;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;13
+08/10/2025;06:33;07:13;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+08/10/2025;07:53;08:38;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+08/10/2025;09:02;09:35;LC-03 Conditionnement;Matin;CS-10;Changement de série;33
+08/10/2025;10:08;10:15;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;7
+08/10/2025;10:51;11:15;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;24
+08/10/2025;11:50;11:58;LC-03 Conditionnement;Matin;LO-20;Saturation aval;8
+08/10/2025;12:13;12:51;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;38
+09/10/2025;06:45;07:25;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+09/10/2025;07:45;08:04;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;19
+09/10/2025;08:18;08:25;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;7
+09/10/2025;08:53;09:19;LA-01 Assemblage;Matin;AP-20;Composant non conforme;26
+09/10/2025;09:43;09:57;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;14
+09/10/2025;13:51;14:31;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/10/2025;14:56;15:19;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;23
+09/10/2025;15:39;16:10;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;31
+09/10/2025;16:30;16:43;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;13
+09/10/2025;16:56;17:37;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;41
+09/10/2025;17:46;18:15;LA-01 Assemblage;Après-midi;CS-10;Changement de série;29
+09/10/2025;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+09/10/2025;07:53;08:14;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;21
+09/10/2025;08:43;09:08;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;25
+09/10/2025;09:25;09:51;LU-02 Usinage;Matin;MA-10;Panne mécanique;26
+09/10/2025;13:46;14:26;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/10/2025;14:55;15:22;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;27
+09/10/2025;15:58;16:18;LU-02 Usinage;Après-midi;LO-20;Saturation aval;20
+09/10/2025;16:53;17:10;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;17
+09/10/2025;17:25;17:35;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;10
+09/10/2025;21:40;22:20;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+09/10/2025;22:32;22:49;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;17
+09/10/2025;23:15;23:38;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;23
+09/10/2025;00:18;00:49;LU-02 Usinage;Nuit;CS-20;Attente outillage;31
+09/10/2025;01:09;01:41;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;32
+09/10/2025;02:11;02:36;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;25
+09/10/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+09/10/2025;07:58;08:12;LC-03 Conditionnement;Matin;LO-20;Saturation aval;14
+09/10/2025;08:28;08:48;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;20
+10/10/2025;06:48;07:28;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+10/10/2025;07:58;08:12;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;14
+10/10/2025;08:51;09:32;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;41
+10/10/2025;09:42;10:10;LA-01 Assemblage;Matin;CS-20;Attente outillage;28
+10/10/2025;10:42;11:12;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;30
+10/10/2025;11:50;12:00;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;10
+10/10/2025;13:50;14:30;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/10/2025;14:41;15:37;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;56
+10/10/2025;15:50;16:25;LA-01 Assemblage;Après-midi;CS-10;Changement de série;35
+10/10/2025;07:00;07:40;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+10/10/2025;08:19;08:40;LU-02 Usinage;Matin;CS-10;Changement de série;21
+10/10/2025;08:51;08:56;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;5
+10/10/2025;09:17;09:46;LU-02 Usinage;Matin;MO-10;Absence non remplacée;29
+10/10/2025;10:16;10:25;LU-02 Usinage;Matin;LO-20;Saturation aval;9
+10/10/2025;13:37;14:17;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/10/2025;14:28;14:42;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;14
+10/10/2025;15:13;15:28;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;15
+10/10/2025;16:03;16:12;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;9
+10/10/2025;16:27;16:46;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;19
+10/10/2025;17:19;17:40;LU-02 Usinage;Après-midi;CS-20;Attente outillage;21
+10/10/2025;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+10/10/2025;22:53;23:16;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;23
+10/10/2025;23:29;23:43;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;14
+10/10/2025;06:29;07:09;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+10/10/2025;07:27;07:50;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;23
+10/10/2025;08:14;08:26;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;12
+10/10/2025;08:45;09:12;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;27
+13/10/2025;06:52;07:32;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+13/10/2025;08:11;09:12;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;61
+13/10/2025;09:46;10:03;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;17
+13/10/2025;10:24;10:43;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;19
+13/10/2025;13:29;14:09;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/10/2025;14:37;14:53;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;16
+13/10/2025;15:09;15:26;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;17
+13/10/2025;15:43;16:13;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;30
+13/10/2025;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+13/10/2025;07:26;08:28;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;62
+13/10/2025;08:43;08:53;LU-02 Usinage;Matin;LO-20;Saturation aval;10
+13/10/2025;09:02;09:17;LU-02 Usinage;Matin;MA-30;Défaut automatisme;15
+13/10/2025;09:49;10:01;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;12
+13/10/2025;10:21;10:43;LU-02 Usinage;Matin;AP-20;Composant non conforme;22
+13/10/2025;11:23;11:33;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;10
+13/10/2025;13:58;14:38;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/10/2025;15:02;15:24;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;22
+13/10/2025;15:38;16:06;LU-02 Usinage;Après-midi;CS-20;Attente outillage;28
+13/10/2025;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+13/10/2025;22:48;23:23;LU-02 Usinage;Nuit;CS-10;Changement de série;35
+13/10/2025;23:46;23:58;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;12
+13/10/2025;00:15;00:44;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;29
+13/10/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+13/10/2025;07:42;08:45;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;63
+13/10/2025;09:21;09:50;LC-03 Conditionnement;Matin;CS-20;Attente outillage;29
+13/10/2025;10:07;10:35;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;28
+13/10/2025;11:09;11:27;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;18
+13/10/2025;11:58;12:29;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;31
+14/10/2025;06:30;07:10;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+14/10/2025;07:30;08:07;LA-01 Assemblage;Matin;CS-10;Changement de série;37
+14/10/2025;08:24;08:33;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;9
+14/10/2025;08:44;09:14;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;30
+14/10/2025;13:56;14:36;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/10/2025;14:57;15:14;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;17
+14/10/2025;15:35;15:47;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;12
+14/10/2025;16:07;16:29;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+14/10/2025;16:38;17:24;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;46
+14/10/2025;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+14/10/2025;07:43;08:06;LU-02 Usinage;Matin;AP-20;Composant non conforme;23
+14/10/2025;08:37;08:47;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;10
+14/10/2025;13:48;14:28;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/10/2025;14:44;14:59;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;15
+14/10/2025;15:09;15:33;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;24
+14/10/2025;16:06;16:25;LU-02 Usinage;Après-midi;CS-10;Changement de série;19
+14/10/2025;21:45;22:25;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+14/10/2025;22:59;23:13;LU-02 Usinage;Nuit;LO-20;Saturation aval;14
+14/10/2025;23:24;23:44;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;20
+14/10/2025;00:02;00:14;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;12
+14/10/2025;00:40;01:06;LU-02 Usinage;Nuit;AP-20;Composant non conforme;26
+14/10/2025;06:38;07:18;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+14/10/2025;07:28;08:10;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;42
+14/10/2025;08:20;08:36;LC-03 Conditionnement;Matin;CS-10;Changement de série;16
+14/10/2025;09:00;09:11;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;11
+14/10/2025;09:21;09:51;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;30
+14/10/2025;10:07;10:26;LC-03 Conditionnement;Matin;LO-20;Saturation aval;19
+15/10/2025;06:44;07:24;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+15/10/2025;07:35;07:46;LA-01 Assemblage;Matin;LO-20;Saturation aval;11
+15/10/2025;07:58;08:17;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;19
+15/10/2025;08:32;08:43;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;11
+15/10/2025;09:11;09:40;LA-01 Assemblage;Matin;AP-20;Composant non conforme;29
+15/10/2025;13:48;14:28;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/10/2025;14:59;15:36;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;37
+15/10/2025;15:47;16:03;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;16
+15/10/2025;16:36;16:50;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;14
+15/10/2025;17:15;17:34;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;19
+15/10/2025;18:12;18:40;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;28
+15/10/2025;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+15/10/2025;07:25;07:39;LU-02 Usinage;Matin;CS-20;Attente outillage;14
+15/10/2025;08:08;08:34;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;26
+15/10/2025;08:57;09:07;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;10
+15/10/2025;13:35;14:15;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/10/2025;14:38;14:45;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;7
+15/10/2025;15:18;15:41;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;23
+15/10/2025;16:17;16:34;LU-02 Usinage;Après-midi;LO-20;Saturation aval;17
+15/10/2025;16:42;17:01;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;19
+15/10/2025;21:47;22:27;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+15/10/2025;22:51;23:09;LU-02 Usinage;Nuit;AP-20;Composant non conforme;18
+15/10/2025;23:35;23:45;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;10
+15/10/2025;00:02;00:40;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;38
+15/10/2025;00:57;01:11;LU-02 Usinage;Nuit;CS-20;Attente outillage;14
+15/10/2025;01:22;01:48;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;26
+15/10/2025;06:38;07:18;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+15/10/2025;07:31;08:02;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;31
+15/10/2025;08:21;08:36;LC-03 Conditionnement;Matin;LO-20;Saturation aval;15
+16/10/2025;06:38;07:18;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+16/10/2025;07:57;08:24;LA-01 Assemblage;Matin;AP-20;Composant non conforme;27
+16/10/2025;08:37;08:55;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;18
+16/10/2025;09:18;09:54;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;36
+16/10/2025;10:27;10:50;LA-01 Assemblage;Matin;CS-20;Attente outillage;23
+16/10/2025;11:08;11:29;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;21
+16/10/2025;13:34;14:14;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/10/2025;14:46;14:58;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;12
+16/10/2025;15:24;16:18;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;54
+16/10/2025;06:50;07:30;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+16/10/2025;07:54;08:25;LU-02 Usinage;Matin;MA-10;Panne mécanique;31
+16/10/2025;08:45;09:14;LU-02 Usinage;Matin;CS-10;Changement de série;29
+16/10/2025;09:31;09:43;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;12
+16/10/2025;10:04;10:38;LU-02 Usinage;Matin;MO-10;Absence non remplacée;34
+16/10/2025;13:48;14:28;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/10/2025;14:42;15:01;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;19
+16/10/2025;15:20;15:35;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;15
+16/10/2025;16:13;16:36;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;23
+16/10/2025;17:07;17:28;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;21
+16/10/2025;18:07;18:44;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;37
+16/10/2025;21:33;22:13;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+16/10/2025;22:33;22:46;LU-02 Usinage;Nuit;CS-20;Attente outillage;13
+16/10/2025;22:58;23:20;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;22
+16/10/2025;06:47;07:27;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+16/10/2025;07:58;08:05;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;7
+16/10/2025;08:29;08:56;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;27
+16/10/2025;09:21;09:30;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;9
+17/10/2025;06:44;07:24;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+17/10/2025;08:03;08:29;LA-01 Assemblage;Matin;CS-20;Attente outillage;26
+17/10/2025;08:58;09:20;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;22
+17/10/2025;13:53;14:33;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/10/2025;14:44;14:55;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+17/10/2025;15:22;15:52;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;30
+17/10/2025;16:10;16:25;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;15
+17/10/2025;06:51;07:31;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+17/10/2025;08:02;08:29;LU-02 Usinage;Matin;MO-10;Absence non remplacée;27
+17/10/2025;08:44;08:55;LU-02 Usinage;Matin;LO-20;Saturation aval;11
+17/10/2025;09:23;09:59;LU-02 Usinage;Matin;MA-30;Défaut automatisme;36
+17/10/2025;10:21;10:31;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;10
+17/10/2025;11:09;11:22;LU-02 Usinage;Matin;AP-20;Composant non conforme;13
+17/10/2025;13:59;14:39;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/10/2025;15:05;15:14;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;9
+17/10/2025;15:47;16:29;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;42
+17/10/2025;21:33;22:13;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+17/10/2025;22:30;23:26;LU-02 Usinage;Nuit;MA-10;Panne mécanique;56
+17/10/2025;00:03;00:37;LU-02 Usinage;Nuit;CS-10;Changement de série;34
+17/10/2025;01:01;01:12;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;11
+17/10/2025;06:50;07:30;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+17/10/2025;07:59;08:35;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;36
+17/10/2025;08:45;09:08;LC-03 Conditionnement;Matin;CS-20;Attente outillage;23
+17/10/2025;09:42;10:04;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;22
+17/10/2025;10:22;10:44;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;22
+20/10/2025;06:33;07:13;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+20/10/2025;07:26;07:53;LA-01 Assemblage;Matin;MA-10;Panne mécanique;27
+20/10/2025;08:10;08:31;LA-01 Assemblage;Matin;CS-10;Changement de série;21
+20/10/2025;09:08;09:15;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;7
+20/10/2025;13:51;14:31;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/10/2025;14:43;15:08;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;25
+20/10/2025;15:32;15:42;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;10
+20/10/2025;16:16;16:31;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;15
+20/10/2025;16:50;17:03;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;13
+20/10/2025;06:44;07:24;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+20/10/2025;07:59;08:11;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;12
+20/10/2025;08:33;08:57;LU-02 Usinage;Matin;AP-20;Composant non conforme;24
+20/10/2025;13:49;14:29;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/10/2025;14:54;15:13;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;19
+20/10/2025;15:21;15:31;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;10
+20/10/2025;15:50;16:24;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;34
+20/10/2025;21:32;22:12;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+20/10/2025;22:22;22:37;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;15
+20/10/2025;22:57;23:13;LU-02 Usinage;Nuit;LO-20;Saturation aval;16
+20/10/2025;23:50;00:16;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;26
+20/10/2025;00:47;00:55;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;8
+20/10/2025;06:58;07:38;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+20/10/2025;08:06;08:29;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;23
+20/10/2025;08:38;08:59;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;21
+20/10/2025;09:31;09:57;LC-03 Conditionnement;Matin;CS-10;Changement de série;26
+20/10/2025;10:36;10:41;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;5
+20/10/2025;10:52;11:28;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;36
+21/10/2025;06:47;07:27;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+21/10/2025;07:44;09:02;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;78
+21/10/2025;09:10;09:26;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;16
+21/10/2025;09:52;10:11;LA-01 Assemblage;Matin;LO-20;Saturation aval;19
+21/10/2025;10:29;10:45;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;16
+21/10/2025;11:05;11:21;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;16
+21/10/2025;13:43;14:23;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/10/2025;14:45;14:55;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;10
+21/10/2025;15:14;15:32;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;18
+21/10/2025;16:00;16:31;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;31
+21/10/2025;16:54;17:22;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;28
+21/10/2025;17:43;18:06;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;23
+21/10/2025;06:48;07:28;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+21/10/2025;08:07;09:26;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;79
+21/10/2025;10:05;10:51;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;46
+21/10/2025;11:12;11:42;LU-02 Usinage;Matin;CS-20;Attente outillage;30
+21/10/2025;11:57;12:16;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;19
+21/10/2025;13:59;14:39;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/10/2025;15:03;15:23;LU-02 Usinage;Après-midi;CS-10;Changement de série;20
+21/10/2025;15:41;15:52;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+21/10/2025;16:00;16:36;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;36
+21/10/2025;17:11;17:27;LU-02 Usinage;Après-midi;LO-20;Saturation aval;16
+21/10/2025;21:28;22:08;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+21/10/2025;22:43;23:00;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;17
+21/10/2025;23:10;23:31;LU-02 Usinage;Nuit;AP-20;Composant non conforme;21
+21/10/2025;23:41;23:56;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;15
+21/10/2025;00:18;00:59;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;41
+21/10/2025;01:31;01:49;LU-02 Usinage;Nuit;CS-20;Attente outillage;18
+21/10/2025;06:33;07:13;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+21/10/2025;07:38;08:33;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;55
+21/10/2025;09:10;09:18;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;8
+21/10/2025;09:43;10:01;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;18
+22/10/2025;06:54;07:34;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+22/10/2025;07:54;08:04;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;10
+22/10/2025;08:42;09:05;LA-01 Assemblage;Matin;AP-20;Composant non conforme;23
+22/10/2025;09:42;09:58;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;16
+22/10/2025;10:06;10:42;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;36
+22/10/2025;10:54;11:19;LA-01 Assemblage;Matin;CS-20;Attente outillage;25
+22/10/2025;13:53;14:33;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+22/10/2025;14:58;15:11;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;13
+22/10/2025;15:29;15:51;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;22
+22/10/2025;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+22/10/2025;07:57;08:13;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;16
+22/10/2025;08:24;09:14;LU-02 Usinage;Matin;MA-10;Panne mécanique;50
+22/10/2025;09:37;10:02;LU-02 Usinage;Matin;CS-10;Changement de série;25
+22/10/2025;10:18;10:30;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;12
+22/10/2025;13:30;14:10;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+22/10/2025;14:31;14:47;LU-02 Usinage;Après-midi;LO-20;Saturation aval;16
+22/10/2025;15:07;15:40;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;33
+22/10/2025;15:51;16:08;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;17
+22/10/2025;16:32;17:00;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;28
+22/10/2025;17:32;17:40;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;8
+22/10/2025;21:29;22:09;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+22/10/2025;22:17;23:03;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;46
+22/10/2025;23:31;23:49;LU-02 Usinage;Nuit;CS-20;Attente outillage;18
+22/10/2025;06:39;07:19;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+22/10/2025;07:29;07:48;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;19
+22/10/2025;07:59;08:14;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;15
+22/10/2025;08:32;08:54;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;22
+23/10/2025;06:46;07:26;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+23/10/2025;08:02;08:47;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+23/10/2025;08:58;09:37;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;39
+23/10/2025;10:06;10:32;LA-01 Assemblage;Matin;CS-20;Attente outillage;26
+23/10/2025;13:29;14:09;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+23/10/2025;14:22;14:50;LA-01 Assemblage;Après-midi;CS-10;Changement de série;28
+23/10/2025;15:09;15:14;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+23/10/2025;15:26;15:47;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;21
+23/10/2025;06:47;07:27;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+23/10/2025;08:01;08:46;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+23/10/2025;09:12;09:17;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;5
+23/10/2025;09:35;10:12;LU-02 Usinage;Matin;MO-10;Absence non remplacée;37
+23/10/2025;10:47;11:04;LU-02 Usinage;Matin;LO-20;Saturation aval;17
+23/10/2025;11:40;12:08;LU-02 Usinage;Matin;MA-30;Défaut automatisme;28
+23/10/2025;12:38;12:48;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;10
+23/10/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+23/10/2025;14:22;14:43;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;21
+23/10/2025;15:00;15:15;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;15
+23/10/2025;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+23/10/2025;22:52;23:18;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;26
+23/10/2025;23:29;00:22;LU-02 Usinage;Nuit;MA-10;Panne mécanique;53
+23/10/2025;00:56;01:35;LU-02 Usinage;Nuit;CS-10;Changement de série;39
+23/10/2025;06:40;07:20;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+23/10/2025;07:53;08:38;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+23/10/2025;09:05;09:15;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;10
+23/10/2025;09:29;10:13;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;44
+23/10/2025;10:35;11:02;LC-03 Conditionnement;Matin;CS-20;Attente outillage;27
+23/10/2025;11:29;11:52;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;23
+24/10/2025;07:00;07:40;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+24/10/2025;08:19;08:29;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;10
+24/10/2025;08:40;09:29;LA-01 Assemblage;Matin;MA-10;Panne mécanique;49
+24/10/2025;10:04;10:37;LA-01 Assemblage;Matin;CS-10;Changement de série;33
+24/10/2025;13:37;14:17;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+24/10/2025;14:40;14:49;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;9
+24/10/2025;15:09;15:26;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;17
+24/10/2025;15:53;16:09;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;16
+24/10/2025;16:44;17:13;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;29
+24/10/2025;06:58;07:38;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+24/10/2025;07:54;08:18;LU-02 Usinage;Matin;MA-30;Défaut automatisme;24
+24/10/2025;08:27;08:40;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;13
+24/10/2025;13:47;14:27;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+24/10/2025;14:51;15:13;LU-02 Usinage;Après-midi;CS-20;Attente outillage;22
+24/10/2025;15:37;16:08;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;31
+24/10/2025;16:28;16:53;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;25
+24/10/2025;21:50;22:30;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+24/10/2025;22:48;22:58;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;10
+24/10/2025;23:23;23:54;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;31
+24/10/2025;00:11;00:29;LU-02 Usinage;Nuit;LO-20;Saturation aval;18
+24/10/2025;01:09;01:45;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;36
+24/10/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+24/10/2025;07:44;08:10;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;26
+24/10/2025;08:41;08:53;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;12
+24/10/2025;09:06;09:42;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;36
+24/10/2025;10:17;10:43;LC-03 Conditionnement;Matin;CS-10;Changement de série;26
+24/10/2025;11:16;11:28;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;12
+27/10/2025;06:58;07:38;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+27/10/2025;08:08;08:20;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;12
+27/10/2025;08:41;08:55;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;14
+27/10/2025;09:07;09:24;LA-01 Assemblage;Matin;LO-20;Saturation aval;17
+27/10/2025;09:51;11:24;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;93
+27/10/2025;13:43;14:23;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/10/2025;14:33;15:02;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;29
+27/10/2025;15:29;15:39;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;10
+27/10/2025;16:04;18:03;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;119
+27/10/2025;18:16;18:39;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;23
+27/10/2025;19:17;19:33;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;16
+27/10/2025;06:30;07:10;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+27/10/2025;07:25;07:35;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;10
+27/10/2025;07:44;09:46;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;122
+27/10/2025;09:59;10:20;LU-02 Usinage;Matin;CS-20;Attente outillage;21
+27/10/2025;13:56;14:36;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/10/2025;15:13;17:02;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;109
+27/10/2025;17:14;17:50;LU-02 Usinage;Après-midi;CS-10;Changement de série;36
+27/10/2025;18:20;18:28;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;8
+27/10/2025;18:53;19:25;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;32
+27/10/2025;21:53;22:33;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+27/10/2025;23:01;00:51;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;110
+27/10/2025;01:00;01:15;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;15
+27/10/2025;01:36;02:05;LU-02 Usinage;Nuit;AP-20;Composant non conforme;29
+27/10/2025;02:37;02:48;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;11
+27/10/2025;03:04;04:48;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;104
+27/10/2025;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+27/10/2025;08:14;08:42;LC-03 Conditionnement;Matin;CS-10;Changement de série;28
+27/10/2025;08:57;09:01;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;4
+28/10/2025;06:49;07:29;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+28/10/2025;07:43;08:02;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;19
+28/10/2025;08:12;08:18;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;6
+28/10/2025;08:51;09:16;LA-01 Assemblage;Matin;AP-20;Composant non conforme;25
+28/10/2025;09:35;09:51;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;16
+28/10/2025;10:02;10:45;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;43
+28/10/2025;13:46;14:26;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/10/2025;14:45;15:03;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;18
+28/10/2025;15:26;16:00;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;34
+28/10/2025;06:34;07:14;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+28/10/2025;07:45;08:10;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;25
+28/10/2025;08:38;09:01;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;23
+28/10/2025;09:24;10:15;LU-02 Usinage;Matin;MA-10;Panne mécanique;51
+28/10/2025;10:37;11:13;LU-02 Usinage;Matin;CS-10;Changement de série;36
+28/10/2025;13:35;14:15;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/10/2025;14:51;15:20;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;29
+28/10/2025;15:29;15:43;LU-02 Usinage;Après-midi;LO-20;Saturation aval;14
+28/10/2025;16:12;16:49;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;37
+28/10/2025;17:05;17:17;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;12
+28/10/2025;17:31;17:53;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;22
+28/10/2025;21:33;22:13;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+28/10/2025;22:24;22:38;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;14
+28/10/2025;23:11;23:35;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;24
+28/10/2025;06:42;07:22;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+28/10/2025;07:40;07:54;LC-03 Conditionnement;Matin;LO-20;Saturation aval;14
+28/10/2025;08:21;08:44;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;23
+28/10/2025;09:02;09:12;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;10
+29/10/2025;06:39;07:19;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+29/10/2025;07:36;08:46;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;70
+29/10/2025;09:20;09:42;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;22
+29/10/2025;10:13;10:53;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;40
+29/10/2025;13:34;14:14;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+29/10/2025;14:41;15:29;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;48
+29/10/2025;15:45;16:08;LA-01 Assemblage;Après-midi;CS-10;Changement de série;23
+29/10/2025;16:30;16:35;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+29/10/2025;06:50;07:30;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+29/10/2025;07:55;09:06;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;71
+29/10/2025;09:32;09:52;LU-02 Usinage;Matin;CS-10;Changement de série;20
+29/10/2025;10:00;10:13;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;13
+29/10/2025;10:23;10:59;LU-02 Usinage;Matin;MO-10;Absence non remplacée;36
+29/10/2025;11:32;11:41;LU-02 Usinage;Matin;LO-20;Saturation aval;9
+29/10/2025;12:09;12:28;LU-02 Usinage;Matin;MA-30;Défaut automatisme;19
+29/10/2025;13:55;14:35;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+29/10/2025;15:13;15:20;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;7
+29/10/2025;15:44;16:09;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;25
+29/10/2025;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+29/10/2025;22:46;23:19;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;33
+29/10/2025;23:59;00:17;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;18
+29/10/2025;00:32;01:28;LU-02 Usinage;Nuit;MA-10;Panne mécanique;56
+29/10/2025;06:34;07:14;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+29/10/2025;07:38;08:50;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;72
+29/10/2025;09:19;09:36;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;17
+29/10/2025;10:06;10:21;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;15
+29/10/2025;10:32;11:08;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;36
+29/10/2025;11:37;12:02;LC-03 Conditionnement;Matin;CS-20;Attente outillage;25
+30/10/2025;06:38;07:18;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+30/10/2025;07:42;08:08;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;26
+30/10/2025;08:35;09:00;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;25
+30/10/2025;09:12;09:37;LA-01 Assemblage;Matin;MA-10;Panne mécanique;25
+30/10/2025;13:57;14:37;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+30/10/2025;15:09;15:30;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;21
+30/10/2025;15:57;16:13;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;16
+30/10/2025;16:53;17:26;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;33
+30/10/2025;18:04;18:13;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;9
+30/10/2025;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+30/10/2025;07:44;07:58;LU-02 Usinage;Matin;LO-20;Saturation aval;14
+30/10/2025;08:11;08:45;LU-02 Usinage;Matin;MA-30;Défaut automatisme;34
+30/10/2025;13:34;14:14;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+30/10/2025;14:27;14:50;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;23
+30/10/2025;15:08;15:32;LU-02 Usinage;Après-midi;CS-20;Attente outillage;24
+30/10/2025;16:03;16:30;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;27
+30/10/2025;21:30;22:10;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+30/10/2025;22:30;23:08;LU-02 Usinage;Nuit;CS-10;Changement de série;38
+30/10/2025;23:24;23:33;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;9
+30/10/2025;00:05;00:24;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;19
+30/10/2025;01:00;01:13;LU-02 Usinage;Nuit;LO-20;Saturation aval;13
+30/10/2025;06:37;07:17;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+30/10/2025;07:33;07:49;LC-03 Conditionnement;Matin;CS-20;Attente outillage;16
+30/10/2025;08:04;08:36;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;32
+30/10/2025;08:52;09:14;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;22
+30/10/2025;09:43;10:16;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;33
+30/10/2025;10:34;11:00;LC-03 Conditionnement;Matin;CS-10;Changement de série;26
+31/10/2025;06:53;07:33;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+31/10/2025;08:00;08:38;LA-01 Assemblage;Matin;CS-10;Changement de série;38
+31/10/2025;09:10;09:16;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;6
+31/10/2025;09:33;09:55;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;22
+31/10/2025;10:06;10:19;LA-01 Assemblage;Matin;LO-20;Saturation aval;13
+31/10/2025;13:57;14:37;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+31/10/2025;14:54;15:02;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;8
+31/10/2025;15:22;15:39;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;17
+31/10/2025;16:09;16:31;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+31/10/2025;17:09;17:30;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;21
+31/10/2025;18:03;18:23;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;20
+31/10/2025;06:38;07:18;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+31/10/2025;07:56;08:09;LU-02 Usinage;Matin;AP-20;Composant non conforme;13
+31/10/2025;08:30;08:51;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;21
+31/10/2025;09:00;09:41;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;41
+31/10/2025;13:49;14:29;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+31/10/2025;15:08;15:30;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;22
+31/10/2025;15:40;16:03;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;23
+31/10/2025;16:19;16:57;LU-02 Usinage;Après-midi;CS-10;Changement de série;38
+31/10/2025;17:13;17:22;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;9
+31/10/2025;21:35;22:15;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+31/10/2025;22:26;22:39;LU-02 Usinage;Nuit;LO-20;Saturation aval;13
+31/10/2025;23:15;23:41;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;26
+31/10/2025;00:09;00:23;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;14
+31/10/2025;00:53;01:13;LU-02 Usinage;Nuit;AP-20;Composant non conforme;20
+31/10/2025;01:53;02:16;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;23
+31/10/2025;06:53;07:33;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+31/10/2025;07:52;08:46;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;54
+31/10/2025;09:19;09:44;LC-03 Conditionnement;Matin;CS-10;Changement de série;25
+03/11/2025;06:46;07:26;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+03/11/2025;08:03;08:16;LA-01 Assemblage;Matin;LO-20;Saturation aval;13
+03/11/2025;08:56;09:32;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;36
+03/11/2025;09:59;10:08;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;9
+03/11/2025;10:23;10:40;LA-01 Assemblage;Matin;AP-20;Composant non conforme;17
+03/11/2025;10:48;11:00;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;12
+03/11/2025;13:57;14:37;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/11/2025;14:47;15:25;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;38
+03/11/2025;15:54;16:17;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;23
+03/11/2025;07:00;07:40;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+03/11/2025;07:49;08:20;LU-02 Usinage;Matin;CS-20;Attente outillage;31
+03/11/2025;08:46;09:08;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;22
+03/11/2025;09:31;09:57;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;26
+03/11/2025;10:34;11:28;LU-02 Usinage;Matin;MA-10;Panne mécanique;54
+03/11/2025;13:45;14:25;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/11/2025;14:33;14:38;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+03/11/2025;15:03;15:35;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;32
+03/11/2025;15:43;16:00;LU-02 Usinage;Après-midi;LO-20;Saturation aval;17
+03/11/2025;16:35;17:03;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;28
+03/11/2025;17:28;17:45;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;17
+03/11/2025;21:36;22:16;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+03/11/2025;22:55;23:17;LU-02 Usinage;Nuit;AP-20;Composant non conforme;22
+03/11/2025;23:40;00:01;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;21
+03/11/2025;06:52;07:32;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+03/11/2025;07:53;08:14;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;21
+03/11/2025;08:39;08:49;LC-03 Conditionnement;Matin;LO-20;Saturation aval;10
+03/11/2025;09:23;10:00;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;37
+04/11/2025;06:46;07:26;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+04/11/2025;08:03;08:26;LA-01 Assemblage;Matin;AP-20;Composant non conforme;23
+04/11/2025;09:01;09:19;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;18
+04/11/2025;13:35;14:15;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+04/11/2025;14:35;14:52;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;17
+04/11/2025;15:25;16:08;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;43
+04/11/2025;16:30;16:54;LA-01 Assemblage;Après-midi;CS-10;Changement de série;24
+04/11/2025;06:48;07:28;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+04/11/2025;07:58;08:29;LU-02 Usinage;Matin;MA-10;Panne mécanique;31
+04/11/2025;08:56;09:35;LU-02 Usinage;Matin;CS-10;Changement de série;39
+04/11/2025;10:11;10:18;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;7
+04/11/2025;10:43;11:12;LU-02 Usinage;Matin;MO-10;Absence non remplacée;29
+04/11/2025;11:32;11:42;LU-02 Usinage;Matin;LO-20;Saturation aval;10
+04/11/2025;13:43;14:23;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+04/11/2025;14:32;14:53;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;21
+04/11/2025;15:27;15:37;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;10
+04/11/2025;21:55;22:35;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+04/11/2025;23:08;23:31;LU-02 Usinage;Nuit;CS-20;Attente outillage;23
+04/11/2025;23:59;00:14;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;15
+04/11/2025;00:52;01:08;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;16
+04/11/2025;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+04/11/2025;08:04;08:17;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;13
+04/11/2025;08:52;09:21;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;29
+04/11/2025;09:46;10:05;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;19
+04/11/2025;10:24;10:49;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;25
+05/11/2025;06:49;07:29;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+05/11/2025;07:49;08:03;LA-01 Assemblage;Matin;CS-20;Attente outillage;14
+05/11/2025;08:36;08:52;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;16
+05/11/2025;09:30;09:53;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;23
+05/11/2025;14:00;14:40;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/11/2025;14:49;14:59;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;10
+05/11/2025;15:32;15:59;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;27
+05/11/2025;16:21;16:39;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;18
+05/11/2025;17:06;17:38;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;32
+05/11/2025;06:58;07:38;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+05/11/2025;08:05;08:41;LU-02 Usinage;Matin;MO-10;Absence non remplacée;36
+05/11/2025;09:17;09:28;LU-02 Usinage;Matin;LO-20;Saturation aval;11
+05/11/2025;13:42;14:22;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/11/2025;15:01;15:19;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;18
+05/11/2025;15:51;16:09;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;18
+05/11/2025;16:37;16:50;LU-02 Usinage;Après-midi;CS-20;Attente outillage;13
+05/11/2025;21:40;22:20;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+05/11/2025;22:49;23:14;LU-02 Usinage;Nuit;MA-10;Panne mécanique;25
+05/11/2025;23:40;23:57;LU-02 Usinage;Nuit;CS-10;Changement de série;17
+05/11/2025;00:32;00:38;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;6
+05/11/2025;01:08;01:39;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;31
+05/11/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+05/11/2025;07:58;08:28;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;30
+05/11/2025;08:59;09:15;LC-03 Conditionnement;Matin;CS-20;Attente outillage;16
+05/11/2025;09:30;10:04;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;34
+05/11/2025;10:26;10:48;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;22
+05/11/2025;11:27;12:08;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;41
+06/11/2025;06:50;07:30;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+06/11/2025;07:46;08:48;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;62
+06/11/2025;09:03;09:58;LA-01 Assemblage;Matin;MA-10;Panne mécanique;55
+06/11/2025;10:12;10:28;LA-01 Assemblage;Matin;CS-10;Changement de série;16
+06/11/2025;10:45;10:55;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;10
+06/11/2025;11:33;12:03;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;30
+06/11/2025;13:58;14:38;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/11/2025;15:11;15:48;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;37
+06/11/2025;15:56;16:05;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;9
+06/11/2025;16:38;17:06;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;28
+06/11/2025;17:22;17:45;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;23
+06/11/2025;18:23;18:41;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;18
+06/11/2025;06:38;07:18;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+06/11/2025;07:44;08:47;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;63
+06/11/2025;09:22;09:37;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;15
+06/11/2025;09:45;10:03;LU-02 Usinage;Matin;AP-20;Composant non conforme;18
+06/11/2025;10:22;10:42;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;20
+06/11/2025;13:38;14:18;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/11/2025;14:40;14:56;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;16
+06/11/2025;15:11;15:22;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;11
+06/11/2025;15:53;16:24;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;31
+06/11/2025;16:48;17:05;LU-02 Usinage;Après-midi;CS-10;Changement de série;17
+06/11/2025;21:53;22:33;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+06/11/2025;22:46;23:20;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;34
+06/11/2025;00:00;00:14;LU-02 Usinage;Nuit;LO-20;Saturation aval;14
+06/11/2025;00:47;01:10;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;23
+06/11/2025;01:36;01:46;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;10
+06/11/2025;02:16;02:40;LU-02 Usinage;Nuit;AP-20;Composant non conforme;24
+06/11/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+06/11/2025;07:48;08:52;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;64
+06/11/2025;09:04;09:20;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;16
+06/11/2025;09:52;10:39;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;47
+07/11/2025;06:37;07:17;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+07/11/2025;07:44;08:29;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+07/11/2025;09:01;09:32;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;31
+07/11/2025;09:47;10:05;LA-01 Assemblage;Matin;LO-20;Saturation aval;18
+07/11/2025;10:45;11:14;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;29
+07/11/2025;11:50;11:58;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;8
+07/11/2025;12:30;12:54;LA-01 Assemblage;Matin;AP-20;Composant non conforme;24
+07/11/2025;13:45;14:25;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/11/2025;14:50;15:06;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;16
+07/11/2025;15:19;15:45;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;26
+07/11/2025;06:49;07:29;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+07/11/2025;08:08;08:53;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+07/11/2025;09:01;09:30;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;29
+07/11/2025;09:44;10:10;LU-02 Usinage;Matin;CS-20;Attente outillage;26
+07/11/2025;10:45;11:11;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;26
+07/11/2025;11:42;11:53;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;11
+07/11/2025;13:41;14:21;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/11/2025;15:00;15:39;LU-02 Usinage;Après-midi;CS-10;Changement de série;39
+07/11/2025;15:56;16:03;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;7
+07/11/2025;16:23;16:54;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;31
+07/11/2025;17:26;17:44;LU-02 Usinage;Après-midi;LO-20;Saturation aval;18
+07/11/2025;17:52;18:15;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;23
+07/11/2025;21:53;22:33;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+07/11/2025;23:03;23:15;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;12
+07/11/2025;23:35;00:04;LU-02 Usinage;Nuit;AP-20;Composant non conforme;29
+07/11/2025;06:55;07:35;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+07/11/2025;08:08;08:53;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+07/11/2025;09:29;09:36;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;7
+07/11/2025;10:12;10:37;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;25
+07/11/2025;10:45;11:03;LC-03 Conditionnement;Matin;LO-20;Saturation aval;18
+10/11/2025;06:31;07:11;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+10/11/2025;07:23;07:31;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;8
+10/11/2025;08:01;08:20;LA-01 Assemblage;Matin;AP-20;Composant non conforme;19
+10/11/2025;13:54;14:34;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/11/2025;15:14;15:46;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;32
+10/11/2025;15:55;16:15;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;20
+10/11/2025;16:33;17:28;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;55
+10/11/2025;06:49;07:29;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+10/11/2025;08:03;08:12;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;9
+10/11/2025;08:44;09:36;LU-02 Usinage;Matin;MA-10;Panne mécanique;52
+10/11/2025;10:16;10:42;LU-02 Usinage;Matin;CS-10;Changement de série;26
+10/11/2025;10:56;11:01;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;5
+10/11/2025;11:38;11:59;LU-02 Usinage;Matin;MO-10;Absence non remplacée;21
+10/11/2025;13:40;14:20;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/11/2025;14:41;14:53;LU-02 Usinage;Après-midi;LO-20;Saturation aval;12
+10/11/2025;15:27;16:05;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;38
+10/11/2025;21:57;22:37;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+10/11/2025;22:46;23:09;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;23
+10/11/2025;23:24;23:52;LU-02 Usinage;Nuit;CS-20;Attente outillage;28
+10/11/2025;00:00;00:29;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;29
+10/11/2025;06:41;07:21;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+10/11/2025;07:47;08:09;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;22
+10/11/2025;08:43;08:55;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;12
+10/11/2025;09:03;09:19;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;16
+10/11/2025;09:47;10:06;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;19
+12/11/2025;06:30;07:10;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+12/11/2025;07:42;08:19;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;37
+12/11/2025;08:37;08:49;LA-01 Assemblage;Matin;CS-20;Attente outillage;12
+12/11/2025;09:21;09:41;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;20
+12/11/2025;13:32;14:12;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/11/2025;14:20;14:49;LA-01 Assemblage;Après-midi;CS-10;Changement de série;29
+12/11/2025;15:19;15:27;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;8
+12/11/2025;15:54;16:12;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;18
+12/11/2025;16:33;16:53;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;20
+12/11/2025;06:58;07:38;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+12/11/2025;07:54;08:05;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;11
+12/11/2025;08:39;09:07;LU-02 Usinage;Matin;MO-10;Absence non remplacée;28
+12/11/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/11/2025;14:19;14:43;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;24
+12/11/2025;14:58;15:06;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;8
+12/11/2025;15:20;16:02;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;42
+12/11/2025;21:48;22:28;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+12/11/2025;22:57;23:08;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;11
+12/11/2025;23:41;00:11;LU-02 Usinage;Nuit;MA-10;Panne mécanique;30
+12/11/2025;00:48;01:21;LU-02 Usinage;Nuit;CS-10;Changement de série;33
+12/11/2025;01:57;02:04;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;7
+12/11/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+12/11/2025;07:59;08:18;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;19
+12/11/2025;08:49;09:27;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;38
+12/11/2025;10:05;10:28;LC-03 Conditionnement;Matin;CS-20;Attente outillage;23
+12/11/2025;10:57;11:12;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;15
+12/11/2025;11:43;12:01;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;18
+13/11/2025;06:56;07:36;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+13/11/2025;07:57;08:11;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;14
+13/11/2025;08:43;09:37;LA-01 Assemblage;Matin;MA-10;Panne mécanique;54
+13/11/2025;10:07;10:37;LA-01 Assemblage;Matin;CS-10;Changement de série;30
+13/11/2025;11:04;11:12;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;8
+13/11/2025;13:54;14:34;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/11/2025;14:45;14:58;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;13
+13/11/2025;15:28;15:59;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;31
+13/11/2025;16:12;16:27;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;15
+13/11/2025;16:46;16:57;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;11
+13/11/2025;17:27;17:47;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;20
+13/11/2025;06:29;07:09;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+13/11/2025;07:21;07:45;LU-02 Usinage;Matin;MA-30;Défaut automatisme;24
+13/11/2025;08:03;08:15;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;12
+13/11/2025;08:48;09:03;LU-02 Usinage;Matin;AP-20;Composant non conforme;15
+13/11/2025;13:57;14:37;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/11/2025;15:14;15:44;LU-02 Usinage;Après-midi;CS-20;Attente outillage;30
+13/11/2025;16:16;16:31;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;15
+13/11/2025;17:07;17:17;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;10
+13/11/2025;17:49;18:25;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;36
+13/11/2025;21:37;22:17;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+13/11/2025;22:29;22:37;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;8
+13/11/2025;23:07;23:39;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;32
+13/11/2025;00:17;00:37;LU-02 Usinage;Nuit;LO-20;Saturation aval;20
+13/11/2025;01:07;01:23;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;16
+13/11/2025;01:36;01:50;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;14
+13/11/2025;06:47;07:27;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+13/11/2025;07:55;08:28;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;33
+13/11/2025;08:53;09:09;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;16
+14/11/2025;06:45;07:25;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+14/11/2025;07:50;08:03;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;13
+14/11/2025;08:37;09:11;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;34
+14/11/2025;09:46;10:03;LA-01 Assemblage;Matin;LO-20;Saturation aval;17
+14/11/2025;10:33;11:04;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;31
+14/11/2025;11:32;11:42;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;10
+14/11/2025;13:52;14:32;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/11/2025;14:40;14:54;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;14
+14/11/2025;15:20;15:35;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;15
+14/11/2025;06:32;07:12;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+14/11/2025;07:28;07:49;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;21
+14/11/2025;07:57;08:18;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;21
+14/11/2025;08:35;08:48;LU-02 Usinage;Matin;CS-20;Attente outillage;13
+14/11/2025;09:16;09:42;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;26
+14/11/2025;13:55;14:35;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/11/2025;15:13;15:49;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;36
+14/11/2025;16:17;16:49;LU-02 Usinage;Après-midi;CS-10;Changement de série;32
+14/11/2025;17:08;17:16;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;8
+14/11/2025;17:25;17:58;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;33
+14/11/2025;18:21;18:31;LU-02 Usinage;Après-midi;LO-20;Saturation aval;10
+14/11/2025;21:41;22:21;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+14/11/2025;22:43;23:00;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;17
+14/11/2025;23:20;23:31;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;11
+14/11/2025;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+14/11/2025;08:11;08:36;LC-03 Conditionnement;Matin;CS-10;Changement de série;25
+14/11/2025;08:55;09:08;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;13
+14/11/2025;09:32;09:50;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;18
+17/11/2025;06:52;07:32;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+17/11/2025;07:44;09:03;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;79
+17/11/2025;09:23;09:42;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;19
+17/11/2025;09:59;10:13;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;14
+17/11/2025;13:49;14:29;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/11/2025;15:02;15:17;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;15
+17/11/2025;15:47;16:06;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;19
+17/11/2025;16:17;16:35;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;18
+17/11/2025;06:44;07:24;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+17/11/2025;07:41;08:36;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;55
+17/11/2025;09:03;09:31;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;28
+17/11/2025;10:10;10:29;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;19
+17/11/2025;10:57;11:39;LU-02 Usinage;Matin;MA-10;Panne mécanique;42
+17/11/2025;12:13;12:31;LU-02 Usinage;Matin;CS-10;Changement de série;18
+17/11/2025;13:07;13:17;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;10
+17/11/2025;13:45;14:25;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/11/2025;14:35;15:04;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;29
+17/11/2025;15:28;15:37;LU-02 Usinage;Après-midi;LO-20;Saturation aval;9
+17/11/2025;21:56;22:36;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+17/11/2025;23:16;23:39;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;23
+17/11/2025;23:48;00:19;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;31
+17/11/2025;00:48;01:13;LU-02 Usinage;Nuit;CS-20;Attente outillage;25
+17/11/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+17/11/2025;07:40;08:36;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;56
+17/11/2025;08:58;09:09;LC-03 Conditionnement;Matin;LO-20;Saturation aval;11
+17/11/2025;09:33;09:51;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;18
+17/11/2025;10:18;10:32;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;14
+17/11/2025;10:42;11:11;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;29
+18/11/2025;06:35;07:15;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+18/11/2025;07:47;08:00;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;13
+18/11/2025;08:11;08:56;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;45
+18/11/2025;09:13;09:43;LA-01 Assemblage;Matin;CS-20;Attente outillage;30
+18/11/2025;13:46;14:26;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+18/11/2025;14:57;15:27;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;30
+18/11/2025;15:49;16:07;LA-01 Assemblage;Après-midi;CS-10;Changement de série;18
+18/11/2025;16:43;16:50;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;7
+18/11/2025;17:04;17:24;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;20
+18/11/2025;06:57;07:37;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+18/11/2025;08:01;08:42;LU-02 Usinage;Matin;CS-10;Changement de série;41
+18/11/2025;08:55;09:04;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;9
+18/11/2025;13:38;14:18;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+18/11/2025;14:56;15:05;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;9
+18/11/2025;15:35;16:02;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;27
+18/11/2025;16:27;16:43;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;16
+18/11/2025;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+18/11/2025;22:44;23:14;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;30
+18/11/2025;23:46;23:56;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;10
+18/11/2025;00:20;00:49;LU-02 Usinage;Nuit;MA-10;Panne mécanique;29
+18/11/2025;00:58;01:20;LU-02 Usinage;Nuit;CS-10;Changement de série;22
+18/11/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+18/11/2025;07:49;08:18;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;29
+18/11/2025;08:47;09:09;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;22
+18/11/2025;09:18;09:48;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;30
+18/11/2025;10:08;10:20;LC-03 Conditionnement;Matin;CS-20;Attente outillage;12
+18/11/2025;10:29;11:00;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;31
+19/11/2025;06:54;07:34;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+19/11/2025;07:47;08:10;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;23
+19/11/2025;08:42;08:51;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;9
+19/11/2025;09:19;09:45;LA-01 Assemblage;Matin;MA-10;Panne mécanique;26
+19/11/2025;10:10;10:35;LA-01 Assemblage;Matin;CS-10;Changement de série;25
+19/11/2025;13:51;14:31;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/11/2025;15:11;15:31;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;20
+19/11/2025;15:46;15:54;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;8
+19/11/2025;16:02;16:18;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;16
+19/11/2025;16:31;16:40;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;9
+19/11/2025;17:15;17:35;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;20
+19/11/2025;06:38;07:18;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+19/11/2025;07:40;07:59;LU-02 Usinage;Matin;LO-20;Saturation aval;19
+19/11/2025;08:23;08:39;LU-02 Usinage;Matin;MA-30;Défaut automatisme;16
+19/11/2025;09:18;09:29;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;11
+19/11/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/11/2025;14:41;15:21;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;40
+19/11/2025;15:37;16:07;LU-02 Usinage;Après-midi;CS-20;Attente outillage;30
+19/11/2025;16:40;17:03;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;23
+19/11/2025;17:28;17:39;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;11
+19/11/2025;21:43;22:23;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+19/11/2025;22:58;23:37;LU-02 Usinage;Nuit;CS-10;Changement de série;39
+19/11/2025;23:47;23:57;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;10
+19/11/2025;00:27;00:44;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;17
+19/11/2025;00:58;01:09;LU-02 Usinage;Nuit;LO-20;Saturation aval;11
+19/11/2025;01:19;01:44;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;25
+19/11/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+19/11/2025;07:53;08:10;LC-03 Conditionnement;Matin;CS-20;Attente outillage;17
+19/11/2025;08:42;08:56;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;14
+20/11/2025;06:56;07:36;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+20/11/2025;08:11;08:34;LA-01 Assemblage;Matin;CS-10;Changement de série;23
+20/11/2025;08:42;08:48;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;6
+20/11/2025;09:21;09:37;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;16
+20/11/2025;10:04;10:23;LA-01 Assemblage;Matin;LO-20;Saturation aval;19
+20/11/2025;10:46;11:22;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;36
+20/11/2025;13:50;14:30;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/11/2025;14:55;15:03;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;8
+20/11/2025;15:34;15:48;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;14
+20/11/2025;06:49;07:29;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+20/11/2025;07:38;08:07;LU-02 Usinage;Matin;AP-20;Composant non conforme;29
+20/11/2025;08:18;08:33;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;15
+20/11/2025;09:00;09:43;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;43
+20/11/2025;10:11;10:35;LU-02 Usinage;Matin;CS-20;Attente outillage;24
+20/11/2025;13:38;14:18;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/11/2025;14:42;15:03;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;21
+20/11/2025;15:17;15:51;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;34
+20/11/2025;16:23;16:42;LU-02 Usinage;Après-midi;CS-10;Changement de série;19
+20/11/2025;17:15;17:27;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;12
+20/11/2025;17:35;18:04;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;29
+20/11/2025;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+20/11/2025;23:08;23:26;LU-02 Usinage;Nuit;LO-20;Saturation aval;18
+20/11/2025;23:47;00:01;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;14
+20/11/2025;06:57;07:37;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+20/11/2025;08:13;08:36;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;23
+20/11/2025;09:16;09:46;LC-03 Conditionnement;Matin;CS-10;Changement de série;30
+20/11/2025;10:15;10:23;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;8
+21/11/2025;06:54;07:34;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+21/11/2025;08:02;08:13;LA-01 Assemblage;Matin;LO-20;Saturation aval;11
+21/11/2025;08:36;08:51;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;15
+21/11/2025;13:50;14:30;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/11/2025;15:04;15:42;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;38
+21/11/2025;15:50;16:21;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;31
+21/11/2025;16:55;17:26;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;31
+21/11/2025;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+21/11/2025;07:44;08:07;LU-02 Usinage;Matin;CS-20;Attente outillage;23
+21/11/2025;08:43;09:15;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;32
+21/11/2025;09:47;10:02;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;15
+21/11/2025;10:14;10:36;LU-02 Usinage;Matin;MA-10;Panne mécanique;22
+21/11/2025;11:05;11:22;LU-02 Usinage;Matin;CS-10;Changement de série;17
+21/11/2025;13:44;14:24;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/11/2025;14:42;14:47;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+21/11/2025;15:13;15:30;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;17
+21/11/2025;21:38;22:18;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+21/11/2025;22:46;23:01;LU-02 Usinage;Nuit;AP-20;Composant non conforme;15
+21/11/2025;23:33;23:55;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;22
+21/11/2025;00:32;01:02;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;30
+21/11/2025;06:40;07:20;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+21/11/2025;07:37;08:06;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;29
+21/11/2025;08:24;08:43;LC-03 Conditionnement;Matin;LO-20;Saturation aval;19
+21/11/2025;08:59;09:35;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;36
+21/11/2025;10:08;10:23;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;15
+24/11/2025;06:53;07:33;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+24/11/2025;07:57;08:17;LA-01 Assemblage;Matin;AP-20;Composant non conforme;20
+24/11/2025;08:30;08:50;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;20
+24/11/2025;09:11;09:42;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;31
+24/11/2025;13:55;14:35;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+24/11/2025;15:03;15:28;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;25
+24/11/2025;15:56;16:21;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;25
+24/11/2025;16:48;17:04;LA-01 Assemblage;Après-midi;CS-10;Changement de série;16
+24/11/2025;17:13;17:21;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;8
+24/11/2025;06:47;07:27;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+24/11/2025;08:03;08:54;LU-02 Usinage;Matin;MA-10;Panne mécanique;51
+24/11/2025;09:10;09:36;LU-02 Usinage;Matin;CS-10;Changement de série;26
+24/11/2025;13:46;14:26;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+24/11/2025;14:38;15:03;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;25
+24/11/2025;15:19;15:35;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;16
+24/11/2025;15:43;16:07;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;24
+24/11/2025;21:39;22:19;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+24/11/2025;22:50;23:03;LU-02 Usinage;Nuit;CS-20;Attente outillage;13
+24/11/2025;23:13;23:31;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;18
+24/11/2025;00:06;00:19;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;13
+24/11/2025;00:49;01:33;LU-02 Usinage;Nuit;MA-10;Panne mécanique;44
+24/11/2025;06:30;07:10;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+24/11/2025;07:45;07:53;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;8
+24/11/2025;08:13;08:40;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;27
+24/11/2025;08:55;09:14;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;19
+24/11/2025;09:38;09:57;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;19
+24/11/2025;10:30;11:00;LC-03 Conditionnement;Matin;CS-20;Attente outillage;30
+25/11/2025;06:41;07:21;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+25/11/2025;07:54;09:05;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;71
+25/11/2025;09:42;10:27;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+25/11/2025;10:55;11:17;LA-01 Assemblage;Matin;CS-20;Attente outillage;22
+25/11/2025;11:43;11:57;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;14
+25/11/2025;12:20;12:31;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;11
+25/11/2025;13:00;13:54;LA-01 Assemblage;Matin;MA-10;Panne mécanique;54
+25/11/2025;13:35;14:15;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+25/11/2025;14:47;14:54;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;7
+25/11/2025;15:04;15:35;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;31
+25/11/2025;15:43;16:00;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;17
+25/11/2025;16:27;16:58;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;31
+25/11/2025;17:36;17:48;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;12
+25/11/2025;06:38;07:18;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+25/11/2025;07:52;09:04;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;72
+25/11/2025;09:30;10:15;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+25/11/2025;10:54;11:16;LU-02 Usinage;Matin;MO-10;Absence non remplacée;22
+25/11/2025;11:46;11:56;LU-02 Usinage;Matin;LO-20;Saturation aval;10
+25/11/2025;12:22;12:45;LU-02 Usinage;Matin;MA-30;Défaut automatisme;23
+25/11/2025;13:37;14:17;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+25/11/2025;14:31;14:47;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;16
+25/11/2025;15:19;16:06;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;47
+25/11/2025;16:20;16:41;LU-02 Usinage;Après-midi;CS-20;Attente outillage;21
+25/11/2025;17:19;17:37;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;18
+25/11/2025;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+25/11/2025;22:30;23:05;LU-02 Usinage;Nuit;MA-10;Panne mécanique;35
+25/11/2025;23:25;00:01;LU-02 Usinage;Nuit;CS-10;Changement de série;36
+25/11/2025;00:32;00:44;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;12
+25/11/2025;01:07;01:41;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;34
+25/11/2025;02:13;02:25;LU-02 Usinage;Nuit;LO-20;Saturation aval;12
+25/11/2025;06:46;07:26;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+25/11/2025;08:05;09:18;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;73
+25/11/2025;09:40;10:25;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+25/11/2025;10:38;11:02;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;24
+25/11/2025;11:12;11:33;LC-03 Conditionnement;Matin;CS-20;Attente outillage;21
+26/11/2025;06:56;07:36;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+26/11/2025;07:53;08:16;LA-01 Assemblage;Matin;MA-10;Panne mécanique;23
+26/11/2025;08:36;09:00;LA-01 Assemblage;Matin;CS-10;Changement de série;24
+26/11/2025;09:26;09:33;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;7
+26/11/2025;09:53;10:20;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;27
+26/11/2025;10:31;10:51;LA-01 Assemblage;Matin;LO-20;Saturation aval;20
+26/11/2025;13:42;14:22;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+26/11/2025;14:35;14:55;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;20
+26/11/2025;15:14;15:30;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;16
+26/11/2025;06:39;07:19;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+26/11/2025;07:32;07:38;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;6
+26/11/2025;07:58;08:19;LU-02 Usinage;Matin;AP-20;Composant non conforme;21
+26/11/2025;08:51;09:09;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;18
+26/11/2025;09:47;10:08;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;21
+26/11/2025;13:51;14:31;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+26/11/2025;14:50;15:15;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;25
+26/11/2025;15:33;15:56;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;23
+26/11/2025;16:08;16:44;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;36
+26/11/2025;17:14;17:31;LU-02 Usinage;Après-midi;CS-10;Changement de série;17
+26/11/2025;17:55;18:00;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+26/11/2025;21:32;22:12;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+26/11/2025;22:41;23:16;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;35
+26/11/2025;23:31;23:38;LU-02 Usinage;Nuit;LO-20;Saturation aval;7
+26/11/2025;06:53;07:33;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+26/11/2025;07:50;08:02;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;12
+26/11/2025;08:31;08:58;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;27
+26/11/2025;09:18;09:43;LC-03 Conditionnement;Matin;CS-10;Changement de série;25
+27/11/2025;06:53;07:33;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+27/11/2025;07:51;08:09;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;18
+27/11/2025;08:23;08:39;LA-01 Assemblage;Matin;LO-20;Saturation aval;16
+27/11/2025;13:45;14:25;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/11/2025;14:33;14:50;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;17
+27/11/2025;15:14;15:38;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;24
+27/11/2025;15:54;16:14;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;20
+27/11/2025;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+27/11/2025;07:43;08:24;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;41
+27/11/2025;08:47;09:17;LU-02 Usinage;Matin;CS-20;Attente outillage;30
+27/11/2025;09:44;10:03;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;19
+27/11/2025;10:37;10:50;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;13
+27/11/2025;11:00;11:44;LU-02 Usinage;Matin;MA-10;Panne mécanique;44
+27/11/2025;13:34;14:14;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/11/2025;14:53;15:08;LU-02 Usinage;Après-midi;CS-10;Changement de série;15
+27/11/2025;15:35;15:44;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;9
+27/11/2025;21:57;22:37;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+27/11/2025;23:07;23:20;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;13
+27/11/2025;23:47;00:00;LU-02 Usinage;Nuit;AP-20;Composant non conforme;13
+27/11/2025;00:30;00:41;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;11
+27/11/2025;06:40;07:20;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+27/11/2025;07:41;07:48;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;7
+27/11/2025;08:20;08:46;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;26
+27/11/2025;09:22;09:38;LC-03 Conditionnement;Matin;LO-20;Saturation aval;16
+27/11/2025;10:17;10:32;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;15
+28/11/2025;06:54;07:34;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+28/11/2025;07:46;07:53;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;7
+28/11/2025;08:14;08:30;LA-01 Assemblage;Matin;AP-20;Composant non conforme;16
+28/11/2025;09:02;09:17;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;15
+28/11/2025;13:52;14:32;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/11/2025;14:56;15:20;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;24
+28/11/2025;15:29;15:51;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;22
+28/11/2025;16:14;16:55;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;41
+28/11/2025;17:07;17:39;LA-01 Assemblage;Après-midi;CS-10;Changement de série;32
+28/11/2025;06:44;07:24;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+28/11/2025;07:59;08:25;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;26
+28/11/2025;08:47;09:30;LU-02 Usinage;Matin;MA-10;Panne mécanique;43
+28/11/2025;13:32;14:12;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/11/2025;14:36;14:55;LU-02 Usinage;Après-midi;LO-20;Saturation aval;19
+28/11/2025;15:10;15:29;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;19
+28/11/2025;15:50;16:03;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;13
+28/11/2025;21:30;22:10;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+28/11/2025;22:39;23:15;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;36
+28/11/2025;23:45;00:04;LU-02 Usinage;Nuit;CS-20;Attente outillage;19
+28/11/2025;00:33;00:46;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;13
+28/11/2025;01:06;01:23;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;17
+28/11/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+28/11/2025;07:53;08:27;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;34
+28/11/2025;08:57;09:09;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;12
+28/11/2025;09:33;09:45;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;12
+28/11/2025;09:58;10:18;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;20
+28/11/2025;10:30;11:14;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;44
+01/12/2025;06:31;07:11;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+01/12/2025;07:25;09:24;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;119
+01/12/2025;10:01;10:23;LA-01 Assemblage;Matin;CS-20;Attente outillage;22
+01/12/2025;11:03;11:25;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;22
+01/12/2025;12:03;12:29;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;26
+01/12/2025;13:55;14:35;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+01/12/2025;14:55;15:17;LA-01 Assemblage;Après-midi;CS-10;Changement de série;22
+01/12/2025;15:50;16:01;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+01/12/2025;16:10;16:40;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;30
+01/12/2025;17:01;17:10;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;9
+01/12/2025;17:23;19:07;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;104
+01/12/2025;06:39;07:19;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+01/12/2025;07:36;07:41;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;5
+01/12/2025;08:05;08:31;LU-02 Usinage;Matin;MO-10;Absence non remplacée;26
+01/12/2025;08:45;08:53;LU-02 Usinage;Matin;LO-20;Saturation aval;8
+01/12/2025;13:54;14:34;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+01/12/2025;14:46;14:59;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;13
+01/12/2025;15:16;15:32;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;16
+01/12/2025;15:45;17:18;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;93
+01/12/2025;17:52;18:10;LU-02 Usinage;Après-midi;CS-20;Attente outillage;18
+01/12/2025;21:32;22:12;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+01/12/2025;22:43;22:54;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;11
+01/12/2025;23:25;01:25;LU-02 Usinage;Nuit;MA-10;Panne mécanique;120
+01/12/2025;01:47;02:04;LU-02 Usinage;Nuit;CS-10;Changement de série;17
+01/12/2025;02:41;02:53;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;12
+01/12/2025;03:18;03:41;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;23
+01/12/2025;06:48;07:28;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+01/12/2025;07:53;08:07;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;14
+01/12/2025;08:21;10:04;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;103
+02/12/2025;06:41;07:21;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+02/12/2025;07:41;07:58;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;17
+02/12/2025;08:22;09:09;LA-01 Assemblage;Matin;MA-10;Panne mécanique;47
+02/12/2025;09:28;09:57;LA-01 Assemblage;Matin;CS-10;Changement de série;29
+02/12/2025;10:22;10:31;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;9
+02/12/2025;10:41;11:03;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;22
+02/12/2025;13:49;14:29;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+02/12/2025;15:00;15:19;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;19
+02/12/2025;15:37;15:57;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;20
+02/12/2025;06:35;07:15;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+02/12/2025;07:35;07:55;LU-02 Usinage;Matin;MA-30;Défaut automatisme;20
+02/12/2025;08:33;08:41;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;8
+02/12/2025;09:15;09:34;LU-02 Usinage;Matin;AP-20;Composant non conforme;19
+02/12/2025;10:04;10:18;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;14
+02/12/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+02/12/2025;14:19;14:31;LU-02 Usinage;Après-midi;CS-20;Attente outillage;12
+02/12/2025;14:54;15:20;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;26
+02/12/2025;15:37;15:51;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;14
+02/12/2025;16:13;17:06;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;53
+02/12/2025;17:36;17:53;LU-02 Usinage;Après-midi;CS-10;Changement de série;17
+02/12/2025;21:39;22:19;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+02/12/2025;22:43;22:51;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;8
+02/12/2025;23:25;23:41;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;16
+02/12/2025;06:59;07:39;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+02/12/2025;07:54;08:12;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;18
+02/12/2025;08:26;08:48;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;22
+02/12/2025;09:17;10:11;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;54
+03/12/2025;06:33;07:13;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+03/12/2025;07:53;08:56;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;63
+03/12/2025;09:22;09:28;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;6
+03/12/2025;09:55;10:31;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;36
+03/12/2025;13:39;14:19;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/12/2025;14:50;15:12;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;22
+03/12/2025;15:29;15:42;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;13
+03/12/2025;16:08;16:32;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;24
+03/12/2025;06:49;07:29;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+03/12/2025;07:37;08:41;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;64
+03/12/2025;08:57;09:14;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;17
+03/12/2025;09:46;10:28;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;42
+03/12/2025;10:42;11:13;LU-02 Usinage;Matin;CS-20;Attente outillage;31
+03/12/2025;11:26;11:43;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;17
+03/12/2025;11:56;12:22;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;26
+03/12/2025;13:40;14:20;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+03/12/2025;14:42;15:32;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;50
+03/12/2025;16:06;16:37;LU-02 Usinage;Après-midi;CS-10;Changement de série;31
+03/12/2025;21:28;22:08;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+03/12/2025;22:28;22:50;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;22
+03/12/2025;23:12;23:27;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;15
+03/12/2025;23:59;00:20;LU-02 Usinage;Nuit;AP-20;Composant non conforme;21
+03/12/2025;06:34;07:14;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+03/12/2025;07:39;08:44;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;65
+03/12/2025;09:07;09:43;LC-03 Conditionnement;Matin;CS-10;Changement de série;36
+03/12/2025;10:12;10:18;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;6
+03/12/2025;10:27;11:05;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;38
+03/12/2025;11:14;11:30;LC-03 Conditionnement;Matin;LO-20;Saturation aval;16
+04/12/2025;06:32;07:12;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+04/12/2025;07:40;08:14;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;34
+04/12/2025;08:33;08:50;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;17
+04/12/2025;09:21;09:40;LA-01 Assemblage;Matin;AP-20;Composant non conforme;19
+04/12/2025;13:55;14:35;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+04/12/2025;15:15;15:47;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;32
+04/12/2025;16:27;16:53;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;26
+04/12/2025;17:30;17:42;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;12
+04/12/2025;18:18;19:14;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;56
+04/12/2025;06:57;07:37;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+04/12/2025;07:51;08:19;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;28
+04/12/2025;08:42;08:59;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;17
+04/12/2025;13:39;14:19;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+04/12/2025;14:29;15:07;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;38
+04/12/2025;15:31;15:46;LU-02 Usinage;Après-midi;LO-20;Saturation aval;15
+04/12/2025;15:56;16:34;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;38
+04/12/2025;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+04/12/2025;22:57;23:16;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;19
+04/12/2025;23:49;00:24;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;35
+04/12/2025;00:42;00:57;LU-02 Usinage;Nuit;CS-20;Attente outillage;15
+04/12/2025;01:15;01:48;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;33
+04/12/2025;06:53;07:33;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+04/12/2025;08:11;08:26;LC-03 Conditionnement;Matin;LO-20;Saturation aval;15
+04/12/2025;08:41;08:57;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;16
+04/12/2025;09:32;09:48;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;16
+04/12/2025;09:58;10:17;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;19
+04/12/2025;10:48;10:58;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;10
+05/12/2025;06:35;07:15;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+05/12/2025;07:24;07:45;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;21
+05/12/2025;08:24;09:11;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;47
+05/12/2025;09:44;10:01;LA-01 Assemblage;Matin;CS-20;Attente outillage;17
+05/12/2025;10:16;10:46;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;30
+05/12/2025;13:47;14:27;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/12/2025;15:02;15:41;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;39
+05/12/2025;15:58;16:38;LA-01 Assemblage;Après-midi;CS-10;Changement de série;40
+05/12/2025;16:59;17:10;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+05/12/2025;17:44;18:16;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;32
+05/12/2025;18:33;18:52;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;19
+05/12/2025;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+05/12/2025;07:47;08:13;LU-02 Usinage;Matin;CS-10;Changement de série;26
+05/12/2025;08:50;08:57;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;7
+05/12/2025;09:05;09:36;LU-02 Usinage;Matin;MO-10;Absence non remplacée;31
+05/12/2025;13:54;14:34;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/12/2025;14:56;15:11;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;15
+05/12/2025;15:31;15:55;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;24
+05/12/2025;16:05;16:22;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;17
+05/12/2025;16:57;17:40;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;43
+05/12/2025;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+05/12/2025;22:49;23:19;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;30
+05/12/2025;23:46;00:03;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;17
+05/12/2025;00:16;00:47;LU-02 Usinage;Nuit;MA-10;Panne mécanique;31
+05/12/2025;01:16;01:36;LU-02 Usinage;Nuit;CS-10;Changement de série;20
+05/12/2025;01:56;02:07;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;11
+05/12/2025;06:53;07:33;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+05/12/2025;07:56;08:16;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;20
+05/12/2025;08:37;08:50;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;13
+08/12/2025;06:54;07:34;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+08/12/2025;08:01;08:21;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;20
+08/12/2025;08:52;09:07;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;15
+08/12/2025;09:40;10:03;LA-01 Assemblage;Matin;MA-10;Panne mécanique;23
+08/12/2025;10:13;10:49;LA-01 Assemblage;Matin;CS-10;Changement de série;36
+08/12/2025;11:14;11:20;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;6
+08/12/2025;13:47;14:27;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/12/2025;15:06;15:22;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;16
+08/12/2025;15:34;15:49;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;15
+08/12/2025;06:50;07:30;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+08/12/2025;08:05;08:19;LU-02 Usinage;Matin;LO-20;Saturation aval;14
+08/12/2025;08:34;09:11;LU-02 Usinage;Matin;MA-30;Défaut automatisme;37
+08/12/2025;09:23;09:36;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;13
+08/12/2025;10:04;10:20;LU-02 Usinage;Matin;AP-20;Composant non conforme;16
+08/12/2025;13:51;14:31;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/12/2025;14:58;15:35;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;37
+08/12/2025;15:59;16:16;LU-02 Usinage;Après-midi;CS-20;Attente outillage;17
+08/12/2025;16:56;17:27;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;31
+08/12/2025;17:40;17:59;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;19
+08/12/2025;18:26;19:06;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;40
+08/12/2025;21:59;22:39;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+08/12/2025;23:12;23:39;LU-02 Usinage;Nuit;CS-10;Changement de série;27
+08/12/2025;23:53;00:01;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;8
+08/12/2025;06:58;07:38;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+08/12/2025;08:15;08:40;LC-03 Conditionnement;Matin;CS-20;Attente outillage;25
+08/12/2025;09:20;09:52;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;32
+08/12/2025;10:28;10:38;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;10
+09/12/2025;06:52;07:32;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+09/12/2025;07:59;08:17;LA-01 Assemblage;Matin;CS-10;Changement de série;18
+09/12/2025;08:36;08:43;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;7
+09/12/2025;13:53;14:33;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/12/2025;15:12;15:18;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;6
+09/12/2025;15:40;15:59;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;19
+09/12/2025;16:20;16:36;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;16
+09/12/2025;06:39;07:19;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+09/12/2025;07:44;08:13;LU-02 Usinage;Matin;AP-20;Composant non conforme;29
+09/12/2025;08:24;08:46;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;22
+09/12/2025;09:16;09:41;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;25
+09/12/2025;10:18;10:43;LU-02 Usinage;Matin;CS-20;Attente outillage;25
+09/12/2025;10:53;11:18;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;25
+09/12/2025;13:42;14:22;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/12/2025;15:02;15:12;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;10
+09/12/2025;15:51;16:21;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;30
+09/12/2025;21:35;22:15;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+09/12/2025;22:29;22:42;LU-02 Usinage;Nuit;LO-20;Saturation aval;13
+09/12/2025;23:00;23:20;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;20
+09/12/2025;23:59;00:05;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;6
+09/12/2025;06:40;07:20;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+09/12/2025;07:56;08:40;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;44
+09/12/2025;09:08;09:27;LC-03 Conditionnement;Matin;CS-10;Changement de série;19
+09/12/2025;09:43;09:51;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;8
+09/12/2025;10:08;10:28;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;20
+10/12/2025;06:48;07:28;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+10/12/2025;07:41;08:26;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+10/12/2025;08:53;09:02;LA-01 Assemblage;Matin;LO-20;Saturation aval;9
+10/12/2025;09:34;09:57;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;23
+10/12/2025;10:20;10:33;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;13
+10/12/2025;13:49;14:29;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/12/2025;14:49;15:27;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;38
+10/12/2025;15:40;15:57;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;17
+10/12/2025;16:09;16:43;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;34
+10/12/2025;17:19;17:36;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;17
+10/12/2025;06:41;07:21;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+10/12/2025;07:43;08:28;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+10/12/2025;08:46;09:00;LU-02 Usinage;Matin;CS-20;Attente outillage;14
+10/12/2025;09:19;09:48;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;29
+10/12/2025;13:37;14:17;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+10/12/2025;14:43;14:52;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;9
+10/12/2025;15:29;15:51;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;22
+10/12/2025;16:23;16:43;LU-02 Usinage;Après-midi;LO-20;Saturation aval;20
+10/12/2025;21:52;22:32;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+10/12/2025;23:07;23:30;LU-02 Usinage;Nuit;AP-20;Composant non conforme;23
+10/12/2025;23:52;00:14;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;22
+10/12/2025;00:37;00:55;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;18
+10/12/2025;01:33;01:53;LU-02 Usinage;Nuit;CS-20;Attente outillage;20
+10/12/2025;06:52;07:32;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+10/12/2025;08:10;08:55;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+10/12/2025;09:18;09:53;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;35
+10/12/2025;10:29;10:42;LC-03 Conditionnement;Matin;LO-20;Saturation aval;13
+10/12/2025;11:12;11:46;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;34
+10/12/2025;12:07;12:15;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;8
+10/12/2025;12:34;12:57;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;23
+11/12/2025;06:36;07:16;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+11/12/2025;07:54;08:49;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;55
+11/12/2025;09:13;09:41;LA-01 Assemblage;Matin;AP-20;Composant non conforme;28
+11/12/2025;10:12;10:27;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;15
+11/12/2025;10:44;11:22;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;38
+11/12/2025;11:48;12:19;LA-01 Assemblage;Matin;CS-20;Attente outillage;31
+11/12/2025;13:32;14:12;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+11/12/2025;14:31;14:48;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;17
+11/12/2025;14:58;15:47;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;49
+11/12/2025;15:57;16:21;LA-01 Assemblage;Après-midi;CS-10;Changement de série;24
+11/12/2025;16:56;17:02;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;6
+11/12/2025;17:10;17:29;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;19
+11/12/2025;06:34;07:14;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+11/12/2025;07:28;08:24;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;56
+11/12/2025;09:01;09:57;LU-02 Usinage;Matin;MA-10;Panne mécanique;56
+11/12/2025;10:11;10:42;LU-02 Usinage;Matin;CS-10;Changement de série;31
+11/12/2025;11:21;11:32;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;11
+11/12/2025;13:38;14:18;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+11/12/2025;14:40;15:08;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;28
+11/12/2025;15:48;15:54;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;6
+11/12/2025;16:27;16:42;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;15
+11/12/2025;16:54;17:14;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;20
+11/12/2025;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+11/12/2025;22:39;23:11;LU-02 Usinage;Nuit;CS-20;Attente outillage;32
+11/12/2025;23:31;23:51;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;20
+11/12/2025;00:15;00:34;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;19
+11/12/2025;01:08;01:31;LU-02 Usinage;Nuit;MA-10;Panne mécanique;23
+11/12/2025;01:53;02:22;LU-02 Usinage;Nuit;CS-10;Changement de série;29
+11/12/2025;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+11/12/2025;07:47;08:44;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;57
+11/12/2025;09:08;09:20;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;12
+11/12/2025;09:43;09:54;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;11
+12/12/2025;06:45;07:25;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+12/12/2025;07:59;08:23;LA-01 Assemblage;Matin;CS-20;Attente outillage;24
+12/12/2025;08:52;09:20;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;28
+12/12/2025;09:41;10:06;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;25
+12/12/2025;10:38;11:15;LA-01 Assemblage;Matin;MA-10;Panne mécanique;37
+12/12/2025;11:36;11:58;LA-01 Assemblage;Matin;CS-10;Changement de série;22
+12/12/2025;13:48;14:28;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/12/2025;14:37;14:49;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;12
+12/12/2025;15:28;15:56;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;28
+12/12/2025;06:38;07:18;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+12/12/2025;07:47;08:04;LU-02 Usinage;Matin;MO-10;Absence non remplacée;17
+12/12/2025;08:13;08:29;LU-02 Usinage;Matin;LO-20;Saturation aval;16
+12/12/2025;09:08;09:42;LU-02 Usinage;Matin;MA-30;Défaut automatisme;34
+12/12/2025;10:16;10:22;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;6
+12/12/2025;13:57;14:37;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/12/2025;14:54;15:17;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;23
+12/12/2025;15:40;16:21;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;41
+12/12/2025;16:57;17:13;LU-02 Usinage;Après-midi;CS-20;Attente outillage;16
+12/12/2025;17:27;17:42;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;15
+12/12/2025;17:50;18:09;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;19
+12/12/2025;21:52;22:32;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+12/12/2025;23:03;23:56;LU-02 Usinage;Nuit;MA-10;Panne mécanique;53
+12/12/2025;00:25;00:51;LU-02 Usinage;Nuit;CS-10;Changement de série;26
+12/12/2025;06:35;07:15;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+12/12/2025;07:42;08:06;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;24
+12/12/2025;08:36;08:55;LC-03 Conditionnement;Matin;CS-20;Attente outillage;19
+12/12/2025;09:04;09:19;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;15
+15/12/2025;06:49;07:29;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+15/12/2025;07:43;08:35;LA-01 Assemblage;Matin;MA-10;Panne mécanique;52
+15/12/2025;08:54;09:24;LA-01 Assemblage;Matin;CS-10;Changement de série;30
+15/12/2025;13:45;14:25;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/12/2025;15:05;15:40;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;35
+15/12/2025;16:04;16:21;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;17
+15/12/2025;16:35;16:47;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;12
+15/12/2025;06:30;07:10;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+15/12/2025;07:37;07:53;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;16
+15/12/2025;08:26;08:50;LU-02 Usinage;Matin;AP-20;Composant non conforme;24
+15/12/2025;08:59;09:17;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;18
+15/12/2025;09:49;10:23;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;34
+15/12/2025;10:34;10:59;LU-02 Usinage;Matin;CS-20;Attente outillage;25
+15/12/2025;13:42;14:22;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/12/2025;14:54;15:16;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;22
+15/12/2025;15:27;15:46;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;19
+15/12/2025;21:51;22:31;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+15/12/2025;23:09;23:42;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;33
+15/12/2025;00:00;00:17;LU-02 Usinage;Nuit;LO-20;Saturation aval;17
+15/12/2025;00:30;01:04;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;34
+15/12/2025;06:32;07:12;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+15/12/2025;07:24;07:40;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;16
+15/12/2025;07:53;08:28;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;35
+15/12/2025;08:45;09:06;LC-03 Conditionnement;Matin;CS-10;Changement de série;21
+15/12/2025;09:17;09:22;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;5
+16/12/2025;06:49;07:29;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+16/12/2025;07:44;07:59;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;15
+16/12/2025;08:18;08:34;LA-01 Assemblage;Matin;LO-20;Saturation aval;16
+16/12/2025;09:06;09:40;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;34
+16/12/2025;13:54;14:34;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/12/2025;15:07;15:28;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;21
+16/12/2025;15:43;16:18;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;35
+16/12/2025;16:50;17:13;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;23
+16/12/2025;17:33;17:56;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;23
+16/12/2025;06:40;07:20;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+16/12/2025;07:30;08:02;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;32
+16/12/2025;08:35;08:56;LU-02 Usinage;Matin;CS-20;Attente outillage;21
+16/12/2025;13:40;14:20;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/12/2025;14:32;15:08;LU-02 Usinage;Après-midi;CS-10;Changement de série;36
+16/12/2025;15:22;15:34;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;12
+16/12/2025;15:58;16:31;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;33
+16/12/2025;21:53;22:33;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+16/12/2025;22:41;22:54;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;13
+16/12/2025;23:16;23:30;LU-02 Usinage;Nuit;AP-20;Composant non conforme;14
+16/12/2025;23:40;23:56;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;16
+16/12/2025;00:19;00:54;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;35
+16/12/2025;06:48;07:28;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+16/12/2025;07:51;07:59;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;8
+16/12/2025;08:23;08:58;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;35
+16/12/2025;09:23;09:30;LC-03 Conditionnement;Matin;LO-20;Saturation aval;7
+16/12/2025;09:39;09:59;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;20
+16/12/2025;10:19;10:26;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;7
+17/12/2025;06:43;07:23;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+17/12/2025;07:44;07:54;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;10
+17/12/2025;08:11;08:25;LA-01 Assemblage;Matin;AP-20;Composant non conforme;14
+17/12/2025;09:01;09:21;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;20
+17/12/2025;09:44;10:14;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;30
+17/12/2025;13:53;14:33;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/12/2025;14:41;15:11;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;30
+17/12/2025;15:38;16:00;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;22
+17/12/2025;16:38;17:33;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;55
+17/12/2025;18:01;18:17;LA-01 Assemblage;Après-midi;CS-10;Changement de série;16
+17/12/2025;18:44;18:49;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;5
+17/12/2025;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+17/12/2025;07:53;08:13;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;20
+17/12/2025;08:53;09:39;LU-02 Usinage;Matin;MA-10;Panne mécanique;46
+17/12/2025;10:15;10:47;LU-02 Usinage;Matin;CS-10;Changement de série;32
+17/12/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+17/12/2025;14:27;14:39;LU-02 Usinage;Après-midi;LO-20;Saturation aval;12
+17/12/2025;14:52;15:14;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;22
+17/12/2025;15:24;15:31;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;7
+17/12/2025;16:06;16:17;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;11
+17/12/2025;21:57;22:37;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+17/12/2025;22:46;23:18;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;32
+17/12/2025;23:41;23:55;LU-02 Usinage;Nuit;CS-20;Attente outillage;14
+17/12/2025;00:13;00:32;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;19
+17/12/2025;01:04;01:22;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;18
+17/12/2025;01:40;02:21;LU-02 Usinage;Nuit;MA-10;Panne mécanique;41
+17/12/2025;06:39;07:19;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+17/12/2025;07:48;08:26;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;38
+17/12/2025;08:46;08:54;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;8
+18/12/2025;06:44;07:24;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+18/12/2025;07:32;07:56;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;24
+18/12/2025;08:14;08:27;LA-01 Assemblage;Matin;CS-20;Attente outillage;13
+18/12/2025;08:47;09:13;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;26
+18/12/2025;09:25;09:43;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;18
+18/12/2025;10:22;10:58;LA-01 Assemblage;Matin;MA-10;Panne mécanique;36
+18/12/2025;13:58;14:38;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+18/12/2025;15:12;15:32;LA-01 Assemblage;Après-midi;CS-10;Changement de série;20
+18/12/2025;15:49;16:00;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+18/12/2025;06:42;07:22;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+18/12/2025;07:58;08:10;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;12
+18/12/2025;08:22;08:46;LU-02 Usinage;Matin;MO-10;Absence non remplacée;24
+18/12/2025;09:19;09:27;LU-02 Usinage;Matin;LO-20;Saturation aval;8
+18/12/2025;09:59;10:29;LU-02 Usinage;Matin;MA-30;Défaut automatisme;30
+18/12/2025;13:29;14:09;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+18/12/2025;14:27;14:56;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;29
+18/12/2025;15:06;15:19;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;13
+18/12/2025;15:36;16:08;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;32
+18/12/2025;16:30;16:50;LU-02 Usinage;Après-midi;CS-20;Attente outillage;20
+18/12/2025;17:20;17:48;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;28
+18/12/2025;21:51;22:31;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+18/12/2025;23:01;23:13;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;12
+18/12/2025;23:23;23:50;LU-02 Usinage;Nuit;MA-10;Panne mécanique;27
+18/12/2025;06:52;07:32;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+18/12/2025;07:52;08:13;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;21
+18/12/2025;08:25;08:53;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;28
+18/12/2025;09:25;09:50;LC-03 Conditionnement;Matin;CS-20;Attente outillage;25
+19/12/2025;06:29;07:09;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+19/12/2025;07:32;08:44;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;72
+19/12/2025;09:18;09:29;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;11
+19/12/2025;09:49;10:31;LA-01 Assemblage;Matin;MA-10;Panne mécanique;42
+19/12/2025;13:40;14:20;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/12/2025;14:59;15:08;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;9
+19/12/2025;15:46;16:23;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;37
+19/12/2025;16:43;16:57;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;14
+19/12/2025;06:47;07:27;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+19/12/2025;07:41;08:54;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;73
+19/12/2025;09:33;10:10;LU-02 Usinage;Matin;MA-30;Défaut automatisme;37
+19/12/2025;10:28;10:40;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;12
+19/12/2025;10:49;11:15;LU-02 Usinage;Matin;AP-20;Composant non conforme;26
+19/12/2025;11:43;12:03;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;20
+19/12/2025;12:14;13:01;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;47
+19/12/2025;13:43;14:23;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/12/2025;14:36;14:49;LU-02 Usinage;Après-midi;CS-20;Attente outillage;13
+19/12/2025;15:22;15:54;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;32
+19/12/2025;21:57;22:37;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+19/12/2025;22:49;22:59;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;10
+19/12/2025;23:23;23:55;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;32
+19/12/2025;00:16;00:30;LU-02 Usinage;Nuit;LO-20;Saturation aval;14
+19/12/2025;06:39;07:19;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+19/12/2025;07:39;08:53;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;74
+19/12/2025;09:19;09:45;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;26
+19/12/2025;10:09;10:29;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;20
+19/12/2025;10:43;11:37;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;54
+19/12/2025;11:57;12:25;LC-03 Conditionnement;Matin;CS-10;Changement de série;28
+05/01/2026;06:31;07:11;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+05/01/2026;07:39;07:48;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;9
+05/01/2026;08:08;08:23;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;15
+05/01/2026;08:59;09:06;LA-01 Assemblage;Matin;LO-20;Saturation aval;7
+05/01/2026;14:00;14:40;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/01/2026;15:04;15:16;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;12
+05/01/2026;15:53;16:16;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;23
+05/01/2026;16:37;17:01;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;24
+05/01/2026;17:39;18:04;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;25
+05/01/2026;06:41;07:21;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+05/01/2026;07:38;07:51;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;13
+05/01/2026;08:09;08:30;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;21
+05/01/2026;13:37;14:17;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+05/01/2026;14:54;15:37;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;43
+05/01/2026;16:09;16:26;LU-02 Usinage;Après-midi;CS-10;Changement de série;17
+05/01/2026;16:50;17:00;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;10
+05/01/2026;21:53;22:33;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+05/01/2026;22:59;23:27;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;28
+05/01/2026;23:44;23:52;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;8
+05/01/2026;00:05;00:28;LU-02 Usinage;Nuit;AP-20;Composant non conforme;23
+05/01/2026;00:57;01:08;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;11
+05/01/2026;06:54;07:34;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+05/01/2026;07:57;08:36;LC-03 Conditionnement;Matin;CS-10;Changement de série;39
+05/01/2026;08:47;08:56;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;9
+05/01/2026;09:16;09:34;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;18
+05/01/2026;09:53;10:07;LC-03 Conditionnement;Matin;LO-20;Saturation aval;14
+05/01/2026;10:31;10:51;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;20
+06/01/2026;06:58;07:38;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+06/01/2026;07:59;08:35;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;36
+06/01/2026;08:54;09:06;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;12
+06/01/2026;09:28;09:49;LA-01 Assemblage;Matin;AP-20;Composant non conforme;21
+06/01/2026;09:58;10:11;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;13
+06/01/2026;13:32;14:12;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/01/2026;14:45;15:02;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;17
+06/01/2026;15:12;15:36;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;24
+06/01/2026;15:57;16:14;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;17
+06/01/2026;16:41;17:36;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;55
+06/01/2026;17:58;18:14;LA-01 Assemblage;Après-midi;CS-10;Changement de série;16
+06/01/2026;06:54;07:34;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+06/01/2026;07:51;08:18;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;27
+06/01/2026;08:26;08:41;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;15
+06/01/2026;08:58;09:34;LU-02 Usinage;Matin;MA-10;Panne mécanique;36
+06/01/2026;13:28;14:08;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+06/01/2026;14:33;14:59;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;26
+06/01/2026;15:29;15:44;LU-02 Usinage;Après-midi;LO-20;Saturation aval;15
+06/01/2026;16:05;16:39;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;34
+06/01/2026;17:04;17:15;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;11
+06/01/2026;21:34;22:14;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+06/01/2026;22:36;22:51;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;15
+06/01/2026;23:08;23:49;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;41
+06/01/2026;00:13;00:32;LU-02 Usinage;Nuit;CS-20;Attente outillage;19
+06/01/2026;01:08;01:25;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;17
+06/01/2026;01:59;02:19;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;20
+06/01/2026;06:51;07:31;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+06/01/2026;07:54;08:03;LC-03 Conditionnement;Matin;LO-20;Saturation aval;9
+06/01/2026;08:12;08:26;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;14
+07/01/2026;06:37;07:17;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+07/01/2026;07:33;07:55;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;22
+07/01/2026;08:30;08:52;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;22
+07/01/2026;09:31;09:56;LA-01 Assemblage;Matin;CS-20;Attente outillage;25
+07/01/2026;10:22;10:36;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;14
+07/01/2026;11:13;11:27;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;14
+07/01/2026;13:36;14:16;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/01/2026;14:25;15:07;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;42
+07/01/2026;15:32;16:12;LA-01 Assemblage;Après-midi;CS-10;Changement de série;40
+07/01/2026;06:34;07:14;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+07/01/2026;07:39;08:11;LU-02 Usinage;Matin;CS-10;Changement de série;32
+07/01/2026;08:27;08:36;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;9
+07/01/2026;09:07;09:25;LU-02 Usinage;Matin;MO-10;Absence non remplacée;18
+07/01/2026;09:55;10:14;LU-02 Usinage;Matin;LO-20;Saturation aval;19
+07/01/2026;13:38;14:18;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+07/01/2026;14:58;15:12;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;14
+07/01/2026;15:44;15:58;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;14
+07/01/2026;16:09;16:31;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+07/01/2026;16:55;17:23;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;28
+07/01/2026;18:03;18:27;LU-02 Usinage;Après-midi;CS-20;Attente outillage;24
+07/01/2026;21:36;22:16;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+07/01/2026;22:40;23:14;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;34
+07/01/2026;23:43;23:58;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;15
+07/01/2026;06:39;07:19;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+07/01/2026;07:41;07:53;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;12
+07/01/2026;08:25;08:46;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;21
+07/01/2026;09:09;09:51;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;42
+08/01/2026;06:40;07:20;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+08/01/2026;07:52;08:37;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+08/01/2026;09:10;09:23;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;13
+08/01/2026;09:39;09:55;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;16
+08/01/2026;13:41;14:21;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/01/2026;14:40;15:11;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;31
+08/01/2026;15:34;15:43;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;9
+08/01/2026;15:51;16:09;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;18
+08/01/2026;06:28;07:08;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+08/01/2026;07:42;08:27;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+08/01/2026;08:39;08:53;LU-02 Usinage;Matin;LO-20;Saturation aval;14
+08/01/2026;09:22;09:38;LU-02 Usinage;Matin;MA-30;Défaut automatisme;16
+08/01/2026;09:51;09:58;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;7
+08/01/2026;10:36;11:04;LU-02 Usinage;Matin;AP-20;Composant non conforme;28
+08/01/2026;11:44;11:58;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;14
+08/01/2026;13:53;14:33;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+08/01/2026;15:08;15:45;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;37
+08/01/2026;16:11;16:35;LU-02 Usinage;Après-midi;CS-20;Attente outillage;24
+08/01/2026;21:59;22:39;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+08/01/2026;22:51;23:11;LU-02 Usinage;Nuit;CS-10;Changement de série;20
+08/01/2026;23:32;23:38;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;6
+08/01/2026;00:09;00:24;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;15
+08/01/2026;07:00;07:40;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+08/01/2026;07:48;08:33;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+08/01/2026;09:09;09:31;LC-03 Conditionnement;Matin;CS-20;Attente outillage;22
+08/01/2026;10:09;10:29;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;20
+08/01/2026;10:48;10:59;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;11
+08/01/2026;11:24;12:07;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;43
+09/01/2026;06:43;07:23;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+09/01/2026;07:51;08:22;LA-01 Assemblage;Matin;CS-10;Changement de série;31
+09/01/2026;08:48;08:58;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;10
+09/01/2026;09:24;09:52;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;28
+09/01/2026;13:48;14:28;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/01/2026;14:48;14:55;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;7
+09/01/2026;15:35;15:51;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;16
+09/01/2026;16:12;16:34;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+09/01/2026;17:04;17:25;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;21
+09/01/2026;07:00;07:40;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+09/01/2026;07:56;08:21;LU-02 Usinage;Matin;AP-20;Composant non conforme;25
+09/01/2026;08:34;08:44;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;10
+09/01/2026;13:49;14:29;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+09/01/2026;14:44;14:58;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;14
+09/01/2026;15:31;16:02;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;31
+09/01/2026;16:21;16:56;LU-02 Usinage;Après-midi;CS-10;Changement de série;35
+09/01/2026;21:32;22:12;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+09/01/2026;22:52;23:09;LU-02 Usinage;Nuit;LO-20;Saturation aval;17
+09/01/2026;23:41;00:04;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;23
+09/01/2026;00:30;00:42;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;12
+09/01/2026;00:50;01:18;LU-02 Usinage;Nuit;AP-20;Composant non conforme;28
+09/01/2026;06:59;07:39;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+09/01/2026;07:56;08:24;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;28
+09/01/2026;08:33;08:59;LC-03 Conditionnement;Matin;CS-10;Changement de série;26
+09/01/2026;09:29;09:39;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;10
+09/01/2026;09:56;10:22;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;26
+09/01/2026;10:49;10:59;LC-03 Conditionnement;Matin;LO-20;Saturation aval;10
+12/01/2026;06:31;07:11;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+12/01/2026;07:43;08:47;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;64
+12/01/2026;09:03;09:16;LA-01 Assemblage;Matin;LO-20;Saturation aval;13
+12/01/2026;09:30;10:00;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;30
+12/01/2026;10:40;10:52;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;12
+12/01/2026;11:24;11:53;LA-01 Assemblage;Matin;AP-20;Composant non conforme;29
+12/01/2026;13:42;14:22;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/01/2026;14:46;15:14;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;28
+12/01/2026;15:28;15:56;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;28
+12/01/2026;16:14;16:36;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;22
+12/01/2026;17:06;17:28;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;22
+12/01/2026;18:02;18:42;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;40
+12/01/2026;06:43;07:23;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+12/01/2026;07:45;08:50;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;65
+12/01/2026;09:17;09:31;LU-02 Usinage;Matin;CS-20;Attente outillage;14
+12/01/2026;09:47;10:10;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;23
+12/01/2026;10:50;11:13;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;23
+12/01/2026;13:44;14:24;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+12/01/2026;14:34;14:45;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+12/01/2026;15:20;15:57;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;37
+12/01/2026;16:05;16:18;LU-02 Usinage;Après-midi;LO-20;Saturation aval;13
+12/01/2026;16:30;16:45;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;15
+12/01/2026;22:00;22:40;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+12/01/2026;23:19;23:41;LU-02 Usinage;Nuit;AP-20;Composant non conforme;22
+12/01/2026;00:15;00:30;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;15
+12/01/2026;01:01;01:47;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;46
+12/01/2026;02:15;02:27;LU-02 Usinage;Nuit;CS-20;Attente outillage;12
+12/01/2026;02:58;03:28;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;30
+12/01/2026;06:52;07:32;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+12/01/2026;07:52;08:58;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;66
+12/01/2026;09:08;09:32;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;24
+12/01/2026;09:46;09:54;LC-03 Conditionnement;Matin;LO-20;Saturation aval;8
+13/01/2026;06:29;07:09;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+13/01/2026;07:42;07:55;LA-01 Assemblage;Matin;AP-20;Composant non conforme;13
+13/01/2026;08:24;08:34;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;10
+13/01/2026;09:12;11:10;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;118
+13/01/2026;11:29;11:59;LA-01 Assemblage;Matin;CS-20;Attente outillage;30
+13/01/2026;12:08;12:24;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;16
+13/01/2026;13:43;14:23;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/01/2026;14:54;15:06;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;12
+13/01/2026;15:24;17:21;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;117
+13/01/2026;06:41;07:21;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+13/01/2026;07:31;09:29;LU-02 Usinage;Matin;MA-10;Panne mécanique;118
+13/01/2026;10:02;10:29;LU-02 Usinage;Matin;CS-10;Changement de série;27
+13/01/2026;10:49;11:02;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;13
+13/01/2026;11:11;11:39;LU-02 Usinage;Matin;MO-10;Absence non remplacée;28
+13/01/2026;13:33;14:13;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+13/01/2026;14:43;16:26;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;103
+13/01/2026;17:00;17:10;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;10
+13/01/2026;17:26;17:37;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;11
+13/01/2026;18:04;18:18;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;14
+13/01/2026;18:27;20:25;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;118
+13/01/2026;21:32;22:12;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+13/01/2026;22:32;22:45;LU-02 Usinage;Nuit;CS-20;Attente outillage;13
+13/01/2026;23:18;23:52;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;34
+13/01/2026;06:41;07:21;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+13/01/2026;07:48;08:03;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;15
+13/01/2026;08:19;08:47;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;28
+13/01/2026;09:14;09:35;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;21
+14/01/2026;06:35;07:15;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+14/01/2026;07:32;07:46;LA-01 Assemblage;Matin;CS-20;Attente outillage;14
+14/01/2026;08:25;08:53;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;28
+14/01/2026;13:59;14:39;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/01/2026;14:56;15:07;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+14/01/2026;15:40;16:03;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;23
+14/01/2026;16:18;16:29;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;11
+14/01/2026;06:48;07:28;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+14/01/2026;07:40;08:03;LU-02 Usinage;Matin;MO-10;Absence non remplacée;23
+14/01/2026;08:18;08:34;LU-02 Usinage;Matin;LO-20;Saturation aval;16
+14/01/2026;09:05;09:19;LU-02 Usinage;Matin;MA-30;Défaut automatisme;14
+14/01/2026;09:48;10:01;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;13
+14/01/2026;10:28;10:41;LU-02 Usinage;Matin;AP-20;Composant non conforme;13
+14/01/2026;13:53;14:33;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+14/01/2026;14:47;15:05;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;18
+14/01/2026;15:13;15:48;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;35
+14/01/2026;21:59;22:39;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+14/01/2026;22:55;23:47;LU-02 Usinage;Nuit;MA-10;Panne mécanique;52
+14/01/2026;00:22;00:56;LU-02 Usinage;Nuit;CS-10;Changement de série;34
+14/01/2026;01:27;01:39;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;12
+14/01/2026;06:41;07:21;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+14/01/2026;08:00;08:31;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;31
+14/01/2026;08:42;08:58;LC-03 Conditionnement;Matin;CS-20;Attente outillage;16
+14/01/2026;09:26;09:43;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;17
+14/01/2026;09:59;10:12;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;13
+15/01/2026;06:55;07:35;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+15/01/2026;08:05;08:40;LA-01 Assemblage;Matin;MA-10;Panne mécanique;35
+15/01/2026;09:15;09:39;LA-01 Assemblage;Matin;CS-10;Changement de série;24
+15/01/2026;10:19;10:24;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;5
+15/01/2026;13:32;14:12;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/01/2026;14:44;15:08;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;24
+15/01/2026;15:41;15:52;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;11
+15/01/2026;16:32;16:43;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;11
+15/01/2026;17:02;17:11;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;9
+15/01/2026;07:00;07:40;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+15/01/2026;08:08;08:15;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;7
+15/01/2026;08:40;08:58;LU-02 Usinage;Matin;AP-20;Composant non conforme;18
+15/01/2026;13:43;14:23;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+15/01/2026;15:01;15:26;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;25
+15/01/2026;15:57;16:11;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;14
+15/01/2026;16:29;16:57;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;28
+15/01/2026;21:58;22:38;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+15/01/2026;23:00;23:23;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;23
+15/01/2026;23:42;23:58;LU-02 Usinage;Nuit;LO-20;Saturation aval;16
+15/01/2026;00:26;00:53;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;27
+15/01/2026;01:29;01:36;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;7
+15/01/2026;06:33;07:13;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+15/01/2026;07:39;07:57;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;18
+15/01/2026;08:19;08:59;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;40
+15/01/2026;09:32;09:47;LC-03 Conditionnement;Matin;CS-10;Changement de série;15
+15/01/2026;10:00;10:09;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;9
+15/01/2026;10:44;11:14;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;30
+16/01/2026;06:34;07:14;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+16/01/2026;07:34;07:49;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;15
+16/01/2026;08:01;08:09;LA-01 Assemblage;Matin;LO-20;Saturation aval;8
+16/01/2026;08:21;08:48;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;27
+16/01/2026;09:27;09:43;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;16
+16/01/2026;13:30;14:10;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/01/2026;14:31;14:53;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;22
+16/01/2026;15:02;15:25;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;23
+16/01/2026;15:52;16:16;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;24
+16/01/2026;16:24;16:37;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;13
+16/01/2026;16:45;17:10;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;25
+16/01/2026;06:33;07:13;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+16/01/2026;07:42;08:08;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;26
+16/01/2026;08:18;08:45;LU-02 Usinage;Matin;CS-20;Attente outillage;27
+16/01/2026;08:55;09:27;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;32
+16/01/2026;13:28;14:08;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+16/01/2026;14:46;15:16;LU-02 Usinage;Après-midi;CS-10;Changement de série;30
+16/01/2026;15:47;15:53;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;6
+16/01/2026;16:31;17:04;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;33
+16/01/2026;17:28;17:42;LU-02 Usinage;Après-midi;LO-20;Saturation aval;14
+16/01/2026;21:58;22:38;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+16/01/2026;23:10;23:24;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;14
+16/01/2026;23:55;00:12;LU-02 Usinage;Nuit;AP-20;Composant non conforme;17
+16/01/2026;00:35;00:49;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;14
+16/01/2026;01:11;01:48;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;37
+16/01/2026;02:04;02:35;LU-02 Usinage;Nuit;CS-20;Attente outillage;31
+16/01/2026;06:32;07:12;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+16/01/2026;07:42;07:54;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;12
+16/01/2026;08:08;08:37;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;29
+19/01/2026;06:33;07:13;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+19/01/2026;07:27;07:43;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;16
+19/01/2026;08:20;08:34;LA-01 Assemblage;Matin;AP-20;Composant non conforme;14
+19/01/2026;09:05;09:18;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;13
+19/01/2026;09:26;09:50;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;24
+19/01/2026;10:21;10:42;LA-01 Assemblage;Matin;CS-20;Attente outillage;21
+19/01/2026;13:43;14:23;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/01/2026;14:53;15:26;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;33
+19/01/2026;16:06;16:16;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;10
+19/01/2026;06:42;07:22;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+19/01/2026;07:46;08:12;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;26
+19/01/2026;08:51;09:44;LU-02 Usinage;Matin;MA-10;Panne mécanique;53
+19/01/2026;10:01;10:28;LU-02 Usinage;Matin;CS-10;Changement de série;27
+19/01/2026;10:39;10:50;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;11
+19/01/2026;13:49;14:29;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+19/01/2026;15:09;15:28;LU-02 Usinage;Après-midi;LO-20;Saturation aval;19
+19/01/2026;15:48;16:18;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;30
+19/01/2026;16:53;17:00;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;7
+19/01/2026;17:17;17:45;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;28
+19/01/2026;18:08;18:22;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;14
+19/01/2026;21:45;22:25;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+19/01/2026;22:37;23:01;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;24
+19/01/2026;23:19;23:40;LU-02 Usinage;Nuit;CS-20;Attente outillage;21
+19/01/2026;06:50;07:30;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+19/01/2026;08:09;08:25;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;16
+19/01/2026;08:56;09:13;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;17
+19/01/2026;09:53;10:14;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;21
+20/01/2026;06:56;07:36;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+20/01/2026;08:09;09:05;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;56
+20/01/2026;09:17;09:51;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;34
+20/01/2026;10:10;10:24;LA-01 Assemblage;Matin;CS-20;Attente outillage;14
+20/01/2026;13:48;14:28;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/01/2026;14:43;15:11;LA-01 Assemblage;Après-midi;CS-10;Changement de série;28
+20/01/2026;15:40;15:53;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;13
+20/01/2026;16:08;16:46;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;38
+20/01/2026;06:46;07:26;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+20/01/2026;08:04;09:01;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;57
+20/01/2026;09:11;09:23;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;12
+20/01/2026;09:57;10:14;LU-02 Usinage;Matin;MO-10;Absence non remplacée;17
+20/01/2026;10:37;10:50;LU-02 Usinage;Matin;LO-20;Saturation aval;13
+20/01/2026;11:11;11:49;LU-02 Usinage;Matin;MA-30;Défaut automatisme;38
+20/01/2026;12:15;12:29;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;14
+20/01/2026;13:31;14:11;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+20/01/2026;14:49;15:14;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;25
+20/01/2026;15:35;15:46;LU-02 Usinage;Après-midi;LO-10;Attente cariste, évacuation en-cours;11
+20/01/2026;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+20/01/2026;23:05;23:25;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;20
+20/01/2026;23:38;00:34;LU-02 Usinage;Nuit;MA-10;Panne mécanique;56
+20/01/2026;01:05;01:26;LU-02 Usinage;Nuit;CS-10;Changement de série;21
+20/01/2026;06:48;07:28;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+20/01/2026;08:04;09:02;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;58
+20/01/2026;09:11;09:27;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;16
+20/01/2026;09:46;10:17;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;31
+20/01/2026;10:57;11:15;LC-03 Conditionnement;Matin;CS-20;Attente outillage;18
+20/01/2026;11:41;12:00;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;19
+21/01/2026;06:58;07:38;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+21/01/2026;08:02;08:15;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;13
+21/01/2026;08:52;09:35;LA-01 Assemblage;Matin;MA-10;Panne mécanique;43
+21/01/2026;09:45;10:08;LA-01 Assemblage;Matin;CS-10;Changement de série;23
+21/01/2026;13:46;14:26;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/01/2026;14:35;14:54;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;19
+21/01/2026;15:21;15:56;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;35
+21/01/2026;16:05;16:18;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;13
+21/01/2026;16:31;16:52;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;21
+21/01/2026;06:51;07:31;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+21/01/2026;07:51;08:07;LU-02 Usinage;Matin;MA-30;Défaut automatisme;16
+21/01/2026;08:16;08:33;LU-02 Usinage;Matin;RG-10;Réglage qualité en cours de série;17
+21/01/2026;13:31;14:11;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+21/01/2026;14:49;15:07;LU-02 Usinage;Après-midi;CS-20;Attente outillage;18
+21/01/2026;15:43;16:08;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;25
+21/01/2026;16:45;17:01;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;16
+21/01/2026;21:31;22:11;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+21/01/2026;22:32;22:45;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;13
+21/01/2026;22:53;23:31;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;38
+21/01/2026;23:50;00:05;LU-02 Usinage;Nuit;LO-20;Saturation aval;15
+21/01/2026;00:29;00:47;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;18
+21/01/2026;06:54;07:34;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+21/01/2026;07:51;08:12;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;21
+21/01/2026;08:21;08:39;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;18
+21/01/2026;08:54;09:24;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;30
+21/01/2026;10:00;10:39;LC-03 Conditionnement;Matin;CS-10;Changement de série;39
+21/01/2026;10:55;11:01;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;6
+22/01/2026;06:38;07:18;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+22/01/2026;07:54;08:03;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;9
+22/01/2026;08:41;09:18;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;37
+22/01/2026;09:36;09:56;LA-01 Assemblage;Matin;LO-20;Saturation aval;20
+22/01/2026;10:20;10:56;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;36
+22/01/2026;13:52;14:32;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+22/01/2026;15:02;15:15;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;13
+22/01/2026;15:51;16:14;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;23
+22/01/2026;16:36;16:56;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;20
+22/01/2026;17:12;17:25;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;13
+22/01/2026;17:56;18:24;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;28
+22/01/2026;06:39;07:19;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+22/01/2026;07:29;07:47;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;18
+22/01/2026;08:19;08:50;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;31
+22/01/2026;08:59;09:22;LU-02 Usinage;Matin;CS-20;Attente outillage;23
+22/01/2026;13:36;14:16;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+22/01/2026;14:28;15:04;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;36
+22/01/2026;15:39;16:07;LU-02 Usinage;Après-midi;CS-10;Changement de série;28
+22/01/2026;16:33;16:46;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;13
+22/01/2026;17:07;17:35;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;28
+22/01/2026;21:45;22:25;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+22/01/2026;23:03;23:19;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;16
+22/01/2026;23:33;23:43;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;10
+22/01/2026;00:05;00:29;LU-02 Usinage;Nuit;AP-20;Composant non conforme;24
+22/01/2026;01:06;01:15;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;9
+22/01/2026;01:35;01:52;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;17
+22/01/2026;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+22/01/2026;07:41;08:16;LC-03 Conditionnement;Matin;CS-10;Changement de série;35
+22/01/2026;08:27;08:39;LC-03 Conditionnement;Matin;RG-20;Micro-arrêts, bourrage;12
+23/01/2026;06:35;07:15;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+23/01/2026;07:45;08:30;LA-01 Assemblage;Matin;PL-30;Réunion, formation, audit;45
+23/01/2026;09:10;09:37;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;27
+23/01/2026;09:52;10:02;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;10
+23/01/2026;10:33;10:58;LA-01 Assemblage;Matin;AP-20;Composant non conforme;25
+23/01/2026;11:11;11:33;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;22
+23/01/2026;11:49;12:19;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;30
+23/01/2026;13:49;14:29;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+23/01/2026;15:01;15:24;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;23
+23/01/2026;15:59;16:25;LA-01 Assemblage;Après-midi;AP-10;Rupture d'approvisionnement;26
+23/01/2026;06:35;07:15;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+23/01/2026;07:35;08:20;LU-02 Usinage;Matin;PL-30;Réunion, formation, audit;45
+23/01/2026;08:36;08:50;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;14
+23/01/2026;09:07;09:27;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;20
+23/01/2026;10:03;10:27;LU-02 Usinage;Matin;MA-10;Panne mécanique;24
+23/01/2026;11:01;11:27;LU-02 Usinage;Matin;CS-10;Changement de série;26
+23/01/2026;13:49;14:29;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+23/01/2026;14:49;15:15;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;26
+23/01/2026;15:40;15:47;LU-02 Usinage;Après-midi;LO-20;Saturation aval;7
+23/01/2026;16:09;16:31;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;22
+23/01/2026;16:54;17:06;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;12
+23/01/2026;17:26;17:42;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;16
+23/01/2026;21:49;22:29;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+23/01/2026;22:40;22:52;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;12
+23/01/2026;23:27;23:48;LU-02 Usinage;Nuit;MA-20;Panne électrique ou capteur;21
+23/01/2026;06:41;07:21;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+23/01/2026;07:59;08:44;LC-03 Conditionnement;Matin;PL-30;Réunion, formation, audit;45
+23/01/2026;09:17;09:24;LC-03 Conditionnement;Matin;LO-20;Saturation aval;7
+23/01/2026;09:50;10:10;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;20
+23/01/2026;10:46;11:00;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;14
+26/01/2026;06:33;07:13;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+26/01/2026;07:42;08:05;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;23
+26/01/2026;08:35;08:54;LA-01 Assemblage;Matin;MA-20;Panne électrique ou capteur;19
+26/01/2026;13:34;14:14;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+26/01/2026;14:52;15:35;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;43
+26/01/2026;16:12;16:33;LA-01 Assemblage;Après-midi;CS-10;Changement de série;21
+26/01/2026;17:02;17:13;LA-01 Assemblage;Après-midi;RG-20;Micro-arrêts, bourrage;11
+26/01/2026;06:57;07:37;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+26/01/2026;07:59;08:22;LU-02 Usinage;Matin;CS-10;Changement de série;23
+26/01/2026;08:47;08:59;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;12
+26/01/2026;09:09;09:31;LU-02 Usinage;Matin;MO-10;Absence non remplacée;22
+26/01/2026;10:05;10:14;LU-02 Usinage;Matin;LO-20;Saturation aval;9
+26/01/2026;10:47;11:17;LU-02 Usinage;Matin;MA-30;Défaut automatisme;30
+26/01/2026;13:28;14:08;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+26/01/2026;14:35;14:52;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;17
+26/01/2026;15:31;15:55;LU-02 Usinage;Après-midi;AP-20;Composant non conforme;24
+26/01/2026;21:51;22:31;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+26/01/2026;23:07;23:36;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;29
+26/01/2026;23:46;00:04;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;18
+26/01/2026;00:37;01:13;LU-02 Usinage;Nuit;MA-10;Panne mécanique;36
+26/01/2026;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+26/01/2026;08:06;08:31;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;25
+26/01/2026;08:40;08:53;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;13
+26/01/2026;09:32;09:58;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;26
+26/01/2026;10:28;10:47;LC-03 Conditionnement;Matin;CS-20;Attente outillage;19
+27/01/2026;06:40;07:20;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+27/01/2026;07:28;07:52;LA-01 Assemblage;Matin;AP-10;Rupture d'approvisionnement;24
+27/01/2026;08:26;08:37;LA-01 Assemblage;Matin;MO-20;Accompagnement, formation au poste;11
+27/01/2026;08:52;09:39;LA-01 Assemblage;Matin;MA-10;Panne mécanique;47
+27/01/2026;13:54;14:34;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/01/2026;15:05;15:41;LA-01 Assemblage;Après-midi;MO-10;Absence non remplacée;36
+27/01/2026;15:58;16:12;LA-01 Assemblage;Après-midi;LO-20;Saturation aval;14
+27/01/2026;16:50;17:21;LA-01 Assemblage;Après-midi;MA-30;Défaut automatisme;31
+27/01/2026;17:59;18:06;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;7
+27/01/2026;06:52;07:32;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+27/01/2026;08:11;08:28;LU-02 Usinage;Matin;LO-20;Saturation aval;17
+27/01/2026;08:43;09:12;LU-02 Usinage;Matin;MA-30;Défaut automatisme;29
+27/01/2026;13:36;14:16;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+27/01/2026;14:38;15:24;LU-02 Usinage;Après-midi;MA-20;Panne électrique ou capteur;46
+27/01/2026;15:33;15:50;LU-02 Usinage;Après-midi;CS-20;Attente outillage;17
+27/01/2026;16:25;16:47;LU-02 Usinage;Après-midi;AP-10;Rupture d'approvisionnement;22
+27/01/2026;21:45;22:25;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+27/01/2026;22:47;23:23;LU-02 Usinage;Nuit;CS-10;Changement de série;36
+27/01/2026;23:57;00:05;LU-02 Usinage;Nuit;RG-20;Micro-arrêts, bourrage;8
+27/01/2026;00:25;00:43;LU-02 Usinage;Nuit;MO-10;Absence non remplacée;18
+27/01/2026;01:20;01:36;LU-02 Usinage;Nuit;LO-20;Saturation aval;16
+27/01/2026;06:55;07:35;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+27/01/2026;08:12;08:24;LC-03 Conditionnement;Matin;CS-20;Attente outillage;12
+27/01/2026;08:45;09:02;LC-03 Conditionnement;Matin;AP-10;Rupture d'approvisionnement;17
+27/01/2026;09:13;09:34;LC-03 Conditionnement;Matin;MO-20;Accompagnement, formation au poste;21
+27/01/2026;10:14;11:06;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;52
+27/01/2026;11:44;12:16;LC-03 Conditionnement;Matin;CS-10;Changement de série;32
+28/01/2026;06:58;07:38;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+28/01/2026;07:49;09:02;LA-01 Assemblage;Matin;PL-20;Maintenance préventive planifiée;73
+28/01/2026;09:33;10:14;LA-01 Assemblage;Matin;CS-10;Changement de série;41
+28/01/2026;10:46;10:57;LA-01 Assemblage;Matin;RG-20;Micro-arrêts, bourrage;11
+28/01/2026;11:34;12:10;LA-01 Assemblage;Matin;MO-10;Absence non remplacée;36
+28/01/2026;12:20;12:39;LA-01 Assemblage;Matin;LO-20;Saturation aval;19
+28/01/2026;13:35;14:15;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/01/2026;14:54;15:09;LA-01 Assemblage;Après-midi;RG-10;Réglage qualité en cours de série;15
+28/01/2026;15:27;15:54;LA-01 Assemblage;Après-midi;AP-20;Composant non conforme;27
+28/01/2026;16:25;16:34;LA-01 Assemblage;Après-midi;LO-10;Attente cariste, évacuation en-cours;9
+28/01/2026;16:52;17:24;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;32
+28/01/2026;17:56;18:14;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;18
+28/01/2026;06:51;07:31;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+28/01/2026;08:10;09:24;LU-02 Usinage;Matin;PL-20;Maintenance préventive planifiée;74
+28/01/2026;09:57;10:20;LU-02 Usinage;Matin;AP-20;Composant non conforme;23
+28/01/2026;10:33;10:49;LU-02 Usinage;Matin;LO-10;Attente cariste, évacuation en-cours;16
+28/01/2026;11:15;11:53;LU-02 Usinage;Matin;MA-20;Panne électrique ou capteur;38
+28/01/2026;13:39;14:19;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+28/01/2026;14:29;14:54;LU-02 Usinage;Après-midi;MO-20;Accompagnement, formation au poste;25
+28/01/2026;15:12;16:02;LU-02 Usinage;Après-midi;MA-10;Panne mécanique;50
+28/01/2026;16:18;16:55;LU-02 Usinage;Après-midi;CS-10;Changement de série;37
+28/01/2026;17:12;17:22;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;10
+28/01/2026;21:39;22:19;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+28/01/2026;22:33;22:45;LU-02 Usinage;Nuit;LO-20;Saturation aval;12
+28/01/2026;22:59;23:31;LU-02 Usinage;Nuit;MA-30;Défaut automatisme;32
+28/01/2026;00:02;00:14;LU-02 Usinage;Nuit;RG-10;Réglage qualité en cours de série;12
+28/01/2026;00:48;01:05;LU-02 Usinage;Nuit;AP-20;Composant non conforme;17
+28/01/2026;01:18;01:37;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;19
+28/01/2026;06:43;07:23;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+28/01/2026;08:02;09:17;LC-03 Conditionnement;Matin;PL-20;Maintenance préventive planifiée;75
+28/01/2026;09:53;10:43;LC-03 Conditionnement;Matin;MA-10;Panne mécanique;50
+28/01/2026;10:53;11:30;LC-03 Conditionnement;Matin;CS-10;Changement de série;37
+29/01/2026;06:57;07:37;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+29/01/2026;08:05;08:21;LA-01 Assemblage;Matin;LO-20;Saturation aval;16
+29/01/2026;08:40;08:55;LA-01 Assemblage;Matin;MA-30;Défaut automatisme;15
+29/01/2026;09:32;09:38;LA-01 Assemblage;Matin;RG-10;Réglage qualité en cours de série;6
+29/01/2026;10:09;10:36;LA-01 Assemblage;Matin;AP-20;Composant non conforme;27
+29/01/2026;11:00;11:14;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;14
+29/01/2026;13:31;14:11;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+29/01/2026;14:36;15:08;LA-01 Assemblage;Après-midi;MA-20;Panne électrique ou capteur;32
+29/01/2026;15:20;15:33;LA-01 Assemblage;Après-midi;CS-20;Attente outillage;13
+29/01/2026;06:43;07:23;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+29/01/2026;07:34;07:55;LU-02 Usinage;Matin;CS-20;Attente outillage;21
+29/01/2026;08:25;08:49;LU-02 Usinage;Matin;AP-10;Rupture d'approvisionnement;24
+29/01/2026;09:05;09:30;LU-02 Usinage;Matin;MO-20;Accompagnement, formation au poste;25
+29/01/2026;09:51;10:32;LU-02 Usinage;Matin;MA-10;Panne mécanique;41
+29/01/2026;13:46;14:26;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+29/01/2026;14:53;15:05;LU-02 Usinage;Après-midi;RG-20;Micro-arrêts, bourrage;12
+29/01/2026;15:32;15:54;LU-02 Usinage;Après-midi;MO-10;Absence non remplacée;22
+29/01/2026;16:31;16:43;LU-02 Usinage;Après-midi;LO-20;Saturation aval;12
+29/01/2026;17:13;17:34;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;21
+29/01/2026;17:50;17:58;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;8
+29/01/2026;21:29;22:09;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+29/01/2026;22:17;22:42;LU-02 Usinage;Nuit;AP-20;Composant non conforme;25
+29/01/2026;23:17;23:26;LU-02 Usinage;Nuit;LO-10;Attente cariste, évacuation en-cours;9
+29/01/2026;06:49;07:29;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+29/01/2026;07:52;08:15;LC-03 Conditionnement;Matin;MO-10;Absence non remplacée;23
+29/01/2026;08:43;08:57;LC-03 Conditionnement;Matin;LO-20;Saturation aval;14
+29/01/2026;09:06;09:27;LC-03 Conditionnement;Matin;MA-30;Défaut automatisme;21
+30/01/2026;06:38;07:18;LA-01 Assemblage;Matin;PL-10;Pause légale et relève de poste;40
+30/01/2026;07:34;07:47;LA-01 Assemblage;Matin;AP-20;Composant non conforme;13
+30/01/2026;08:01;08:24;LA-01 Assemblage;Matin;LO-10;Attente cariste, évacuation en-cours;23
+30/01/2026;13:47;14:27;LA-01 Assemblage;Après-midi;PL-10;Pause légale et relève de poste;40
+30/01/2026;15:02;15:25;LA-01 Assemblage;Après-midi;MO-20;Accompagnement, formation au poste;23
+30/01/2026;15:37;15:58;LA-01 Assemblage;Après-midi;MA-10;Panne mécanique;21
+30/01/2026;16:12;16:36;LA-01 Assemblage;Après-midi;CS-10;Changement de série;24
+30/01/2026;06:34;07:14;LU-02 Usinage;Matin;PL-10;Pause légale et relève de poste;40
+30/01/2026;07:53;08:29;LU-02 Usinage;Matin;MA-10;Panne mécanique;36
+30/01/2026;08:48;09:07;LU-02 Usinage;Matin;CS-10;Changement de série;19
+30/01/2026;09:38;09:51;LU-02 Usinage;Matin;RG-20;Micro-arrêts, bourrage;13
+30/01/2026;10:01;10:32;LU-02 Usinage;Matin;MO-10;Absence non remplacée;31
+30/01/2026;11:06;11:19;LU-02 Usinage;Matin;LO-20;Saturation aval;13
+30/01/2026;13:32;14:12;LU-02 Usinage;Après-midi;PL-10;Pause légale et relève de poste;40
+30/01/2026;14:43;15:15;LU-02 Usinage;Après-midi;MA-30;Défaut automatisme;32
+30/01/2026;15:28;15:43;LU-02 Usinage;Après-midi;RG-10;Réglage qualité en cours de série;15
+30/01/2026;21:50;22:30;LU-02 Usinage;Nuit;PL-10;Pause légale et relève de poste;40
+30/01/2026;23:07;23:21;LU-02 Usinage;Nuit;CS-20;Attente outillage;14
+30/01/2026;23:34;23:56;LU-02 Usinage;Nuit;AP-10;Rupture d'approvisionnement;22
+30/01/2026;00:20;00:38;LU-02 Usinage;Nuit;MO-20;Accompagnement, formation au poste;18
+30/01/2026;06:56;07:36;LC-03 Conditionnement;Matin;PL-10;Pause légale et relève de poste;40
+30/01/2026;08:02;08:13;LC-03 Conditionnement;Matin;RG-10;Réglage qualité en cours de série;11
+30/01/2026;08:50;09:18;LC-03 Conditionnement;Matin;AP-20;Composant non conforme;28
+30/01/2026;09:57;10:10;LC-03 Conditionnement;Matin;LO-10;Attente cariste, évacuation en-cours;13
+30/01/2026;10:42;11:25;LC-03 Conditionnement;Matin;MA-20;Panne électrique ou capteur;43
