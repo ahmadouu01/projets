@@ -1,0 +1,6 @@
+# base de données locale et fichiers temporaires SQLite
+data/*.db
+data/*.db-wal
+data/*.db-shm
+__pycache__/
+*.pyc
