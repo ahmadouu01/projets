@@ -20,6 +20,21 @@ des dégradés CSS).
 | `devis.html` | Demande de devis en 3 étapes avec récapitulatif et validation côté client. |
 | `contact.html` | Formulaire de contact, coordonnées, agences (`#agences`), espace client (`#espace-client`), FAQ (`#faq`). |
 
+## Version en un seul fichier
+
+`setal-pro-site-complet.html` contient **tout le site dans un seul fichier**
+autonome : les six pages, le CSS, le JavaScript et le favicon y sont intégrés.
+Il s'ouvre d'un double-clic, sans serveur, et se transmet par e-mail ou par clé USB.
+
+La navigation s'y fait par des routes de hash : `#/accueil`, `#/solutions`,
+`#/solutions/tapis`, `#/secteurs/mines`, `#/entreprise/rse`,
+`#/devis?solution=tapis&secteur=hotellerie`, `#/contact/faq`…
+
+Ce fichier est **généré** à partir des six pages : après avoir modifié un fichier
+source (`.html`, `css/style.css`, `js/main.js`), il faut le régénérer pour que la
+version un-fichier reste à jour. Seules les polices Google (Manrope / Inter) sont
+chargées depuis Internet ; hors ligne, le site s'affiche avec les polices système.
+
 ## Fonctionnalités
 
 - Méga-menus « Nos solutions » et « Nos secteurs » (survol sur ordinateur, accordéon sur mobile).

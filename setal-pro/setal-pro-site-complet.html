@@ -1,0 +1,2852 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Setal Pro — Location et entretien de vêtements de travail, linge et hygiène au Sénégal</title>
+  <meta name="description" content="Setal Pro loue, livre, lave et remplace vos vêtements de travail, votre linge plat et vos équipements d'hygiène partout au Sénégal. Devis gratuit sous 48 h." />
+  <meta name="theme-color" content="#0b3d3a" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYjNkM2EiLz4KICA8cGF0aCBkPSJNMjAgMjJjMC0zLjMgMy42LTUuNiA5LTUuNiA0LjQgMCA3LjkgMS4zIDkuOCAzbC0zLjMgNC40Yy0xLjYtMS4zLTMuOS0yLjEtNi4yLTIuMS0yLjIgMC0zLjYuNy0zLjYgMS44IDAgMy42IDE0LjIuNiAxNC4yIDEwLjEgMCA0LjItNCA3LTEwLjIgNy01IDAtOS4yLTEuNi0xMS40LTMuOGwzLjYtNC40YzEuOSAxLjcgNC43IDIuNyA3LjYgMi43IDIuNiAwIDQuMi0uOCA0LjItMi4xIDAtMy44LTEzLjctLjgtMTMuNy0xMXoiIGZpbGw9IiM3ZWUwYTEiLz4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjQ0IiByPSI0IiBmaWxsPSIjZjJiNzA1Ii8+Cjwvc3ZnPgo=" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+/* =========================================================
+   SETAL PRO — Feuille de style principale
+   Services textiles & hygiène pour les professionnels (Sénégal)
+   ========================================================= */
+
+:root {
+  /* Couleurs de marque */
+  --green-900: #062b29;
+  --green-800: #0b3d3a;
+  --green-700: #0f524d;
+  --green-600: #14776e;
+  --green-500: #1a9c8e;
+  --green-100: #e2f4f0;
+  --green-050: #f2faf8;
+  --lime: #7ee0a1;
+  --gold: #f2b705;
+  --gold-dark: #d19c00;
+
+  --ink: #10201f;
+  --ink-soft: #46605e;
+  --ink-faint: #7c918f;
+  --line: #e2ebe9;
+  --line-strong: #cfdedb;
+  --bg: #ffffff;
+  --bg-alt: #f5f9f8;
+  --bg-dark: var(--green-800);
+  --white: #ffffff;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 2px 8px rgba(6, 43, 41, .06);
+  --shadow: 0 14px 40px rgba(6, 43, 41, .10);
+  --shadow-lg: 0 30px 70px rgba(6, 43, 41, .16);
+
+  --maxw: 1240px;
+  --header-h: 78px;
+  --ff-title: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --ff-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Reset & bases ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0;
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p { margin: 0; }
+h1, h2, h3, h4, h5 { margin: 0; font-family: var(--ff-title); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 24px; }
+.section { padding: 88px 0; }
+.section--tight { padding: 56px 0; }
+.section--alt { background: var(--bg-alt); }
+.section--dark { background: var(--green-800); color: #dff0ed; }
+.section--dark h2, .section--dark h3 { color: #fff; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--green-800); color: #fff; padding: 12px 20px; border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Typographie utilitaire ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green-600);
+}
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--gold); border-radius: 2px; }
+.section--dark .eyebrow, .hero .eyebrow, .hero-card .eyebrow, .page-hero .eyebrow, .cta-band .eyebrow { color: var(--lime); }
+h1, .h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); }
+h2, .h2 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); }
+h3, .h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
+.lead { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--ink-soft); }
+.muted { color: var(--ink-soft); }
+.section--dark .muted, .section--dark .lead { color: #b9d6d2; }
+
+.section-head { max-width: 720px; margin-bottom: 48px; display: grid; gap: 14px; }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head--center .eyebrow { justify-content: center; }
+.section-head--split { max-width: none; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+@media (max-width: 800px) { .section-head--split { grid-template-columns: 1fr; } }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 24px; border: 2px solid transparent; border-radius: 999px; white-space: nowrap;
+  font-weight: 700; font-size: .95rem; letter-spacing: .01em;
+  transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.btn svg { width: 18px; height: 18px; }
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--green-600); color: #fff; box-shadow: 0 10px 24px rgba(20, 119, 110, .28); }
+.btn--primary:hover { background: var(--green-700); }
+.btn--gold { background: var(--gold); color: var(--green-900); box-shadow: 0 10px 24px rgba(242, 183, 5, .3); }
+.btn--gold:hover { background: var(--gold-dark); }
+.btn--ghost { border-color: var(--line-strong); color: var(--ink); background: #fff; }
+.btn--ghost:hover { border-color: var(--green-600); color: var(--green-700); }
+.btn--light { background: #fff; color: var(--green-800); }
+.btn--outline-light { border-color: rgba(255,255,255,.5); color: #fff; }
+.btn--outline-light:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+.btn--sm { padding: 9px 18px; font-size: .85rem; }
+.btn--block { width: 100%; }
+
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--green-600); }
+.link-arrow svg { width: 16px; height: 16px; transition: transform .18s ease; }
+.link-arrow:hover svg { transform: translateX(4px); }
+
+/* ---------- Barre supérieure ---------- */
+.topbar { background: var(--green-900); color: #cfe6e2; font-size: .82rem; }
+.topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 40px; }
+.topbar-info { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.topbar a { display: inline-flex; align-items: center; gap: 7px; }
+.topbar a:hover { color: var(--lime); }
+.topbar svg { width: 15px; height: 15px; opacity: .85; }
+.topbar-links { display: flex; align-items: center; gap: 18px; }
+.topbar-links .tag { background: rgba(255,255,255,.1); padding: 4px 12px; border-radius: 999px; }
+@media (max-width: 900px) { .topbar-info .hide-sm, .topbar-links .hide-sm { display: none; } }
+@media (max-width: 560px) { .topbar { font-size: .76rem; } .topbar .container { justify-content: center; } .topbar-links { display: none; } }
+
+/* ---------- En-tête ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100; background: #fff;
+  border-bottom: 1px solid var(--line); transition: box-shadow .25s ease;
+}
+.site-header.is-stuck { box-shadow: var(--shadow-sm); }
+.site-header > .container { display: flex; align-items: center; gap: 18px; min-height: var(--header-h); }
+.logo { flex: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 11px; font-family: var(--ff-title); font-weight: 800; font-size: 1.32rem; letter-spacing: -.03em; color: var(--green-800); }
+.logo-mark { width: 40px; height: 40px; border-radius: 11px; flex: none; }
+.logo small { display: block; font-family: var(--ff-body); font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); }
+
+.main-nav { margin-left: auto; }
+.main-nav > ul { display: flex; align-items: center; gap: 2px; }
+.main-nav > ul > li > a, .nav-trigger {
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 999px;
+  font-weight: 600; font-size: .93rem; background: none; border: 0; color: var(--ink); white-space: nowrap;
+}
+.main-nav > ul > li > a:hover, .nav-trigger:hover, .nav-item.is-open .nav-trigger { background: var(--green-050); color: var(--green-700); }
+.main-nav a.is-active { color: var(--green-700); }
+.nav-trigger svg { width: 14px; height: 14px; flex: none; opacity: .75; transition: transform .2s ease; }
+.nav-item.is-open .nav-trigger svg { transform: rotate(180deg); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+/* Méga-menu */
+.nav-item { position: relative; }
+.mega {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translate(-50%, 10px);
+  width: min(880px, calc(100vw - 48px)); background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 26px;
+  opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.nav-item.is-open .mega { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.mega-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 22px; }
+.mega-link { display: flex; gap: 13px; padding: 11px 12px; border-radius: var(--radius-sm); }
+.mega-link:hover { background: var(--green-050); }
+.mega-link .ico { width: 38px; height: 38px; flex: none; border-radius: 10px; background: var(--green-100); color: var(--green-700); display: grid; place-items: center; }
+.mega-link .ico svg { width: 20px; height: 20px; }
+.mega-link strong { display: block; font-size: .95rem; }
+.mega-link span { font-size: .82rem; color: var(--ink-soft); line-height: 1.4; }
+.mega-foot { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .88rem; }
+
+.nav-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: #fff; align-items: center; justify-content: center; }
+.nav-toggle svg { width: 22px; height: 22px; }
+
+@media (max-width: 1200px) {
+  .logo small { display: none; }
+}
+@media (max-width: 1080px) {
+  .header-actions .btn--ghost { display: none; }
+}
+@media (max-width: 980px) {
+  .nav-toggle { display: inline-flex; }
+  .main-nav {
+    position: fixed; inset: var(--header-h) 0 0 auto; width: min(420px, 88vw);
+    background: #fff; border-left: 1px solid var(--line); padding: 20px 20px 40px;
+    overflow-y: auto; transform: translateX(105%); transition: transform .3s ease; box-shadow: var(--shadow-lg);
+  }
+  .main-nav.is-open { transform: none; }
+  .main-nav > ul { flex-direction: column; align-items: stretch; gap: 2px; }
+  .main-nav > ul > li > a, .nav-trigger { width: 100%; justify-content: space-between; padding: 14px 12px; border-radius: var(--radius-sm); font-size: 1rem; white-space: normal; }
+  .mega {
+    position: static; transform: none; width: auto; opacity: 1; visibility: visible;
+    border: 0; box-shadow: none; padding: 4px 0 10px; display: none;
+  }
+  .nav-item.is-open .mega { display: block; transform: none; }
+  .mega-grid { grid-template-columns: 1fr; }
+  .mega-foot { display: none; }
+  .header-actions .btn { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  background:
+    radial-gradient(900px 520px at 78% 18%, rgba(26, 156, 142, .55), transparent 62%),
+    radial-gradient(700px 480px at 8% 92%, rgba(242, 183, 5, .22), transparent 60%),
+    linear-gradient(140deg, var(--green-900), var(--green-700));
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; opacity: .16; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+  background-size: 64px 64px; mask-image: radial-gradient(circle at 70% 40%, #000, transparent 72%);
+}
+.hero .container { position: relative; z-index: 2; padding-block: 86px 96px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; align-items: center; }
+.hero h1 { color: #fff; }
+.hero h1 em { font-style: normal; color: var(--lime); }
+.hero p.lead { color: #cfe8e4; max-width: 46ch; margin-top: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+.hero-badges li {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; font-size: .84rem; font-weight: 600;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; backdrop-filter: blur(4px);
+}
+.hero-badges svg { width: 15px; height: 15px; color: var(--lime); }
+.hero-card {
+  background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius-lg);
+  padding: 28px; backdrop-filter: blur(10px); box-shadow: var(--shadow-lg);
+}
+.hero-card h2 { font-size: 1.25rem; }
+.hero-card .muted { color: #bcdcd7; font-size: .9rem; }
+.cycle { display: grid; gap: 12px; margin-top: 22px; }
+.cycle li { display: flex; gap: 14px; align-items: flex-start; padding: 13px 15px; background: rgba(255,255,255,.08); border-radius: var(--radius-sm); }
+.cycle .num { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--lime); color: var(--green-900); display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+.cycle strong { display: block; font-size: .95rem; }
+.cycle span { font-size: .82rem; color: #bcdcd7; }
+@media (max-width: 960px) { .hero .container { grid-template-columns: 1fr; padding-block: 60px 70px; gap: 40px; } }
+
+/* ---------- Bandeau de réassurance ---------- */
+.trustbar { border-bottom: 1px solid var(--line); background: #fff; }
+.trustbar .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.trustbar-item { display: flex; align-items: center; gap: 14px; padding: 24px 22px; border-left: 1px solid var(--line); }
+.trustbar-item:first-child { border-left: 0; padding-left: 0; }
+.trustbar-item .ico { width: 42px; height: 42px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--green-100); color: var(--green-700); }
+.trustbar-item .ico svg { width: 22px; height: 22px; }
+.trustbar-item strong { display: block; font-size: .95rem; }
+.trustbar-item span { font-size: .82rem; color: var(--ink-soft); }
+@media (max-width: 900px) { .trustbar .container { grid-template-columns: repeat(2, 1fr); } .trustbar-item { border-left: 0; padding: 18px 0; } }
+@media (max-width: 520px) { .trustbar .container { grid-template-columns: 1fr; } }
+
+/* ---------- Grilles & cartes ---------- */
+.grid { display: grid; gap: 24px; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 980px) { .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--green-100); }
+.card .ico { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--green-100); color: var(--green-700); }
+.card .ico svg { width: 26px; height: 26px; }
+.card h3 { font-size: 1.12rem; }
+.card p { font-size: .93rem; color: var(--ink-soft); }
+.card ul.ticks { display: grid; gap: 7px; margin-top: 2px; }
+.card .link-arrow { margin-top: auto; padding-top: 6px; }
+
+.ticks li { position: relative; padding-left: 24px; font-size: .89rem; color: var(--ink-soft); }
+.ticks li::before {
+  content: ""; position: absolute; left: 0; top: .45em; width: 14px; height: 8px;
+  border-left: 2px solid var(--green-500); border-bottom: 2px solid var(--green-500);
+  transform: rotate(-45deg); border-radius: 1px;
+}
+.section--dark .ticks li { color: #cbe4e0; }
+
+/* Cartes secteurs */
+.sector-card {
+  position: relative; overflow: hidden; border-radius: var(--radius); min-height: 260px;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; color: #fff;
+  background: linear-gradient(160deg, var(--green-700), var(--green-900));
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.sector-card::before {
+  content: ""; position: absolute; inset: 0; opacity: .2;
+  background: radial-gradient(280px 200px at 82% 12%, var(--lime), transparent 70%);
+}
+.sector-card:nth-child(2n)::before { background: radial-gradient(280px 200px at 82% 12%, var(--gold), transparent 70%); }
+.sector-card:nth-child(3n)::before { background: radial-gradient(280px 200px at 82% 12%, #63c8ff, transparent 70%); }
+.sector-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.sector-card > * { position: relative; z-index: 2; }
+.sector-card .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.15); display: grid; place-items: center; margin-bottom: auto; }
+.sector-card .ico svg { width: 22px; height: 22px; }
+.sector-card h3 { font-size: 1.1rem; margin-top: 18px; }
+.sector-card p { font-size: .87rem; color: #cbe4e0; margin-top: 6px; }
+
+/* ---------- Chiffres clés ---------- */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat { padding: 26px; border-radius: var(--radius); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+.stat .value { font-family: var(--ff-title); font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 800; color: #fff; line-height: 1; }
+.stat .value span { color: var(--lime); }
+.stat p { margin-top: 10px; font-size: .9rem; color: #b9d6d2; }
+@media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+
+/* ---------- Split média ---------- */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; align-items: center; }
+.split--reverse .split-media { order: 2; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 36px; } .split--reverse .split-media { order: 0; } }
+.split-media {
+  position: relative; border-radius: var(--radius-lg); min-height: 380px; overflow: hidden;
+  background: linear-gradient(155deg, var(--green-600), var(--green-900));
+  display: grid; place-items: center; padding: 30px;
+}
+.split-media::after {
+  content: ""; position: absolute; inset: 0; opacity: .25;
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.14) 0 2px, transparent 2px 14px);
+}
+.split-media svg { position: relative; z-index: 2; width: min(320px, 80%); height: auto; color: #fff; }
+.badge-float {
+  position: absolute; z-index: 3; bottom: 22px; left: 22px; right: 22px; background: #fff; color: var(--ink);
+  border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); display: flex; gap: 14px; align-items: center;
+}
+.badge-float .ico { width: 40px; height: 40px; border-radius: 11px; background: var(--gold); color: var(--green-900); display: grid; place-items: center; flex: none; }
+.badge-float strong { display: block; font-size: .95rem; }
+.badge-float span { font-size: .82rem; color: var(--ink-soft); }
+
+/* ---------- Étapes du service ---------- */
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; counter-reset: step; }
+.step { position: relative; padding: 26px 20px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.step::before {
+  counter-increment: step; content: "0" counter(step);
+  font-family: var(--ff-title); font-size: 1.6rem; font-weight: 800; color: var(--green-100);
+  display: block; margin-bottom: 8px;
+}
+.step h3 { font-size: 1rem; }
+.step p { font-size: .87rem; color: var(--ink-soft); margin-top: 8px; }
+.step .ico { position: absolute; top: 22px; right: 20px; color: var(--green-500); }
+.step .ico svg { width: 22px; height: 22px; }
+@media (max-width: 1080px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---------- Onglets ---------- */
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.tab {
+  padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff;
+  font-weight: 600; font-size: .9rem; transition: all .18s ease;
+}
+.tab:hover { border-color: var(--green-500); color: var(--green-700); }
+.tab.is-active { background: var(--green-700); border-color: var(--green-700); color: #fff; }
+.tab-panel[hidden] { display: none; }
+
+/* ---------- Témoignages ---------- */
+.quotes { position: relative; }
+.quote-track { display: flex; overflow: hidden; }
+.quote {
+  flex: 0 0 100%; padding: 40px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+  display: grid; gap: 20px; transition: opacity .35s ease;
+}
+.quote blockquote { margin: 0; font-family: var(--ff-title); font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 700; line-height: 1.4; }
+.quote blockquote::before { content: "«"; color: var(--gold); margin-right: 6px; }
+.quote blockquote::after { content: "»"; color: var(--gold); margin-left: 6px; }
+.quote-author { display: flex; align-items: center; gap: 14px; }
+.avatar { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: var(--green-600); flex: none; }
+.quote-author strong { display: block; font-size: .95rem; }
+.quote-author span { font-size: .84rem; color: var(--ink-soft); }
+.quote-nav { display: flex; gap: 10px; justify-content: center; margin-top: 26px; }
+.quote-dot { width: 10px; height: 10px; border-radius: 50%; border: 0; background: var(--line-strong); padding: 0; }
+.quote-dot.is-active { background: var(--green-600); width: 28px; border-radius: 999px; }
+
+/* ---------- Actualités ---------- */
+.post { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.post:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.post-thumb { height: 168px; background: linear-gradient(150deg, var(--green-600), var(--green-900)); position: relative; }
+.post:nth-child(2) .post-thumb { background: linear-gradient(150deg, #1a9c8e, #062b29); }
+.post:nth-child(3) .post-thumb { background: linear-gradient(150deg, #d19c00, #0b3d3a); }
+.post-thumb::after { content: ""; position: absolute; inset: 0; opacity: .3; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,.16) 0 2px, transparent 2px 16px); }
+.post-body { padding: 22px; display: grid; gap: 10px; }
+.post .meta { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--green-600); font-weight: 700; }
+.post h3 { font-size: 1.05rem; }
+.post p { font-size: .9rem; color: var(--ink-soft); }
+
+/* ---------- Bandeau CTA ---------- */
+.cta-band {
+  border-radius: var(--radius-lg); padding: 54px; color: #fff; position: relative; overflow: hidden;
+  background: linear-gradient(120deg, var(--green-800), var(--green-600));
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center;
+}
+.cta-band::after { content: ""; position: absolute; right: -60px; top: -60px; width: 320px; height: 320px; border-radius: 50%; background: rgba(242,183,5,.18); }
+.cta-band > * { position: relative; z-index: 2; }
+.cta-band h2 { color: #fff; }
+.cta-band p { color: #cfe8e4; margin-top: 10px; max-width: 52ch; }
+.cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+@media (max-width: 860px) { .cta-band { grid-template-columns: 1fr; padding: 36px 26px; } }
+
+/* ---------- En-tête de page interne ---------- */
+.page-hero {
+  color: #fff; position: relative; overflow: hidden;
+  background: radial-gradient(700px 400px at 88% 10%, rgba(26,156,142,.5), transparent 60%), linear-gradient(130deg, var(--green-900), var(--green-700));
+}
+.page-hero .container { position: relative; z-index: 2; padding-block: 60px 66px; max-width: 900px; margin-inline: auto; }
+.page-hero h1 { color: #fff; margin-top: 12px; }
+.page-hero p { color: #cfe8e4; margin-top: 16px; max-width: 62ch; font-size: 1.05rem; }
+.breadcrumb { display: flex; gap: 8px; font-size: .84rem; color: #a9cfca; flex-wrap: wrap; }
+.breadcrumb a:hover { color: #fff; }
+.breadcrumb li:not(:last-child)::after { content: "›"; margin-left: 8px; opacity: .6; }
+.breadcrumb ol, .breadcrumb ul { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ---------- Solution détaillée ---------- */
+.solution-block { padding: 64px 0; border-top: 1px solid var(--line); }
+.solution-block:first-of-type { border-top: 0; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.tag-list li { font-size: .8rem; font-weight: 600; padding: 6px 13px; border-radius: 999px; background: var(--green-050); color: var(--green-700); border: 1px solid var(--green-100); }
+
+/* ---------- Accordéon ---------- */
+.accordion { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.acc-item + .acc-item { border-top: 1px solid var(--line); }
+.acc-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 22px; background: none; border: 0; text-align: left; font-weight: 700; font-family: var(--ff-title); font-size: 1rem;
+}
+.acc-head:hover { background: var(--green-050); }
+.acc-head .chev { width: 26px; height: 26px; flex: none; border-radius: 50%; background: var(--green-100); color: var(--green-700); display: grid; place-items: center; transition: transform .2s ease; }
+.acc-head .chev svg { width: 14px; height: 14px; }
+.acc-item.is-open .acc-head .chev { transform: rotate(180deg); background: var(--green-600); color: #fff; }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.acc-body-inner { padding: 0 22px 22px; color: var(--ink-soft); font-size: .95rem; }
+
+/* ---------- Formulaires ---------- */
+.form-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.field { display: grid; gap: 7px; }
+.field--full { grid-column: 1 / -1; }
+.field label { font-size: .86rem; font-weight: 600; }
+.field label .req { color: #c0392b; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: #fff; transition: border-color .18s ease, box-shadow .18s ease;
+}
+.field textarea { min-height: 130px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 0; border-color: var(--green-500); box-shadow: 0 0 0 4px rgba(26,156,142,.14); }
+.field .hint { font-size: .78rem; color: var(--ink-faint); }
+.field .error { font-size: .78rem; color: #c0392b; display: none; }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: #c0392b; }
+.field.has-error .error { display: block; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: .85rem; color: var(--ink-soft); }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; accent-color: var(--green-600); }
+@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: 24px 20px; } }
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.choice span {
+  display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm); font-size: .9rem; font-weight: 600; transition: all .18s ease; height: 100%;
+}
+.choice input:checked + span { border-color: var(--green-600); background: var(--green-050); color: var(--green-700); box-shadow: 0 0 0 3px rgba(26,156,142,.12); }
+.choice input:focus-visible + span { outline: 3px solid var(--green-500); outline-offset: 2px; }
+
+/* Étapes du formulaire de devis */
+.stepper { display: flex; gap: 8px; margin-bottom: 28px; }
+.stepper li { flex: 1; display: grid; gap: 8px; font-size: .8rem; font-weight: 600; color: var(--ink-faint); }
+.stepper li::before { content: ""; height: 5px; border-radius: 999px; background: var(--line); }
+.stepper li.is-done::before, .stepper li.is-current::before { background: var(--green-600); }
+.stepper li.is-current, .stepper li.is-done { color: var(--green-700); }
+.form-step[hidden] { display: none; }
+.form-nav { display: flex; justify-content: space-between; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
+.form-status { margin-top: 18px; padding: 16px 18px; border-radius: var(--radius-sm); background: var(--green-050); border: 1px solid var(--green-100); color: var(--green-700); font-size: .92rem; display: none; }
+.form-status.is-visible { display: block; }
+.recap { display: grid; gap: 10px; background: var(--bg-alt); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 18px; font-size: .9rem; }
+.recap div { display: flex; justify-content: space-between; gap: 16px; }
+.recap dt, .recap .k { color: var(--ink-soft); }
+.recap .v { font-weight: 700; text-align: right; }
+
+/* ---------- Contact / agences ---------- */
+.info-list { display: grid; gap: 18px; }
+.info-item { display: flex; gap: 14px; }
+.info-item .ico { width: 44px; height: 44px; flex: none; border-radius: 12px; background: var(--green-100); color: var(--green-700); display: grid; place-items: center; }
+.info-item .ico svg { width: 21px; height: 21px; }
+.info-item strong { display: block; font-size: .95rem; }
+.info-item a, .info-item p { font-size: .92rem; color: var(--ink-soft); }
+.info-item a:hover { color: var(--green-700); }
+
+.agency { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 8px; }
+.agency h3 { font-size: 1rem; }
+.agency .role { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-dark); }
+.agency p { font-size: .88rem; color: var(--ink-soft); }
+
+.map-wrap { background: var(--green-050); border: 1px solid var(--green-100); border-radius: var(--radius-lg); padding: 26px; }
+.map-wrap svg { width: 100%; height: auto; }
+.map-dot { fill: var(--gold); }
+.map-city { font: 600 9px var(--ff-body); fill: var(--green-800); }
+
+/* ---------- Valeurs / timeline ---------- */
+.timeline { display: grid; gap: 0; }
+.tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+.tl-item:first-child { border-top: 0; }
+.tl-year { font-family: var(--ff-title); font-weight: 800; font-size: 1.3rem; color: var(--green-600); }
+.tl-item p { font-size: .93rem; color: var(--ink-soft); margin-top: 6px; }
+@media (max-width: 620px) { .tl-item { grid-template-columns: 1fr; gap: 6px; } }
+
+/* ---------- Pied de page ---------- */
+.site-footer { background: var(--green-900); color: #b9d6d2; padding-top: 64px; margin-top: 0; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 40px; padding-bottom: 46px; }
+.site-footer h4 { color: #fff; font-size: .95rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px; }
+.site-footer a:hover { color: var(--lime); }
+.footer-links { display: grid; gap: 10px; font-size: .9rem; }
+.footer-brand .logo { color: #fff; }
+.footer-brand p { font-size: .9rem; margin-top: 16px; max-width: 34ch; }
+.socials { display: flex; gap: 10px; margin-top: 20px; }
+.socials a { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.08); display: grid; place-items: center; }
+.socials a:hover { background: var(--green-600); color: #fff; }
+.socials svg { width: 18px; height: 18px; }
+.newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+.newsletter-form input { flex: 1; padding: 12px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; }
+.newsletter-form input::placeholder { color: #8fb5b0; }
+.newsletter-form input:focus { outline: 0; border-color: var(--lime); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.12); padding: 22px 0 30px; display: flex; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; font-size: .84rem;
+}
+.footer-bottom ul { display: flex; gap: 18px; flex-wrap: wrap; }
+@media (max-width: 900px) { .footer-top { grid-template-columns: repeat(2, 1fr); gap: 30px; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ---------- Divers ---------- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  .btn:hover, .card:hover, .post:hover, .sector-card:hover { transform: none; }
+}
+
+.to-top {
+  position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--green-700); color: #fff; border: 0; display: grid; place-items: center;
+  box-shadow: var(--shadow); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all .25s ease;
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.to-top svg { width: 20px; height: 20px; }
+
+.wa-float {
+  position: fixed; right: 20px; bottom: 76px; z-index: 90; width: 46px; height: 46px; border-radius: 50%;
+  background: #25d366; color: #fff; display: grid; place-items: center; box-shadow: var(--shadow);
+}
+.wa-float svg { width: 24px; height: 24px; }
+
+.logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; }
+.logos li {
+  padding: 12px 22px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm);
+  font-family: var(--ff-title); font-weight: 800; color: var(--ink-faint); letter-spacing: .04em; font-size: .95rem; background: #fff;
+}
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+table.pricing { width: 100%; border-collapse: collapse; min-width: 620px; }
+table.pricing th, table.pricing td { padding: 15px 18px; text-align: left; border-bottom: 1px solid var(--line); font-size: .92rem; }
+table.pricing thead th { background: var(--green-050); font-family: var(--ff-title); font-size: .88rem; text-transform: uppercase; letter-spacing: .06em; color: var(--green-700); }
+table.pricing tbody tr:last-child td { border-bottom: 0; }
+table.pricing td strong { font-weight: 700; }
+
+
+/* ---------- Fichier unique : une page = un bloc ---------- */
+.page[hidden] { display: none !important; }
+  </style>
+  <noscript><style>.reveal{opacity:1;transform:none}.page[hidden]{display:block !important}</style></noscript>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Barre supérieure -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <a href="tel:+221338590100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+221 33 859 01 00</a>
+        <a class="hide-sm" href="mailto:contact@setalpro.sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>contact@setalpro.sn</a>
+        <span class="hide-sm">Du lundi au samedi, 8h – 18h</span>
+      </div>
+      <div class="topbar-links">
+        <a class="hide-sm" href="#/entreprise/recrutement">Recrutement</a>
+        <a href="#/contact/agences">Nos agences</a>
+        <a class="tag" href="#/contact/espace-client">Espace client</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- En-tête -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#/accueil" class="logo" aria-label="Setal Pro, accueil">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYjNkM2EiLz4KICA8cGF0aCBkPSJNMjAgMjJjMC0zLjMgMy42LTUuNiA5LTUuNiA0LjQgMCA3LjkgMS4zIDkuOCAzbC0zLjMgNC40Yy0xLjYtMS4zLTMuOS0yLjEtNi4yLTIuMS0yLjIgMC0zLjYuNy0zLjYgMS44IDAgMy42IDE0LjIuNiAxNC4yIDEwLjEgMCA0LjItNCA3LTEwLjIgNy01IDAtOS4yLTEuNi0xMS40LTMuOGwzLjYtNC40YzEuOSAxLjcgNC43IDIuNyA3LjYgMi43IDIuNiAwIDQuMi0uOCA0LjItMi4xIDAtMy44LTEzLjctLjgtMTMuNy0xMXoiIGZpbGw9IiM3ZWUwYTEiLz4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjQ0IiByPSI0IiBmaWxsPSIjZjJiNzA1Ii8+Cjwvc3ZnPgo=" alt="" class="logo-mark" />
+        <span>Setal Pro<small>Textile &amp; hygiène pro</small></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li class="nav-item">
+            <button class="nav-trigger" aria-expanded="false">Nos solutions
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="mega">
+              <div class="mega-grid">
+                <a class="mega-link" href="#/solutions/vetement-travail"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3 12 6 8 3 3 6l2 4-1 11h16l-1-11 2-4z"/></svg></span><span><strong>Vêtement de travail</strong><span>Location, entretien et renouvellement de vos tenues</span></span></a>
+                <a class="mega-link" href="#/solutions/linge-plat"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6M3 14h18M6 9V6h12v3"/></svg></span><span><strong>Linge plat &amp; hôtellerie</strong><span>Draps, serviettes, nappage et linge de table</span></span></a>
+                <a class="mega-link" href="#/solutions/hygiene"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z"/></svg></span><span><strong>Hygiène &amp; bien-être</strong><span>Sanitaires équipés, savon, papier, parfum d'ambiance</span></span></a>
+                <a class="mega-link" href="#/solutions/linge-sante"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v3h3v6h-3v3H9v-3H6V6h3z"/><path d="M4 21h16"/></svg></span><span><strong>Linge de santé</strong><span>Tenues médicales, blocs opératoires, linge patient</span></span></a>
+                <a class="mega-link" href="#/solutions/tapis"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6v12M18 6v12"/></svg></span><span><strong>Tapis d'entrée</strong><span>Tapis anti-salissure et logotés, changés régulièrement</span></span></a>
+                <a class="mega-link" href="#/solutions/essuyage"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9v6H4zM7 10v10M13 6h7v5h-7z"/></svg></span><span><strong>Essuyage industriel</strong><span>Chiffons, lavettes et absorbants réutilisables</span></span></a>
+                <a class="mega-link" href="#/solutions/eau-cafe"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h2a2 2 0 0 1 0 5h-2M6 3v2M10 3v2M14 3v2"/></svg></span><span><strong>Fontaines à eau &amp; café</strong><span>Boissons fraîches et chaudes au bureau</span></span></a>
+                <a class="mega-link" href="#/solutions/3d"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9a4 4 0 0 1 8 0v4a4 4 0 0 1-8 0z"/><path d="M4 8h4M16 8h4M3 13h5M16 13h5M5 18l3-2M19 18l-3-2M12 5V2"/></svg></span><span><strong>Dératisation 3D</strong><span>Lutte antiparasitaire : rongeurs, insectes, nuisibles</span></span></a>
+              </div>
+              <div class="mega-foot">
+                <span class="muted">Un seul interlocuteur, un contrat unique, une facture mensuelle.</span>
+                <a class="link-arrow" href="#/solutions">Voir toutes les solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-trigger" aria-expanded="false">Nos secteurs
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="mega">
+              <div class="mega-grid">
+                <a class="mega-link" href="#/secteurs/hotellerie"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V7l9-4 9 4v13"/><path d="M9 20v-6h6v6"/></svg></span><span><strong>Hôtellerie &amp; restauration</strong><span>Hôtels, resorts de la Petite Côte, restaurants</span></span></a>
+                <a class="mega-link" href="#/secteurs/sante"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><span><strong>Santé</strong><span>Hôpitaux, cliniques, laboratoires, EPS</span></span></a>
+                <a class="mega-link" href="#/secteurs/industrie"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V10l6 4V10l6 4V6l6 4v10z"/></svg></span><span><strong>Industrie &amp; agroalimentaire</strong><span>Usines, conserveries, transformation, logistique</span></span></a>
+                <a class="mega-link" href="#/secteurs/mines"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3 3 14l3 3L17 6z"/><path d="m12 5 7 7 2-2-7-7z"/><path d="M4 21h16"/></svg></span><span><strong>Mines, énergie &amp; pétrole</strong><span>Sites miniers, chantiers gaziers, bases-vie</span></span></a>
+                <a class="mega-link" href="#/secteurs/btp"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18h18M5 18v-5l7-6 7 6v5"/><path d="M9 18v-4h6v4"/></svg></span><span><strong>BTP &amp; construction</strong><span>Chantiers, génie civil, travaux publics</span></span></a>
+                <a class="mega-link" href="#/secteurs/services"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></span><span><strong>Banques, commerces &amp; bureaux</strong><span>Agences, sièges, centres commerciaux</span></span></a>
+                <a class="mega-link" href="#/secteurs/collectivites"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M4 21V10l8-6 8 6v11"/><path d="M10 21v-6h4v6"/></svg></span><span><strong>Administrations &amp; ONG</strong><span>Ministères, collectivités, organisations</span></span></a>
+                <a class="mega-link" href="#/secteurs/proprete"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 3 6 6-9 9-6 1 1-6z"/><path d="M4 21h8"/></svg></span><span><strong>Propreté &amp; facility management</strong><span>Sociétés de nettoyage et de services</span></span></a>
+              </div>
+              <div class="mega-foot">
+                <span class="muted">Des dotations adaptées à chaque métier et à chaque norme.</span>
+                <a class="link-arrow" href="#/secteurs">Tous les secteurs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#/entreprise">Notre entreprise</a></li>
+          <li><a href="#/entreprise/rse">Engagement RSE</a></li>
+          <li><a href="#/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--ghost btn--sm" href="#/contact/espace-client">Espace client</a>
+        <a class="btn btn--primary btn--sm" href="#/devis">Demander un devis</a>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page" id="page-accueil" data-title="Setal Pro — Location et entretien de vêtements de travail, linge et hygiène au Sénégal">
+
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div>
+          <span class="eyebrow">Location &amp; entretien — Sénégal</span>
+          <h1>Vos équipes <em>impeccables</em>, vos locaux <em>irréprochables</em>. Chaque semaine.</h1>
+          <p class="lead">Setal Pro loue, livre, collecte, lave et remplace vos vêtements de travail, votre linge plat et vos équipements d'hygiène. Vous n'achetez rien, vous ne lavez rien : vous payez un abonnement mensuel et vous vous concentrez sur votre métier.</p>
+          <div class="hero-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis gratuit
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--outline-light" href="#/solutions">Découvrir nos solutions</a>
+          </div>
+          <ul class="hero-badges">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg>Aucun investissement de départ</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg>Livraison sur les 14 régions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg>Traçabilité par puce RFID</li>
+          </ul>
+        </div>
+
+        <aside class="hero-card">
+          <span class="eyebrow">Le cycle Setal Pro</span>
+          <h2>Un service en circuit fermé</h2>
+          <p class="muted">Vos textiles restent à nous, la propreté est à vous.</p>
+          <ul class="cycle">
+            <li><span class="num">1</span><span><strong>Audit &amp; dotation</strong><span>Nous mesurons vos besoins et habillons vos équipes.</span></span></li>
+            <li><span class="num">2</span><span><strong>Livraison &amp; collecte</strong><span>Un passage hebdomadaire à jour et heure fixes.</span></span></li>
+            <li><span class="num">3</span><span><strong>Lavage &amp; désinfection</strong><span>Blanchisserie industrielle, procédés contrôlés.</span></span></li>
+            <li><span class="num">4</span><span><strong>Contrôle &amp; remplacement</strong><span>Pièce abîmée = pièce réparée ou remplacée, sans surcoût.</span></span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Réassurance -->
+    <section class="trustbar">
+      <div class="container">
+        <div class="trustbar-item">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span><strong>Conformité HACCP &amp; ISO</strong><span>Procédés adaptés à l'agroalimentaire et à la santé</span></span>
+        </div>
+        <div class="trustbar-item">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+          <span><strong>98 % de livraisons à l'heure</strong><span>Flotte dédiée et tournées planifiées</span></span>
+        </div>
+        <div class="trustbar-item">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M7 8h10M5 13h14"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <span><strong>Eau recyclée à 70 %</strong><span>Blanchisserie sobre en eau et en énergie</span></span>
+        </div>
+        <div class="trustbar-item">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></span>
+          <span><strong>Un interlocuteur unique</strong><span>Un conseiller dédié, une facture par mois</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-head section-head--split reveal">
+          <div>
+            <span class="eyebrow">Nos solutions</span>
+            <h2>Tout ce qui s'use, se salit et doit rester propre</h2>
+            <p class="lead">Huit métiers, un seul contrat. Choisissez ce dont vous avez besoin aujourd'hui, ajoutez le reste quand vous voulez.</p>
+          </div>
+          <a class="btn btn--ghost" href="#/solutions">Voir le détail</a>
+        </div>
+
+        <div class="grid grid--4">
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3 12 6 8 3 3 6l2 4-1 11h16l-1-11 2-4z"/></svg></span>
+            <h3>Vêtement de travail</h3>
+            <p>Blouses, combinaisons, tenues agroalimentaires, uniformes d'accueil, EPI haute visibilité — loués, entretenus et remplacés.</p>
+            <a class="link-arrow" href="#/solutions/vetement-travail">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6M3 14h18M6 9V6h12v3"/></svg></span>
+            <h3>Linge plat &amp; hôtellerie</h3>
+            <p>Draps, alèses, serviettes de bain et de plage, peignoirs, nappes et serviettes de table pour hôtels et restaurants.</p>
+            <a class="link-arrow" href="#/solutions/linge-plat">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z"/></svg></span>
+            <h3>Hygiène &amp; bien-être</h3>
+            <p>Distributeurs de savon, papier, essuie-mains, gel hydroalcoolique, parfum d'ambiance et poubelles hygiéniques, réapprovisionnés.</p>
+            <a class="link-arrow" href="#/solutions/hygiene">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v3h3v6h-3v3H9v-3H6V6h3z"/><path d="M4 21h16"/></svg></span>
+            <h3>Linge de santé</h3>
+            <p>Tenues de bloc, blouses, champs opératoires, linge patient et linge de lit traités selon la norme RABC.</p>
+            <a class="link-arrow" href="#/solutions/linge-sante">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6v12M18 6v12"/></svg></span>
+            <h3>Tapis d'entrée</h3>
+            <p>Tapis anti-poussière et anti-sable, tapis logotés à votre image, échangés propres à chaque passage.</p>
+            <a class="link-arrow" href="#/solutions/tapis">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9v6H4zM7 10v10M13 6h7v5h-7z"/></svg></span>
+            <h3>Essuyage industriel</h3>
+            <p>Chiffons, lavettes microfibres et absorbants d'hydrocarbures réutilisables : moins de déchets, moins de dépenses.</p>
+            <a class="link-arrow" href="#/solutions/essuyage">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h2a2 2 0 0 1 0 5h-2M6 3v2M10 3v2M14 3v2"/></svg></span>
+            <h3>Fontaines à eau &amp; café</h3>
+            <p>Fontaines sur réseau ou en bonbonne, machines à café et thé, entretien et consommables inclus.</p>
+            <a class="link-arrow" href="#/solutions/eau-cafe">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9a4 4 0 0 1 8 0v4a4 4 0 0 1-8 0z"/><path d="M4 8h4M16 8h4M3 13h5M16 13h5M5 18l3-2M19 18l-3-2M12 5V2"/></svg></span>
+            <h3>Dératisation 3D</h3>
+            <p>Dératisation, désinsectisation et désinfection : diagnostic, plan de lutte, postes d'appâtage et rapports d'intervention.</p>
+            <a class="link-arrow" href="#/solutions/3d">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comment ça marche -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Comment ça marche</span>
+          <h2>Cinq étapes, zéro contrainte pour vous</h2>
+          <p class="lead">De la première visite au reporting mensuel, tout est pris en charge par nos équipes.</p>
+        </div>
+        <div class="steps reveal">
+          <article class="step">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v4H9zM7 7h10v14H7z"/><path d="M10 12h4M10 16h4"/></svg></span>
+            <h3>Audit sur site</h3>
+            <p>Un conseiller visite vos locaux, relève les effectifs, les tailles et les risques métier.</p>
+          </article>
+          <article class="step">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3 12 6 8 3 3 6l2 4-1 11h16l-1-11 2-4z"/></svg></span>
+            <h3>Dotation personnalisée</h3>
+            <p>Choix des articles, des couleurs et du marquage à votre logo. Essayage avant lancement.</p>
+          </article>
+          <article class="step">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+            <h3>Livraison &amp; collecte</h3>
+            <p>Passage à jour fixe : le linge propre arrive, le linge sale repart. Rien à gérer.</p>
+          </article>
+          <article class="step">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M6 6.5 8 9"/></svg></span>
+            <h3>Traitement en usine</h3>
+            <p>Tri, lavage, désinfection, séchage, repassage et contrôle qualité pièce par pièce.</p>
+          </article>
+          <article class="step">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="m8 15 3-4 3 3 4-6"/></svg></span>
+            <h3>Suivi &amp; reporting</h3>
+            <p>Inventaire RFID, tableau de bord mensuel et remplacement automatique des pièces usées.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secteurs -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--split reveal">
+          <div>
+            <span class="eyebrow">Nos secteurs</span>
+            <h2>Chaque métier a ses exigences</h2>
+            <p class="lead">Nos dotations sont conçues avec vos équipes : matières, coupes, normes et fréquences adaptées au terrain sénégalais.</p>
+          </div>
+          <a class="btn btn--ghost" href="#/secteurs">Tous les secteurs</a>
+        </div>
+        <div class="grid grid--4">
+          <a class="sector-card reveal" href="#/secteurs/hotellerie">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V7l9-4 9 4v13"/><path d="M9 20v-6h6v6"/></svg></span>
+            <h3>Hôtellerie &amp; restauration</h3>
+            <p>Resorts de Saly, hôtels de Dakar, lodges de Saint-Louis et de Casamance.</p>
+          </a>
+          <a class="sector-card reveal" href="#/secteurs/sante">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+            <h3>Santé</h3>
+            <p>Hôpitaux, cliniques privées, cabinets et laboratoires d'analyses.</p>
+          </a>
+          <a class="sector-card reveal" href="#/secteurs/industrie">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V10l6 4V10l6 4V6l6 4v10z"/></svg></span>
+            <h3>Industrie &amp; agroalimentaire</h3>
+            <p>Conserveries, laiteries, minoteries, plateformes logistiques.</p>
+          </a>
+          <a class="sector-card reveal" href="#/secteurs/mines">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3 3 14l3 3L17 6z"/><path d="m12 5 7 7 2-2-7-7z"/><path d="M4 21h16"/></svg></span>
+            <h3>Mines, énergie &amp; pétrole</h3>
+            <p>Bases-vie, sites de Kédougou, chantiers gaziers et centrales.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chiffres clés -->
+    <section class="section section--dark" id="chiffres">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Setal Pro en chiffres</span>
+          <h2>Une organisation industrielle, une présence nationale</h2>
+        </div>
+        <div class="stats reveal">
+          <div class="stat"><div class="value"><span data-count="1200">0</span><span>+</span></div><p>sites clients servis chaque semaine, de Dakar à Ziguinchor</p></div>
+          <div class="stat"><div class="value"><span data-count="4">0</span></div><p>centres de production : Diamniadio, Thiès, Mbour et Saint-Louis</p></div>
+          <div class="stat"><div class="value"><span data-count="350">0</span></div><p>collaborateurs, dont 60 % de femmes en production</p></div>
+          <div class="stat"><div class="value"><span data-count="98">0</span><span>%</span></div><p>de livraisons effectuées à la date et à l'heure convenues</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi nous -->
+    <section class="section">
+      <div class="container split">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <rect x="16" y="40" width="168" height="96" rx="10" opacity=".9"/>
+            <circle cx="66" cy="88" r="26"/>
+            <circle cx="66" cy="88" r="11"/>
+            <path d="M116 70h50M116 88h50M116 106h32"/>
+            <path d="M40 40V26h48v14"/>
+          </svg>
+          <div class="badge-float">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M4 7h16v10H4z"/><path d="M8 11h8"/></svg></span>
+            <span><strong>Puce RFID cousue sur chaque article</strong><span>Inventaire en temps réel, zéro perte inexpliquée</span></span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Pourquoi Setal Pro</span>
+          <h2>Louer plutôt qu'acheter : la propreté sans immobiliser votre trésorerie</h2>
+          <p class="lead" style="margin-top:16px">Acheter des tenues, les laver sur place, gérer les stocks et les remplacements coûte plus cher qu'il n'y paraît. Notre abonnement transforme cette charge en un budget fixe et prévisible.</p>
+          <ul class="ticks" style="margin-top:22px;display:grid;gap:12px">
+            <li><strong>Pas d'investissement initial</strong> : la dotation reste notre propriété, vous payez à l'usage.</li>
+            <li><strong>Pas de machine à laver ni de buanderie</strong> à faire tourner, ni d'eau ni d'électricité à financer.</li>
+            <li><strong>Pas de rupture</strong> : chaque pièce usée ou perdue est remplacée dans la tournée suivante.</li>
+            <li><strong>Image homogène</strong> : tenues repassées, logotées et identiques pour toute l'équipe.</li>
+            <li><strong>Conformité prouvée</strong> : traçabilité, fiches de lavage et rapports disponibles en cas d'audit.</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#/devis">Estimer mon budget mensuel</a>
+            <a class="btn btn--ghost" href="#/entreprise">Découvrir l'entreprise</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSE -->
+    <section class="section section--alt" id="rse">
+      <div class="container split split--reverse">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M100 132c0-40 18-66 54-74-4 40-24 62-54 74z"/>
+            <path d="M100 132C100 96 84 72 50 64c4 38 22 58 50 68z"/>
+            <path d="M100 134v18"/>
+            <path d="M60 20h80" opacity=".5"/>
+          </svg>
+          <div class="badge-float">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M12 3v18M5 8h14"/></svg></span>
+            <span><strong>70 % de notre eau est recyclée</strong><span>Tunnels de lavage à récupération, lessives biodégradables</span></span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Notre engagement</span>
+          <h2>Une propreté qui ne se fait pas au détriment du pays</h2>
+          <p class="lead" style="margin-top:16px">Le textile réutilisable évite des tonnes de jetable. Nous allons plus loin : sobriété en eau, énergie solaire, emploi local et formation continue.</p>
+          <div class="grid grid--2" style="margin-top:26px">
+            <article class="card">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z"/></svg></span>
+              <h3>Eau &amp; énergie</h3>
+              <p>Récupération des eaux de rinçage, chaudières optimisées et 900 m² de panneaux solaires à Diamniadio.</p>
+            </article>
+            <article class="card">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></span>
+              <h3>Emploi local</h3>
+              <p>Recrutement de proximité, alphabétisation, formation aux métiers de la blanchisserie industrielle.</p>
+            </article>
+          </div>
+          <a class="link-arrow" style="margin-top:22px" href="#/entreprise/rse">Lire notre démarche RSE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Ils nous font confiance</span>
+          <h2>La parole à nos clients</h2>
+        </div>
+        <div class="quotes reveal" data-carousel>
+          <div class="quote-track">
+            <article class="quote">
+              <blockquote>Avant, notre lingerie tournait jour et nuit et il manquait toujours des draps en haute saison. Depuis que Setal Pro gère le linge, nos 180 chambres sont servies six fois par semaine et nous n'avons plus une seule rupture.</blockquote>
+              <div class="quote-author">
+                <span class="avatar">AS</span>
+                <span><strong>Aminata Sow</strong><span>Directrice d'exploitation, resort 4★ — Saly</span></span>
+              </div>
+            </article>
+            <article class="quote">
+              <blockquote>L'audit qualité de notre client européen exigeait une traçabilité complète des tenues agroalimentaires. Les rapports RFID de Setal Pro ont été acceptés sans réserve. C'est ce qui a débloqué notre certification.</blockquote>
+              <div class="quote-author">
+                <span class="avatar">MD</span>
+                <span><strong>Moussa Diallo</strong><span>Responsable QHSE, industrie agroalimentaire — Rufisque</span></span>
+              </div>
+            </article>
+            <article class="quote">
+              <blockquote>Nous avons arrêté d'acheter des blouses. Le budget est devenu fixe, les tenues sont désinfectées selon un protocole écrit, et le personnel n'emporte plus rien à la maison. Pour une clinique, c'est essentiel.</blockquote>
+              <div class="quote-author">
+                <span class="avatar">FN</span>
+                <span><strong>Dr Fatou Ndiaye</strong><span>Directrice, clinique privée — Dakar Plateau</span></span>
+              </div>
+            </article>
+          </div>
+          <div class="quote-nav" data-dots></div>
+        </div>
+
+        <ul class="logos" style="margin-top:48px">
+          <li>HÔTEL TERANGA</li>
+          <li>SÉNÉGAL AGRO</li>
+          <li>CLINIQUE MADINA</li>
+          <li>DIAM BTP</li>
+          <li>OCÉAN PÊCHE SA</li>
+          <li>BANQUE DE L'OUEST</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Actualités -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head section-head--split reveal">
+          <div>
+            <span class="eyebrow">Actualités</span>
+            <h2>La vie de Setal Pro</h2>
+          </div>
+          <a class="btn btn--ghost" href="#/entreprise/actualites">Toutes les actualités</a>
+        </div>
+        <div class="grid grid--3">
+          <article class="post reveal">
+            <div class="post-thumb"></div>
+            <div class="post-body">
+              <span class="meta">12 août 2026 · Industrie</span>
+              <h3>Notre usine de Diamniadio double sa capacité</h3>
+              <p>Un nouveau tunnel de lavage porte la capacité à 12 tonnes de linge par jour, avec récupération d'eau intégrée.</p>
+              <a class="link-arrow" href="#/entreprise/actualites">Lire l'article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+          <article class="post reveal">
+            <div class="post-thumb"></div>
+            <div class="post-body">
+              <span class="meta">3 juillet 2026 · Hôtellerie</span>
+              <h3>Saison touristique : anticiper le linge de la Petite Côte</h3>
+              <p>Comment dimensionner sa dotation avant la haute saison et éviter les ruptures de draps et de serviettes.</p>
+              <a class="link-arrow" href="#/entreprise/actualites">Lire l'article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+          <article class="post reveal">
+            <div class="post-thumb"></div>
+            <div class="post-body">
+              <span class="meta">21 mai 2026 · RSE</span>
+              <h3>100 femmes formées aux métiers de la blanchisserie</h3>
+              <p>Notre programme de formation avec les collectivités de Thiès a diplômé sa troisième promotion.</p>
+              <a class="link-arrow" href="#/entreprise/actualites">Lire l'article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Devis gratuit sous 48 h</span>
+            <h2>Parlons de vos équipes et de vos locaux</h2>
+            <p>Dites-nous votre activité, votre effectif et votre ville : nous vous proposons une dotation chiffrée, sans engagement, et nous venons vous rencontrer.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis</a>
+            <a class="btn btn--outline-light" href="tel:+221338590100">+221 33 859 01 00</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+
+    <div class="page" id="page-solutions" data-title="Nos solutions — Vêtement de travail, linge, hygiène | Setal Pro" hidden>
+
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol><li><a href="#/accueil">Accueil</a></li><li>Nos solutions</li></ol>
+        </nav>
+        <h1>Huit solutions, un seul partenaire</h1>
+        <p>Vêtements de travail, linge plat, hygiène des sanitaires, tapis, essuyage, boissons, linge de santé et lutte antiparasitaire : tout est loué, entretenu et remplacé par Setal Pro, dans un contrat unique.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight section--alt">
+      <div class="container">
+        <ul class="tag-list" style="justify-content:center">
+          <li><a href="#/solutions/vetement-travail">Vêtement de travail</a></li>
+          <li><a href="#/solutions/linge-plat">Linge plat &amp; hôtellerie</a></li>
+          <li><a href="#/solutions/hygiene">Hygiène &amp; bien-être</a></li>
+          <li><a href="#/solutions/linge-sante">Linge de santé</a></li>
+          <li><a href="#/solutions/tapis">Tapis d'entrée</a></li>
+          <li><a href="#/solutions/essuyage">Essuyage industriel</a></li>
+          <li><a href="#/solutions/eau-cafe">Fontaines à eau &amp; café</a></li>
+          <li><a href="#/solutions/3d">Dératisation 3D</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- 1 -->
+      <section class="solution-block split" id="vetement-travail">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M128 26 100 44 72 26 32 46l14 30-8 62h124l-8-62 14-30z"/>
+            <path d="M84 26c0 10 7 16 16 16s16-6 16-16"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 01</span>
+          <h2>Vêtement de travail</h2>
+          <p class="lead" style="margin-top:14px">Nous habillons vos équipes et nous nous occupons du reste : lavage, repassage, réparation, remplacement et gestion des arrivées et départs de personnel.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tenues agroalimentaires (blouses, calots, tabliers) conformes HACCP</li>
+            <li>Combinaisons et parkas haute visibilité pour l'industrie et le BTP</li>
+            <li>Uniformes d'accueil, de réception et de restauration</li>
+            <li>Marquage du logo et du nom du porteur, gestion des tailles</li>
+            <li>Vestiaires et casiers de distribution en option</li>
+          </ul>
+          <ul class="tag-list">
+            <li>Location-entretien</li><li>Achat possible</li><li>Puce RFID</li><li>Réassort automatique</li>
+          </ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=vetement-travail">Chiffrer ma dotation</a>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="solution-block split split--reverse" id="linge-plat">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="24" y="60" width="152" height="62" rx="12"/>
+            <path d="M24 96h152M46 60V42h108v18"/>
+            <rect x="52" y="66" width="40" height="22" rx="8"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 02</span>
+          <h2>Linge plat &amp; hôtellerie</h2>
+          <p class="lead" style="margin-top:14px">Draps, housses, alèses, serviettes de bain, de plage et de piscine, peignoirs, nappes et serviettes de table : livrés propres, repassés et pliés, au rythme de votre taux d'occupation.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Livraison jusqu'à 6 fois par semaine en haute saison</li>
+            <li>Dotation calculée par chambre et par couvert, avec stock tampon</li>
+            <li>Nappage coton, satin ou molleton, coloris au choix</li>
+            <li>Blanchiment maîtrisé : blancs qui restent blancs saison après saison</li>
+            <li>Gestion des pertes et des taches indélébiles incluse dans l'abonnement</li>
+          </ul>
+          <ul class="tag-list"><li>Hôtels &amp; resorts</li><li>Restaurants</li><li>Salles de réception</li><li>Résidences</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=linge-plat">Demander une simulation</a>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="solution-block split" id="hygiene">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 22s34 40 34 62a34 34 0 0 1-68 0c0-22 34-62 34-62z"/>
+            <path d="M84 92a16 16 0 0 0 16 16"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 03</span>
+          <h2>Hygiène &amp; bien-être</h2>
+          <p class="lead" style="margin-top:14px">Des sanitaires toujours équipés, sans que personne chez vous n'ait à surveiller les stocks. Nous installons les appareils, nous les entretenons et nous les remplissons.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Distributeurs de savon mousse, gel hydroalcoolique et crème</li>
+            <li>Essuie-mains en rouleau coton ou papier, papier toilette</li>
+            <li>Diffuseurs de parfum d'ambiance et désodorisants d'urinoir</li>
+            <li>Poubelles hygiène féminine avec collecte et traitement</li>
+            <li>Réapprovisionnement automatique à fréquence définie</li>
+          </ul>
+          <ul class="tag-list"><li>Bureaux</li><li>Écoles</li><li>Sites industriels</li><li>Lieux publics</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=hygiene">Équiper mes sanitaires</a>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="solution-block split split--reverse" id="linge-sante">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M82 24h36v24h24v36h-24v24H82V84H58V48h24z"/>
+            <path d="M40 138h120"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 04</span>
+          <h2>Linge de santé</h2>
+          <p class="lead" style="margin-top:14px">Un circuit dédié, séparé du reste de la production, avec traçabilité complète : tenues de bloc, blouses, casaques, champs, linge de lit et linge patient.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Méthode RABC : maîtrise de la bio-contamination à chaque étape</li>
+            <li>Zone propre et zone sale physiquement séparées</li>
+            <li>Sacs hydrosolubles pour le linge contaminé</li>
+            <li>Contrôles microbiologiques et fiches de lavage archivées</li>
+            <li>Dotation nominative pour les praticiens, armoires de distribution</li>
+          </ul>
+          <ul class="tag-list"><li>Hôpitaux</li><li>Cliniques</li><li>Laboratoires</li><li>EHPAD &amp; maisons de repos</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=linge-sante">Parler à un spécialiste santé</a>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="solution-block split" id="tapis">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="28" y="48" width="144" height="70" rx="10"/>
+            <path d="M28 66h144M28 100h144M64 48v70M136 48v70"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 05</span>
+          <h2>Tapis d'entrée</h2>
+          <p class="lead" style="margin-top:14px">Au Sénégal, la poussière et le sable entrent par la porte. Nos tapis les retiennent, et nous les échangeons propres à chaque passage — vous ne les lavez jamais.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tapis anti-salissure, absorbants ou grattants selon l'exposition</li>
+            <li>Tapis personnalisés à votre logo, en toutes dimensions</li>
+            <li>Tapis anti-fatigue pour les postes debout et les cuisines</li>
+            <li>Échange à fréquence hebdomadaire, bimensuelle ou mensuelle</li>
+            <li>Moins de poussière au sol : moins de nettoyage et moins de casse</li>
+          </ul>
+          <ul class="tag-list"><li>Agences bancaires</li><li>Commerces</li><li>Hôtels</li><li>Bureaux</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=tapis">Commander mes tapis</a>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="solution-block split split--reverse" id="essuyage">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="30" y="34" width="72" height="48" rx="8"/>
+            <path d="M66 82v44M102 50h58v38h-58z"/>
+            <path d="M40 126h120"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 06</span>
+          <h2>Essuyage industriel</h2>
+          <p class="lead" style="margin-top:14px">Remplacez le papier jetable et les vieux chiffons par des textiles techniques lavés et redistribués. Vos ateliers sont plus propres, vos déchets diminuent.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Chiffons coton, lavettes microfibres et non-tissés techniques</li>
+            <li>Absorbants d'huiles et d'hydrocarbures avec collecte réglementée</li>
+            <li>Bacs de collecte fournis, échangés pleins contre vides</li>
+            <li>Comptage à la pièce : vous ne payez que ce que vous utilisez</li>
+            <li>Traitement des effluents conforme à la réglementation</li>
+          </ul>
+          <ul class="tag-list"><li>Ateliers mécaniques</li><li>Imprimeries</li><li>Usines</li><li>Garages &amp; flottes</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=essuyage">Essayer notre essuyage</a>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="solution-block split" id="eau-cafe">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M46 54h84v42a34 34 0 0 1-34 34H80a34 34 0 0 1-34-34z"/>
+            <path d="M130 62h14a16 16 0 0 1 0 32h-14M60 28v12M84 28v12M108 28v12"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 07</span>
+          <h2>Fontaines à eau &amp; café</h2>
+          <p class="lead" style="margin-top:14px">De l'eau fraîche et filtrée, du café et du thé disponibles toute la journée pour vos équipes et vos visiteurs. Installation, entretien et consommables compris.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Fontaines raccordées au réseau, avec filtration et eau gazeuse en option</li>
+            <li>Fontaines à bonbonne pour les sites sans raccordement</li>
+            <li>Machines à café à grains ou à dosettes, sélection de cafés locaux</li>
+            <li>Désinfection périodique et remplacement des filtres planifiés</li>
+            <li>Gobelets réutilisables ou compostables, sur demande</li>
+          </ul>
+          <ul class="tag-list"><li>Sièges &amp; bureaux</li><li>Salles de pause</li><li>Bases-vie</li><li>Accueil clientèle</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=eau-cafe">Installer une fontaine</a>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="solution-block split split--reverse" id="3d">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M70 66a30 30 0 0 1 60 0v26a30 30 0 0 1-60 0z"/>
+            <path d="M40 58h30M130 58h30M34 92h36M130 92h36M46 122l24-14M154 122l-24-14M100 36V18"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Solution 08</span>
+          <h2>Dératisation, désinsectisation, désinfection</h2>
+          <p class="lead" style="margin-top:14px">Rongeurs, cafards, mouches, moustiques, termites : nos techniciens agréés établissent un plan de lutte et interviennent selon un calendrier, avec preuve écrite à chaque passage.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Diagnostic initial et plan de lutte avec cartographie des postes</li>
+            <li>Produits homologués, appliqués par des techniciens certifiés</li>
+            <li>Rapports d'intervention conformes aux exigences d'audit</li>
+            <li>Interventions d'urgence sous 24 à 48 h</li>
+            <li>Contrats annuels avec passages programmés</li>
+          </ul>
+          <ul class="tag-list"><li>Agroalimentaire</li><li>Restauration</li><li>Entrepôts</li><li>Hôtellerie</li></ul>
+          <a class="btn btn--primary" style="margin-top:24px" href="#/devis?solution=3d">Planifier un diagnostic</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Comparatif -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Acheter ou louer ?</span>
+          <h2>Ce que change la location-entretien</h2>
+          <p class="lead">Exemple pour une équipe de 50 personnes en tenue agroalimentaire, sur une année.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table class="pricing">
+            <thead>
+              <tr><th>Poste</th><th>Achat &amp; lavage interne</th><th>Location-entretien Setal Pro</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Investissement de départ</strong></td><td>Achat de 150 tenues, machines, séchoirs</td><td>Aucun — inclus dans l'abonnement</td></tr>
+              <tr><td><strong>Eau, électricité, lessive</strong></td><td>À votre charge, coût variable</td><td>Inclus, mutualisé à l'échelle industrielle</td></tr>
+              <tr><td><strong>Personnel de lingerie</strong></td><td>1 à 2 postes à recruter et former</td><td>Inclus, aucune embauche</td></tr>
+              <tr><td><strong>Usure &amp; remplacement</strong></td><td>Rachats imprévus dans l'année</td><td>Remplacement automatique, sans surcoût</td></tr>
+              <tr><td><strong>Traçabilité &amp; audit</strong></td><td>À construire et à documenter</td><td>Rapports RFID et fiches de lavage fournis</td></tr>
+              <tr><td><strong>Budget</strong></td><td>Variable, difficile à prévoir</td><td><strong>Un montant fixe par personne et par mois</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:14px;font-size:.85rem">Comparatif indicatif. Le montant exact de votre abonnement dépend de votre effectif, de vos articles et de votre fréquence de passage.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Prochaine étape</span>
+            <h2>Un audit gratuit dans vos locaux</h2>
+            <p>Nos conseillers se déplacent à Dakar, Thiès, Mbour, Saint-Louis, Kaolack et Ziguinchor. Comptez 45 minutes pour faire le tour de vos besoins.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis</a>
+            <a class="btn btn--outline-light" href="#/contact">Nous contacter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+
+    <div class="page" id="page-secteurs" data-title="Nos secteurs — Hôtellerie, santé, industrie, mines, BTP | Setal Pro" hidden>
+
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol><li><a href="#/accueil">Accueil</a></li><li>Nos secteurs</li></ol>
+        </nav>
+        <h1>Nous connaissons votre métier</h1>
+        <p>Une cuisine d'hôtel, un bloc opératoire, une conserverie et un chantier n'ont ni les mêmes tenues, ni les mêmes fréquences, ni les mêmes normes. Nos dotations sont construites secteur par secteur.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Huit secteurs servis</span>
+          <h2>Choisissez votre activité</h2>
+        </div>
+        <div class="grid grid--4 reveal">
+          <a class="sector-card" href="#/secteurs/hotellerie"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V7l9-4 9 4v13"/><path d="M9 20v-6h6v6"/></svg></span><h3>Hôtellerie &amp; restauration</h3><p>Linge plat, uniformes, tapis, hygiène</p></a>
+          <a class="sector-card" href="#/secteurs/sante"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><h3>Santé</h3><p>Circuit RABC, tenues de bloc, linge patient</p></a>
+          <a class="sector-card" href="#/secteurs/industrie"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20V10l6 4V10l6 4V6l6 4v10z"/></svg></span><h3>Industrie &amp; agroalimentaire</h3><p>HACCP, essuyage, EPI</p></a>
+          <a class="sector-card" href="#/secteurs/mines"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3 3 14l3 3L17 6z"/><path d="m12 5 7 7 2-2-7-7z"/><path d="M4 21h16"/></svg></span><h3>Mines, énergie &amp; pétrole</h3><p>Bases-vie, ignifugé, haute visibilité</p></a>
+          <a class="sector-card" href="#/secteurs/btp"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18h18M5 18v-5l7-6 7 6v5"/><path d="M9 18v-4h6v4"/></svg></span><h3>BTP &amp; construction</h3><p>Tenues chantier, vestiaires mobiles</p></a>
+          <a class="sector-card" href="#/secteurs/services"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></span><h3>Banques, commerces &amp; bureaux</h3><p>Tapis logotés, sanitaires, fontaines</p></a>
+          <a class="sector-card" href="#/secteurs/collectivites"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M4 21V10l8-6 8 6v11"/><path d="M10 21v-6h4v6"/></svg></span><h3>Administrations &amp; ONG</h3><p>Marchés publics, sites multiples</p></a>
+          <a class="sector-card" href="#/secteurs/proprete"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 3 6 6-9 9-6 1 1-6z"/><path d="M4 21h8"/></svg></span><h3>Propreté &amp; facility management</h3><p>Sous-traitance textile pour prestataires</p></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="solution-block split" id="hotellerie">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 132V56l72-32 72 32v76"/><path d="M76 132V96h48v36"/><path d="M56 74h20M124 74h20"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Hôtellerie &amp; restauration</h2>
+          <p class="lead" style="margin-top:14px">Des resorts de Saly aux maisons d'hôtes de Saint-Louis, en passant par les hôtels d'affaires du Plateau : votre linge doit suivre le rythme de la clientèle, pas l'inverse.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Draps, serviettes, peignoirs et linge de piscine livrés jusqu'à 6 j/7</li>
+            <li>Nappage et serviettes de table pour restaurants et banquets</li>
+            <li>Uniformes de réception, de salle, de cuisine et d'étage</li>
+            <li>Tapis d'entrée anti-sable et hygiène des sanitaires publics</li>
+            <li>Dotation renforcée pour la haute saison, ajustée en basse saison</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=hotellerie">Chiffrer mon hôtel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split split--reverse" id="sante">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 136s-56-34-56-76a30 30 0 0 1 56-15 30 30 0 0 1 56 15c0 42-56 76-56 76z"/>
+            <path d="M84 62h32M100 46v32"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Santé</h2>
+          <p class="lead" style="margin-top:14px">Hôpitaux publics, cliniques privées, cabinets, laboratoires : un circuit textile séparé, documenté et contrôlé, qui tient devant un audit d'hygiène.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Méthode RABC appliquée à toutes les étapes du traitement</li>
+            <li>Tenues de bloc, casaques, champs et blouses nominatives</li>
+            <li>Linge de lit patient, alèses, pyjamas et chemises d'opéré</li>
+            <li>Sacs hydrosolubles pour le linge contaminé, zéro manipulation</li>
+            <li>Fiches de lavage et contrôles microbiologiques archivés</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=sante">Parler à un spécialiste santé <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split" id="industrie">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M26 132V64l40 26V64l40 26V44l44 30v58z"/><path d="M46 110h12M86 110h12M126 110h12"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Industrie &amp; agroalimentaire</h2>
+          <p class="lead" style="margin-top:14px">Conserveries de poisson, laiteries, minoteries, embouteillage, plateformes logistiques : des tenues conformes, un essuyage maîtrisé et une traçabilité qui rassure vos clients et vos auditeurs.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tenues agroalimentaires sans poche extérieure, calots et charlottes</li>
+            <li>Lavage à barrière sanitaire et températures validées (HACCP, ISO 22000)</li>
+            <li>Chiffons et absorbants pour la maintenance et les ateliers</li>
+            <li>EPI haute visibilité pour les zones de circulation d'engins</li>
+            <li>Lutte antiparasitaire programmée sur l'ensemble du site</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=industrie">Auditer mon site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split split--reverse" id="mines">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M118 22 30 110l20 20 88-88z"/><path d="m102 34 44 44 14-14-44-44z"/><path d="M30 142h140"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Mines, énergie &amp; pétrole</h2>
+          <p class="lead" style="margin-top:14px">Sites isolés, effectifs en rotation, exigences de sécurité élevées : nous organisons des tournées adaptées aux bases-vie et aux camps de chantier, y compris à Kédougou et sur la Grande Côte.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Combinaisons ignifugées, antistatiques et haute visibilité</li>
+            <li>Linge de base-vie : draps, serviettes, linge de cantine</li>
+            <li>Casiers de distribution automatique 24 h/24 pour les équipes postées</li>
+            <li>Gestion des rotations : chaque agent retrouve sa tenue à sa taille</li>
+            <li>Reporting HSE mensuel intégrable à votre système qualité</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=mines">Organiser une tournée <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split" id="btp">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 134h152M40 134V88l60-48 60 48v46"/><path d="M78 134v-34h44v34"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>BTP &amp; construction</h2>
+          <p class="lead" style="margin-top:14px">Les chantiers bougent, les effectifs varient, la poussière est partout. Nous suivons vos chantiers de Diamniadio à Mbour avec des dotations robustes et des passages ajustables.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tenues de chantier résistantes, bandes rétroréfléchissantes</li>
+            <li>Contrats flexibles : ajout ou retrait de porteurs chaque mois</li>
+            <li>Livraison directement sur site, même en zone non desservie</li>
+            <li>Blocs sanitaires équipés et réapprovisionnés pour les bases-vie</li>
+            <li>Tapis et essuyage pour les ateliers et les bureaux de chantier</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=btp">Équiper mes chantiers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split split--reverse" id="services">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="28" y="30" width="144" height="104" rx="12"/><path d="M56 62h88M56 88h56M56 110h40"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Banques, commerces &amp; bureaux</h2>
+          <p class="lead" style="margin-top:14px">Vos locaux sont votre vitrine. Tapis à votre logo, sanitaires impeccables, eau fraîche à l'accueil : des détails que vos clients remarquent immédiatement.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tapis d'entrée personnalisés, échangés propres chaque semaine</li>
+            <li>Sanitaires équipés : savon, essuie-mains, parfum d'ambiance</li>
+            <li>Fontaines à eau et machines à café en salle de pause et en accueil</li>
+            <li>Uniformes d'accueil, de sécurité et d'entretien</li>
+            <li>Contrats multi-sites pilotés par un interlocuteur unique</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=services">Soigner mes agences <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split" id="collectivites">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 136h152M34 136V62l66-34 66 34v74"/><path d="M84 136v-38h32v38"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Administrations, collectivités &amp; ONG</h2>
+          <p class="lead" style="margin-top:14px">Nous répondons aux marchés publics et aux appels d'offres des organisations internationales, avec les pièces administratives, les références et les capacités de production requises.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Dossiers d'appel d'offres complets, quitus fiscal et social à jour</li>
+            <li>Tenues des agents techniques, d'accueil et de sécurité</li>
+            <li>Hygiène des sanitaires dans les écoles, mairies et centres de santé</li>
+            <li>Déploiement multi-régions avec un plan de tournées documenté</li>
+            <li>Facturation par site, par direction ou consolidée</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/contact">Nous transmettre un DAO <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+
+      <section class="solution-block split split--reverse" id="proprete">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M124 24l44 44-66 66-44 8 8-44z"/><path d="M34 140h60"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Secteur</span>
+          <h2>Propreté &amp; facility management</h2>
+          <p class="lead" style="margin-top:14px">Vous nettoyez les sites de vos clients : nous équipons vos agents et nous prenons en charge tout le volet textile, en marque blanche si vous le souhaitez.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Tenues d'agents de propreté marquées à votre logo</li>
+            <li>Lavettes microfibres et franges de lavage traitées et redistribuées</li>
+            <li>Approvisionnement des consommables sanitaires de vos sites</li>
+            <li>Facturation par contrat client, pour refacturation simplifiée</li>
+            <li>Volumes garantis et délais contractuels</li>
+          </ul>
+          <a class="link-arrow" style="margin-top:20px" href="#/devis?secteur=proprete">Devenir partenaire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Votre secteur n'est pas listé ?</span>
+            <h2>Nous étudions tous les besoins textiles et hygiène</h2>
+            <p>Écoles, transport, sport, événementiel, sécurité : appelez-nous, nous construirons une dotation sur mesure.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis</a>
+            <a class="btn btn--outline-light" href="tel:+221338590100">+221 33 859 01 00</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+
+    <div class="page" id="page-entreprise" data-title="Notre entreprise & engagement RSE | Setal Pro" hidden>
+
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol><li><a href="#/accueil">Accueil</a></li><li>Notre entreprise</li></ol>
+        </nav>
+        <h1>Setal Pro, l'industrie du propre au service des professionnels sénégalais</h1>
+        <p>« Setal », c'est nettoyer, rendre propre. « Pro », c'est l'exigence des entreprises qui nous font confiance. Entre les deux, il y a des usines, des camions, des tournées et 350 personnes qui font tourner le cycle chaque jour.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Notre mission</span>
+          <h2>Débarrasser les entreprises d'un problème quotidien</h2>
+          <p class="lead" style="margin-top:16px">Aucune entreprise n'a été créée pour laver du linge. Pourtant, partout au Sénégal, des hôtels font tourner des lingeries improvisées, des usines rachètent des blouses tous les six mois et des cliniques bricolent leur circuit de linge sale.</p>
+          <p class="lead" style="margin-top:14px">Nous industrialisons ce travail : une organisation de blanchisserie professionnelle, des procédés contrôlés, une logistique fiable — et pour vous, un abonnement mensuel au lieu d'une charge permanente.</p>
+          <div class="grid grid--2" style="margin-top:28px">
+            <article class="card"><h3>Notre promesse</h3><p>Le bon article, à la bonne taille, propre, au bon endroit, le bon jour. Sans que vous ayez à le demander.</p></article>
+            <article class="card"><h3>Notre méthode</h3><p>Un audit terrain, une dotation calculée, une tournée planifiée, un contrôle qualité pièce par pièce, un reporting mensuel.</p></article>
+          </div>
+        </div>
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="22" y="46" width="156" height="90" rx="12"/>
+            <circle cx="70" cy="92" r="24"/><circle cx="70" cy="92" r="10"/>
+            <path d="M112 76h48M112 92h48M112 108h30M46 46V30h44v16"/>
+          </svg>
+          <div class="badge-float">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M12 3v18M5 12h14"/></svg></span>
+            <span><strong>12 tonnes de linge par jour</strong><span>Capacité cumulée de nos quatre centres de production</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Setal Pro en chiffres</span>
+          <h2>Ce que nous faisons tourner chaque semaine</h2>
+        </div>
+        <div class="stats reveal">
+          <div class="stat"><div class="value"><span data-count="1200">0</span><span>+</span></div><p>sites clients livrés chaque semaine</p></div>
+          <div class="stat"><div class="value"><span data-count="350">0</span></div><p>collaborateurs, dont 60 % de femmes en production</p></div>
+          <div class="stat"><div class="value"><span data-count="42">0</span></div><p>véhicules de livraison en tournée quotidienne</p></div>
+          <div class="stat"><div class="value"><span data-count="14">0</span></div><p>régions couvertes, de Saint-Louis à Ziguinchor</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="histoire">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Notre histoire</span>
+          <h2>D'une blanchisserie de quartier à un réseau national</h2>
+        </div>
+        <div class="timeline reveal">
+          <div class="tl-item"><div class="tl-year">2018</div><div><h3>La première blanchisserie</h3><p>Setal Pro démarre à Dakar avec deux machines industrielles et un fourgon, au service de trois restaurants de la Corniche.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2020</div><div><h3>Le virage hôtelier</h3><p>Premiers contrats de linge plat sur la Petite Côte. L'entreprise structure ses tournées et adopte la livraison à jour fixe.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2022</div><div><h3>L'usine de Diamniadio</h3><p>Ouverture d'un centre de production de 2 400 m², lancement de la location-entretien de vêtements de travail et de la traçabilité RFID.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2024</div><div><h3>Le circuit santé</h3><p>Mise en service d'une ligne dédiée au linge de santé avec barrière sanitaire, méthode RABC et contrôles microbiologiques.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2025</div><div><h3>Le maillage régional</h3><p>Ouverture des sites de Thiès, Mbour et Saint-Louis. Lancement des offres hygiène sanitaire, tapis et lutte antiparasitaire.</p></div></div>
+          <div class="tl-item"><div class="tl-year">2026</div><div><h3>Aujourd'hui</h3><p>Plus de 1 200 sites servis chaque semaine, 350 collaborateurs et une capacité de 12 tonnes de linge traité par jour.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="valeurs">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Nos valeurs</span>
+          <h2>Quatre principes, tenus sur le terrain</h2>
+        </div>
+        <div class="grid grid--4">
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <h3>Fiabilité</h3><p>Une date de livraison annoncée est une date tenue. Nos tournées sont planifiées, suivies et mesurées chaque mois.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Rigueur sanitaire</h3><p>Des procédés écrits, des températures validées, des contrôles archivés. La propreté se prouve, elle ne se déclare pas.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></span>
+            <h3>Dignité au travail</h3><p>Salaires déclarés, équipements de protection, formation continue et évolution interne pour nos équipes de production.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z"/></svg></span>
+            <h3>Sobriété</h3><p>Chaque litre d'eau et chaque kilowattheure comptent. Nous mesurons nos consommations et nous les réduisons.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="implantations">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Nos implantations</span>
+          <h2>Quatre centres de production, une couverture nationale</h2>
+          <p class="lead" style="margin-top:16px">Nos usines sont placées au plus près des bassins d'activité, pour réduire les distances, les délais et l'empreinte de nos tournées.</p>
+          <div class="info-list" style="margin-top:26px">
+            <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 1 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><strong>Diamniadio (siège &amp; usine principale)</strong><p>2 400 m², linge plat, vêtement de travail et ligne santé. Dessert Dakar, Rufisque et Bargny.</p></span></div>
+            <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 1 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><strong>Thiès</strong><p>Centre régional : industrie, agroalimentaire et administrations du centre du pays.</p></span></div>
+            <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 1 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><strong>Mbour / Saly</strong><p>Dédié à l'hôtellerie de la Petite Côte, avec renfort saisonnier de novembre à avril.</p></span></div>
+            <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 1 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><strong>Saint-Louis</strong><p>Nord du pays : hôtellerie, santé publique, agro-industrie de la vallée du fleuve.</p></span></div>
+          </div>
+          <p class="muted" style="margin-top:20px;font-size:.9rem">Tournées régulières également vers Kaolack, Touba, Tambacounda, Kolda, Kédougou et Ziguinchor.</p>
+        </div>
+
+        <div class="map-wrap reveal">
+          <svg viewBox="0 0 420 300" role="img" aria-label="Carte du Sénégal avec les implantations Setal Pro">
+            <path d="M74 52 150 44 236 60 300 74 352 92 372 128 386 166 352 200 312 214 306 236 250 246 176 252 104 246 66 228 82 200 68 178 46 160 64 140 58 96Z"
+                  fill="#e2f4f0" stroke="#14776e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M88 206h172v16H88z" fill="#f5f9f8" stroke="#cfdedb" stroke-width="1.5"/>
+            <text class="map-city" x="150" y="218" fill="#7c918f">GAMBIE</text>
+
+            <circle class="map-dot" cx="86" cy="72" r="7"/><text class="map-city" x="99" y="69">Saint-Louis</text>
+            <circle class="map-dot" cx="74" cy="166" r="7"/><text class="map-city" x="87" y="170">Diamniadio · Dakar</text>
+            <circle class="map-dot" cx="118" cy="144" r="7"/><text class="map-city" x="131" y="141">Thiès</text>
+            <circle class="map-dot" cx="90" cy="196" r="7"/><text class="map-city" x="103" y="199">Mbour · Saly</text>
+
+            <circle cx="176" cy="120" r="4.5" fill="#14776e"/><text class="map-city" x="186" y="123">Touba</text>
+            <circle cx="176" cy="188" r="4.5" fill="#14776e"/><text class="map-city" x="186" y="191">Kaolack</text>
+            <circle cx="272" cy="152" r="4.5" fill="#14776e"/><text class="map-city" x="282" y="155">Tambacounda</text>
+            <circle cx="340" cy="192" r="4.5" fill="#14776e"/><text class="map-city" x="332" y="196" text-anchor="end">Kédougou</text>
+            <circle cx="132" cy="238" r="4.5" fill="#14776e"/><text class="map-city" x="142" y="241">Ziguinchor</text>
+          </svg>
+          <p class="muted" style="margin-top:14px;font-size:.85rem"><span style="color:#d19c00;font-weight:700">●</span> Centres de production &nbsp;&nbsp; <span style="color:#14776e;font-weight:700">●</span> Villes desservies par nos tournées</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="rse">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Engagement RSE</span>
+          <h2>Laver beaucoup, consommer peu</h2>
+          <p class="lead">Une blanchisserie industrielle utilise de l'eau et de l'énergie : c'est notre principal impact, et c'est donc là que nous concentrons nos efforts. Le reste de notre démarche porte sur l'emploi et sur la durée de vie des textiles.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z"/></svg></span>
+            <h3>70 % de l'eau recyclée</h3>
+            <p>Les eaux de dernier rinçage sont récupérées et réutilisées pour le prélavage. Objectif : moins de 6 litres d'eau par kilo de linge traité.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>
+            <h3>900 m² de panneaux solaires</h3>
+            <p>Le site de Diamniadio couvre une partie de ses besoins électriques en autoconsommation, avec récupération de chaleur sur les séchoirs.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></span>
+            <h3>Le textile plutôt que le jetable</h3>
+            <p>Une lavette réutilisable remplace des centaines de feuilles de papier. Chaque vêtement est réparé tant qu'il peut l'être, puis recyclé en chiffons.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></span>
+            <h3>Emploi local et formation</h3>
+            <p>Recrutement de proximité autour de chaque usine, alphabétisation fonctionnelle et formation aux métiers de la blanchisserie industrielle.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+            <h3>Tournées optimisées</h3>
+            <p>Regroupement des clients par zone et par jour, suivi de la consommation de carburant et renouvellement progressif de la flotte.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="m8 15 3-4 3 3 4-6"/></svg></span>
+            <h3>Des résultats publiés</h3>
+            <p>Consommation d'eau, d'énergie, taux de réparation et de recyclage : nos indicateurs sont publiés chaque année dans notre rapport RSE.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="actualites">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Actualités</span>
+          <h2>La vie de l'entreprise</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">12 août 2026 · Industrie</span><h3>Notre usine de Diamniadio double sa capacité</h3><p>Un nouveau tunnel de lavage porte la capacité à 12 tonnes de linge par jour, avec récupération d'eau intégrée et pilotage automatisé des dosages.</p></div></article>
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">3 juillet 2026 · Hôtellerie</span><h3>Saison touristique : anticiper le linge de la Petite Côte</h3><p>Comment dimensionner sa dotation avant la haute saison, calculer son stock tampon et éviter les ruptures de draps et de serviettes.</p></div></article>
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">21 mai 2026 · RSE</span><h3>100 femmes formées aux métiers de la blanchisserie</h3><p>Notre programme mené avec les collectivités de Thiès a diplômé sa troisième promotion : 100 femmes formées, 68 recrutées en CDI.</p></div></article>
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">14 mars 2026 · Santé</span><h3>Ligne santé : nos contrôles microbiologiques en accès client</h3><p>Les établissements de santé retrouvent désormais leurs fiches de lavage et leurs résultats de contrôle dans l'espace client.</p></div></article>
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">2 février 2026 · Réseau</span><h3>Ouverture d'une tournée hebdomadaire vers Ziguinchor</h3><p>La Casamance est desservie chaque jeudi, avec un relais logistique à Kolda pour les clients de l'axe est.</p></div></article>
+          <article class="post reveal"><div class="post-thumb"></div><div class="post-body"><span class="meta">18 janvier 2026 · Innovation</span><h3>La puce RFID généralisée à toutes les dotations</h3><p>Chaque article est identifié individuellement : inventaire en temps réel, remplacement anticipé et fin des litiges de comptage.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="recrutement">
+      <div class="container split split--reverse">
+        <div class="split-media reveal">
+          <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="76" cy="58" r="22"/><path d="M34 130v-8a30 30 0 0 1 30-30h24a30 30 0 0 1 30 30v8"/>
+            <path d="M142 60h32M158 44v32"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Recrutement</span>
+          <h2>Rejoindre Setal Pro</h2>
+          <p class="lead" style="margin-top:16px">Nous recrutons toute l'année à Diamniadio, Thiès, Mbour et Saint-Louis : opérateurs et opératrices de production, conducteurs-livreurs, techniciens de maintenance, conseillers commerciaux et responsables qualité.</p>
+          <ul class="ticks" style="margin-top:20px;display:grid;gap:10px">
+            <li>Contrats déclarés, couverture IPRES et IPM dès l'embauche</li>
+            <li>Formation interne au métier, y compris sans expérience préalable</li>
+            <li>Transport du personnel assuré sur les sites industriels</li>
+            <li>Priorité donnée à la promotion interne pour l'encadrement</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="mailto:recrutement@setalpro.sn?subject=Candidature%20spontan%C3%A9e">Envoyer une candidature</a>
+            <a class="btn btn--ghost" href="#/contact">Poser une question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Travaillons ensemble</span>
+            <h2>Une visite, un devis, une décision</h2>
+            <p>Nous venons voir vos locaux, nous comptons, nous mesurons, et nous vous remettons une proposition chiffrée sous 48 heures.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis</a>
+            <a class="btn btn--outline-light" href="#/contact/agences">Voir nos agences</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+
+    <div class="page" id="page-devis" data-title="Demander un devis gratuit | Setal Pro" hidden>
+
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol><li><a href="#/accueil">Accueil</a></li><li>Demander un devis</li></ol>
+        </nav>
+        <h1>Votre devis gratuit, sous 48 heures</h1>
+        <p>Trois minutes pour décrire votre besoin. Un conseiller vous rappelle, planifie une visite si nécessaire et vous remet une dotation chiffrée, sans engagement.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split" style="align-items:start">
+        <div class="form-card">
+          <ol class="stepper" data-stepper>
+            <li class="is-current">1. Vos besoins</li>
+            <li>2. Votre site</li>
+            <li>3. Vos coordonnées</li>
+          </ol>
+
+          <form id="devis-form" novalidate>
+            <!-- Étape 1 -->
+            <fieldset class="form-step" data-step="0" style="border:0;padding:0;margin:0">
+              <legend class="h3" style="font-family:var(--ff-title);font-weight:800;margin-bottom:6px">Quelles solutions vous intéressent ?</legend>
+              <p class="muted" style="font-size:.9rem;margin-bottom:18px">Plusieurs choix possibles. Vous pourrez tout ajuster avec votre conseiller.</p>
+              <div class="choice-grid">
+                <label class="choice"><input type="checkbox" name="solutions" value="Vêtement de travail" /><span>Vêtement de travail</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Linge plat & hôtellerie" /><span>Linge plat &amp; hôtellerie</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Hygiène & bien-être" /><span>Hygiène &amp; bien-être</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Linge de santé" /><span>Linge de santé</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Tapis d'entrée" /><span>Tapis d'entrée</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Essuyage industriel" /><span>Essuyage industriel</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Fontaines à eau & café" /><span>Fontaines à eau &amp; café</span></label>
+                <label class="choice"><input type="checkbox" name="solutions" value="Dératisation 3D" /><span>Dératisation 3D</span></label>
+              </div>
+              <p class="error" data-error-solutions style="display:none;color:#c0392b;font-size:.85rem;margin-top:12px">Sélectionnez au moins une solution.</p>
+
+              <div class="field" style="margin-top:22px">
+                <label for="secteur">Votre secteur d'activité <span class="req">*</span></label>
+                <select id="secteur" name="secteur" required>
+                  <option value="">— Choisir —</option>
+                  <option>Hôtellerie &amp; restauration</option>
+                  <option>Santé</option>
+                  <option>Industrie &amp; agroalimentaire</option>
+                  <option>Mines, énergie &amp; pétrole</option>
+                  <option>BTP &amp; construction</option>
+                  <option>Banques, commerces &amp; bureaux</option>
+                  <option>Administrations &amp; ONG</option>
+                  <option>Propreté &amp; facility management</option>
+                  <option>Autre</option>
+                </select>
+                <span class="error">Merci d'indiquer votre secteur.</span>
+              </div>
+            </fieldset>
+
+            <!-- Étape 2 -->
+            <fieldset class="form-step" data-step="1" hidden style="border:0;padding:0;margin:0">
+              <legend class="h3" style="font-family:var(--ff-title);font-weight:800;margin-bottom:18px">Parlez-nous de votre site</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="effectif">Nombre de personnes à équiper <span class="req">*</span></label>
+                  <select id="effectif" name="effectif" required>
+                    <option value="">— Choisir —</option>
+                    <option>1 à 10</option><option>11 à 50</option><option>51 à 150</option>
+                    <option>151 à 500</option><option>Plus de 500</option><option>Non concerné</option>
+                  </select>
+                  <span class="error">Merci d'indiquer un effectif.</span>
+                </div>
+                <div class="field">
+                  <label for="ville">Ville / région <span class="req">*</span></label>
+                  <select id="ville" name="ville" required>
+                    <option value="">— Choisir —</option>
+                    <option>Dakar</option><option>Diamniadio / Rufisque</option><option>Thiès</option>
+                    <option>Mbour / Saly</option><option>Saint-Louis</option><option>Kaolack</option>
+                    <option>Touba / Diourbel</option><option>Tambacounda</option><option>Kédougou</option>
+                    <option>Ziguinchor / Kolda</option><option>Autre région</option>
+                  </select>
+                  <span class="error">Merci d'indiquer votre ville.</span>
+                </div>
+                <div class="field">
+                  <label for="sites">Nombre de sites concernés</label>
+                  <input type="number" id="sites" name="sites" min="1" value="1" />
+                </div>
+                <div class="field">
+                  <label for="frequence">Fréquence de passage souhaitée</label>
+                  <select id="frequence" name="frequence">
+                    <option>Quotidienne</option><option selected>Hebdomadaire</option>
+                    <option>Deux fois par semaine</option><option>Bimensuelle</option>
+                    <option>Mensuelle</option><option>À définir avec le conseiller</option>
+                  </select>
+                </div>
+                <div class="field field--full">
+                  <label for="delai">Quand souhaitez-vous démarrer ?</label>
+                  <select id="delai" name="delai">
+                    <option>Dès que possible</option><option>Sous 1 mois</option>
+                    <option>Sous 3 mois</option><option>Je me renseigne pour plus tard</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Étape 3 -->
+            <fieldset class="form-step" data-step="2" hidden style="border:0;padding:0;margin:0">
+              <legend class="h3" style="font-family:var(--ff-title);font-weight:800;margin-bottom:18px">Comment vous joindre ?</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="entreprise">Entreprise / établissement <span class="req">*</span></label>
+                  <input type="text" id="entreprise" name="entreprise" required autocomplete="organization" />
+                  <span class="error">Merci d'indiquer le nom de votre structure.</span>
+                </div>
+                <div class="field">
+                  <label for="nom">Nom et prénom <span class="req">*</span></label>
+                  <input type="text" id="nom" name="nom" required autocomplete="name" />
+                  <span class="error">Merci d'indiquer votre nom.</span>
+                </div>
+                <div class="field">
+                  <label for="email">E-mail professionnel <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" required autocomplete="email" />
+                  <span class="error">Adresse e-mail invalide.</span>
+                </div>
+                <div class="field">
+                  <label for="tel">Téléphone <span class="req">*</span></label>
+                  <input type="tel" id="tel" name="tel" required placeholder="+221 77 000 00 00" autocomplete="tel" />
+                  <span class="hint">Format : +221 suivi de 9 chiffres.</span>
+                  <span class="error">Numéro de téléphone invalide.</span>
+                </div>
+                <div class="field field--full">
+                  <label for="message">Précisions utiles</label>
+                  <textarea id="message" name="message" placeholder="Nombre de chambres, contraintes horaires, normes à respecter, matériel existant…"></textarea>
+                </div>
+                <div class="field field--full">
+                  <label class="check"><input type="checkbox" name="rgpd" required />
+                    <span>J'accepte que Setal Pro utilise ces informations pour me recontacter au sujet de ma demande. <span class="req">*</span></span>
+                  </label>
+                  <span class="error">Votre accord est nécessaire pour traiter la demande.</span>
+                </div>
+              </div>
+
+              <div class="recap" data-recap style="margin-top:22px"></div>
+            </fieldset>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn--ghost" data-prev hidden>Retour</button>
+              <button type="button" class="btn btn--primary" data-next style="margin-left:auto">Continuer
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <button type="submit" class="btn btn--gold" data-submit hidden style="margin-left:auto">Envoyer ma demande</button>
+            </div>
+
+            <p class="form-status" data-status role="status"></p>
+          </form>
+        </div>
+
+        <aside style="display:grid;gap:24px">
+          <div class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <h3>Ce qui se passe ensuite</h3>
+            <ul class="ticks" style="display:grid;gap:10px">
+              <li><strong>Sous 24 h</strong> — un conseiller vous appelle pour préciser votre besoin.</li>
+              <li><strong>Sous 48 h</strong> — vous recevez une proposition chiffrée par e-mail.</li>
+              <li><strong>Sur demande</strong> — visite de vos locaux et essayage des articles.</li>
+              <li><strong>Au démarrage</strong> — dotation livrée et première tournée planifiée.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <h3>Vous préférez parler ?</h3>
+            <p>Notre équipe commerciale répond du lundi au samedi, de 8 h à 18 h.</p>
+            <div class="info-list">
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><strong>+221 33 859 01 00</strong><a href="tel:+221338590100">Appeler le standard</a></span></div>
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg></span><span><strong>+221 77 000 00 00</strong><a href="https://wa.me/221770000000">Écrire sur WhatsApp</a></span></div>
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></span><span><strong>devis@setalpro.sn</strong><a href="mailto:devis@setalpro.sn">Envoyer un e-mail</a></span></div>
+            </div>
+          </div>
+
+          <div class="card" style="background:var(--green-050);border-color:var(--green-100)">
+            <h3>Appel d'offres ou marché public ?</h3>
+            <p>Envoyez-nous votre dossier de consultation : nous fournissons attestations, quitus et références sous 72 h.</p>
+            <a class="link-arrow" href="mailto:appelsdoffres@setalpro.sn">appelsdoffres@setalpro.sn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  
+    </div>
+
+    <div class="page" id="page-contact" data-title="Contact & agences | Setal Pro" hidden>
+
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol><li><a href="#/accueil">Accueil</a></li><li>Contact</li></ol>
+        </nav>
+        <h1>Nous contacter</h1>
+        <p>Une question sur nos services, une livraison à ajuster, une réclamation à traiter ? Écrivez-nous, appelez-nous ou passez dans l'une de nos agences.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split" style="align-items:start">
+        <div class="form-card">
+          <span class="eyebrow">Écrivez-nous</span>
+          <h2 style="margin:10px 0 6px">Formulaire de contact</h2>
+          <p class="muted" style="font-size:.92rem;margin-bottom:22px">Nous répondons sous un jour ouvré. Pour une demande de tarif, utilisez plutôt le <a href="#/devis" style="color:var(--green-700);font-weight:600">formulaire de devis</a>.</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="c-nom">Nom et prénom <span class="req">*</span></label>
+                <input type="text" id="c-nom" name="nom" required autocomplete="name" />
+                <span class="error">Merci d'indiquer votre nom.</span>
+              </div>
+              <div class="field">
+                <label for="c-entreprise">Entreprise</label>
+                <input type="text" id="c-entreprise" name="entreprise" autocomplete="organization" />
+              </div>
+              <div class="field">
+                <label for="c-email">E-mail <span class="req">*</span></label>
+                <input type="email" id="c-email" name="email" required autocomplete="email" />
+                <span class="error">Adresse e-mail invalide.</span>
+              </div>
+              <div class="field">
+                <label for="c-tel">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="c-tel" name="tel" required placeholder="+221 77 000 00 00" autocomplete="tel" />
+                <span class="error">Numéro de téléphone invalide.</span>
+              </div>
+              <div class="field field--full">
+                <label for="c-objet">Objet <span class="req">*</span></label>
+                <select id="c-objet" name="objet" required>
+                  <option value="">— Choisir —</option>
+                  <option>Renseignement sur une solution</option>
+                  <option>Client existant : ajuster ma dotation</option>
+                  <option>Client existant : problème de livraison</option>
+                  <option>Réclamation qualité</option>
+                  <option>Facturation</option>
+                  <option>Appel d'offres / marché public</option>
+                  <option>Candidature / recrutement</option>
+                  <option>Partenariat ou presse</option>
+                </select>
+                <span class="error">Merci de choisir un objet.</span>
+              </div>
+              <div class="field field--full">
+                <label for="c-message">Votre message <span class="req">*</span></label>
+                <textarea id="c-message" name="message" required placeholder="Décrivez votre demande en quelques lignes…"></textarea>
+                <span class="error">Merci d'écrire votre message (20 caractères minimum).</span>
+              </div>
+              <div class="field field--full">
+                <label class="check"><input type="checkbox" name="rgpd" required />
+                  <span>J'accepte que Setal Pro conserve ces informations pour traiter ma demande. <span class="req">*</span></span>
+                </label>
+                <span class="error">Votre accord est nécessaire.</span>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit" style="margin-top:22px">Envoyer le message</button>
+            <p class="form-status" data-status role="status"></p>
+          </form>
+        </div>
+
+        <aside style="display:grid;gap:26px">
+          <div>
+            <span class="eyebrow">Siège social</span>
+            <h2 style="margin-top:10px">Setal Pro SUARL</h2>
+            <div class="info-list" style="margin-top:22px">
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 1 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><strong>Adresse</strong><p>Zone industrielle de Diamniadio, lot 214<br />Pôle urbain de Diamniadio, région de Dakar, Sénégal</p></span></div>
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><strong>Téléphone</strong><a href="tel:+221338590100">+221 33 859 01 00</a><br /><a href="https://wa.me/221770000000">WhatsApp : +221 77 000 00 00</a></span></div>
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></span><span><strong>E-mail</strong><a href="mailto:contact@setalpro.sn">contact@setalpro.sn</a><br /><a href="mailto:devis@setalpro.sn">devis@setalpro.sn</a></span></div>
+              <div class="info-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span><strong>Horaires</strong><p>Lundi – vendredi : 8 h – 18 h<br />Samedi : 8 h – 13 h<br />Astreinte livraison : 7 j/7 pour les clients sous contrat</p></span></div>
+            </div>
+          </div>
+
+          <div class="card" id="espace-client" style="background:var(--green-050);border-color:var(--green-100)">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+            <h3>Espace client</h3>
+            <p>Suivez vos livraisons, consultez vos inventaires RFID, téléchargez vos factures et vos fiches de lavage, signalez un article manquant.</p>
+            <ul class="ticks" style="display:grid;gap:8px">
+              <li>Accès fourni au démarrage de votre contrat</li>
+              <li>Un identifiant par site ou par direction</li>
+              <li>Historique conservé 5 ans, exportable pour vos audits</li>
+            </ul>
+            <a class="btn btn--primary" href="#" style="margin-top:6px">Accéder à mon espace</a>
+            <p class="muted" style="font-size:.82rem">Identifiants oubliés ? Écrivez à <a href="mailto:support@setalpro.sn" style="color:var(--green-700);font-weight:600">support@setalpro.sn</a>.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="agences">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Nos implantations</span>
+          <h2>Quatre sites, des tournées dans tout le pays</h2>
+          <p class="lead">Chaque site dispose de son équipe commerciale et de sa flotte de livraison.</p>
+        </div>
+        <div class="grid grid--4">
+          <article class="agency reveal">
+            <span class="role">Siège &amp; usine principale</span>
+            <h3>Diamniadio</h3>
+            <p>Zone industrielle, lot 214<br />Pôle urbain de Diamniadio</p>
+            <p><a href="tel:+221338590100">+221 33 859 01 00</a><br /><a href="mailto:diamniadio@setalpro.sn">diamniadio@setalpro.sn</a></p>
+            <p class="muted" style="font-size:.82rem">Dessert Dakar, Rufisque, Bargny, Sébikotane.</p>
+          </article>
+          <article class="agency reveal">
+            <span class="role">Centre régional</span>
+            <h3>Thiès</h3>
+            <p>Route de Khombole, quartier Randoulène</p>
+            <p><a href="tel:+221338590120">+221 33 859 01 20</a><br /><a href="mailto:thies@setalpro.sn">thies@setalpro.sn</a></p>
+            <p class="muted" style="font-size:.82rem">Dessert Thiès, Tivaouane, Mékhé, Diourbel, Touba.</p>
+          </article>
+          <article class="agency reveal">
+            <span class="role">Pôle hôtellerie</span>
+            <h3>Mbour / Saly</h3>
+            <p>Zone artisanale de Saly Portudal</p>
+            <p><a href="tel:+221338590140">+221 33 859 01 40</a><br /><a href="mailto:saly@setalpro.sn">saly@setalpro.sn</a></p>
+            <p class="muted" style="font-size:.82rem">Dessert la Petite Côte, Nianing, Joal, Fatick.</p>
+          </article>
+          <article class="agency reveal">
+            <span class="role">Pôle nord</span>
+            <h3>Saint-Louis</h3>
+            <p>Route de Khor, quartier Sor</p>
+            <p><a href="tel:+221338590160">+221 33 859 01 60</a><br /><a href="mailto:saintlouis@setalpro.sn">saintlouis@setalpro.sn</a></p>
+            <p class="muted" style="font-size:.82rem">Dessert Saint-Louis, Richard-Toll, Dagana, Louga.</p>
+          </article>
+        </div>
+        <p class="muted" style="text-align:center;margin-top:26px;font-size:.9rem">Tournées régulières vers Kaolack, Tambacounda, Kédougou, Kolda et Ziguinchor. <a href="#/devis" style="color:var(--green-700);font-weight:700">Demandez le calendrier de votre zone.</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container" style="max-width:900px">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Questions fréquentes</span>
+          <h2>Ce qu'on nous demande le plus souvent</h2>
+        </div>
+        <div class="accordion reveal" data-accordion>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Comment fonctionne la location-entretien ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Les articles restent notre propriété. Nous les livrons, les collectons sales, les lavons dans nos usines, les contrôlons, les réparons ou les remplaçons, puis nous vous les rapportons propres. Vous payez un montant fixe par article et par passage, sans acheter ni entretenir quoi que ce soit.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Y a-t-il un minimum de commande ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Nous travaillons à partir de 5 personnes à équiper, ou d'un seul tapis d'entrée pour les commerces. En dessous, nous vous orientons vers notre offre de blanchisserie à la pièce, facturée au poids.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Que se passe-t-il si un vêtement est perdu ou abîmé ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">L'usure normale est entièrement prise en charge : la pièce est réparée ou remplacée sans surcoût, généralement dès la tournée suivante. Les pertes sont identifiées grâce aux puces RFID et discutées lors du point mensuel ; seules les disparitions répétées sont refacturées, selon les conditions du contrat.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Livrez-vous en dehors de Dakar ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Oui. Nos quatre sites couvrent Dakar, Thiès, la Petite Côte et le nord du pays en tournées fixes. Kaolack, Tambacounda, Kédougou, Kolda et Ziguinchor sont desservis par des tournées hebdomadaires ou bimensuelles selon les volumes. Dites-nous votre localité : nous vous indiquerons le jour de passage.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Vos procédés conviennent-ils à l'agroalimentaire et à la santé ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Oui. Nous appliquons des cycles à températures validées, une séparation stricte entre zone sale et zone propre, et la méthode RABC pour le linge de santé. Les fiches de lavage, relevés de température et contrôles microbiologiques sont archivés et mis à votre disposition pour vos audits.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Quelle est la durée d'engagement ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Nos contrats de location-entretien sont généralement conclus pour 24 ou 36 mois, durée nécessaire pour amortir la dotation personnalisée à votre logo. Les prestations d'hygiène sanitaire, de tapis et de lutte antiparasitaire peuvent être souscrites sur 12 mois.</div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" aria-expanded="false">Comment sont facturées les prestations ?
+              <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+            <div class="acc-body"><div class="acc-body-inner">Une facture mensuelle unique en francs CFA, détaillée par site et par prestation, payable par virement, chèque, Wave ou Orange Money. Les entreprises multi-sites peuvent recevoir une facture consolidée avec le détail par établissement.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Pas encore client ?</span>
+            <h2>Recevez une proposition chiffrée sous 48 h</h2>
+            <p>Décrivez votre besoin en trois minutes : nous vous rappelons et nous venons voir vos locaux.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn--gold" href="#/devis">Demander un devis</a>
+            <a class="btn btn--outline-light" href="#/solutions">Voir les solutions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+  </main>
+
+
+  <!-- Pied de page -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#/accueil" class="logo">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYjNkM2EiLz4KICA8cGF0aCBkPSJNMjAgMjJjMC0zLjMgMy42LTUuNiA5LTUuNiA0LjQgMCA3LjkgMS4zIDkuOCAzbC0zLjMgNC40Yy0xLjYtMS4zLTMuOS0yLjEtNi4yLTIuMS0yLjIgMC0zLjYuNy0zLjYgMS44IDAgMy42IDE0LjIuNiAxNC4yIDEwLjEgMCA0LjItNCA3LTEwLjIgNy01IDAtOS4yLTEuNi0xMS40LTMuOGwzLjYtNC40YzEuOSAxLjcgNC43IDIuNyA3LjYgMi43IDIuNiAwIDQuMi0uOCA0LjItMi4xIDAtMy44LTEzLjctLjgtMTMuNy0xMXoiIGZpbGw9IiM3ZWUwYTEiLz4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjQ0IiByPSI0IiBmaWxsPSIjZjJiNzA1Ii8+Cjwvc3ZnPgo=" alt="" class="logo-mark" />
+            <span>Setal Pro<small>Textile &amp; hygiène pro</small></span>
+          </a>
+          <p>Location-entretien de vêtements de travail, de linge plat et de solutions d'hygiène pour les professionnels au Sénégal. Nous livrons, nous collectons, nous lavons, nous remplaçons.</p>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.2 8.4h4.56V24H.2zM8.34 8.4h4.37v2.13h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-7.94c0-1.89-.03-4.33-2.64-4.33-2.64 0-3.05 2.06-3.05 4.19V24H8.34z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.4V12h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a href="https://wa.me/221770000000" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3-.8-2.5-1-4.1-3.6-4.2-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.3.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3v.9z"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Nos solutions</h4>
+          <ul class="footer-links">
+            <li><a href="#/solutions/vetement-travail">Vêtement de travail</a></li>
+            <li><a href="#/solutions/linge-plat">Linge plat &amp; hôtellerie</a></li>
+            <li><a href="#/solutions/hygiene">Hygiène &amp; bien-être</a></li>
+            <li><a href="#/solutions/linge-sante">Linge de santé</a></li>
+            <li><a href="#/solutions/tapis">Tapis d'entrée</a></li>
+            <li><a href="#/solutions/essuyage">Essuyage industriel</a></li>
+            <li><a href="#/solutions/eau-cafe">Fontaines à eau &amp; café</a></li>
+            <li><a href="#/solutions/3d">Dératisation 3D</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Setal Pro</h4>
+          <ul class="footer-links">
+            <li><a href="#/entreprise">Qui sommes-nous</a></li>
+            <li><a href="#/entreprise/rse">Engagement RSE</a></li>
+            <li><a href="#/entreprise/implantations">Nos implantations</a></li>
+            <li><a href="#/entreprise/recrutement">Recrutement</a></li>
+            <li><a href="#/secteurs">Nos secteurs</a></li>
+            <li><a href="#/contact/faq">Questions fréquentes</a></li>
+            <li><a href="#/devis">Demander un devis</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Restons en contact</h4>
+          <ul class="footer-links">
+            <li>Zone industrielle de Diamniadio,<br />Pôle urbain de Diamniadio, Dakar</li>
+            <li><a href="tel:+221338590100">+221 33 859 01 00</a></li>
+            <li><a href="mailto:contact@setalpro.sn">contact@setalpro.sn</a></li>
+          </ul>
+          <form class="newsletter-form" data-newsletter novalidate>
+            <input type="email" name="email" placeholder="Votre e-mail professionnel" aria-label="Votre e-mail professionnel" required />
+            <button class="btn btn--gold btn--sm" type="submit">OK</button>
+          </form>
+          <p class="form-status" data-status>Merci ! Vous recevrez nos actualités hygiène &amp; textile.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Setal Pro SUARL — NINEA 00000000 — RC SN-DKR-2026-B-0000. Tous droits réservés.</p>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Conditions générales</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/221770000000" aria-label="Écrire sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3-.8-2.5-1-4.1-3.6-4.2-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.3.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3v.9z"/></svg>
+  </a>
+  <button class="to-top" aria-label="Revenir en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  
+  <script>
+/* =========================================================
+   SETAL PRO — Scripts du site
+   Aucune dépendance externe.
+   ========================================================= */
+(function () {
+  'use strict';
+
+  var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+
+  /* ---------- Année courante dans le pied de page ---------- */
+  $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* ---------- Lien de navigation actif ---------- */
+  (function activeLink() {
+    var page = location.pathname.split('/').pop() || 'index.html';
+    $$('.main-nav a[href]').forEach(function (a) {
+      var href = a.getAttribute('href').split('#')[0];
+      if (href && href === page) { a.classList.add('is-active'); }
+    });
+  })();
+
+  /* ---------- En-tête figé au scroll ---------- */
+  var header = $('.site-header');
+  var toTop = $('.to-top');
+  function onScroll() {
+    var y = window.pageYOffset;
+    if (header) { header.classList.toggle('is-stuck', y > 8); }
+    if (toTop) { toTop.classList.toggle('is-visible', y > 600); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (toTop) {
+    toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  /* ---------- Menu mobile ---------- */
+  var navToggle = $('.nav-toggle');
+  var mainNav = $('#main-nav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      var open = mainNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mainNav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        mainNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  /* ---------- Méga-menus ---------- */
+  var isTouch = window.matchMedia('(max-width: 980px)');
+  $$('.nav-item').forEach(function (item) {
+    var trigger = $('.nav-trigger', item);
+    if (!trigger) { return; }
+
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      var open = item.classList.contains('is-open');
+      $$('.nav-item').forEach(function (other) {
+        other.classList.remove('is-open');
+        var t = $('.nav-trigger', other);
+        if (t) { t.setAttribute('aria-expanded', 'false'); }
+      });
+      if (!open) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    item.addEventListener('mouseenter', function () {
+      if (isTouch.matches) { return; }
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    item.addEventListener('mouseleave', function () {
+      if (isTouch.matches) { return; }
+      item.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) {
+      $$('.nav-item.is-open').forEach(function (item) {
+        item.classList.remove('is-open');
+        var t = $('.nav-trigger', item);
+        if (t) { t.setAttribute('aria-expanded', 'false'); }
+      });
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    $$('.nav-item.is-open').forEach(function (i) { i.classList.remove('is-open'); });
+    if (mainNav && mainNav.classList.contains('is-open')) {
+      mainNav.classList.remove('is-open');
+      if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); }
+      document.body.style.overflow = '';
+    }
+  });
+
+  /* ---------- Apparition au scroll ---------- */
+  var revealables = $$('.reveal');
+  if ('IntersectionObserver' in window && revealables.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- Compteurs animés ---------- */
+  var counters = $$('[data-count]');
+  if (counters.length) {
+    var animate = function (el) {
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var duration = 1400;
+      var start = null;
+      function frame(ts) {
+        if (start === null) { start = ts; }
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString('fr-FR');
+        if (p < 1) { requestAnimationFrame(frame); }
+      }
+      requestAnimationFrame(frame);
+    };
+    if ('IntersectionObserver' in window) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { animate(entry.target); cio.unobserve(entry.target); }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function (el) { cio.observe(el); });
+    } else {
+      counters.forEach(animate);
+    }
+  }
+
+  /* ---------- Carrousel de témoignages ---------- */
+  $$('[data-carousel]').forEach(function (carousel) {
+    var track = $('.quote-track', carousel);
+    var slides = $$('.quote', carousel);
+    var dotsWrap = $('[data-dots]', carousel);
+    if (!track || slides.length < 2) { return; }
+
+    var index = 0;
+    var timer = null;
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'quote-dot' + (i === 0 ? ' is-active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Témoignage ' + (i + 1));
+      dot.addEventListener('click', function () { go(i); restart(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    function go(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + index * 100 + '%)';
+      track.style.transition = 'transform .5s ease';
+      $$('.quote-dot', dotsWrap).forEach(function (d, di) {
+        d.classList.toggle('is-active', di === index);
+      });
+    }
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(function () { go(index + 1); }, 7000);
+    }
+    go(0);
+    restart();
+    carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+    carousel.addEventListener('mouseleave', restart);
+  });
+
+  /* ---------- Accordéon ---------- */
+  $$('[data-accordion]').forEach(function (acc) {
+    $$('.acc-head', acc).forEach(function (head) {
+      head.addEventListener('click', function () {
+        var item = head.parentElement;
+        var body = $('.acc-body', item);
+        var open = item.classList.contains('is-open');
+
+        $$('.acc-item', acc).forEach(function (other) {
+          other.classList.remove('is-open');
+          $('.acc-head', other).setAttribute('aria-expanded', 'false');
+          $('.acc-body', other).style.maxHeight = null;
+        });
+
+        if (!open) {
+          item.classList.add('is-open');
+          head.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  });
+
+  /* ---------- Validation de formulaire ---------- */
+  var RE_EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+  var RE_TEL = /^(\+?221)?[\s.-]?[0-9][\s.\-0-9]{7,}$/;
+
+  function fieldOf(input) { return input.closest('.field'); }
+
+  function validate(input) {
+    var value = (input.value || '').trim();
+    var ok = true;
+
+    if (input.type === 'checkbox') {
+      ok = !input.required || input.checked;
+    } else if (input.required && !value) {
+      ok = false;
+    } else if (input.type === 'email' && value) {
+      ok = RE_EMAIL.test(value);
+    } else if (input.type === 'tel' && value) {
+      ok = RE_TEL.test(value);
+    } else if (input.tagName === 'TEXTAREA' && input.required) {
+      ok = value.length >= 20;
+    }
+
+    var field = fieldOf(input);
+    if (field) { field.classList.toggle('has-error', !ok); }
+    return ok;
+  }
+
+  function validateScope(scope) {
+    var inputs = $$('input[required], select[required], textarea[required]', scope);
+    var valid = true;
+    inputs.forEach(function (input) { if (!validate(input)) { valid = false; } });
+    return valid;
+  }
+
+  function bindLiveValidation(form) {
+    $$('input, select, textarea', form).forEach(function (input) {
+      input.addEventListener('blur', function () {
+        if (input.required || (input.value || '').trim()) { validate(input); }
+      });
+      input.addEventListener('input', function () {
+        var field = fieldOf(input);
+        if (field && field.classList.contains('has-error')) { validate(input); }
+      });
+    });
+  }
+
+  function showStatus(form, message, isError) {
+    var status = $('[data-status]', form) || form.parentElement.querySelector('[data-status]');
+    if (!status) { return; }
+    status.textContent = message;
+    status.classList.add('is-visible');
+    status.style.background = isError ? '#fdecea' : 'var(--green-050)';
+    status.style.borderColor = isError ? '#f5c6c0' : 'var(--green-100)';
+    status.style.color = isError ? '#c0392b' : 'var(--green-700)';
+  }
+
+  /* ---------- Formulaire de contact ---------- */
+  var contactForm = $('#contact-form');
+  if (contactForm) {
+    bindLiveValidation(contactForm);
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateScope(contactForm)) {
+        showStatus(contactForm, 'Merci de corriger les champs signalés en rouge.', true);
+        var firstError = $('.field.has-error input, .field.has-error select, .field.has-error textarea', contactForm);
+        if (firstError) { firstError.focus(); }
+        return;
+      }
+      var nom = $('#c-nom').value.trim().split(' ')[0];
+      showStatus(contactForm, 'Merci ' + nom + ' ! Votre message est parti. Un conseiller Setal Pro vous répond sous un jour ouvré.', false);
+      contactForm.reset();
+    });
+  }
+
+  /* ---------- Formulaire de devis en 3 étapes ---------- */
+  var devisForm = $('#devis-form');
+  if (devisForm) {
+    var steps = $$('.form-step', devisForm);
+    var stepperItems = $$('[data-stepper] li');
+    var btnPrev = $('[data-prev]', devisForm);
+    var btnNext = $('[data-next]', devisForm);
+    var btnSubmit = $('[data-submit]', devisForm);
+    var recap = $('[data-recap]', devisForm);
+    var errSolutions = $('[data-error-solutions]', devisForm);
+    var current = 0;
+
+    bindLiveValidation(devisForm);
+
+    // Pré-remplissage depuis l'URL : devis.html?solution=tapis&secteur=hotellerie
+    (function prefill() {
+      var params = new URLSearchParams(location.search);
+      var mapSolutions = {
+        'vetement-travail': 'Vêtement de travail',
+        'linge-plat': 'Linge plat & hôtellerie',
+        'hygiene': 'Hygiène & bien-être',
+        'linge-sante': 'Linge de santé',
+        'tapis': "Tapis d'entrée",
+        'essuyage': 'Essuyage industriel',
+        'eau-cafe': 'Fontaines à eau & café',
+        '3d': 'Dératisation 3D'
+      };
+      var mapSecteurs = {
+        'hotellerie': 'Hôtellerie & restauration',
+        'sante': 'Santé',
+        'industrie': 'Industrie & agroalimentaire',
+        'mines': 'Mines, énergie & pétrole',
+        'btp': 'BTP & construction',
+        'services': 'Banques, commerces & bureaux',
+        'collectivites': 'Administrations & ONG',
+        'proprete': 'Propreté & facility management'
+      };
+      var sol = mapSolutions[params.get('solution')];
+      if (sol) {
+        $$('input[name="solutions"]', devisForm).forEach(function (cb) {
+          if (cb.value === sol) { cb.checked = true; }
+        });
+      }
+      var sect = mapSecteurs[params.get('secteur')];
+      if (sect) {
+        var select = $('#secteur', devisForm);
+        $$('option', select).forEach(function (opt) {
+          if (opt.textContent.trim() === sect) { select.value = opt.value || opt.textContent; }
+        });
+      }
+    })();
+
+    function chosenSolutions() {
+      return $$('input[name="solutions"]:checked', devisForm).map(function (cb) { return cb.value; });
+    }
+
+    function showStep(i) {
+      current = i;
+      steps.forEach(function (step, si) { step.hidden = si !== i; });
+      stepperItems.forEach(function (li, li_i) {
+        li.classList.toggle('is-current', li_i === i);
+        li.classList.toggle('is-done', li_i < i);
+      });
+      btnPrev.hidden = i === 0;
+      btnNext.hidden = i === steps.length - 1;
+      btnSubmit.hidden = i !== steps.length - 1;
+      if (i === steps.length - 1) { buildRecap(); }
+      var card = devisForm.closest('.form-card');
+      if (card && card.getBoundingClientRect().top < 0) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function buildRecap() {
+      var solutions = chosenSolutions();
+      var rows = [
+        ['Solutions', solutions.length ? solutions.join(', ') : '—'],
+        ['Secteur', $('#secteur').value || '—'],
+        ['Effectif', $('#effectif').value || '—'],
+        ['Ville', $('#ville').value || '—'],
+        ['Sites', $('#sites').value || '1'],
+        ['Fréquence', $('#frequence').value || '—'],
+        ['Démarrage', $('#delai').value || '—']
+      ];
+      recap.innerHTML = '<strong style="font-family:var(--ff-title)">Récapitulatif de votre demande</strong>' +
+        rows.map(function (r) {
+          return '<div><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+        }).join('');
+    }
+
+    function validateStep(i) {
+      var ok = validateScope(steps[i]);
+      if (i === 0) {
+        var hasSolution = chosenSolutions().length > 0;
+        errSolutions.style.display = hasSolution ? 'none' : 'block';
+        if (!hasSolution) { ok = false; }
+      }
+      return ok;
+    }
+
+    btnNext.addEventListener('click', function () {
+      if (!validateStep(current)) {
+        showStatus(devisForm, 'Merci de compléter les champs obligatoires de cette étape.', true);
+        return;
+      }
+      var status = $('[data-status]', devisForm);
+      if (status) { status.classList.remove('is-visible'); }
+      showStep(Math.min(current + 1, steps.length - 1));
+    });
+
+    btnPrev.addEventListener('click', function () { showStep(Math.max(current - 1, 0)); });
+
+    devisForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateStep(current)) {
+        showStatus(devisForm, 'Merci de corriger les champs signalés en rouge.', true);
+        return;
+      }
+      var nom = $('#nom').value.trim().split(' ')[0];
+      var societe = $('#entreprise').value.trim();
+      showStatus(devisForm,
+        'Merci ' + nom + ' ! Votre demande pour ' + societe + ' a bien été enregistrée. ' +
+        'Un conseiller vous appelle sous 24 h et votre devis vous parvient sous 48 h.', false);
+      devisForm.reset();
+      $$('.field.has-error', devisForm).forEach(function (f) { f.classList.remove('has-error'); });
+      showStep(0);
+      var status = $('[data-status]', devisForm);
+      if (status) {
+        status.classList.add('is-visible');
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    showStep(0);
+  }
+
+  /* ---------- Newsletter du pied de page ---------- */
+  $$('[data-newsletter]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = $('input[type="email"]', form);
+      var status = form.parentElement.querySelector('[data-status]');
+      var ok = RE_EMAIL.test((input.value || '').trim());
+      if (status) {
+        status.textContent = ok
+          ? 'Merci ! Vous recevrez nos actualités hygiène & textile.'
+          : 'Merci de saisir une adresse e-mail valide.';
+        status.classList.add('is-visible');
+        status.style.background = ok ? 'rgba(126,224,161,.12)' : 'rgba(255,120,100,.14)';
+        status.style.borderColor = ok ? 'rgba(126,224,161,.4)' : 'rgba(255,120,100,.4)';
+        status.style.color = ok ? '#7ee0a1' : '#ffb3a7';
+      }
+      if (ok) { form.reset(); }
+    });
+  });
+})();
+
+  </script>
+  <script>
+
+/* =========================================================
+   Navigation entre les pages du fichier unique (routes #/page/ancre)
+   ========================================================= */
+(function () {
+  'use strict';
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var DEFAULT = 'accueil';
+
+  function parseRoute() {
+    var raw = location.hash || '';
+    if (raw.indexOf('#/') !== 0) { return null; }
+    var rest = raw.slice(2);
+    var query = '';
+    var q = rest.indexOf('?');
+    if (q !== -1) { query = rest.slice(q + 1); rest = rest.slice(0, q); }
+    var parts = rest.split('/');
+    return { page: parts[0] || DEFAULT, anchor: parts[1] || '', query: query };
+  }
+
+  function animateCounters(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-count]'), function (el) {
+      if (el.getAttribute('data-done')) { return; }
+      el.setAttribute('data-done', '1');
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var start = null;
+      requestAnimationFrame(function frame(ts) {
+        if (start === null) { start = ts; }
+        var p = Math.min((ts - start) / 1400, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('fr-FR');
+        if (p < 1) { requestAnimationFrame(frame); }
+      });
+    });
+  }
+
+  function prefillDevis(query) {
+    if (!query) { return; }
+    var params = new URLSearchParams(query);
+    var solutions = {
+      'vetement-travail': 'Vêtement de travail', 'linge-plat': 'Linge plat & hôtellerie',
+      'hygiene': 'Hygiène & bien-être', 'linge-sante': 'Linge de santé',
+      'tapis': "Tapis d'entrée", 'essuyage': 'Essuyage industriel',
+      'eau-cafe': 'Fontaines à eau & café', '3d': 'Dératisation 3D'
+    };
+    var secteurs = {
+      'hotellerie': 'Hôtellerie & restauration', 'sante': 'Santé',
+      'industrie': 'Industrie & agroalimentaire', 'mines': 'Mines, énergie & pétrole',
+      'btp': 'BTP & construction', 'services': 'Banques, commerces & bureaux',
+      'collectivites': 'Administrations & ONG', 'proprete': 'Propreté & facility management'
+    };
+    var sol = solutions[params.get('solution')];
+    if (sol) {
+      Array.prototype.forEach.call(document.querySelectorAll('input[name="solutions"]'), function (cb) {
+        if (cb.value === sol) { cb.checked = true; }
+      });
+    }
+    var sect = secteurs[params.get('secteur')];
+    if (sect) {
+      var select = document.getElementById('secteur');
+      if (select) {
+        Array.prototype.forEach.call(select.options, function (opt) {
+          if (opt.textContent.trim() === sect) { select.value = opt.value || opt.textContent; }
+        });
+      }
+    }
+  }
+
+  function markActive(slug) {
+    Array.prototype.forEach.call(document.querySelectorAll('.main-nav a[href]'), function (a) {
+      var href = a.getAttribute('href') || '';
+      a.classList.toggle('is-active', href.indexOf('#/' + slug) === 0);
+    });
+  }
+
+  function show(route, smooth) {
+    var slug = route && route.page ? route.page : DEFAULT;
+    var target = document.getElementById('page-' + slug);
+    if (!target) { target = document.getElementById('page-' + DEFAULT); slug = DEFAULT; }
+
+    pages.forEach(function (p) { p.hidden = p !== target; });
+    document.title = target.getAttribute('data-title') || document.title;
+    markActive(slug);
+
+    // les animations d'apparition sont jouées à l'affichage de la page
+    Array.prototype.forEach.call(target.querySelectorAll('.reveal'), function (el) {
+      el.classList.add('is-visible');
+    });
+    animateCounters(target);
+    if (slug === 'devis') { prefillDevis(route ? route.query : ''); }
+
+    // recherche limitée à la page affichée : plusieurs pages peuvent partager un id (#rse…)
+    var anchor = route && route.anchor ? target.querySelector('[id="' + route.anchor + '"]') : null;
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+    }
+  }
+
+  window.addEventListener('hashchange', function () {
+    var route = parseRoute();
+    // on ignore les ancres hors routage (#main du lien d'évitement, href="#")
+    if (!route) { return; }
+    show(route, true);
+  });
+  var boot = parseRoute();
+  show(boot, false);
+  // le navigateur peut réinitialiser le défilement après le chargement des polices :
+  // on repositionne sur l'ancre une fois la page complètement chargée
+  if (boot && boot.anchor) {
+    window.addEventListener('load', function () {
+      setTimeout(function () { show(boot, false); }, 80);
+    });
+  }
+})();
+
+  </script>
+</body>
+</html>
