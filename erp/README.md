@@ -18,6 +18,22 @@ python3 run.py               # ensuite
 Comptes de démonstration : `admin/admin123`, `compta/compta123`,
 `commercial/commercial123`, `magasin/magasin123`, `rh/rh123`.
 
+## Version en un seul fichier (démonstration hors ligne)
+
+`sunuerp-demo.html` contient **toute l'interface et tout le jeu de démonstration
+dans un seul fichier** (2,5 Mo) : il s'ouvre d'un double-clic, sans Python, sans
+serveur et sans réseau. Les 41 écrans, les documents imprimables (facture,
+bulletin, relevé), les états financiers et les graphiques sont là ; la
+**consultation est complète, les saisies sont désactivées** — l'écriture suppose
+le moteur comptable, donc le serveur Python.
+
+Il se régénère à partir de la base courante :
+
+```bash
+python3 tools/export_demo.py        # exporte les réponses de lecture de l'API
+python3 tools/build_single_file.py  # assemble sunuerp-demo.html
+```
+
 ## Périmètre fonctionnel
 
 | Module | Ce qui est couvert |
