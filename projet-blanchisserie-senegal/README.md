@@ -28,7 +28,7 @@ d'une entreprise B2B de location-entretien de textiles et services d'hygiène au
 
 ```
 00-pilotage/     registre des décisions, hypothèses, données manquantes, risques, actions
-01-cadrage/      PHASE 1 — cadrage stratégique (en cours)
+01-cadrage/      PHASE 1 — cadrage : questionnaire, profil porteur P0, synthèse et recommandation
 ```
 Les dossiers des phases suivantes sont créés au fur et à mesure.
 
@@ -36,8 +36,8 @@ Les dossiers des phases suivantes sont créés au fur et à mesure.
 
 | # | Phase | État |
 |---|-------|------|
-| 1 | Cadrage stratégique | 🟡 En cours |
-| 2 | Analyse du besoin | ⚪ À venir |
+| 1 | Cadrage stratégique | 🟢 Clôturée sur profil hypothétique P0 (à corriger) |
+| 2 | Analyse du besoin | 🟡 Prête à démarrer |
 | 3 | Étude du marché sénégalais | ⚪ |
 | 4 | Segmentation et clients prioritaires | ⚪ |
 | 5 | Analyse concurrentielle | ⚪ |
