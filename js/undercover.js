@@ -380,7 +380,7 @@
       state.dealIndex++;
       renderDeal();
     } else {
-      startRound(true);
+      startRound();
     }
   }
 
@@ -392,15 +392,10 @@
     return state.players.filter(function (p) { return p.alive; });
   }
 
-  function startRound(isFirst) {
-    var alive = alivePlayers();
-    // Un Mister White ne commence jamais la première manche : il n'a aucun mot.
-    var candidates = isFirst
-      ? alive.filter(function (p) { return p.role !== "white"; })
-      : alive;
-    if (!candidates.length) candidates = alive;
-
-    state.starterId = pick(candidates).id;
+  /* Hasard pur : n'importe quel joueur encore en jeu peut ouvrir la manche,
+     Mister White compris. */
+  function startRound() {
+    state.starterId = pick(alivePlayers()).id;
     renderRound();
     showScreen("screen-round");
   }
@@ -538,7 +533,7 @@
       endGame(verdict.camp, verdict.reason);
     } else {
       state.round++;
-      startRound(false);
+      startRound();
     }
   }
 

@@ -52,9 +52,9 @@ main en main.
   trois niveaux de 100 : *facile* (mots très éloignés), *moyen*, *corsé*
   (quasi-synonymes). Le mode « mélangé » tire un niveau au hasard à chaque
   partie.
-- **Déroulement** : distribution des mots carte par carte, ordre de passage
-  tiré au sort — seule entorse au hasard, un Mister White ne commence jamais
-  la première manche puisqu'il n'a encore rien entendu —, vote,
+- **Déroulement** : distribution des mots carte par carte, premier à parler
+  tiré au sort à chaque manche parmi les joueurs encore en jeu (Mister White
+  compris), vote,
   élimination, révélation du rôle. Un Mister White éliminé a droit à une
   tentative pour deviner le mot des civils — s'il réussit, il gagne.
 - **Scores cumulés** entre les parties (civil 2 pts, Mister White 6 pts,

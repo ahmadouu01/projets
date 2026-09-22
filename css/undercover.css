@@ -3,35 +3,57 @@
    ========================================================= */
 
 :root {
-  /* Fond violet profond */
-  --bg: #0f0a1e;
-  --bg-glow-1: rgba(34, 211, 238, 0.13);
-  --bg-glow-2: rgba(168, 85, 247, 0.15);
-  --surface: #1a1332;
-  --surface-2: #231a42;
-  --surface-3: #302354;
-  --border: #3b2d66;
-  --text: #f4f1ff;
-  --text-dim: #a99ecb;
-  --text-faint: #8479a6;
-  /* Accent cyan électrique */
-  --accent: #22d3ee;
-  --accent-dark: #0bb8d4;
-  --ink: #04222b;
+  /* Nuit bleue, légèrement désaturée */
+  --bg: #0a1017;
+  --surface: #131c26;
+  --surface-2: #1b2531;
+  --surface-3: #26323f;
+  --border: #2c3a48;
+  --text: #f1f5f8;
+  --text-dim: #9db0c0;
+  --text-faint: #75899b;
+
+  /* Accent abricot : la note chaude qui réchauffe le bleu */
+  --accent: #f6a97c;
+  --accent-dark: #ea9161;
+  --ink: #2b1508;
+
   /* Une couleur par camp */
-  --civil: #4ade80;
-  --undercover: #fb6f92;
-  --mrwhite: #e8e3ff;
-  --danger: #fb6f92;
+  --civil: #6fcfae;      /* jade   */
+  --undercover: #e37fa6; /* rose   */
+  --mrwhite: #f4efe6;    /* ivoire */
+  --danger: #e37fa6;
+  --danger-dark: #d96e97;
+
+  /* Voiles translucides dérivés des couleurs ci-dessus */
+  --accent-veil: rgba(246, 169, 124, 0.18);
+  --accent-line: rgba(246, 169, 124, 0.5);
+  --accent-mist: rgba(246, 169, 124, 0.06);
+  --civil-veil: rgba(111, 207, 174, 0.15);
+  --undercover-veil: rgba(227, 127, 166, 0.16);
+  --mrwhite-veil: rgba(244, 239, 230, 0.12);
+  --overlay: rgba(5, 9, 14, 0.82);
+  --panel-fade: rgba(19, 28, 38, 0.66);
+  --card-face: #21303e;
+
+  /* Halos de fond */
+  --bg-glow-1: rgba(246, 169, 124, 0.13);
+  --bg-glow-2: rgba(111, 207, 174, 0.09);
+
   --radius-sm: 10px;
   --radius: 16px;
   --radius-lg: 26px;
-  --shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 10px 26px rgba(246, 169, 124, 0.22);
   --ff-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
   --ff-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
+
+/* Sans cela, les règles d'affichage des composants (.btn-block, .roles-box…)
+   l'emportent sur l'attribut hidden et laissent voir un élément masqué. */
+[hidden] { display: none !important; }
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -104,7 +126,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   height: 16px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 0 4px var(--accent-veil);
 }
 
 .uc-header-actions { display: flex; gap: 8px; }
@@ -128,7 +150,7 @@ main {
 }
 
 .panel {
-  background: linear-gradient(180deg, var(--surface), rgba(26, 19, 50, 0.7));
+  background: linear-gradient(180deg, var(--surface), var(--panel-fade));
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 26px 22px 24px;
@@ -309,7 +331,6 @@ main {
   color: var(--text-dim);
   font-size: 14px;
 }
-.roles-random[hidden] { display: none; }
 .roles-random p { margin: 0; }
 
 .roles-random-mark {
@@ -325,7 +346,6 @@ main {
   font-size: 28px;
 }
 
-.roles-box[hidden] { display: none; }
 
 .roles-box {
   margin-top: 10px;
@@ -364,9 +384,9 @@ main {
   border-radius: 999px;
   white-space: nowrap;
 }
-.role-civil { background: rgba(74, 222, 128, 0.15); color: var(--civil); }
-.role-undercover { background: rgba(251, 111, 146, 0.16); color: var(--undercover); }
-.role-white { background: rgba(232, 227, 255, 0.14); color: var(--mrwhite); }
+.role-civil { background: var(--civil-veil); color: var(--civil); }
+.role-undercover { background: var(--undercover-veil); color: var(--undercover); }
+.role-white { background: var(--mrwhite-veil); color: var(--mrwhite); }
 
 /* ---------------- Boutons ---------------- */
 
@@ -382,11 +402,16 @@ main {
 .btn:active:not(:disabled) { transform: scale(0.98); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.btn-primary { background: var(--accent); color: var(--ink); }
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  color: var(--ink);
+  box-shadow: var(--shadow-accent);
+}
 .btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
+.btn-primary:disabled { box-shadow: none; }
 
 .btn-danger { background: var(--danger); color: var(--ink); }
-.btn-danger:hover:not(:disabled) { background: #f9557f; }
+.btn-danger:hover:not(:disabled) { background: var(--danger-dark); }
 
 .btn-ghost {
   background: transparent;
@@ -435,13 +460,13 @@ main {
 
 .card-back {
   background:
-    repeating-linear-gradient(135deg, rgba(34, 211, 238, 0.07) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(135deg, var(--accent-mist) 0 12px, transparent 12px 24px),
     linear-gradient(160deg, var(--surface-2), var(--surface));
   transform: rotateY(0deg);
 }
 
 .card-front {
-  background: linear-gradient(160deg, #2c2060, var(--surface));
+  background: linear-gradient(160deg, var(--card-face), var(--surface));
   transform: rotateY(180deg);
 }
 
@@ -511,7 +536,7 @@ main {
   border-radius: var(--radius);
   padding: 11px 14px;
 }
-.turn-item:first-child { border-color: rgba(34, 211, 238, 0.6); }
+.turn-item:first-child { border-color: var(--accent-line); }
 
 .turn-index {
   flex: none;
@@ -563,7 +588,7 @@ main {
 .vote-card:active { transform: scale(0.97); }
 .vote-card.is-selected {
   border-color: var(--undercover);
-  background: rgba(251, 111, 146, 0.14);
+  background: var(--undercover-veil);
 }
 
 .vote-initial {
@@ -639,7 +664,7 @@ main {
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgba(8, 5, 18, 0.8);
+  background: var(--overlay);
   backdrop-filter: blur(6px);
   animation: fade-in 0.2s ease both;
 }
@@ -710,9 +735,9 @@ main {
   border-radius: var(--radius);
   margin-bottom: 14px;
 }
-.reveal-civil { background: rgba(74, 222, 128, 0.15); color: var(--civil); }
-.reveal-undercover { background: rgba(251, 111, 146, 0.16); color: var(--undercover); }
-.reveal-white { background: rgba(232, 227, 255, 0.14); color: var(--mrwhite); }
+.reveal-civil { background: var(--civil-veil); color: var(--civil); }
+.reveal-undercover { background: var(--undercover-veil); color: var(--undercover); }
+.reveal-white { background: var(--mrwhite-veil); color: var(--mrwhite); }
 
 #reveal-continue { margin-top: 18px; }
 
