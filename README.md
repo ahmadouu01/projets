@@ -49,9 +49,12 @@ main en main.
   caché jusqu'à la fin) et *Manuelle*. Dans tous les cas les civils restent
   majoritaires.
 - **300 paires de mots français** dans `js/undercover-words.js`, classées en
-  trois niveaux de 100 : *facile* (mots très éloignés), *moyen*, *corsé*
-  (quasi-synonymes). Le mode « mélangé » tire un niveau au hasard à chaque
-  partie.
+  trois niveaux de 100. Les deux mots d'une paire appartiennent toujours à la
+  même famille — sans quoi l'imposteur ne pourrait rien bluffer — et c'est
+  leur écart qui fait la difficulté : *facile* les met aux antipodes (Lion /
+  Souris, Château / Cabane), *moyen* les rapproche (Café / Thé), *corsé* en
+  fait des quasi-synonymes (Corbeau / Corneille). Le mode « mélangé » tire un
+  niveau au hasard à chaque partie.
 - **Déroulement** : distribution des mots carte par carte, premier à parler
   tiré au sort à chaque manche parmi les joueurs encore en jeu (Mister White
   compris), vote,
