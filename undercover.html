@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>UNDERCOVER — Jeu de mots entre amis</title>
+  <meta name="description" content="Jeu Undercover à jouer sur un seul téléphone : mots secrets français faciles ou corsés, undercovers et Mister White tirés au sort selon le nombre de joueurs." />
+  <meta name="theme-color" content="#0b0d17" />
+  <link rel="icon" type="image/svg+xml" href="assets/undercover.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/undercover.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <header class="uc-header">
+    <a class="uc-logo" href="undercover.html">
+      <span class="uc-logo-mark" aria-hidden="true"></span>UNDERCOVER
+    </a>
+    <div class="uc-header-actions">
+      <button class="btn btn-ghost btn-sm" id="open-rules" type="button">Règles</button>
+      <button class="btn btn-ghost btn-sm" id="open-scores" type="button">Scores</button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= ÉCRAN 1 : CONFIGURATION ================= -->
+    <section class="screen is-active" id="screen-setup" aria-labelledby="setup-title">
+      <div class="panel">
+        <p class="eyebrow">Préparation</p>
+        <h1 class="screen-title" id="setup-title">Qui joue&nbsp;?</h1>
+        <p class="lede">
+          Un seul appareil, on se le passe de main en main. Chacun reçoit un mot
+          secret&nbsp;— sauf les Mister White, qui n'ont rien et doivent bluffer.
+        </p>
+
+        <div class="field">
+          <label class="field-label" for="player-count">Nombre de joueurs</label>
+          <div class="stepper" data-stepper="players">
+            <button class="stepper-btn" type="button" data-step="-1" aria-label="Retirer un joueur">−</button>
+            <input class="stepper-value" id="player-count" type="number" min="3" max="20" value="6"
+                   inputmode="numeric" aria-describedby="player-count-hint" />
+            <button class="stepper-btn" type="button" data-step="1" aria-label="Ajouter un joueur">+</button>
+          </div>
+          <p class="hint" id="player-count-hint">De 3 à 20 joueurs.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Pseudos</span>
+          <div class="players-grid" id="players-grid"></div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="difficulty-label">Difficulté des mots</span>
+          <div class="segmented" id="difficulty" role="radiogroup" aria-labelledby="difficulty-label">
+            <button type="button" role="radio" aria-checked="true" data-value="mix" class="is-active">Mélangé</button>
+            <button type="button" role="radio" aria-checked="false" data-value="facile">Facile</button>
+            <button type="button" role="radio" aria-checked="false" data-value="moyen">Moyen</button>
+            <button type="button" role="radio" aria-checked="false" data-value="difficile">Corsé</button>
+          </div>
+          <p class="hint" id="difficulty-hint">
+            En mélangé, chaque manche pioche au hasard : parfois deux mots très
+            éloignés, parfois deux quasi-synonymes.
+          </p>
+        </div>
+
+        <div class="field">
+          <div class="switch-row">
+            <span class="field-label" id="roles-label">Répartition des rôles</span>
+            <label class="switch">
+              <input type="checkbox" id="auto-roles" checked />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="switch-text">Automatique</span>
+            </label>
+          </div>
+
+          <div class="roles-box" id="roles-box" aria-labelledby="roles-label">
+            <div class="role-line">
+              <span class="role-tag role-civil">Civils</span>
+              <strong class="role-count" id="count-civil">4</strong>
+            </div>
+            <div class="role-line">
+              <span class="role-tag role-undercover">Undercovers</span>
+              <div class="stepper stepper-sm" data-stepper="undercover">
+                <button class="stepper-btn" type="button" data-step="-1" aria-label="Retirer un undercover">−</button>
+                <input class="stepper-value" id="count-undercover" type="number" min="0" max="9" value="1"
+                       inputmode="numeric" aria-label="Nombre d'undercovers" />
+                <button class="stepper-btn" type="button" data-step="1" aria-label="Ajouter un undercover">+</button>
+              </div>
+            </div>
+            <div class="role-line">
+              <span class="role-tag role-white">Mister White</span>
+              <div class="stepper stepper-sm" data-stepper="white">
+                <button class="stepper-btn" type="button" data-step="-1" aria-label="Retirer un Mister White">−</button>
+                <input class="stepper-value" id="count-white" type="number" min="0" max="9" value="1"
+                       inputmode="numeric" aria-label="Nombre de Mister White" />
+                <button class="stepper-btn" type="button" data-step="1" aria-label="Ajouter un Mister White">+</button>
+              </div>
+            </div>
+          </div>
+          <p class="hint" id="roles-hint"></p>
+        </div>
+
+        <button class="btn btn-primary btn-block" id="start-game" type="button">
+          Distribuer les rôles
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= ÉCRAN 2 : DISTRIBUTION ================= -->
+    <section class="screen" id="screen-deal" aria-labelledby="deal-title">
+      <div class="panel panel-center">
+        <p class="eyebrow"><span id="deal-progress">1 / 6</span> · Mot secret</p>
+        <h2 class="screen-title" id="deal-title">Passe l'appareil à <span id="deal-name">Joueur 1</span></h2>
+        <p class="lede" id="deal-instruction">Personne d'autre ne doit regarder l'écran.</p>
+
+        <button class="card" id="deal-card" type="button" aria-live="polite">
+          <span class="card-face card-back">
+            <span class="card-back-mark" aria-hidden="true"></span>
+            <span class="card-back-text">Toucher pour révéler</span>
+          </span>
+          <span class="card-face card-front">
+            <span class="card-role" id="card-role">Ton mot</span>
+            <span class="card-word" id="card-word">—</span>
+            <span class="card-note" id="card-note"></span>
+          </span>
+        </button>
+
+        <button class="btn btn-primary btn-block" id="deal-next" type="button" disabled>
+          J'ai vu mon mot
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= ÉCRAN 3 : MANCHE ================= -->
+    <section class="screen" id="screen-round" aria-labelledby="round-title">
+      <div class="panel">
+        <p class="eyebrow">Manche <span id="round-number">1</span></p>
+        <h2 class="screen-title" id="round-title">
+          <span id="starter-name">Joueur 1</span> commence
+        </h2>
+        <p class="lede">
+          Chacun décrit son mot avec <strong>un seul mot</strong>, dans l'ordre
+          ci-dessous. Interdit de répéter un mot déjà dit ou de prononcer son mot secret.
+        </p>
+
+        <ol class="turn-list" id="turn-list"></ol>
+
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" id="go-vote" type="button">Passer au vote</button>
+          <button class="btn btn-ghost btn-block" id="abandon" type="button">Abandonner la partie</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ÉCRAN 4 : VOTE ================= -->
+    <section class="screen" id="screen-vote" aria-labelledby="vote-title">
+      <div class="panel">
+        <p class="eyebrow">Manche <span id="vote-round-number">1</span></p>
+        <h2 class="screen-title" id="vote-title">Qui est éliminé&nbsp;?</h2>
+        <p class="lede">
+          Votez à voix haute, puis touchez le nom du joueur éliminé. En cas
+          d'égalité, refaites un vote entre les ex æquo.
+        </p>
+
+        <div class="vote-grid" id="vote-grid" role="listbox" aria-label="Joueurs encore en jeu"></div>
+
+        <div class="btn-row">
+          <button class="btn btn-danger btn-block" id="confirm-vote" type="button" disabled>Éliminer</button>
+          <button class="btn btn-ghost btn-block" id="back-round" type="button">Retour à la manche</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ÉCRAN 5 : FIN DE PARTIE ================= -->
+    <section class="screen" id="screen-end" aria-labelledby="end-title">
+      <div class="panel panel-center">
+        <p class="eyebrow" id="end-eyebrow">Fin de partie</p>
+        <h2 class="screen-title" id="end-title">Les civils l'emportent</h2>
+        <p class="lede" id="end-subtitle"></p>
+
+        <div class="word-reveal">
+          <div class="word-reveal-item">
+            <span class="role-tag role-civil">Mot des civils</span>
+            <strong id="end-civil-word">—</strong>
+          </div>
+          <div class="word-reveal-item">
+            <span class="role-tag role-undercover">Mot des undercovers</span>
+            <strong id="end-undercover-word">—</strong>
+          </div>
+        </div>
+
+        <ul class="reveal-list" id="reveal-list"></ul>
+
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" id="replay" type="button">Rejouer avec la même équipe</button>
+          <button class="btn btn-ghost btn-block" id="new-setup" type="button">Changer les joueurs</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODALE : RÉVÉLATION APRÈS VOTE ================= -->
+  <div class="modal" id="modal-reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title" hidden>
+    <div class="modal-box">
+      <p class="eyebrow">Élimination</p>
+      <h3 class="modal-title" id="reveal-title">Joueur 1 était…</h3>
+      <div class="reveal-badge" id="reveal-badge">Civil</div>
+      <p class="modal-text" id="reveal-text"></p>
+
+      <form class="guess-form" id="guess-form" hidden>
+        <label class="field-label" for="guess-input">
+          Mister White, tente de deviner le mot des civils
+        </label>
+        <input class="text-input" id="guess-input" type="text" autocomplete="off"
+               placeholder="Ton mot…" />
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" type="submit">Valider ma réponse</button>
+          <button class="btn btn-ghost btn-block" type="button" id="guess-skip">Je passe</button>
+        </div>
+      </form>
+
+      <button class="btn btn-primary btn-block" id="reveal-continue" type="button">Continuer</button>
+    </div>
+  </div>
+
+  <!-- ================= MODALE : RÈGLES ================= -->
+  <div class="modal" id="modal-rules" role="dialog" aria-modal="true" aria-labelledby="rules-title" hidden>
+    <div class="modal-box modal-box-scroll">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fermer">×</button>
+      <p class="eyebrow">Mode d'emploi</p>
+      <h3 class="modal-title" id="rules-title">Les règles</h3>
+
+      <h4>Les trois camps</h4>
+      <ul class="rules-list">
+        <li><span class="role-tag role-civil">Civils</span> Ils sont majoritaires et partagent tous le même mot secret. Ils doivent démasquer les imposteurs.</li>
+        <li><span class="role-tag role-undercover">Undercover</span> Il reçoit un mot voisin de celui des civils, sans savoir qu'il est l'imposteur. Il doit se fondre dans la masse.</li>
+        <li><span class="role-tag role-white">Mister White</span> Aucun mot. Il écoute, déduit, et improvise pour ne pas se faire repérer.</li>
+      </ul>
+
+      <h4>Une manche</h4>
+      <ol class="rules-list">
+        <li>Le joueur désigné commence et décrit son mot avec <strong>un seul mot</strong>.</li>
+        <li>Chacun décrit son mot à son tour, sans répéter un mot déjà dit ni prononcer son mot secret.</li>
+        <li>Tout le monde discute, puis vote pour éliminer un joueur.</li>
+        <li>Le joueur éliminé révèle son rôle et quitte la partie.</li>
+      </ol>
+
+      <h4>La chance de Mister White</h4>
+      <p class="modal-text">
+        Si un Mister White est éliminé, il a droit à une tentative&nbsp;: s'il
+        devine le mot des civils, il gagne la partie immédiatement.
+      </p>
+
+      <h4>Victoire</h4>
+      <ul class="rules-list">
+        <li><strong>Civils</strong> : tous les undercovers et Mister White sont éliminés.</li>
+        <li><strong>Imposteurs</strong> : il reste autant d'imposteurs que de civils.</li>
+        <li><strong>Mister White</strong> : il devine le mot des civils après son élimination.</li>
+      </ul>
+
+      <h4>Points</h4>
+      <p class="modal-text">
+        Civil vainqueur&nbsp;: 2 pts · Mister White vainqueur&nbsp;: 6 pts ·
+        Undercover vainqueur&nbsp;: 10 pts.
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= MODALE : SCORES ================= -->
+  <div class="modal" id="modal-scores" role="dialog" aria-modal="true" aria-labelledby="scores-title" hidden>
+    <div class="modal-box modal-box-scroll">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fermer">×</button>
+      <p class="eyebrow">Classement</p>
+      <h3 class="modal-title" id="scores-title">Scores cumulés</h3>
+      <ul class="score-list" id="score-list"></ul>
+      <button class="btn btn-ghost btn-block" id="reset-scores" type="button">Remettre les scores à zéro</button>
+    </div>
+  </div>
+
+  <footer class="uc-footer">
+    <p>Jeu de soirée inspiré d'Undercover — à jouer à 3 joueurs ou plus, sur un seul appareil.</p>
+  </footer>
+
+  <script src="js/undercover-words.js"></script>
+  <script src="js/undercover.js"></script>
+</body>
+</html>
