@@ -41,14 +41,20 @@ main en main.
 
 - **3 à 20 joueurs.** Les civils partagent un mot secret, les undercovers en
   reçoivent un voisin, les Mister White n'ont rien et doivent bluffer.
-- **Rôles tirés au sort** à chaque partie. La répartition est proposée
-  automatiquement selon le nombre de joueurs (les civils restent toujours
-  majoritaires) et reste modifiable à la main.
-- **Mots français** piochés dans `js/undercover-words.js`, classés en trois
-  niveaux : *facile* (mots très éloignés), *moyen*, *corsé* (quasi-synonymes).
-  Le mode « mélangé » tire un niveau au hasard à chaque manche.
+- **Rôles tirés au sort** à chaque partie via `crypto.getRandomValues`
+  (mélange de Fisher-Yates, tirage sans biais de modulo) : personne n'a plus
+  de chances qu'un autre d'être undercover ou Mister White.
+- **Trois répartitions** : *Conseillée* (selon le nombre de joueurs),
+  *Aléatoire* (le nombre d'imposteurs est lui aussi tiré au sort et reste
+  caché jusqu'à la fin) et *Manuelle*. Dans tous les cas les civils restent
+  majoritaires.
+- **300 paires de mots français** dans `js/undercover-words.js`, classées en
+  trois niveaux de 100 : *facile* (mots très éloignés), *moyen*, *corsé*
+  (quasi-synonymes). Le mode « mélangé » tire un niveau au hasard à chaque
+  partie.
 - **Déroulement** : distribution des mots carte par carte, ordre de passage
-  tiré au sort (un Mister White ne commence jamais la première manche), vote,
+  tiré au sort — seule entorse au hasard, un Mister White ne commence jamais
+  la première manche puisqu'il n'a encore rien entendu —, vote,
   élimination, révélation du rôle. Un Mister White éliminé a droit à une
   tentative pour deviner le mot des civils — s'il réussit, il gagne.
 - **Scores cumulés** entre les parties (civil 2 pts, Mister White 6 pts,

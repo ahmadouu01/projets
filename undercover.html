@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>UNDERCOVER — Jeu de mots entre amis</title>
   <meta name="description" content="Jeu Undercover à jouer sur un seul téléphone : mots secrets français faciles ou corsés, undercovers et Mister White tirés au sort selon le nombre de joueurs." />
-  <meta name="theme-color" content="#0b0d17" />
+  <meta name="theme-color" content="#0f0a1e" />
   <link rel="icon" type="image/svg+xml" href="assets/undercover.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -68,13 +68,11 @@
         </div>
 
         <div class="field">
-          <div class="switch-row">
-            <span class="field-label" id="roles-label">Répartition des rôles</span>
-            <label class="switch">
-              <input type="checkbox" id="auto-roles" checked />
-              <span class="switch-track" aria-hidden="true"></span>
-              <span class="switch-text">Automatique</span>
-            </label>
+          <span class="field-label" id="roles-label">Répartition des rôles</span>
+          <div class="segmented segmented-3" id="roles-mode" role="radiogroup" aria-labelledby="roles-label">
+            <button type="button" role="radio" aria-checked="true" data-value="auto" class="is-active">Conseillée</button>
+            <button type="button" role="radio" aria-checked="false" data-value="random">Aléatoire</button>
+            <button type="button" role="radio" aria-checked="false" data-value="manual">Manuelle</button>
           </div>
 
           <div class="roles-box" id="roles-box" aria-labelledby="roles-label">
@@ -101,6 +99,16 @@
               </div>
             </div>
           </div>
+
+          <div class="roles-random" id="roles-random" hidden>
+            <span class="roles-random-mark" aria-hidden="true">?</span>
+            <p>
+              Le nombre d'undercovers et de Mister White est tiré au sort au
+              lancement, entre 1 imposteur et le maximum autorisé. Personne ne
+              sait combien se cachent dans la partie.
+            </p>
+          </div>
+
           <p class="hint" id="roles-hint"></p>
         </div>
 
@@ -241,6 +249,19 @@
         <li><span class="role-tag role-undercover">Undercover</span> Il reçoit un mot voisin de celui des civils, sans savoir qu'il est l'imposteur. Il doit se fondre dans la masse.</li>
         <li><span class="role-tag role-white">Mister White</span> Aucun mot. Il écoute, déduit, et improvise pour ne pas se faire repérer.</li>
       </ul>
+
+      <h4>Le tirage au sort</h4>
+      <p class="modal-text">
+        Qui hérite de quel rôle est tiré au sort à chaque partie, avec le
+        générateur aléatoire du navigateur&nbsp;: personne n'a plus de chances
+        qu'un autre d'être undercover ou Mister White. En répartition
+        «&nbsp;Aléatoire&nbsp;», le <em>nombre</em> d'imposteurs est lui aussi
+        tiré au sort et reste caché jusqu'à la fin de la partie.
+      </p>
+      <p class="modal-text">
+        Seule entorse au hasard&nbsp;: un Mister White ne commence jamais la
+        première manche, puisqu'il n'a encore rien entendu.
+      </p>
 
       <h4>Une manche</h4>
       <ol class="rules-list">

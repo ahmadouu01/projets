@@ -30,7 +30,7 @@
   var state = {
     names: [],
     difficulty: "mix",
-    autoRoles: true,
+    rolesMode: "auto",
     counts: { undercover: 1, white: 1 },
     lastRoleTouched: "undercover",
     players: [],
@@ -44,6 +44,25 @@
     over: false
   };
 
+  /* ---------- Tirage au sort ---------- */
+  /* On passe par crypto.getRandomValues, avec rejet des valeurs qui
+     tomberaient dans la tranche incomplète : chaque résultat a exactement
+     la même probabilité, sans le biais d'un simple modulo. */
+  var crypto = window.crypto || window.msCrypto;
+
+  function randomInt(bound) {
+    if (bound <= 1) return 0;
+    if (!crypto || !crypto.getRandomValues) return Math.floor(Math.random() * bound);
+    var limit = Math.floor(4294967296 / bound) * bound;
+    var buffer = new Uint32Array(1);
+    var value;
+    do {
+      crypto.getRandomValues(buffer);
+      value = buffer[0];
+    } while (value >= limit);
+    return value % bound;
+  }
+
   /* ---------- Raccourcis ---------- */
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, text) {
@@ -52,15 +71,16 @@
     if (text !== undefined) node.textContent = text;
     return node;
   }
+  /* Mélange de Fisher-Yates : chacune des permutations est équiprobable. */
   function shuffle(list) {
     var arr = list.slice();
     for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
+      var j = randomInt(i + 1);
       var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
     }
     return arr;
   }
-  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+  function pick(list) { return list[randomInt(list.length)]; }
   function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
   /* Comparaison souple : casse, accents, tirets et pluriels simples. */
@@ -154,6 +174,16 @@
 
   /* Le dernier rôle ajusté est prioritaire : demander un Mister White de plus
      retire un undercover plutôt que d'être ignoré silencieusement. */
+  /* Mode « Aléatoire » : on tire le nombre d'imposteurs, puis la part de
+     Mister White. Au-delà d'un imposteur, il reste toujours au moins un
+     undercover pour que la paire de mots serve à quelque chose. */
+  function drawRandomRoleCounts() {
+    var total = 1 + randomInt(maxImposters(playerCount()));
+    var white = total === 1 ? randomInt(2) : randomInt(total);
+    state.counts.white = white;
+    state.counts.undercover = total - white;
+  }
+
   function normalizeRoleCounts() {
     var cap = maxImposters(playerCount());
     var first = state.lastRoleTouched === "white" ? "white" : "undercover";
@@ -165,23 +195,37 @@
   }
 
   function renderRoles() {
-    if (state.autoRoles) applySuggestedRoles();
+    var n = playerCount();
+    var random = state.rolesMode === "random";
+    var manual = state.rolesMode === "manual";
+
+    if (state.rolesMode === "auto") applySuggestedRoles();
     normalizeRoleCounts();
 
-    var n = playerCount();
-    var civils = n - state.counts.undercover - state.counts.white;
-    $("count-civil").textContent = String(civils);
-    $("count-undercover").value = String(state.counts.undercover);
-    $("count-white").value = String(state.counts.white);
-    $("roles-box").classList.toggle("is-locked", state.autoRoles);
+    $("roles-box").hidden = random;
+    $("roles-random").hidden = !random;
 
-    var inputs = $("roles-box").querySelectorAll("input, .stepper-btn");
-    for (var i = 0; i < inputs.length; i++) inputs[i].disabled = state.autoRoles;
+    if (!random) {
+      $("count-civil").textContent = String(n - state.counts.undercover - state.counts.white);
+      $("count-undercover").value = String(state.counts.undercover);
+      $("count-white").value = String(state.counts.white);
+      $("roles-box").classList.toggle("is-locked", !manual);
 
-    $("roles-hint").textContent = state.autoRoles
-      ? "Répartition conseillée pour " + n + " joueurs. Les rôles sont tirés au sort à chaque partie."
-      : "Maximum " + maxImposters(n) + " imposteur(s) pour " + n + " joueurs : les civils doivent rester majoritaires. "
-        + "Au-delà, ajouter un rôle en retire un autre.";
+      var inputs = $("roles-box").querySelectorAll("input, .stepper-btn");
+      for (var i = 0; i < inputs.length; i++) inputs[i].disabled = !manual;
+    }
+
+    if (random) {
+      $("roles-hint").textContent =
+        "De 1 à " + maxImposters(n) + " imposteur(s) pour " + n + " joueurs.";
+    } else if (manual) {
+      $("roles-hint").textContent =
+        "Maximum " + maxImposters(n) + " imposteur(s) pour " + n + " joueurs : les civils doivent rester "
+        + "majoritaires. Au-delà, ajouter un rôle en retire un autre.";
+    } else {
+      $("roles-hint").textContent =
+        "Répartition conseillée pour " + n + " joueurs. Qui hérite de quel rôle est tiré au sort à chaque partie.";
+    }
   }
 
   function onPlayerCountChange() {
@@ -222,18 +266,18 @@
     renderRoles();
   }
 
-  function bindDifficulty() {
-    var group = $("difficulty");
+  function bindSegmented(id, onPick) {
+    var group = $(id);
     group.addEventListener("click", function (event) {
       var btn = event.target.closest("button[data-value]");
       if (!btn) return;
-      state.difficulty = btn.dataset.value;
       var all = group.querySelectorAll("button");
       for (var i = 0; i < all.length; i++) {
         var active = all[i] === btn;
         all[i].classList.toggle("is-active", active);
         all[i].setAttribute("aria-checked", active ? "true" : "false");
       }
+      onPick(btn.dataset.value);
     });
   }
 
@@ -249,12 +293,13 @@
     }
     var pair = pick(pools[level]);
     // Les civils reçoivent indifféremment l'un ou l'autre mot de la paire.
-    return Math.random() < 0.5 ? { civil: pair[0], undercover: pair[1] }
-                               : { civil: pair[1], undercover: pair[0] };
+    return randomInt(2) === 0 ? { civil: pair[0], undercover: pair[1] }
+                              : { civil: pair[1], undercover: pair[0] };
   }
 
   function startGame() {
     var names = collectNames();
+    if (state.rolesMode === "random") drawRandomRoleCounts();
     renderRoles();
 
     var roles = [];
@@ -642,11 +687,10 @@
     if (!Array.isArray(state.names)) state.names = [];
 
     bindSteppers();
-    bindDifficulty();
     bindModals();
-
-    $("auto-roles").addEventListener("change", function (event) {
-      state.autoRoles = event.target.checked;
+    bindSegmented("difficulty", function (value) { state.difficulty = value; });
+    bindSegmented("roles-mode", function (value) {
+      state.rolesMode = value;
       renderRoles();
     });
 
