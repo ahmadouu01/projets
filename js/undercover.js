@@ -41,7 +41,9 @@
     starterId: null,
     selectedVote: null,
     pendingElimination: null,
-    over: false
+    over: false,
+    running: false,
+    wordsLevel: "facile"
   };
 
   /* ---------- Tirage au sort ---------- */
@@ -258,7 +260,8 @@
   function applyStepperValue(kind, value) {
     if (kind === "players") {
       $("player-count").value = String(clamp(value, MIN_PLAYERS, MAX_PLAYERS));
-      onPlayerCountChange();
+      $("words-total").textContent = String(totalPairs());
+    onPlayerCountChange();
       return;
     }
     state.counts[kind] = Math.max(0, value);
@@ -329,7 +332,9 @@
     state.selectedVote = null;
     state.pendingElimination = null;
     state.over = false;
+    state.running = true;
 
+    closeModal("modal-words");
     save(STORE_NAMES, state.names);
     renderDeal();
     showScreen("screen-deal");
@@ -564,6 +569,7 @@
 
   function endGame(camp, reason) {
     state.over = true;
+    state.running = false;
 
     var titles = {
       civil: "Les civils l'emportent",
@@ -610,6 +616,60 @@
   }
 
   /* =========================================================
+     Dictionnaire
+     ---------------------------------------------------------
+     Consultable uniquement depuis l'écran de préparation : dès que les
+     rôles sont distribués, l'écran disparaît et la modale se ferme.
+     ========================================================= */
+
+  function totalPairs() {
+    var total = 0;
+    for (var level in UNDERCOVER_WORDS) {
+      if (Object.prototype.hasOwnProperty.call(UNDERCOVER_WORDS, level)) {
+        total += UNDERCOVER_WORDS[level].length;
+      }
+    }
+    return total;
+  }
+
+  function renderWords() {
+    var pairs = UNDERCOVER_WORDS[state.wordsLevel] || [];
+    var needle = normalize($("words-search").value);
+    var list = $("words-list");
+    list.innerHTML = "";
+
+    var shown = pairs.filter(function (pair) {
+      return !needle
+        || normalize(pair[0]).indexOf(needle) !== -1
+        || normalize(pair[1]).indexOf(needle) !== -1;
+    });
+
+    shown.forEach(function (pair) {
+      var item = el("li", "word-pair");
+      item.appendChild(el("span", "word-pair-a", pair[0]));
+      item.appendChild(el("span", "word-pair-sep", "↔"));
+      item.appendChild(el("span", "word-pair-b", pair[1]));
+      list.appendChild(item);
+    });
+
+    if (!shown.length) {
+      list.appendChild(el("li", "score-empty", "Aucun mot ne correspond à ce filtre."));
+    }
+
+    $("words-count").textContent = needle
+      ? shown.length + " paire(s) sur " + pairs.length
+      : pairs.length + " paires · " + (pairs.length * 2) + " mots";
+  }
+
+  function openWords() {
+    /* Ceinture et bretelles : le bouton n'existe que sur l'écran de
+       préparation, mais on refuse quand même d'ouvrir en pleine partie. */
+    if (state.running) return;
+    renderWords();
+    openModal("modal-words");
+  }
+
+  /* =========================================================
      Scores
      ========================================================= */
 
@@ -647,6 +707,7 @@
     document.body.classList.add("modal-open");
   }
   function closeModal(id) {
+    if ($(id).hidden) return;
     $(id).hidden = true;
     document.body.classList.remove("modal-open");
     if (lastFocused && lastFocused.focus) lastFocused.focus();
@@ -660,14 +721,14 @@
       });
     }
     // Un clic sur le fond ferme les modales informatives uniquement.
-    ["modal-rules", "modal-scores"].forEach(function (id) {
+    ["modal-rules", "modal-scores", "modal-words"].forEach(function (id) {
       $(id).addEventListener("click", function (event) {
         if (event.target === $(id)) closeModal(id);
       });
     });
     document.addEventListener("keydown", function (event) {
       if (event.key !== "Escape") return;
-      ["modal-rules", "modal-scores"].forEach(function (id) {
+      ["modal-rules", "modal-scores", "modal-words"].forEach(function (id) {
         if (!$(id).hidden) closeModal(id);
       });
     });
@@ -707,6 +768,12 @@
     $("new-setup").addEventListener("click", function () { showScreen("screen-setup"); });
 
     $("open-rules").addEventListener("click", function () { openModal("modal-rules"); });
+    $("open-words").addEventListener("click", openWords);
+    $("words-search").addEventListener("input", renderWords);
+    bindSegmented("words-level", function (value) {
+      state.wordsLevel = value;
+      renderWords();
+    });
     $("open-scores").addEventListener("click", function () {
       renderScores();
       openModal("modal-scores");
@@ -716,6 +783,7 @@
       renderScores();
     });
 
+    $("words-total").textContent = String(totalPairs());
     onPlayerCountChange();
   }
 

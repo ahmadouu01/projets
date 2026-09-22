@@ -59,6 +59,10 @@ main en main.
   tentative pour deviner le mot des civils — s'il réussit, il gagne.
 - **Scores cumulés** entre les parties (civil 2 pts, Mister White 6 pts,
   undercover 10 pts), mémorisés dans le navigateur.
+- **Dictionnaire consultable** depuis l'écran de préparation : les paires
+  rangées par niveau, avec un filtre. Le bouton n'existe que sur cet écran,
+  donc les mots sont hors d'atteinte dès que les rôles sont distribués — et
+  la modale refuse de s'ouvrir si une partie est en cours.
 
 Pour ajouter des mots, éditez `js/undercover-words.js` : chaque entrée est une
 paire `["mot des civils", "mot des undercovers"]` rangée sous son niveau de

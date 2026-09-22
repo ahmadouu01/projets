@@ -65,6 +65,9 @@
             En mélangé, chaque manche pioche au hasard : parfois deux mots très
             éloignés, parfois deux quasi-synonymes.
           </p>
+          <button class="btn btn-ghost btn-block btn-sm btn-spaced" id="open-words" type="button">
+            Parcourir les <span id="words-total">300</span> paires de mots
+          </button>
         </div>
 
         <div class="field">
@@ -289,6 +292,33 @@
         Civil vainqueur&nbsp;: 2 pts · Mister White vainqueur&nbsp;: 6 pts ·
         Undercover vainqueur&nbsp;: 10 pts.
       </p>
+    </div>
+  </div>
+
+  <!-- ================= MODALE : DICTIONNAIRE ================= -->
+  <div class="modal" id="modal-words" role="dialog" aria-modal="true" aria-labelledby="words-title" hidden>
+    <div class="modal-box modal-box-scroll modal-box-wide">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fermer">×</button>
+      <p class="eyebrow">Dictionnaire</p>
+      <h3 class="modal-title" id="words-title">Les mots du jeu</h3>
+      <p class="modal-text">
+        Les civils reçoivent un mot de la paire, les undercovers l'autre.
+        À ne consulter qu'entre deux parties&nbsp;: c'est ici que tout se
+        joue.
+      </p>
+
+      <div class="segmented segmented-3 segmented-spaced" id="words-level" role="radiogroup" aria-label="Niveau de difficulté">
+        <button type="button" role="radio" aria-checked="true" data-value="facile" class="is-active">Facile</button>
+        <button type="button" role="radio" aria-checked="false" data-value="moyen">Moyen</button>
+        <button type="button" role="radio" aria-checked="false" data-value="difficile">Corsé</button>
+      </div>
+
+      <label class="sr-only" for="words-search">Filtrer les mots</label>
+      <input class="text-input" id="words-search" type="search" autocomplete="off"
+             placeholder="Filtrer les mots…" />
+
+      <p class="hint" id="words-count"></p>
+      <ul class="word-pair-list" id="words-list"></ul>
     </div>
   </div>
 
