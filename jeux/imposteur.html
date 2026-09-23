@@ -156,6 +156,33 @@
 </main>
 
 <script>
+/* Certains aperçus (apps mobiles, iframes restreintes) ne transforment pas
+   un toucher en « click » : on déclenche nous-mêmes le clic sur les boutons
+   touchés, et on ignore le vrai clic s'il arrive quand même juste après. */
+(() => {
+  let depart = null;
+  let dernier = { el: null, t: 0 };
+  document.addEventListener("pointerdown", e => {
+    depart = e.pointerType === "mouse" ? null : { el: e.target.closest("button"), x: e.clientX, y: e.clientY };
+  }, true);
+  document.addEventListener("pointerup", e => {
+    if (!depart || !depart.el) return;
+    const btn = e.target.closest("button");
+    const bouge = Math.hypot(e.clientX - depart.x, e.clientY - depart.y) > 12;
+    if (btn === depart.el && !bouge && !btn.disabled) {
+      dernier = { el: btn, t: Date.now() };
+      btn.click();
+    }
+    depart = null;
+  }, true);
+  document.addEventListener("click", e => {
+    if (e.isTrusted && Date.now() - dernier.t < 700 && e.target.closest("button") === dernier.el) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    }
+  }, true);
+})();
+
 /* ------------------------------------------------------------------
    Paires de mots : les Civils reçoivent le 1er, les Infiltrés le 2nd.
    Les deux mots sont proches pour que les Infiltrés ne se doutent de
@@ -225,6 +252,15 @@ function norm(s) {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
+/* Valide un champ texte via son bouton ou la touche Entrée, sans <form> :
+   certains aperçus (apps, iframes) bloquent l'envoi des formulaires. */
+function surValidation(inputId, boutonId, action) {
+  document.getElementById(boutonId).onclick = action;
+  document.getElementById(inputId).addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); action(); }
+  });
+}
+
 function stopTimer() {
   if (timerId) { clearInterval(timerId); timerId = null; }
 }
@@ -261,10 +297,10 @@ function ecranAccueil() {
     <div>
       <div class="card">
         <h2>👥 Joueurs (${n})</h2>
-        <form class="row" id="formJoueur">
+        <div class="row">
           <input type="text" id="nom" placeholder="Prénom du joueur" maxlength="16" autocomplete="off">
-          <button type="submit">Ajouter</button>
-        </form>
+          <button type="button" id="ajouter">Ajouter</button>
+        </div>
         <div class="chips">
           ${state.joueurs.map((j, i) => `
             <span class="chip">${esc(j)} <button data-suppr="${i}" aria-label="Retirer ${esc(j)}">✕</button></span>
@@ -309,8 +345,7 @@ function ecranAccueil() {
   `);
 
   const input = document.getElementById("nom");
-  document.getElementById("formJoueur").onsubmit = e => {
-    e.preventDefault();
+  surValidation("nom", "ajouter", () => {
     const nom = input.value.trim();
     if (!nom) return;
     if (state.joueurs.some(j => j.toLowerCase() === nom.toLowerCase())) {
@@ -323,7 +358,7 @@ function ecranAccueil() {
     if (!(nom in state.scores)) state.scores[nom] = 0;
     ecranAccueil();
     document.getElementById("nom").focus();
-  };
+  });
   app.querySelectorAll("[data-suppr]").forEach(b => b.onclick = () => {
     state.joueurs.splice(+b.dataset.suppr, 1);
     ecranAccueil();
@@ -549,15 +584,14 @@ function ecranDevinetteBlanc(j) {
       <div class="big-emoji">👻</div>
       <div class="role blanc">Mr. Blanc</div>
       <p>Dernière chance ! ${esc(j.nom)}, quel est le mot des Civils ?</p>
-      <form class="row" id="formMot">
+      <div class="row">
         <input type="text" id="mot" placeholder="Ta proposition" autocomplete="off">
-        <button type="submit">Valider</button>
-      </form>
+        <button type="button" id="valider">Valider</button>
+      </div>
     </div>
   `);
   document.getElementById("mot").focus();
-  document.getElementById("formMot").onsubmit = e => {
-    e.preventDefault();
+  surValidation("mot", "valider", () => {
     const essai = document.getElementById("mot").value.trim();
     if (!essai) return;
     if (norm(essai) === norm(state.manche.motCivil)) finManche("blanc", j);
@@ -572,7 +606,7 @@ function ecranDevinetteBlanc(j) {
       `);
       document.getElementById("suite").onclick = verifierFin;
     }
-  };
+  });
 }
 
 function verifierFin() {

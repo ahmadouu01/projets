@@ -216,6 +216,33 @@
 <div id="overlay" class="overlay hidden"></div>
 
 <script>
+/* Certains aperçus (apps mobiles, iframes restreintes) ne transforment pas
+   un toucher en « click » : on déclenche nous-mêmes le clic sur les boutons
+   touchés, et on ignore le vrai clic s'il arrive quand même juste après. */
+(() => {
+  let depart = null;
+  let dernier = { el: null, t: 0 };
+  document.addEventListener("pointerdown", e => {
+    depart = e.pointerType === "mouse" ? null : { el: e.target.closest("button"), x: e.clientX, y: e.clientY };
+  }, true);
+  document.addEventListener("pointerup", e => {
+    if (!depart || !depart.el) return;
+    const btn = e.target.closest("button");
+    const bouge = Math.hypot(e.clientX - depart.x, e.clientY - depart.y) > 12;
+    if (btn === depart.el && !bouge && !btn.disabled) {
+      dernier = { el: btn, t: Date.now() };
+      btn.click();
+    }
+    depart = null;
+  }, true);
+  document.addEventListener("click", e => {
+    if (e.isTrusted && Date.now() - dernier.t < 700 && e.target.closest("button") === dernier.el) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    }
+  }, true);
+})();
+
 const ARRIVEE = 40;
 const PIONS = [
   { e: "🦊", c: "#ff8a3d" }, { e: "🐸", c: "#5fd48a" }, { e: "🐼", c: "#e6e6e6" },
@@ -267,6 +294,15 @@ function shuffle(arr) {
   }
   return a;
 }
+/* Valide un champ texte via son bouton ou la touche Entrée, sans <form> :
+   certains aperçus (apps, iframes) bloquent l'envoi des formulaires. */
+function surValidation(inputId, boutonId, action) {
+  document.getElementById(boutonId).onclick = action;
+  document.getElementById(inputId).addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); action(); }
+  });
+}
+
 function hasard(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 /* --------------------------- Plateau ------------------------------ */
@@ -305,10 +341,10 @@ function ecranSetup() {
     <div class="narrow">
       <div class="card">
         <h2>🧙 Aventuriers (${n}/6)</h2>
-        <form class="row" id="form">
+        <div class="row">
           <input type="text" id="nom" placeholder="Prénom de l'aventurier" maxlength="14" autocomplete="off" ${n >= 6 ? "disabled" : ""}>
-          <button type="submit" ${n >= 6 ? "disabled" : ""}>Ajouter</button>
-        </form>
+          <button type="button" id="ajouter" ${n >= 6 ? "disabled" : ""}>Ajouter</button>
+        </div>
         <div class="chips">
           ${noms.map((nm, i) => `<span class="chip">${PIONS[i].e} ${esc(nm)} <button data-suppr="${i}" aria-label="Retirer">✕</button></span>`).join("")}
         </div>
@@ -319,13 +355,12 @@ function ecranSetup() {
     </div>`;
   const input = document.getElementById("nom");
   if (n < 6) input.focus();
-  document.getElementById("form").onsubmit = e => {
-    e.preventDefault();
+  surValidation("nom", "ajouter", () => {
     const v = input.value.trim();
     if (!v || noms.length >= 6) return;
     noms.push(v);
     ecranSetup();
-  };
+  });
   app.querySelectorAll("[data-suppr]").forEach(b => b.onclick = () => { noms.splice(+b.dataset.suppr, 1); ecranSetup(); });
   document.getElementById("go").onclick = demarrer;
   document.getElementById("regles").onclick = ecranRegles;
@@ -444,7 +479,9 @@ function resultat(face) {
     }
     const perdu = t.cible - t.depart;
     t.cible = t.depart;
-    log(`${DRAGON} Le dragon se réveille ! ${j.nom} perd ${perdu} case${perdu > 1 ? "s" : ""} de progression.`);
+    log(perdu > 0
+      ? `${DRAGON} Le dragon se réveille ! ${j.nom} perd ${perdu} case${perdu > 1 ? "s" : ""} de progression.`
+      : `${DRAGON} Le dragon se réveille dès le premier lancer ! ${j.nom} passe son tour.`);
     renderJeu();
     popup(DRAGON, "Le dragon se réveille !", `${esc(j.nom)} s'enfuit en courant et retourne case ${t.depart}.`, () => {
       augmenterRage();
@@ -457,6 +494,7 @@ function resultat(face) {
   if (t.bottes && t.lancers === 1) pas *= 2;
   t.cible += pas;
   if (t.cible >= ARRIVEE) {
+    t.cible = ARRIVEE;
     j.pos = ARRIVEE;
     renderJeu();
     return victoire(j);
