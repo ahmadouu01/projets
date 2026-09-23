@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soirée Jeux</title>
+<style>
+  :root { --bg: #151022; --card: #241b3a; --text: #fbf6ff; --muted: #bcaed6; --a: #ffcc33; --b: #ff6a2b; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 30% 0%, #3a2466 0%, var(--bg) 60%);
+    color: var(--text);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 32px 16px;
+  }
+  h1 { font-size: 2.4rem; margin: 0; text-align: center; }
+  p.sub { color: var(--muted); text-align: center; margin: 6px 0 28px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; width: 100%; max-width: 820px; }
+  a.jeu {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--card); border-radius: 22px; padding: 24px;
+    border: 2px solid transparent; transition: transform .15s, border-color .15s;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  }
+  a.jeu:hover { transform: translateY(-4px); border-color: var(--a); }
+  .emoji { font-size: 3.4rem; }
+  h2 { margin: 8px 0 6px; }
+  .meta { color: var(--a); font-weight: 700; font-size: .9rem; }
+  .desc { color: var(--muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+  <h1>🎲 Soirée Jeux</h1>
+  <p class="sub">Deux jeux de société à jouer entre amis sur un seul téléphone, tablette ou ordinateur.</p>
+  <div class="grid">
+    <a class="jeu" href="imposteur.html">
+      <div class="emoji">🕵️</div>
+      <h2>L'Imposteur</h2>
+      <div class="meta">3 à 20 joueurs · 10–20 min · Bluff & déduction</div>
+      <p class="desc">Tout le monde a le même mot secret… sauf les Infiltrés, qui en ont un presque pareil, et Mr. Blanc, qui n'en a aucun. Donnez des indices, accusez-vous, votez !</p>
+    </a>
+    <a class="jeu" href="grotte-du-dragon.html">
+      <div class="emoji">🐉</div>
+      <h2>La Grotte du Dragon</h2>
+      <div class="meta">2 à 6 joueurs · 15–25 min · Stop ou encore</div>
+      <p class="desc">Course au trésor sur un plateau qui change à chaque partie. Relancez le dé tant que vous l'osez… mais si le dragon se réveille, vous perdez tout !</p>
+    </a>
+  </div>
+</body>
+</html>

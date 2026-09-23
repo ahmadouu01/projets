@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Imposteur</title>
+<style>
+  :root {
+    --bg: #1b1030;
+    --panel: #2a1a4a;
+    --panel-2: #3a2566;
+    --text: #f7f1ff;
+    --muted: #b9a8d9;
+    --accent: #ffcc33;
+    --civil: #4fd1a5;
+    --under: #ff5d73;
+    --blanc: #e9e9f2;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 20% 0%, #3b1f6b 0%, var(--bg) 55%);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+  }
+  main { width: 100%; max-width: 560px; padding: 20px 16px 48px; }
+  header { text-align: center; margin-bottom: 18px; }
+  header a { color: var(--muted); font-size: .9rem; text-decoration: none; }
+  h1 { font-size: 2.2rem; margin: 6px 0 2px; letter-spacing: .5px; }
+  h1 span { color: var(--accent); }
+  h2 { margin: 0 0 12px; font-size: 1.35rem; }
+  .sub { color: var(--muted); margin: 0; }
+  .card {
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  .row { display: flex; gap: 8px; }
+  input[type=text] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--panel-2);
+    background: #1f1238;
+    color: var(--text);
+    font-size: 1rem;
+    min-width: 0;
+  }
+  input[type=text]:focus { outline: none; border-color: var(--accent); }
+  button {
+    font: inherit;
+    font-weight: 700;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 18px;
+    cursor: pointer;
+    background: var(--accent);
+    color: #2a1a00;
+    transition: transform .08s, filter .15s;
+  }
+  button:hover { filter: brightness(1.08); }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  button.ghost { background: var(--panel-2); color: var(--text); }
+  button.danger { background: var(--under); color: #fff; }
+  button.big { width: 100%; padding: 16px; font-size: 1.15rem; margin-top: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip {
+    background: var(--panel-2);
+    border-radius: 999px;
+    padding: 6px 8px 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chip button { padding: 2px 8px; background: transparent; color: var(--muted); }
+  .setting { display: flex; justify-content: space-between; align-items: center; margin: 12px 0; gap: 12px; }
+  .stepper { display: flex; align-items: center; gap: 10px; }
+  .stepper button { padding: 6px 14px; }
+  .stepper b { min-width: 22px; text-align: center; font-size: 1.2rem; }
+  .hint { color: var(--muted); font-size: .9rem; margin: 6px 0 0; }
+  .center { text-align: center; }
+  .reveal {
+    margin: 18px 0;
+    min-height: 190px;
+    border-radius: var(--radius);
+    background: repeating-linear-gradient(45deg, #2f1d55, #2f1d55 14px, #342060 14px, #342060 28px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    cursor: pointer;
+    padding: 16px;
+  }
+  .reveal .word { font-size: 2.3rem; font-weight: 800; color: var(--accent); }
+  .reveal .lock { font-size: 3rem; }
+  .players { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .player {
+    background: var(--panel-2);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    font-weight: 700;
+    border: 3px solid transparent;
+  }
+  button.player { color: var(--text); }
+  button.player.selected { border-color: var(--accent); }
+  .player.out { opacity: .45; text-decoration: line-through; }
+  .player small { display: block; font-weight: 500; color: var(--muted); margin-top: 4px; }
+  .order { counter-reset: n; padding: 0; list-style: none; margin: 0; }
+  .order li {
+    counter-increment: n;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--panel-2);
+    margin-bottom: 6px;
+  }
+  .order li::before { content: counter(n) ". "; color: var(--accent); font-weight: 800; }
+  .timer { font-size: 3rem; font-weight: 800; text-align: center; font-variant-numeric: tabular-nums; }
+  .timer.hot { color: var(--under); animation: pulse .6s infinite alternate; }
+  @keyframes pulse { to { transform: scale(1.08); } }
+  .role { font-size: 1.6rem; font-weight: 800; }
+  .role.civil { color: var(--civil); }
+  .role.under { color: var(--under); }
+  .role.blanc { color: var(--blanc); }
+  .big-emoji { font-size: 4rem; line-height: 1; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 8px 6px; text-align: left; border-bottom: 1px solid var(--panel-2); }
+  th { color: var(--muted); font-weight: 600; }
+  td.num { text-align: right; font-weight: 800; color: var(--accent); }
+  .rules { line-height: 1.55; }
+  .rules h3 { color: var(--accent); margin: 16px 0 4px; font-size: 1.05rem; }
+  .rules p, .rules li { color: #e2d8f5; }
+  .hidden { display: none !important; }
+  .pop { animation: pop .35s ease-out; }
+  @keyframes pop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Tous les jeux</a>
+    <h1>L'<span>Imposteur</span></h1>
+    <p class="sub">Un mot secret. Des menteurs parmi vous. Démasquez-les !</p>
+  </header>
+  <div id="app"></div>
+</main>
+
+<script>
+/* ------------------------------------------------------------------
+   Paires de mots : les Civils reçoivent le 1er, les Infiltrés le 2nd.
+   Les deux mots sont proches pour que les Infiltrés ne se doutent de
+   rien au début… ni les Civils.
+------------------------------------------------------------------ */
+const PAIRES = [
+  ["Pizza", "Tarte flambée"], ["Chat", "Lion"], ["Plage", "Piscine"],
+  ["Café", "Thé"], ["Guitare", "Violon"], ["Football", "Rugby"],
+  ["Avion", "Hélicoptère"], ["Croissant", "Pain au chocolat"], ["Vampire", "Loup-garou"],
+  ["Noël", "Anniversaire"], ["Ski", "Snowboard"], ["Lune", "Soleil"],
+  ["Harry Potter", "Le Seigneur des anneaux"], ["Instagram", "TikTok"], ["Pirate", "Viking"],
+  ["Chocolat", "Caramel"], ["Hôpital", "Pharmacie"], ["Train", "Métro"],
+  ["Dentiste", "Médecin"], ["Mariage", "Baptême"], ["Tigre", "Léopard"],
+  ["Crêpe", "Gaufre"], ["Paris", "Londres"], ["Cinéma", "Théâtre"],
+  ["Pompier", "Policier"], ["Montagne", "Volcan"], ["Sushi", "Kebab"],
+  ["Batman", "Spider-Man"], ["Fraise", "Framboise"], ["Tennis", "Ping-pong"],
+  ["Château", "Palais"], ["Requin", "Dauphin"], ["Camping", "Hôtel"],
+  ["Bière", "Vin"], ["Boulanger", "Pâtissier"], ["Neige", "Grêle"],
+  ["Fantôme", "Zombie"], ["Tatouage", "Piercing"], ["Karaoké", "Concert"],
+  ["Fourchette", "Cuillère"], ["Licorne", "Pégase"], ["Sorcière", "Fée"],
+  ["Jungle", "Désert"], ["Oreiller", "Couette"], ["Moustache", "Barbe"],
+  ["Pingouin", "Manchot"], ["Raclette", "Fondue"], ["Marathon", "Triathlon"],
+  ["Astronaute", "Pilote"], ["Parapluie", "Imperméable"], ["Clown", "Magicien"],
+  ["Nutella", "Confiture"], ["Escalier", "Ascenseur"], ["Mer", "Lac"],
+  ["Robot", "Extraterrestre"], ["Ninja", "Samouraï"], ["Frites", "Chips"],
+  ["Tour Eiffel", "Statue de la Liberté"], ["Voiture", "Moto"], ["Abeille", "Guêpe"],
+  ["Mario", "Sonic"], ["Chaussette", "Chaussure"], ["Brosse à dents", "Dentifrice"],
+  ["Gendarme", "Voleur"], ["Petit-déjeuner", "Goûter"], ["Hamster", "Lapin"],
+  ["Popcorn", "Barbe à papa"], ["Roi", "Président"], ["Glace", "Sorbet"],
+  ["Pyramide", "Temple"], ["Selfie", "Photo de classe"], ["Balançoire", "Toboggan"]
+];
+
+const ROLES = {
+  civil: { nom: "Civil", emoji: "🙂", cls: "civil" },
+  under: { nom: "Infiltré", emoji: "🕵️", cls: "under" },
+  blanc: { nom: "Mr. Blanc", emoji: "👻", cls: "blanc" }
+};
+
+const POINTS = { civil: 2, under: 10, blanc: 6 };
+
+const state = {
+  joueurs: [],          // noms
+  scores: {},           // nom -> points cumulés
+  nbUnder: 1,
+  nbBlanc: 0,
+  dureeDebat: 90,
+  manche: null          // données de la manche en cours
+};
+
+const app = document.getElementById("app");
+let timerId = null;
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function norm(s) {
+  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function stopTimer() {
+  if (timerId) { clearInterval(timerId); timerId = null; }
+}
+
+function render(html) {
+  stopTimer();
+  app.innerHTML = html;
+  app.firstElementChild?.classList.add("pop");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* Nombre max d'imposteurs (Infiltrés + Mr. Blanc) : il faut toujours
+   strictement plus de Civils que d'imposteurs au départ. */
+function maxImposteurs() {
+  return Math.max(1, Math.floor((state.joueurs.length - 1) / 2));
+}
+
+function clampReglages() {
+  const max = maxImposteurs();
+  state.nbBlanc = Math.min(state.nbBlanc, 1);
+  if (state.nbUnder + state.nbBlanc > max) {
+    state.nbBlanc = Math.max(0, Math.min(state.nbBlanc, max - 1));
+    state.nbUnder = Math.max(1, max - state.nbBlanc);
+  }
+  state.nbUnder = Math.max(1, state.nbUnder);
+}
+
+/* ------------------------- Écran d'accueil ------------------------- */
+function ecranAccueil() {
+  clampReglages();
+  const n = state.joueurs.length;
+  const max = maxImposteurs();
+  render(`
+    <div>
+      <div class="card">
+        <h2>👥 Joueurs (${n})</h2>
+        <form class="row" id="formJoueur">
+          <input type="text" id="nom" placeholder="Prénom du joueur" maxlength="16" autocomplete="off">
+          <button type="submit">Ajouter</button>
+        </form>
+        <div class="chips">
+          ${state.joueurs.map((j, i) => `
+            <span class="chip">${esc(j)} <button data-suppr="${i}" aria-label="Retirer ${esc(j)}">✕</button></span>
+          `).join("")}
+        </div>
+        ${n < 3 ? `<p class="hint">Il faut au moins 3 joueurs (idéal : 5 à 10).</p>` : ""}
+      </div>
+
+      <div class="card">
+        <h2>⚙️ Réglages</h2>
+        <div class="setting">
+          <span>🕵️ Infiltrés</span>
+          <div class="stepper">
+            <button class="ghost" data-step="nbUnder" data-d="-1" ${state.nbUnder <= 1 ? "disabled" : ""}>−</button>
+            <b>${state.nbUnder}</b>
+            <button class="ghost" data-step="nbUnder" data-d="1" ${state.nbUnder + state.nbBlanc >= max ? "disabled" : ""}>+</button>
+          </div>
+        </div>
+        <div class="setting">
+          <span>👻 Mr. Blanc</span>
+          <div class="stepper">
+            <button class="ghost" data-step="nbBlanc" data-d="-1" ${state.nbBlanc <= 0 ? "disabled" : ""}>−</button>
+            <b>${state.nbBlanc}</b>
+            <button class="ghost" data-step="nbBlanc" data-d="1" ${state.nbBlanc >= 1 || state.nbUnder + state.nbBlanc >= max ? "disabled" : ""}>+</button>
+          </div>
+        </div>
+        <div class="setting">
+          <span>⏱️ Temps de débat</span>
+          <div class="stepper">
+            <button class="ghost" data-step="dureeDebat" data-d="-30" ${state.dureeDebat <= 30 ? "disabled" : ""}>−</button>
+            <b>${state.dureeDebat}s</b>
+            <button class="ghost" data-step="dureeDebat" data-d="30" ${state.dureeDebat >= 300 ? "disabled" : ""}>+</button>
+          </div>
+        </div>
+        <p class="hint">Mr. Blanc n'a aucun mot : il doit bluffer en écoutant les autres.</p>
+      </div>
+
+      <button class="big" id="go" ${n < 3 ? "disabled" : ""}>🎲 Lancer la manche</button>
+      <button class="big ghost" id="regles">📖 Règles du jeu</button>
+      ${Object.keys(state.scores).length ? `<button class="big ghost" id="scores">🏆 Classement</button>` : ""}
+    </div>
+  `);
+
+  const input = document.getElementById("nom");
+  document.getElementById("formJoueur").onsubmit = e => {
+    e.preventDefault();
+    const nom = input.value.trim();
+    if (!nom) return;
+    if (state.joueurs.some(j => j.toLowerCase() === nom.toLowerCase())) {
+      input.value = "";
+      input.placeholder = "Ce prénom est déjà pris !";
+      return;
+    }
+    if (state.joueurs.length >= 20) return;
+    state.joueurs.push(nom);
+    if (!(nom in state.scores)) state.scores[nom] = 0;
+    ecranAccueil();
+    document.getElementById("nom").focus();
+  };
+  app.querySelectorAll("[data-suppr]").forEach(b => b.onclick = () => {
+    state.joueurs.splice(+b.dataset.suppr, 1);
+    ecranAccueil();
+  });
+  app.querySelectorAll("[data-step]").forEach(b => b.onclick = () => {
+    state[b.dataset.step] += +b.dataset.d;
+    ecranAccueil();
+  });
+  document.getElementById("go").onclick = nouvelleManche;
+  document.getElementById("regles").onclick = ecranRegles;
+  const sc = document.getElementById("scores");
+  if (sc) sc.onclick = ecranClassement;
+}
+
+/* ---------------------------- Règles ------------------------------ */
+function ecranRegles() {
+  render(`
+    <div class="card rules">
+      <h2>📖 Comment jouer</h2>
+      <p>Tout le monde reçoit le <b>même mot secret</b>… sauf les imposteurs !</p>
+      <h3>🙂 Les Civils</h3>
+      <p>Ils ont tous le même mot (ex. « Pizza »). Leur but : éliminer tous les imposteurs.</p>
+      <h3>🕵️ Les Infiltrés</h3>
+      <p>Ils ont un mot <b>proche mais différent</b> (ex. « Tarte flambée »). Au début, ils ne savent même pas qu'ils sont infiltrés ! Ils doivent le deviner et se fondre dans la masse.</p>
+      <h3>👻 Mr. Blanc</h3>
+      <p>Il n'a <b>aucun mot</b>. Il écoute, improvise et bluffe. S'il est éliminé, il a une dernière chance : deviner le mot des Civils pour gagner seul !</p>
+      <h3>🔄 Déroulement d'un tour</h3>
+      <ol>
+        <li>Chacun regarde son mot en secret en se passant le téléphone.</li>
+        <li>Dans l'ordre indiqué, chaque joueur dit <b>un seul mot ou une courte phrase</b> en rapport avec son mot secret. Ni trop précis (les imposteurs trouveraient), ni trop vague (on vous soupçonnerait).</li>
+        <li>Débat libre avec le chrono : accusez, défendez-vous, mentez !</li>
+        <li>Tout le monde pointe du doigt un suspect en même temps. Le joueur le plus désigné est éliminé et son rôle est révélé.</li>
+      </ol>
+      <h3>🏁 Fin de la manche</h3>
+      <ul>
+        <li>Les <b>Civils</b> gagnent quand tous les imposteurs sont éliminés (+${POINTS.civil} pts chacun).</li>
+        <li>Les <b>imposteurs</b> gagnent s'ils sont aussi nombreux que les Civils restants (+${POINTS.under} pts par Infiltré, +${POINTS.blanc} pts pour Mr. Blanc).</li>
+        <li><b>Mr. Blanc</b> gagne seul s'il devine le mot des Civils quand il est éliminé.</li>
+      </ul>
+      <button class="big" id="retour">C'est parti !</button>
+    </div>
+  `);
+  document.getElementById("retour").onclick = ecranAccueil;
+}
+
+/* ------------------------ Mise en place --------------------------- */
+function nouvelleManche() {
+  if (state.joueurs.length < 3) return ecranAccueil();
+  clampReglages();
+  const [motCivil, motUnder] = shuffle(PAIRES[Math.floor(Math.random() * PAIRES.length)]);
+  const roles = [];
+  for (let i = 0; i < state.nbUnder; i++) roles.push("under");
+  for (let i = 0; i < state.nbBlanc; i++) roles.push("blanc");
+  while (roles.length < state.joueurs.length) roles.push("civil");
+  const melange = shuffle(roles);
+
+  state.manche = {
+    motCivil,
+    motUnder,
+    joueurs: state.joueurs.map((nom, i) => ({ nom, role: melange[i], vivant: true })),
+    indexDistrib: 0,
+    tour: 1
+  };
+  ecranDistribution();
+}
+
+function motDe(j) {
+  const m = state.manche;
+  if (j.role === "civil") return m.motCivil;
+  if (j.role === "under") return m.motUnder;
+  return null;
+}
+
+/* ------------------- Distribution des mots secrets ------------------ */
+function ecranDistribution() {
+  const m = state.manche;
+  const j = m.joueurs[m.indexDistrib];
+  const dernier = m.indexDistrib === m.joueurs.length - 1;
+  render(`
+    <div class="card center">
+      <p class="sub">Joueur ${m.indexDistrib + 1} / ${m.joueurs.length}</p>
+      <h2>📱 Passe le téléphone à <span style="color:var(--accent)">${esc(j.nom)}</span></h2>
+      <p class="hint">Les autres, regardez ailleurs ! 🙈</p>
+      <div class="reveal" id="reveal">
+        <div class="lock">🔒</div>
+        <p>Maintiens appuyé pour voir ton mot</p>
+      </div>
+      <button class="big" id="suivant" disabled>${dernier ? "Tout le monde a vu ✅" : "J'ai vu, au suivant ➜"}</button>
+    </div>
+  `);
+
+  const zone = document.getElementById("reveal");
+  const btn = document.getElementById("suivant");
+  const mot = motDe(j);
+  const cache = zone.innerHTML;
+  const montrer = e => {
+    e.preventDefault();
+    zone.innerHTML = mot
+      ? `<p class="sub">Ton mot secret :</p><div class="word">${esc(mot)}</div>`
+      : `<div class="big-emoji">👻</div><div class="word" style="color:var(--blanc)">Tu es Mr. Blanc</div><p class="sub">Tu n'as pas de mot. Bluffe !</p>`;
+    btn.disabled = false;
+  };
+  const cacher = () => { zone.innerHTML = cache; };
+  zone.addEventListener("pointerdown", montrer);
+  zone.addEventListener("pointerup", cacher);
+  zone.addEventListener("pointerleave", cacher);
+  zone.addEventListener("pointercancel", cacher);
+  zone.addEventListener("contextmenu", e => e.preventDefault());
+
+  btn.onclick = () => {
+    if (dernier) ecranTour();
+    else { m.indexDistrib++; ecranDistribution(); }
+  };
+}
+
+/* ------------------------ Tour de parole -------------------------- */
+function ecranTour() {
+  const m = state.manche;
+  const vivants = m.joueurs.filter(j => j.vivant);
+  // Mr. Blanc ne commence jamais : ce serait trop cruel.
+  let ordre = shuffle(vivants);
+  const premierOk = ordre.findIndex(j => j.role !== "blanc");
+  if (premierOk > 0) ordre = ordre.slice(premierOk).concat(ordre.slice(0, premierOk));
+
+  render(`
+    <div>
+      <div class="card">
+        <h2>🗣️ Tour ${m.tour} — Les indices</h2>
+        <p class="hint" style="margin-bottom:12px">Chacun à son tour dit <b>un mot</b> en lien avec son mot secret.</p>
+        <ol class="order">${ordre.map(j => `<li>${esc(j.nom)}</li>`).join("")}</ol>
+      </div>
+      <div class="card">
+        <h2>🔥 Débat</h2>
+        <div class="timer" id="timer">${formatTemps(state.dureeDebat)}</div>
+        <div class="row" style="justify-content:center;margin-top:10px">
+          <button class="ghost" id="chrono">▶️ Lancer le chrono</button>
+        </div>
+      </div>
+      <button class="big danger" id="vote">🗳️ Passer au vote</button>
+    </div>
+  `);
+
+  const el = document.getElementById("timer");
+  const btn = document.getElementById("chrono");
+  let reste = state.dureeDebat;
+  btn.onclick = () => {
+    if (timerId) { stopTimer(); btn.textContent = "▶️ Reprendre"; return; }
+    btn.textContent = "⏸️ Pause";
+    timerId = setInterval(() => {
+      reste--;
+      el.textContent = formatTemps(Math.max(reste, 0));
+      el.classList.toggle("hot", reste <= 10);
+      if (reste <= 0) {
+        stopTimer();
+        el.textContent = "⏰ Votez !";
+        btn.classList.add("hidden");
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+      }
+    }, 1000);
+  };
+  document.getElementById("vote").onclick = ecranVote;
+}
+
+function formatTemps(s) {
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+/* ------------------------------ Vote ------------------------------ */
+function ecranVote() {
+  const m = state.manche;
+  let choix = null;
+  render(`
+    <div class="card">
+      <h2>🗳️ Qui est éliminé ?</h2>
+      <p class="hint" style="margin-bottom:14px">À 3, tout le monde pointe un suspect du doigt. Touchez le joueur le plus désigné.</p>
+      <div class="players">
+        ${m.joueurs.map((j, i) => j.vivant
+          ? `<button class="player" data-i="${i}">${esc(j.nom)}</button>`
+          : `<div class="player out">${esc(j.nom)}<small>${ROLES[j.role].emoji} ${ROLES[j.role].nom}</small></div>`
+        ).join("")}
+      </div>
+      <button class="big danger" id="eliminer" disabled>Éliminer</button>
+    </div>
+  `);
+  const btn = document.getElementById("eliminer");
+  app.querySelectorAll("button.player").forEach(b => b.onclick = () => {
+    app.querySelectorAll("button.player").forEach(x => x.classList.remove("selected"));
+    b.classList.add("selected");
+    choix = +b.dataset.i;
+    btn.disabled = false;
+    btn.textContent = `Éliminer ${m.joueurs[choix].nom}`;
+  });
+  btn.onclick = () => ecranRevelation(choix);
+}
+
+function ecranRevelation(i) {
+  const m = state.manche;
+  const j = m.joueurs[i];
+  j.vivant = false;
+  const r = ROLES[j.role];
+
+  if (j.role === "blanc") return ecranDevinetteBlanc(j);
+
+  const message = j.role === "civil"
+    ? "Aïe… vous venez d'éliminer un innocent ! 😬"
+    : "Bien joué, un imposteur de moins ! 🎉";
+  render(`
+    <div class="card center">
+      <p class="sub">${esc(j.nom)} était…</p>
+      <div class="big-emoji">${r.emoji}</div>
+      <div class="role ${r.cls}">${r.nom}</div>
+      <p>${message}</p>
+      <button class="big" id="suite">Continuer</button>
+    </div>
+  `);
+  document.getElementById("suite").onclick = verifierFin;
+}
+
+function ecranDevinetteBlanc(j) {
+  render(`
+    <div class="card center">
+      <p class="sub">${esc(j.nom)} était…</p>
+      <div class="big-emoji">👻</div>
+      <div class="role blanc">Mr. Blanc</div>
+      <p>Dernière chance ! ${esc(j.nom)}, quel est le mot des Civils ?</p>
+      <form class="row" id="formMot">
+        <input type="text" id="mot" placeholder="Ta proposition" autocomplete="off">
+        <button type="submit">Valider</button>
+      </form>
+    </div>
+  `);
+  document.getElementById("mot").focus();
+  document.getElementById("formMot").onsubmit = e => {
+    e.preventDefault();
+    const essai = document.getElementById("mot").value.trim();
+    if (!essai) return;
+    if (norm(essai) === norm(state.manche.motCivil)) finManche("blanc", j);
+    else {
+      render(`
+        <div class="card center">
+          <div class="big-emoji">❌</div>
+          <h2>Raté !</h2>
+          <p>« ${esc(essai)} » n'était pas le bon mot.</p>
+          <button class="big" id="suite">Continuer</button>
+        </div>
+      `);
+      document.getElementById("suite").onclick = verifierFin;
+    }
+  };
+}
+
+function verifierFin() {
+  const m = state.manche;
+  const vivants = m.joueurs.filter(j => j.vivant);
+  const civils = vivants.filter(j => j.role === "civil").length;
+  const imposteurs = vivants.length - civils;
+  if (imposteurs === 0) return finManche("civil");
+  if (imposteurs >= civils) return finManche("imposteurs");
+  m.tour++;
+  ecranTour();
+}
+
+/* -------------------------- Fin de manche ------------------------- */
+function finManche(vainqueur, blancGagnant) {
+  const m = state.manche;
+  const gagnants = [];
+  m.joueurs.forEach(j => {
+    let gagne = false;
+    if (vainqueur === "civil") gagne = j.role === "civil";
+    else if (vainqueur === "imposteurs") gagne = j.role !== "civil" && j.vivant;
+    else if (vainqueur === "blanc") gagne = j === blancGagnant;
+    if (gagne) {
+      state.scores[j.nom] = (state.scores[j.nom] || 0) + POINTS[j.role];
+      gagnants.push(j);
+    }
+  });
+
+  const titres = {
+    civil: ["🎉", "Victoire des Civils !", "Tous les imposteurs ont été démasqués."],
+    imposteurs: ["😈", "Victoire des imposteurs !", "Ils ont berné tout le monde…"],
+    blanc: ["👻", "Mr. Blanc gagne seul !", "Il a deviné le mot secret. Chapeau !"]
+  };
+  const [emoji, titre, texte] = titres[vainqueur];
+
+  render(`
+    <div>
+      <div class="card center">
+        <div class="big-emoji">${emoji}</div>
+        <h2>${titre}</h2>
+        <p>${texte}</p>
+        <p>Mot des Civils : <b style="color:var(--civil)">${esc(m.motCivil)}</b><br>
+           Mot des Infiltrés : <b style="color:var(--under)">${esc(m.motUnder)}</b></p>
+      </div>
+      <div class="card">
+        <h2>🎭 Les rôles</h2>
+        <div class="players">
+          ${m.joueurs.map(j => `
+            <div class="player">${esc(j.nom)}
+              <small class="role ${ROLES[j.role].cls}" style="font-size:.95rem">${ROLES[j.role].emoji} ${ROLES[j.role].nom}</small>
+              ${gagnants.includes(j) ? `<small>+${POINTS[j.role]} pts</small>` : ""}
+            </div>`).join("")}
+        </div>
+      </div>
+      <button class="big" id="rejouer">🔁 Nouvelle manche</button>
+      <button class="big ghost" id="classement">🏆 Classement</button>
+      <button class="big ghost" id="accueil">⚙️ Modifier les joueurs</button>
+    </div>
+  `);
+  document.getElementById("rejouer").onclick = nouvelleManche;
+  document.getElementById("classement").onclick = ecranClassement;
+  document.getElementById("accueil").onclick = ecranAccueil;
+}
+
+function ecranClassement() {
+  const lignes = Object.entries(state.scores).sort((a, b) => b[1] - a[1]);
+  const medailles = ["🥇", "🥈", "🥉"];
+  render(`
+    <div class="card">
+      <h2>🏆 Classement</h2>
+      <table>
+        <tr><th>#</th><th>Joueur</th><th style="text-align:right">Points</th></tr>
+        ${lignes.map(([nom, pts], i) => `
+          <tr><td>${medailles[i] || i + 1}</td><td>${esc(nom)}</td><td class="num">${pts}</td></tr>
+        `).join("")}
+      </table>
+      <button class="big" id="rejouer">🔁 Nouvelle manche</button>
+      <button class="big ghost" id="retour">Retour</button>
+    </div>
+  `);
+  document.getElementById("rejouer").onclick = nouvelleManche;
+  document.getElementById("retour").onclick = ecranAccueil;
+}
+
+ecranAccueil();
+</script>
+</body>
+</html>

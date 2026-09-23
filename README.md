@@ -10,6 +10,19 @@ natif (aucun framework, aucune dépendance à installer).
 - `boutique.html` — Catalogue complet avec filtres (catégorie, prix) et tri.
 - `contact.html` — Formulaire de contact, coordonnées, FAQ.
 
+## Jeux de société (`jeux/`)
+
+Deux jeux à jouer à plusieurs sur un seul appareil (on se passe le
+téléphone). Ouvrez `jeux/index.html`.
+
+- `jeux/imposteur.html` — **L'Imposteur** (3 à 20 joueurs) : tout le monde
+  reçoit le même mot secret, sauf les Infiltrés (un mot proche) et Mr. Blanc
+  (aucun mot). Indices, débat chronométré, vote, score cumulé.
+- `jeux/grotte-du-dragon.html` — **La Grotte du Dragon** (2 à 6 joueurs) :
+  course au trésor en « stop ou encore » sur un plateau aléatoire. Relancez
+  le dé tant que vous osez : si le dragon sort, vous perdez votre tour !
+  Coffres surprises, pièges, boutique, bousculades et colère du dragon.
+
 ## Fonctionnalités
 
 - Panier persistant (localStorage) avec tiroir latéral, quantités et total.

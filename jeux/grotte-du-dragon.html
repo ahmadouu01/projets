@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Grotte du Dragon</title>
+<style>
+  :root {
+    --bg: #140d0a;
+    --panel: #2a1a12;
+    --panel-2: #3d271b;
+    --text: #fff4e6;
+    --muted: #cfb49c;
+    --gold: #ffc53d;
+    --fire: #ff6a2b;
+    --good: #5fd48a;
+    --bad: #ff4f5e;
+    --magic: #9d7bff;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 50% -10%, #4a2410 0%, var(--bg) 60%);
+    color: var(--text);
+  }
+  main { max-width: 1100px; margin: 0 auto; padding: 18px 16px 48px; }
+  header { text-align: center; margin-bottom: 16px; }
+  header a { color: var(--muted); font-size: .9rem; text-decoration: none; }
+  h1 { font-size: 2.1rem; margin: 6px 0 2px; }
+  h1 span { color: var(--fire); }
+  h2 { margin: 0 0 12px; font-size: 1.3rem; }
+  .sub { color: var(--muted); margin: 0; }
+  .card {
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  }
+  .narrow { max-width: 560px; margin: 0 auto; }
+  button {
+    font: inherit;
+    font-weight: 700;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    background: var(--gold);
+    color: #2b1a00;
+    transition: transform .08s, filter .15s;
+  }
+  button:hover { filter: brightness(1.08); }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  button.ghost { background: var(--panel-2); color: var(--text); }
+  button.fire { background: var(--fire); color: #fff; }
+  button.good { background: var(--good); color: #062812; }
+  button.big { width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 8px; }
+  .row { display: flex; gap: 8px; }
+  input[type=text] {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--panel-2);
+    background: #1c110c;
+    color: var(--text);
+    font-size: 1rem;
+  }
+  input[type=text]:focus { outline: none; border-color: var(--gold); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip {
+    background: var(--panel-2);
+    border-radius: 999px;
+    padding: 6px 8px 6px 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .chip button { padding: 2px 8px; background: transparent; color: var(--muted); }
+  .hint { color: var(--muted); font-size: .9rem; margin: 6px 0 0; }
+  .rules { line-height: 1.55; }
+  .rules h3 { color: var(--gold); margin: 16px 0 4px; font-size: 1.05rem; }
+  .rules p, .rules li { color: #f0dfcc; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 14px; padding: 0; list-style: none; }
+
+  /* ------------------------ Écran de jeu ------------------------ */
+  .game { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 14px; align-items: start; }
+  @media (max-width: 860px) { .game { grid-template-columns: 1fr; } }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+    background: #1d120c;
+    padding: 10px;
+    border-radius: var(--radius);
+  }
+  .cell {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: #3a261a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(.9rem, 2.6vw, 1.5rem);
+    border: 2px solid transparent;
+  }
+  .cell .n { position: absolute; top: 2px; left: 5px; font-size: .6rem; color: var(--muted); }
+  .cell.or { background: #4a3715; }
+  .cell.grosOr { background: #6a4d10; }
+  .cell.piege { background: #4a1c1c; }
+  .cell.passage { background: #22324a; }
+  .cell.coffre { background: #3a2250; }
+  .cell.tresor { background: linear-gradient(135deg, #ffd35a, #ff8a2b); font-size: clamp(1.2rem, 3.5vw, 2rem); }
+  .cell.cible { border-color: var(--gold); box-shadow: 0 0 12px var(--gold); }
+  .cell.depart-tour { border-color: rgba(255,255,255,.35); border-style: dashed; }
+  .pions {
+    position: absolute;
+    bottom: 1px; right: 2px;
+    display: flex; flex-wrap: wrap; justify-content: flex-end;
+    max-width: 100%;
+    font-size: clamp(.7rem, 2vw, 1.05rem);
+    line-height: 1;
+  }
+  .pion.fantome { opacity: .55; filter: drop-shadow(0 0 4px var(--gold)); animation: flotte 1s infinite alternate; }
+  @keyframes flotte { to { transform: translateY(-3px); } }
+
+  .depart {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 8px; color: var(--muted); font-size: .9rem;
+    min-height: 28px;
+  }
+  .depart span.p { font-size: 1.3rem; }
+
+  .joueurs { display: grid; gap: 6px; }
+  .joueur {
+    display: grid;
+    grid-template-columns: 34px 1fr auto auto;
+    align-items: center;
+    gap: 8px;
+    background: var(--panel-2);
+    border-radius: 12px;
+    padding: 8px 10px;
+    border: 2px solid transparent;
+  }
+  .joueur.actif { border-color: var(--gold); }
+  .joueur .p { font-size: 1.4rem; text-align: center; }
+  .joueur .nom { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .joueur .stat { font-size: .85rem; color: var(--muted); white-space: nowrap; }
+  .joueur .stat b { color: var(--text); }
+
+  .rage { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+  .flammes { font-size: 1.4rem; letter-spacing: 2px; }
+  .flammes .off { filter: grayscale(1); opacity: .3; }
+
+  .de-zone { text-align: center; }
+  .de {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 96px; height: 96px;
+    border-radius: 20px;
+    background: #fff4e6; color: #2a1a12;
+    font-size: 3.2rem; font-weight: 900;
+    box-shadow: 0 6px 0 #b89c80, 0 10px 20px rgba(0,0,0,.5);
+    margin: 6px 0 10px;
+  }
+  .de.roule { animation: secoue .12s infinite; }
+  .de.dragon { background: var(--bad); color: #fff; box-shadow: 0 6px 0 #9c2330, 0 10px 20px rgba(0,0,0,.5); }
+  @keyframes secoue { 0% { transform: rotate(-12deg); } 50% { transform: rotate(12deg); } 100% { transform: rotate(-12deg); } }
+  .info-tour { font-size: 1.05rem; min-height: 1.4em; }
+  .info-tour b { color: var(--gold); }
+  .boutique { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .boutique button { font-size: .85rem; padding: 10px 8px; }
+  .boutique button.on { background: var(--magic); color: #fff; }
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .actions button { padding: 15px 8px; font-size: 1.05rem; }
+
+  .journal { list-style: none; padding: 0; margin: 0; font-size: .9rem; max-height: 220px; overflow: auto; }
+  .journal li { padding: 6px 0; border-bottom: 1px solid var(--panel-2); color: #ecdac6; }
+  .journal li:first-child { color: var(--text); font-weight: 600; }
+
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(10, 5, 3, .75);
+    display: flex; align-items: center; justify-content: center;
+    padding: 16px; z-index: 10;
+  }
+  .popup {
+    background: var(--panel);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 380px; width: 100%;
+    text-align: center;
+    animation: pop .3s ease-out;
+  }
+  .popup .emoji { font-size: 4rem; line-height: 1.1; }
+  .popup h2 { margin: 8px 0; }
+  @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .hidden { display: none !important; }
+  .confetti { position: fixed; top: -40px; font-size: 1.8rem; pointer-events: none; animation: tombe linear forwards; z-index: 20; }
+  @keyframes tombe { to { transform: translateY(110vh) rotate(720deg); } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="index.html">← Tous les jeux</a>
+    <h1>La Grotte du <span>Dragon</span></h1>
+    <p class="sub">Fonce vers le trésor… sans réveiller le dragon !</p>
+  </header>
+  <div id="app"></div>
+</main>
+<div id="overlay" class="overlay hidden"></div>
+
+<script>
+const ARRIVEE = 40;
+const PIONS = [
+  { e: "🦊", c: "#ff8a3d" }, { e: "🐸", c: "#5fd48a" }, { e: "🐼", c: "#e6e6e6" },
+  { e: "🦄", c: "#e38bff" }, { e: "🐙", c: "#ff5f8f" }, { e: "🐯", c: "#ffc53d" }
+];
+const DRAGON = "🐉";
+const FACES = [1, 2, 3, 4, 5, DRAGON];
+const GLYPHES = { 1: "⚀", 2: "⚁", 3: "⚂", 4: "⚃", 5: "⚄" };
+const PRIX = { bouclier: 4, bottes: 3 };
+const RAGE_MAX = 3;
+
+const CASES = {
+  vide:    { e: "",   label: "Case vide" },
+  or:      { e: "🪙", label: "Pièces : +2 or" },
+  grosOr:  { e: "💰", label: "Magot : +5 or" },
+  piege:   { e: "🕳️", label: "Piège : recule de 4 cases" },
+  passage: { e: "🌀", label: "Passage secret : avance de 4 cases" },
+  coffre:  { e: "🎁", label: "Coffre : pioche une carte surprise" },
+  tresor:  { e: "👑", label: "Le trésor du dragon : la victoire !" }
+};
+
+const CARTES = [
+  { e: "🌧️", t: "Pluie d'or", d: "Tu gagnes 6 pièces d'or.", f: j => { j.or += 6; } },
+  { e: "🦝", t: "Voleur !", d: "Tu voles 3 pièces au joueur le plus riche.", f: carteVoleur },
+  { e: "⚡", t: "Tour bonus", d: "Tu rejoues immédiatement !", f: () => { jeu.tourBonus = true; } },
+  { e: "🦇", t: "Nuée de chauves-souris", d: "Tu recules de 3 cases.", f: j => { j.pos = Math.max(0, j.pos - 3); } },
+  { e: "🌋", t: "Tremblement de terre", d: "Tous les autres joueurs reculent de 2 cases.", f: j => {
+      jeu.joueurs.forEach(o => { if (o !== j) o.pos = Math.max(0, o.pos - 2); });
+  } },
+  { e: "🪽", t: "Ailes de dragon", d: "Tu avances de 3 cases.", f: j => { j.pos += 3; } },
+  { e: "🔄", t: "Téléportation", d: "Tu échanges ta place avec le joueur en tête.", f: carteEchange },
+  { e: "🥚", t: "Œuf de dragon", d: "Tu as volé un œuf… La colère du dragon monte !", f: () => { augmenterRage(); } },
+  { e: "🛡️", t: "Écaille magique", d: "Tu commenceras ton prochain tour avec un bouclier gratuit.", f: j => { j.bouclierGratuit = true; } }
+];
+
+let jeu = null;
+let noms = [];
+const app = document.getElementById("app");
+const overlay = document.getElementById("overlay");
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function hasard(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+/* --------------------------- Plateau ------------------------------ */
+function genererPlateau() {
+  const pool = [
+    ...Array(11).fill("or"), ...Array(3).fill("grosOr"), ...Array(5).fill("piege"),
+    ...Array(4).fill("passage"), ...Array(7).fill("coffre"), ...Array(9).fill("vide")
+  ]; // 39 cases entre le départ et le trésor
+  let cases;
+  do {
+    cases = ["depart", ...shuffle(pool), "tresor"];
+  } while (!plateauValide(cases));
+  return cases;
+}
+function plateauValide(cases) {
+  for (let i = 1; i < ARRIVEE; i++) {
+    if (cases[i] === "piege" && i <= 4) return false;          // pas de piège dès le début
+    if (cases[i] === "passage" && i > ARRIVEE - 6) return false; // pas de raccourci vers la fin
+    if (cases[i] === "piege" && cases[i - 1] === "piege") return false;
+  }
+  return true;
+}
+/* Parcours en serpentin : 8 colonnes, 5 lignes. */
+function coord(p) {
+  const r = Math.floor((p - 1) / 8);
+  let c = (p - 1) % 8;
+  if (r % 2 === 1) c = 7 - c;
+  return { r: r + 1, c: c + 1 };
+}
+
+/* ----------------------------- Setup ------------------------------ */
+function ecranSetup() {
+  overlay.classList.add("hidden");
+  const n = noms.length;
+  app.innerHTML = `
+    <div class="narrow">
+      <div class="card">
+        <h2>🧙 Aventuriers (${n}/6)</h2>
+        <form class="row" id="form">
+          <input type="text" id="nom" placeholder="Prénom de l'aventurier" maxlength="14" autocomplete="off" ${n >= 6 ? "disabled" : ""}>
+          <button type="submit" ${n >= 6 ? "disabled" : ""}>Ajouter</button>
+        </form>
+        <div class="chips">
+          ${noms.map((nm, i) => `<span class="chip">${PIONS[i].e} ${esc(nm)} <button data-suppr="${i}" aria-label="Retirer">✕</button></span>`).join("")}
+        </div>
+        ${n < 2 ? `<p class="hint">De 2 à 6 joueurs.</p>` : ""}
+      </div>
+      <button class="big fire" id="go" ${n < 2 ? "disabled" : ""}>🐉 Entrer dans la grotte</button>
+      <button class="big ghost" id="regles">📖 Règles du jeu</button>
+    </div>`;
+  const input = document.getElementById("nom");
+  if (n < 6) input.focus();
+  document.getElementById("form").onsubmit = e => {
+    e.preventDefault();
+    const v = input.value.trim();
+    if (!v || noms.length >= 6) return;
+    noms.push(v);
+    ecranSetup();
+  };
+  app.querySelectorAll("[data-suppr]").forEach(b => b.onclick = () => { noms.splice(+b.dataset.suppr, 1); ecranSetup(); });
+  document.getElementById("go").onclick = demarrer;
+  document.getElementById("regles").onclick = ecranRegles;
+}
+
+function ecranRegles() {
+  app.innerHTML = `
+    <div class="narrow card rules">
+      <h2>📖 Règles</h2>
+      <p>Le premier aventurier à atteindre le <b>trésor 👑 (case ${ARRIVEE})</b> remporte la partie !</p>
+      <h3>🎲 Ton tour : stop ou encore ?</h3>
+      <p>Lance le dé autant de fois que tu veux. Chaque lancer fait avancer ton pion fantôme. Quand tu t'arrêtes, ton pion s'installe sur la case atteinte.</p>
+      <p>Mais le dé a une face <b>${DRAGON}</b> : si elle sort, le dragon se réveille et <b>tu perds toute ta progression du tour</b> !</p>
+      <h3>🔥 La colère du dragon</h3>
+      <p>Chaque ${DRAGON} fait monter sa colère. À ${RAGE_MAX} flammes, il crache du feu sur le joueur <b>en tête</b>, qui recule de 5 cases.</p>
+      <h3>💥 Bousculade</h3>
+      <p>Si tu t'arrêtes sur la case d'un autre joueur, tu le bouscules : il recule de 3 cases.</p>
+      <h3>🗺️ Les cases</h3>
+      <ul class="legend">
+        ${["or", "grosOr", "piege", "passage", "coffre", "tresor"].map(k => `<li>${CASES[k].e} ${CASES[k].label}</li>`).join("")}
+      </ul>
+      <p class="hint">L'effet d'une case s'applique seulement quand tu t'y arrêtes. Le plateau change à chaque partie !</p>
+      <h3>🛒 La boutique (avant ton premier lancer)</h3>
+      <ul>
+        <li>🛡️ <b>Bouclier</b> (${PRIX.bouclier} or) : annule le premier ${DRAGON} de ton tour.</li>
+        <li>👢 <b>Bottes de sept lieues</b> (${PRIX.bottes} or) : ton premier lancer compte double.</li>
+      </ul>
+      <button class="big fire" id="retour">Compris !</button>
+    </div>`;
+  document.getElementById("retour").onclick = ecranSetup;
+}
+
+function demarrer() {
+  jeu = {
+    plateau: genererPlateau(),
+    joueurs: shuffle(noms.map((nom, i) => ({ nom, ...PIONS[i], pos: 0, or: 3, bouclierGratuit: false }))),
+    actif: 0,
+    rage: 0,
+    journal: [],
+    tour: null,
+    tourBonus: false,
+    fini: false
+  };
+  log(`La partie commence ! ${jeu.joueurs[0].e} ${jeu.joueurs[0].nom} ouvre le bal.`);
+  nouveauTour();
+}
+
+/* ------------------------- Logique de jeu ------------------------- */
+function joueurActif() { return jeu.joueurs[jeu.actif]; }
+
+function log(msg) {
+  jeu.journal.unshift(msg);
+  jeu.journal = jeu.journal.slice(0, 30);
+}
+
+function nouveauTour() {
+  const j = joueurActif();
+  jeu.tour = {
+    depart: j.pos,
+    cible: j.pos,
+    lancers: 0,
+    bouclier: false,
+    bottes: false,
+    de: null,
+    roule: false
+  };
+  if (j.bouclierGratuit) {
+    j.bouclierGratuit = false;
+    jeu.tour.bouclier = true;
+    log(`🛡️ ${j.nom} commence protégé par son écaille magique.`);
+  }
+  renderJeu();
+}
+
+function acheter(objet) {
+  const j = joueurActif();
+  const t = jeu.tour;
+  if (t.lancers > 0 || t[objet] || j.or < PRIX[objet]) return;
+  j.or -= PRIX[objet];
+  t[objet] = true;
+  log(objet === "bouclier" ? `🛡️ ${j.nom} achète un bouclier.` : `👢 ${j.nom} enfile les bottes de sept lieues.`);
+  renderJeu();
+}
+
+function lancer() {
+  const t = jeu.tour;
+  if (t.roule || jeu.fini) return;
+  t.roule = true;
+  renderJeu();
+  let n = 0;
+  const de = document.getElementById("de");
+  const anim = setInterval(() => {
+    const f = hasard(FACES);
+    de.textContent = f === DRAGON ? DRAGON : GLYPHES[f];
+    if (++n >= 9) {
+      clearInterval(anim);
+      resultat(hasard(FACES));
+    }
+  }, 70);
+}
+
+function resultat(face) {
+  const j = joueurActif();
+  const t = jeu.tour;
+  t.roule = false;
+  t.de = face;
+  t.lancers++;
+
+  if (face === DRAGON) {
+    if (t.bouclier) {
+      t.bouclier = false;
+      log(`${DRAGON} Le dragon attaque ${j.nom}… mais le bouclier encaisse le choc !`);
+      augmenterRage();
+      renderJeu();
+      return;
+    }
+    const perdu = t.cible - t.depart;
+    t.cible = t.depart;
+    log(`${DRAGON} Le dragon se réveille ! ${j.nom} perd ${perdu} case${perdu > 1 ? "s" : ""} de progression.`);
+    renderJeu();
+    popup(DRAGON, "Le dragon se réveille !", `${esc(j.nom)} s'enfuit en courant et retourne case ${t.depart}.`, () => {
+      augmenterRage();
+      finTour();
+    });
+    return;
+  }
+
+  let pas = face;
+  if (t.bottes && t.lancers === 1) pas *= 2;
+  t.cible += pas;
+  if (t.cible >= ARRIVEE) {
+    j.pos = ARRIVEE;
+    renderJeu();
+    return victoire(j);
+  }
+  renderJeu();
+}
+
+function sArreter() {
+  const j = joueurActif();
+  const t = jeu.tour;
+  if (t.roule || t.lancers === 0 || t.cible === t.depart) return;
+  j.pos = t.cible;
+  const messages = [];
+
+  // Bousculade
+  jeu.joueurs.forEach(o => {
+    if (o !== j && o.pos === j.pos && j.pos > 0) {
+      o.pos = Math.max(0, o.pos - 3);
+      messages.push(`💥 Bousculade ! ${esc(o.nom)} recule en case ${o.pos}.`);
+      log(`💥 ${j.nom} bouscule ${o.nom} qui recule en case ${o.pos}.`);
+    }
+  });
+
+  const type = jeu.plateau[j.pos];
+  let emoji = CASES[type].e || "🚶";
+  let titre = `Case ${j.pos}`;
+  let carte = null;
+
+  switch (type) {
+    case "or":
+      j.or += 2; messages.unshift("+2 pièces d'or 🪙"); break;
+    case "grosOr":
+      j.or += 5; messages.unshift("Un magot ! +5 pièces d'or 💰"); break;
+    case "piege":
+      j.pos = Math.max(0, j.pos - 4); messages.unshift(`Un piège ! Tu tombes en case ${j.pos}.`); break;
+    case "passage":
+      j.pos += 4; messages.unshift(`Un passage secret ! Tu files en case ${j.pos}.`); break;
+    case "coffre":
+      carte = hasard(CARTES);
+      carte.f(j);
+      emoji = carte.e;
+      titre = carte.t;
+      messages.unshift(carte.d);
+      break;
+    default:
+      messages.unshift("Rien ici… tu reprends ton souffle.");
+  }
+  log(`${j.e} ${j.nom} s'arrête case ${t.cible}${carte ? ` et ouvre un coffre : ${carte.t}` : ""}.`);
+
+  if (j.pos >= ARRIVEE) {
+    j.pos = ARRIVEE;
+    renderJeu();
+    return victoire(j);
+  }
+  renderJeu();
+  popup(emoji, titre, messages.join("<br>"), finTour);
+}
+
+function carteVoleur(j) {
+  const autres = jeu.joueurs.filter(o => o !== j);
+  const riche = autres.reduce((a, b) => (b.or > a.or ? b : a));
+  const vol = Math.min(3, riche.or);
+  riche.or -= vol;
+  j.or += vol;
+  log(`🦝 ${j.nom} vole ${vol} or à ${riche.nom}.`);
+}
+
+function carteEchange(j) {
+  const leader = jeu.joueurs.reduce((a, b) => (b.pos > a.pos ? b : a));
+  if (leader === j || leader.pos === j.pos) {
+    j.or += 3;
+    log(`🔄 ${j.nom} est déjà en tête : +3 or en consolation.`);
+    return;
+  }
+  [leader.pos, j.pos] = [j.pos, leader.pos];
+  log(`🔄 ${j.nom} échange sa place avec ${leader.nom} !`);
+}
+
+function augmenterRage() {
+  jeu.rage++;
+  if (jeu.rage < RAGE_MAX) return;
+  jeu.rage = 0;
+  const max = Math.max(...jeu.joueurs.map(o => o.pos));
+  if (max === 0) {
+    log(`🔥 Le dragon crache du feu… mais personne n'est encore entré dans la grotte.`);
+    return;
+  }
+  const cibles = jeu.joueurs.filter(o => o.pos === max);
+  cibles.forEach(o => { o.pos = Math.max(0, o.pos - 5); });
+  // Si le joueur actif est touché en plein tour, sa progression recule avec lui.
+  const t = jeu.tour;
+  const j = joueurActif();
+  if (t && cibles.includes(j) && t.depart === max) {
+    const recul = max - j.pos;
+    t.depart = j.pos;
+    t.cible = Math.max(0, t.cible - recul);
+  }
+  const qui = cibles.map(o => o.nom).join(" et ");
+  log(`🔥 Le dragon crache du feu sur ${qui} qui recule${cibles.length > 1 ? "nt" : ""} de 5 cases !`);
+  jeu.feu = qui;
+}
+
+function finTour() {
+  const suite = () => {
+    if (jeu.tourBonus) {
+      jeu.tourBonus = false;
+      log(`⚡ ${joueurActif().nom} rejoue !`);
+    } else {
+      jeu.actif = (jeu.actif + 1) % jeu.joueurs.length;
+    }
+    nouveauTour();
+    const j = joueurActif();
+    popup(j.e, `Au tour de ${esc(j.nom)} !`, "Passe l'appareil au joueur suivant.", null, "C'est parti !");
+  };
+  if (jeu.feu) {
+    const qui = jeu.feu;
+    jeu.feu = null;
+    renderJeu();
+    popup("🔥", "Le dragon est furieux !", `Il crache du feu sur ${esc(qui)} : 5 cases en arrière !`, suite);
+  } else {
+    suite();
+  }
+}
+
+function victoire(j) {
+  jeu.fini = true;
+  log(`👑 ${j.nom} s'empare du trésor du dragon !`);
+  renderJeu();
+  confettis();
+  const classement = jeu.joueurs.slice().sort((a, b) => b.pos - a.pos || b.or - a.or);
+  popup("👑", `${esc(j.nom)} remporte le trésor !`,
+    `<ol style="text-align:left">${classement.map(o => `<li>${o.e} ${esc(o.nom)} — case ${o.pos}, ${o.or} or</li>`).join("")}</ol>`,
+    null, null, true);
+}
+
+/* ------------------------------ Vue ------------------------------- */
+function renderJeu() {
+  const j = joueurActif();
+  const t = jeu.tour;
+  const enCours = t.lancers > 0;
+  const progression = t.cible - t.depart;
+
+  let cellules = "";
+  for (let p = 1; p <= ARRIVEE; p++) {
+    const { r, c } = coord(p);
+    const type = jeu.plateau[p];
+    const ici = jeu.joueurs.filter(o => o.pos === p).map(o => `<span class="pion">${o.e}</span>`).join("");
+    const fantome = !jeu.fini && t.cible !== t.depart && t.cible === p ? `<span class="pion fantome">${j.e}</span>` : "";
+    const classes = ["cell", type];
+    if (!jeu.fini && t.cible === p && t.cible !== t.depart) classes.push("cible");
+    if (!jeu.fini && enCours && t.depart === p && t.cible !== t.depart) classes.push("depart-tour");
+    cellules += `<div class="${classes.join(" ")}" style="grid-row:${r};grid-column:${c}" title="${p} — ${CASES[type].label}">
+      <span class="n">${p}</span>${CASES[type].e}<span class="pions">${ici}${fantome}</span></div>`;
+  }
+  const auDepart = jeu.joueurs.filter(o => o.pos === 0);
+
+  let faceDe = "?";
+  if (t.de === DRAGON) faceDe = DRAGON;
+  else if (t.de) faceDe = GLYPHES[t.de];
+
+  let info = `Lance le dé pour commencer ton tour.`;
+  if (enCours) info = progression > 0
+    ? `Progression : <b>+${progression}</b> case${progression > 1 ? "s" : ""} → case <b>${t.cible}</b> (${CASES[jeu.plateau[t.cible]].label.toLowerCase()})`
+    : `Aucune progression pour l'instant.`;
+  if (t.bouclier) info += `<br>🛡️ Bouclier actif`;
+
+  app.innerHTML = `
+    <div class="game">
+      <div>
+        <div class="depart">🚪 Entrée de la grotte : ${auDepart.map(o => `<span class="p" title="${esc(o.nom)}">${o.e}</span>`).join("") || "<span>vide</span>"}
+          ${!jeu.fini && t.depart === 0 && t.cible > 0 ? `<span class="p fantome" style="opacity:.4">↳ ${j.e}</span>` : ""}
+        </div>
+        <div class="board">${cellules}</div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="joueurs">
+            ${jeu.joueurs.map((o, i) => `
+              <div class="joueur ${i === jeu.actif && !jeu.fini ? "actif" : ""}" style="${i === jeu.actif ? `border-color:${o.c}` : ""}">
+                <span class="p">${o.e}</span>
+                <span class="nom">${esc(o.nom)}</span>
+                <span class="stat">📍<b>${o.pos}</b></span>
+                <span class="stat">🪙<b>${o.or}</b></span>
+              </div>`).join("")}
+          </div>
+          <div class="rage">
+            <span>Colère du dragon</span>
+            <span class="flammes">${Array.from({ length: RAGE_MAX }, (_, i) => `<span class="${i < jeu.rage ? "" : "off"}">🔥</span>`).join("")}</span>
+          </div>
+        </div>
+
+        <div class="card de-zone">
+          <h2>${j.e} Tour de ${esc(j.nom)}</h2>
+          <div id="de" class="de ${t.roule ? "roule" : ""} ${t.de === DRAGON && !t.roule ? "dragon" : ""}">${faceDe}</div>
+          <div class="info-tour">${info}</div>
+          ${!enCours && !jeu.fini ? `
+            <div class="boutique">
+              <button class="ghost ${t.bouclier ? "on" : ""}" id="bouclier" ${t.bouclier || j.or < PRIX.bouclier ? "disabled" : ""}>🛡️ Bouclier<br>${PRIX.bouclier} or</button>
+              <button class="ghost ${t.bottes ? "on" : ""}" id="bottes" ${t.bottes || j.or < PRIX.bottes ? "disabled" : ""}>👢 Bottes<br>${PRIX.bottes} or</button>
+            </div>` : ""}
+          ${jeu.fini ? `<button class="big fire" id="rejouer">🔁 Nouvelle partie</button>` : `
+          <div class="actions">
+            <button class="fire" id="lancer" ${t.roule ? "disabled" : ""}>🎲 ${enCours ? "Encore !" : "Lancer"}</button>
+            <button class="good" id="stop" ${t.roule || progression <= 0 ? "disabled" : ""}>✋ Stop</button>
+          </div>`}
+        </div>
+
+        <div class="card">
+          <h2>📜 Chronique</h2>
+          <ul class="journal">${jeu.journal.map(m => `<li>${esc(m)}</li>`).join("")}</ul>
+        </div>
+      </div>
+    </div>`;
+
+  const on = (id, fn) => { const el = document.getElementById(id); if (el) el.onclick = fn; };
+  on("lancer", lancer);
+  on("stop", sArreter);
+  on("bouclier", () => acheter("bouclier"));
+  on("bottes", () => acheter("bottes"));
+  on("rejouer", () => { overlay.classList.add("hidden"); demarrer(); });
+}
+
+function popup(emoji, titre, texte, ensuite, bouton = "OK", fin = false) {
+  overlay.innerHTML = `
+    <div class="popup">
+      <div class="emoji">${emoji}</div>
+      <h2>${titre}</h2>
+      <div>${texte}</div>
+      ${fin
+        ? `<button class="big fire" id="popRejouer">🔁 Revanche</button><button class="big ghost" id="popSetup">Changer de joueurs</button>`
+        : `<button class="big" id="popOk">${bouton}</button>`}
+    </div>`;
+  overlay.classList.remove("hidden");
+  if (fin) {
+    document.getElementById("popRejouer").onclick = () => { overlay.classList.add("hidden"); demarrer(); };
+    document.getElementById("popSetup").onclick = ecranSetup;
+    return;
+  }
+  const ok = document.getElementById("popOk");
+  ok.focus();
+  ok.onclick = () => {
+    overlay.classList.add("hidden");
+    if (ensuite) ensuite();
+  };
+}
+
+function confettis() {
+  const emojis = ["🪙", "💎", "👑", "✨", "💰"];
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement("div");
+    el.className = "confetti";
+    el.textContent = hasard(emojis);
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = 2 + Math.random() * 2.5 + "s";
+    el.style.animationDelay = Math.random() * 1.2 + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 6000);
+  }
+}
+
+ecranSetup();
+</script>
+</body>
+</html>
