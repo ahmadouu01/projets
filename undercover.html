@@ -17,7 +17,12 @@
 
   <header class="uc-header">
     <a class="uc-logo" href="undercover.html">
-      <span class="uc-logo-mark" aria-hidden="true"></span>UNDERCOVER
+      <span class="uc-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+          <circle cx="22" cy="30" r="9" /><circle cx="44" cy="30" r="9" />
+          <path d="M31 30h4" /><path d="M8 26c3-4 6-4 5 4M56 26c-3-4-6-4-5 4" />
+        </svg>
+      </span>UNDERCOVER
     </a>
     <div class="uc-header-actions">
       <button class="btn btn-ghost btn-sm" id="open-rules" type="button">Règles</button>
@@ -127,11 +132,14 @@
     <section class="screen" id="screen-deal" aria-labelledby="deal-title">
       <div class="panel panel-center">
         <p class="eyebrow"><span id="deal-progress">1 / 6</span> · Mot secret</p>
+        <div class="avatar avatar-lg" id="deal-avatar" aria-hidden="true">A</div>
         <h2 class="screen-title" id="deal-title">Passe l'appareil à <span id="deal-name">Joueur 1</span></h2>
         <p class="lede" id="deal-instruction">Personne d'autre ne doit regarder l'écran.</p>
+        <ol class="deal-dots" id="deal-dots" aria-hidden="true"></ol>
 
         <button class="card" id="deal-card" type="button" aria-live="polite">
           <span class="card-face card-back">
+            <span class="card-shine" aria-hidden="true"></span>
             <span class="card-back-mark" aria-hidden="true"></span>
             <span class="card-back-text">Toucher pour révéler</span>
           </span>
@@ -191,7 +199,9 @@
     <!-- ================= ÉCRAN 5 : FIN DE PARTIE ================= -->
     <section class="screen" id="screen-end" aria-labelledby="end-title">
       <div class="panel panel-center">
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
         <p class="eyebrow" id="end-eyebrow">Fin de partie</p>
+        <div class="emblem emblem-lg" id="end-emblem" aria-hidden="true"></div>
         <h2 class="screen-title" id="end-title">Les civils l'emportent</h2>
         <p class="lede" id="end-subtitle"></p>
 
@@ -222,6 +232,7 @@
     <div class="modal-box">
       <p class="eyebrow">Élimination</p>
       <h3 class="modal-title" id="reveal-title">Joueur 1 était…</h3>
+      <div class="emblem" id="reveal-emblem" aria-hidden="true"></div>
       <div class="reveal-badge" id="reveal-badge">Civil</div>
       <p class="modal-text" id="reveal-text"></p>
 

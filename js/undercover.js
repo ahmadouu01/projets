@@ -20,6 +20,32 @@
   var STORE_NAMES = "uc.names";
   var STORE_SCORES = "uc.scores";
 
+  /* Emblèmes tracés en SVG : ils prennent la couleur du camp par currentColor. */
+  var EMBLEMS = {
+    civil:
+      '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"' +
+      ' stroke-linecap="round" stroke-linejoin="round">' +
+      '<circle cx="24" cy="17" r="7"/><path d="M10 39c0-7.7 6.3-14 14-14s14 6.3 14 14"/></svg>',
+    undercover:
+      '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"' +
+      ' stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M6 17h36v8a9 9 0 0 1-9 9c-4 0-7-2-8.5-5h-5C18 32 15 34 11 34a9 9 0 0 1-9-9v-8h4z"/>' +
+      '<circle cx="15" cy="24" r="2.6" fill="currentColor" stroke="none"/>' +
+      '<circle cx="33" cy="24" r="2.6" fill="currentColor" stroke="none"/></svg>',
+    white:
+      '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"' +
+      ' stroke-linejoin="round">' +
+      '<rect x="12" y="7" width="24" height="34" rx="4" stroke-dasharray="6 4"/>' +
+      '<text x="24" y="31" text-anchor="middle" font-size="17" font-weight="700"' +
+      ' fill="currentColor" stroke="none">?</text></svg>'
+  };
+
+  /* Teintes d'avatar, choisies pour s'accorder au fond nuit bleue. */
+  var AVATAR_COLORS = [
+    "#f6a97c", "#6fcfae", "#e37fa6", "#9db8e8",
+    "#e8c98a", "#8fd0d6", "#c3a5e6", "#e8a08a"
+  ];
+
   var ROLE_LABEL = {
     civil: "Civil",
     undercover: "Undercover",
@@ -93,6 +119,61 @@
       .replace(/[̀-ͯ]/g, "")
       .replace(/[^a-z0-9]/g, "")
       .replace(/s$/, "");
+  }
+
+  /* ---------- Habillage ---------- */
+
+  /* Couleur attribuée par siège plutôt que par pseudo : deux joueurs d'une
+     même partie ne peuvent pas hériter de la même pastille tant qu'ils sont
+     huit ou moins, ce qui couvre la grande majorité des parties. */
+  function avatarColor(index) {
+    return AVATAR_COLORS[index % AVATAR_COLORS.length];
+  }
+
+  function paintAvatar(node, player) {
+    node.textContent = player.name.charAt(0).toUpperCase();
+    node.style.setProperty("--avatar", player.color);
+  }
+
+  function avatarFor(player, extraClass) {
+    var node = el("span", "avatar" + (extraClass ? " " + extraClass : ""));
+    paintAvatar(node, player);
+    node.setAttribute("aria-hidden", "true");
+    return node;
+  }
+
+  function setEmblem(node, role) {
+    node.innerHTML = EMBLEMS[role] || "";
+    node.className = node.className.replace(/ ?emblem-(civil|undercover|white)/g, "");
+    node.className += " emblem-" + role;
+    /* On relance l'animation d'apparition à chaque affichage. */
+    node.classList.remove("is-in");
+    void node.offsetWidth;
+    node.classList.add("is-in");
+  }
+
+  function calmMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function launchConfetti(colors) {
+    var box = $("confetti");
+    box.innerHTML = "";
+    if (!colors.length || calmMotion()) return;
+    for (var i = 0; i < 30; i++) {
+      var piece = el("span", "confetti-piece");
+      piece.style.left = randomInt(100) + "%";
+      piece.style.background = colors[i % colors.length];
+      piece.style.animationDelay = (randomInt(700) / 1000) + "s";
+      piece.style.animationDuration = (1.7 + randomInt(1100) / 1000) + "s";
+      if (randomInt(2)) piece.classList.add("is-round");
+      box.appendChild(piece);
+    }
+    window.setTimeout(function () { box.innerHTML = ""; }, 4600);
   }
 
   /* ---------- Stockage local (best effort) ---------- */
@@ -321,6 +402,7 @@
       return {
         id: index,
         name: name,
+        color: avatarColor(index),
         role: role,
         word: role === "civil" ? words.civil : (role === "undercover" ? words.undercover : null),
         alive: true
@@ -348,12 +430,25 @@
     var player = state.players[state.dealIndex];
     $("deal-progress").textContent = (state.dealIndex + 1) + " / " + state.players.length;
     $("deal-name").textContent = player.name;
+    paintAvatar($("deal-avatar"), player);
+    renderDealDots();
     $("deal-card").classList.remove("is-flipped");
     $("deal-next").disabled = true;
     $("deal-next").textContent = "J'ai vu mon mot";
     $("card-word").textContent = "—";
     $("card-note").textContent = "";
     $("card-role").textContent = "Mot secret";
+  }
+
+  function renderDealDots() {
+    var dots = $("deal-dots");
+    dots.innerHTML = "";
+    state.players.forEach(function (player, index) {
+      var dot = el("li", "deal-dot"
+        + (index < state.dealIndex ? " is-done" : "")
+        + (index === state.dealIndex ? " is-current" : ""));
+      dots.appendChild(dot);
+    });
   }
 
   function flipDealCard() {
@@ -374,6 +469,11 @@
     }
 
     card.classList.add("is-flipped");
+    var word = $("card-word");
+    word.classList.remove("is-in");
+    void word.offsetWidth;
+    word.classList.add("is-in");
+
     $("deal-next").disabled = false;
     $("deal-next").textContent = state.dealIndex === state.players.length - 1
       ? "Tout le monde a son mot"
@@ -424,7 +524,9 @@
     list.innerHTML = "";
     turnOrder().forEach(function (player, index) {
       var item = el("li", "turn-item");
+      item.style.animationDelay = (index * 55) + "ms";
       item.appendChild(el("span", "turn-index", String(index + 1)));
+      item.appendChild(avatarFor(player, "avatar-sm"));
       item.appendChild(el("span", "turn-name", player.name));
       if (index === 0) item.appendChild(el("span", "turn-flag", "commence"));
       list.appendChild(item);
@@ -441,13 +543,14 @@
     var grid = $("vote-grid");
     grid.innerHTML = "";
 
-    alivePlayers().forEach(function (player) {
+    alivePlayers().forEach(function (player, index) {
       var btn = el("button", "vote-card");
       btn.type = "button";
       btn.setAttribute("role", "option");
       btn.setAttribute("aria-selected", "false");
       btn.dataset.id = String(player.id);
-      btn.appendChild(el("span", "vote-initial", player.name.charAt(0).toUpperCase()));
+      btn.style.animationDelay = (index * 45) + "ms";
+      btn.appendChild(avatarFor(player, "avatar-md"));
       btn.appendChild(el("span", "vote-name", player.name));
       btn.addEventListener("click", function () { selectVote(player.id); });
       grid.appendChild(btn);
@@ -470,7 +573,15 @@
     var player = state.players.filter(function (p) { return p.id === state.selectedVote; })[0];
     player.alive = false;
     state.pendingElimination = player;
-    openRevealModal(player);
+
+    var card = $("vote-grid").querySelector('.vote-card[data-id="' + player.id + '"]');
+    if (!card || calmMotion()) {
+      openRevealModal(player);
+      return;
+    }
+    $("confirm-vote").disabled = true;
+    card.classList.add("is-eliminated");
+    window.setTimeout(function () { openRevealModal(player); }, 420);
   }
 
   /* =========================================================
@@ -482,6 +593,7 @@
     var badge = $("reveal-badge");
     badge.textContent = ROLE_LABEL[player.role];
     badge.className = "reveal-badge reveal-" + player.role;
+    setEmblem($("reveal-emblem"), player.role);
 
     var guessForm = $("guess-form");
     var continueBtn = $("reveal-continue");
@@ -589,10 +701,21 @@
       white: function (p) { return p.role === "white"; }
     }[camp];
 
+    var EMBLEM_ROLE = { civil: "civil", imposteurs: "undercover", white: "white" };
+    var endEmblem = $("end-emblem");
+    if (EMBLEM_ROLE[camp]) {
+      endEmblem.hidden = false;
+      setEmblem(endEmblem, EMBLEM_ROLE[camp]);
+    } else {
+      endEmblem.hidden = true;
+    }
+
     var list = $("reveal-list");
     list.innerHTML = "";
-    state.players.forEach(function (player) {
+    state.players.forEach(function (player, index) {
       var item = el("li", "reveal-item" + (player.alive ? "" : " is-out"));
+      item.style.animationDelay = (index * 60) + "ms";
+      item.appendChild(avatarFor(player, "avatar-sm"));
       item.appendChild(el("span", "reveal-name", player.name));
       item.appendChild(el("span", "role-tag role-" + player.role, ROLE_LABEL[player.role]));
       if (winners && winners(player)) item.appendChild(el("span", "reveal-win", "+" + POINTS[player.role]));
@@ -608,7 +731,13 @@
       save(STORE_SCORES, scores);
     }
 
+    var CONFETTI = {
+      civil: ["--civil", "--accent", "--mrwhite"],
+      imposteurs: ["--undercover", "--accent", "--surface-3"],
+      white: ["--mrwhite", "--accent", "--civil"]
+    };
     showScreen("screen-end");
+    launchConfetti((CONFETTI[camp] || []).map(cssVar));
   }
 
   function abandonGame() {

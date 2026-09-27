@@ -62,6 +62,12 @@ main en main.
   tentative pour deviner le mot des civils — s'il réussit, il gagne.
 - **Scores cumulés** entre les parties (civil 2 pts, Mister White 6 pts,
   undercover 10 pts), mémorisés dans le navigateur.
+- **Habillage animé** : emblème SVG par camp (silhouette, loup, carte vierge),
+  avatar coloré par joueur, carte à retourner en 3D avec un reflet qui balaie,
+  chapelet de progression pendant la distribution, entrées en cascade, carte
+  du joueur éliminé qui s'efface et gerbe de confettis aux couleurs du camp
+  vainqueur. Tout est en SVG et CSS, sans image ni dépendance, et se désactive
+  si le système demande des animations réduites (`prefers-reduced-motion`).
 - **Dictionnaire consultable** depuis l'écran de préparation : les paires
   rangées par niveau, avec un filtre. Le bouton n'existe que sur cet écran,
   donc les mots sont hors d'atteinte dès que les rôles sont distribués — et
