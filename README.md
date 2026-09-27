@@ -62,6 +62,10 @@ main en main.
   tentative pour deviner le mot des civils — s'il réussit, il gagne.
 - **Scores cumulés** entre les parties (civil 2 pts, Mister White 6 pts,
   undercover 10 pts), mémorisés dans le navigateur.
+- **Pensé pour le téléphone** : cibles tactiles de 44 px, modales qui
+  défilent au lieu de pousser leurs boutons hors de l'écran, mises en page
+  resserrées sous 360 px de large et sous 700 px de haut, double appui qui ne
+  déclenche pas le zoom.
 - **Habillage animé** : emblème SVG par camp (silhouette, loup, carte vierge),
   avatar coloré par joueur, carte à retourner en 3D avec un reflet qui balaie,
   chapelet de progression pendant la distribution, entrées en cascade, carte

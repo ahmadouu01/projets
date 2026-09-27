@@ -55,6 +55,16 @@
    l'emportent sur l'attribut hidden et laissent voir un élément masqué. */
 [hidden] { display: none !important; }
 
+/* Sur mobile, sans cela un double appui rapide zoome au lieu de compter
+   deux touches, et Safari ajoute un délai avant chaque clic. */
+button,
+input,
+.card,
+.vote-card,
+.segmented button {
+  touch-action: manipulation;
+}
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -78,7 +88,10 @@ body.modal-open { overflow: hidden; }
 body::before {
   content: "";
   position: fixed;
-  inset: -20%;
+  top: -20%;
+  right: -20%;
+  bottom: -20%;
+  left: -20%;
   z-index: -1;
   pointer-events: none;
   background:
@@ -269,7 +282,10 @@ main {
 
 .confetti {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   overflow: hidden;
   pointer-events: none;
   border-radius: var(--radius-lg);
@@ -566,6 +582,7 @@ main {
 .card {
   display: block;
   width: 100%;
+  min-height: 260px;
   aspect-ratio: 3 / 4;
   max-height: 60vh;
   margin: 0 auto 22px;
@@ -580,7 +597,10 @@ main {
 
 .card-face {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -589,8 +609,10 @@ main {
   padding: 26px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 
@@ -611,7 +633,10 @@ main {
 
 .card-shine {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   pointer-events: none;
@@ -645,7 +670,10 @@ main {
 .card-back-mark::after {
   content: "?";
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: grid;
   place-items: center;
   font-family: var(--ff-display);
@@ -832,12 +860,21 @@ main {
 
 .modal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 60;
-  display: grid;
-  place-items: center;
+  /* Flex + marge automatique : la boîte est centrée quand elle tient, et la
+     couche défile quand elle est trop haute. Avec un centrage en grille, le
+     haut de la boîte devient inatteignable sur les petits écrans. */
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 20px;
   background: var(--overlay);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   animation: fade-in 0.2s ease both;
 }
@@ -847,6 +884,7 @@ main {
 
 .modal-box {
   position: relative;
+  margin: auto;
   width: 100%;
   max-width: 460px;
   background: var(--surface);
@@ -861,7 +899,9 @@ main {
 .modal-box-scroll {
   text-align: left;
   max-height: 84vh;
+  max-height: 84dvh; /* la barre d'adresse mobile rogne les vh */
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .modal-box-scroll h4 {
   font-family: var(--ff-display);
@@ -915,6 +955,16 @@ main {
 #reveal-continue { margin-top: 18px; }
 
 .guess-form { margin-top: 16px; text-align: left; }
+
+/* Écran court : on rogne les marges plutôt que de pousser les boutons dehors. */
+@media (max-height: 700px) {
+  .modal-box { padding: 20px 18px; }
+  .modal-title { font-size: 26px; margin-bottom: 10px; }
+  #modal-reveal .emblem { width: 46px; height: 46px; margin-bottom: 8px; }
+  .reveal-badge { font-size: 27px; padding: 9px; margin-bottom: 10px; }
+  .btn { padding: 12px 20px; }
+  .btn-row { margin-top: 14px; }
+}
 .guess-form .field-label { text-align: left; }
 
 /* ---------------- Dictionnaire ---------------- */
