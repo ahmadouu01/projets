@@ -311,8 +311,12 @@
     }
   }
 
-  function onPlayerCountChange() {
-    $("player-count").value = String(playerCount());
+  /* Pendant la frappe on ne réécrit pas le champ : sinon taper « 12 » serait
+     ramené à « 3 » dès le premier chiffre et ce nombre resterait inatteignable.
+     On rafraîchit seulement le reste de l'écran, pour que la saisie se voie
+     tout de suite au lieu d'attendre que l'on sorte du champ. */
+  function onPlayerCountChange(typing) {
+    if (!typing) $("player-count").value = String(playerCount());
     renderPlayerInputs();
     renderRoles();
   }
@@ -334,15 +338,19 @@
         input.addEventListener("change", function () {
           applyStepperValue(kind, parseInt(input.value, 10) || 0);
         });
+        input.addEventListener("input", function () {
+          var raw = parseInt(input.value, 10);
+          if (isNaN(raw) || raw < MIN_PLAYERS || raw > MAX_PLAYERS) return;
+          applyStepperValue(kind, raw, true);
+        });
       })(steppers[i]);
     }
   }
 
-  function applyStepperValue(kind, value) {
+  function applyStepperValue(kind, value, typing) {
     if (kind === "players") {
-      $("player-count").value = String(clamp(value, MIN_PLAYERS, MAX_PLAYERS));
-      $("words-total").textContent = String(totalPairs());
-    onPlayerCountChange();
+      if (!typing) $("player-count").value = String(clamp(value, MIN_PLAYERS, MAX_PLAYERS));
+      onPlayerCountChange(typing);
       return;
     }
     state.counts[kind] = Math.max(0, value);

@@ -467,9 +467,18 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
   padding: 10px 0;
   min-height: 52px;
+}
+
+/* Sur un petit téléphone, on resserre plutôt que de pousser la page hors cadre. */
+@media (max-width: 360px) {
+  .roles-box { padding: 6px 10px; }
+  .stepper-sm .stepper-btn { width: 32px; height: 32px; }
+  .stepper-sm .stepper-value { width: 36px; }
+  .role-count { padding-right: 8px; }
 }
 .role-line + .role-line { border-top: 1px solid var(--border); }
 
