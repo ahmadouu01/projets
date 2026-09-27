@@ -55,6 +55,9 @@ main en main.
   Souris, Château / Cabane), *moyen* les rapproche (Café / Thé), *corsé* en
   fait des quasi-synonymes (Corbeau / Corneille). Le mode « mélangé » tire un
   niveau au hasard à chaque partie.
+- **Ordre de distribution tiré au sort** lui aussi : l'appareil ne part plus
+  systématiquement du premier pseudo de la liste, si bien que plus rien ne
+  relie un joueur à sa place.
 - **Déroulement** : distribution des mots carte par carte, premier à parler
   tiré au sort à chaque manche parmi les joueurs encore en jeu (Mister White
   compris), vote,

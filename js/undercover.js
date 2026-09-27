@@ -64,6 +64,7 @@
     undercoverWord: "",
     round: 1,
     dealIndex: 0,
+    dealOrder: [],
     starterId: null,
     selectedVote: null,
     pendingElimination: null,
@@ -417,6 +418,11 @@
       };
     });
 
+    /* L'ordre dans lequel l'appareil circule est lui aussi tiré au sort : le
+       premier servi change à chaque partie, et plus rien ne relie un joueur
+       à sa place dans la liste. */
+    state.dealOrder = shuffle(state.players);
+
     state.round = 1;
     state.dealIndex = 0;
     state.selectedVote = null;
@@ -435,8 +441,8 @@
      ========================================================= */
 
   function renderDeal() {
-    var player = state.players[state.dealIndex];
-    $("deal-progress").textContent = (state.dealIndex + 1) + " / " + state.players.length;
+    var player = state.dealOrder[state.dealIndex];
+    $("deal-progress").textContent = (state.dealIndex + 1) + " / " + state.dealOrder.length;
     $("deal-name").textContent = player.name;
     paintAvatar($("deal-avatar"), player);
     renderDealDots();
@@ -451,7 +457,7 @@
   function renderDealDots() {
     var dots = $("deal-dots");
     dots.innerHTML = "";
-    state.players.forEach(function (player, index) {
+    state.dealOrder.forEach(function (player, index) {
       var dot = el("li", "deal-dot"
         + (index < state.dealIndex ? " is-done" : "")
         + (index === state.dealIndex ? " is-current" : ""));
@@ -462,7 +468,7 @@
   function flipDealCard() {
     var card = $("deal-card");
     if (card.classList.contains("is-flipped")) return;
-    var player = state.players[state.dealIndex];
+    var player = state.dealOrder[state.dealIndex];
 
     if (player.role === "white") {
       $("card-role").textContent = "Aucun mot";
@@ -483,13 +489,13 @@
     word.classList.add("is-in");
 
     $("deal-next").disabled = false;
-    $("deal-next").textContent = state.dealIndex === state.players.length - 1
+    $("deal-next").textContent = state.dealIndex === state.dealOrder.length - 1
       ? "Tout le monde a son mot"
       : "J'ai vu — masquer";
   }
 
   function nextDeal() {
-    if (state.dealIndex < state.players.length - 1) {
+    if (state.dealIndex < state.dealOrder.length - 1) {
       state.dealIndex++;
       renderDeal();
     } else {
