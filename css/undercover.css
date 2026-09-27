@@ -240,7 +240,9 @@ main {
   line-height: 1;
   color: var(--ink);
   background: var(--avatar, var(--accent));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--avatar, var(--accent)) 22%, transparent);
+  /* Anneau neutre plutôt qu'un color-mix() : même rendu, et pris en charge
+     par les Safari antérieurs à iOS 16.2. */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.07);
 }
 
 .avatar-sm { width: 28px; height: 28px; font-size: 15px; box-shadow: none; }
