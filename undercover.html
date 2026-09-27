@@ -9,7 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/undercover.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&family=IBM+Plex+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/undercover.css" />
 </head>
 <body>
@@ -35,6 +35,36 @@
     <!-- ================= ÉCRAN 1 : CONFIGURATION ================= -->
     <section class="screen is-active" id="screen-setup" aria-labelledby="setup-title">
       <div class="panel">
+        <div class="cast" aria-hidden="true">
+          <div class="cast-item cast-civil">
+            <span class="cast-badge">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="17" r="7" /><path d="M10 39c0-7.7 6.3-14 14-14s14 6.3 14 14" />
+              </svg>
+            </span>
+            <span class="cast-label">Civils</span>
+          </div>
+          <div class="cast-item cast-undercover">
+            <span class="cast-badge">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 17h36v8a9 9 0 0 1-9 9c-4 0-7-2-8.5-5h-5C18 32 15 34 11 34a9 9 0 0 1-9-9v-8h4z" />
+                <circle cx="15" cy="24" r="2.6" fill="currentColor" stroke="none" />
+                <circle cx="33" cy="24" r="2.6" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+            <span class="cast-label">Undercovers</span>
+          </div>
+          <div class="cast-item cast-white">
+            <span class="cast-badge">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
+                <rect x="12" y="7" width="24" height="34" rx="4" stroke-dasharray="6 4" />
+                <text x="24" y="31" text-anchor="middle" font-size="17" font-weight="700" fill="currentColor" stroke="none">?</text>
+              </svg>
+            </span>
+            <span class="cast-label">Mister White</span>
+          </div>
+        </div>
+
         <p class="eyebrow">Préparation</p>
         <h1 class="screen-title" id="setup-title">Qui joue&nbsp;?</h1>
         <p class="lede">
@@ -140,7 +170,12 @@
         <button class="card" id="deal-card" type="button" aria-live="polite">
           <span class="card-face card-back">
             <span class="card-shine" aria-hidden="true"></span>
-            <span class="card-back-mark" aria-hidden="true"></span>
+            <span class="card-back-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                <circle cx="22" cy="30" r="9" /><circle cx="44" cy="30" r="9" />
+                <path d="M31 30h4" /><path d="M8 26c3-4 6-4 5 4M56 26c-3-4-6-4-5 4" />
+              </svg>
+            </span>
             <span class="card-back-text">Toucher pour révéler</span>
           </span>
           <span class="card-face card-front">

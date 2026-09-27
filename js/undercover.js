@@ -589,7 +589,7 @@
     }
     $("confirm-vote").disabled = true;
     card.classList.add("is-eliminated");
-    window.setTimeout(function () { openRevealModal(player); }, 420);
+    window.setTimeout(function () { openRevealModal(player); }, 620);
   }
 
   /* =========================================================

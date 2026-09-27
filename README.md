@@ -66,11 +66,18 @@ main en main.
   défilent au lieu de pousser leurs boutons hors de l'écran, mises en page
   resserrées sous 360 px de large et sous 700 px de haut, double appui qui ne
   déclenche pas le zoom.
+- **Identité typographique** : Bodoni Moda pour les titres (serif à fort
+  contraste, théâtral), Plus Jakarta Sans pour le texte, IBM Plex Mono pour
+  les étiquettes — l'esprit « dossier d'espionnage ».
+- **Atmosphère** : grain de pellicule et vignettage en surimpression, trois
+  aurores qui dérivent en fond, dos de carte guilloché et sceau à l'anneau
+  pointillé qui tourne.
 - **Habillage animé** : emblème SVG par camp (silhouette, loup, carte vierge),
   avatar coloré par joueur, carte à retourner en 3D avec un reflet qui balaie,
   chapelet de progression pendant la distribution, entrées en cascade, carte
-  du joueur éliminé qui s'efface et gerbe de confettis aux couleurs du camp
-  vainqueur. Tout est en SVG et CSS, sans image ni dépendance, et se désactive
+  du joueur éliminé frappée d'un tampon « ÉLIMINÉ » avant de s'effacer, onde
+  de détection derrière l'emblème du rôle révélé, titres qui se lèvent
+  derrière un cache et gerbe de confettis aux couleurs du camp vainqueur. Tout est en SVG et CSS, sans image ni dépendance, et se désactive
   si le système demande des animations réduites (`prefers-reduced-motion`).
 - **Dictionnaire consultable** depuis l'écran de préparation : les paires
   rangées par niveau, avec un filtre. Le bouton n'existe que sur cet écran,

@@ -39,14 +39,18 @@
   /* Halos de fond */
   --bg-glow-1: rgba(246, 169, 124, 0.13);
   --bg-glow-2: rgba(111, 207, 174, 0.09);
+  --bg-glow-3: rgba(227, 127, 166, 0.08);
 
   --radius-sm: 10px;
   --radius: 16px;
   --radius-lg: 26px;
   --shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
   --shadow-accent: 0 10px 26px rgba(246, 169, 124, 0.22);
-  --ff-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
-  --ff-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Serif à fort contraste pour le théâtre, grotesque pour la lecture,
+     monospace pour les étiquettes de dossier. */
+  --ff-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --ff-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ff-label: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -84,25 +88,44 @@ body {
 
 body.modal-open { overflow: hidden; }
 
-/* Les halos respirent très lentement : de la vie, sans distraction. */
+/* Aurores qui dérivent très lentement : de la vie, sans distraction. */
 body::before {
   content: "";
   position: fixed;
-  top: -20%;
-  right: -20%;
-  bottom: -20%;
-  left: -20%;
+  top: -25%;
+  right: -25%;
+  bottom: -25%;
+  left: -25%;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(620px 420px at 20% 15%, var(--bg-glow-1), transparent 60%),
-    radial-gradient(560px 400px at 82% 30%, var(--bg-glow-2), transparent 60%);
-  animation: drift 24s ease-in-out infinite alternate;
+    radial-gradient(620px 420px at 18% 12%, var(--bg-glow-1), transparent 62%),
+    radial-gradient(560px 400px at 84% 26%, var(--bg-glow-2), transparent 62%),
+    radial-gradient(520px 520px at 60% 92%, var(--bg-glow-3), transparent 62%);
+  animation: drift 26s ease-in-out infinite alternate;
 }
 
 @keyframes drift {
-  from { transform: translate3d(-3%, -2%, 0) scale(1); }
-  to   { transform: translate3d(3%, 3%, 0) scale(1.08); }
+  from { transform: translate3d(-3%, -2%, 0) scale(1) rotate(-1.5deg); }
+  to   { transform: translate3d(3%, 3%, 0) scale(1.1) rotate(1.5deg); }
+}
+
+/* Grain de pellicule et vignettage : la texture qui fait le cinéma. */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(130% 90% at 50% 0%, transparent 42%, rgba(0, 0, 0, 0.55) 100%),
+    url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: cover, 160px 160px;
+  mix-blend-mode: soft-light;
 }
 
 h1, h2, h3, h4 { margin: 0; }
@@ -198,20 +221,33 @@ main {
 .panel-center { text-align: center; }
 
 .eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: var(--ff-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .screen-title {
   font-family: var(--ff-display);
-  font-size: clamp(34px, 9vw, 46px);
-  letter-spacing: 1.5px;
-  line-height: 1.05;
+  font-size: clamp(31px, 8.4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.04;
+  text-wrap: balance;
   margin-bottom: 10px;
+}
+
+/* Le titre se lève derrière un cache, comme un rideau. */
+.screen.is-active .screen-title {
+  animation: title-rise 0.7s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+
+@keyframes title-rise {
+  from { opacity: 0; transform: translateY(0.42em); clip-path: inset(0 0 100% 0); }
+  to   { opacity: 1; transform: none; clip-path: inset(-25% -25% -25% -25%); }
 }
 
 .lede {
@@ -224,6 +260,68 @@ main {
   color: var(--text-faint);
   font-size: 13px;
   margin-top: 8px;
+}
+
+/* ---------------- Trio d'ouverture ---------------- */
+
+.cast {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.cast-item {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  animation: cast-float 5.5s ease-in-out infinite;
+}
+.cast-item:nth-child(2) { animation-delay: -1.8s; }
+.cast-item:nth-child(3) { animation-delay: -3.6s; }
+
+@keyframes cast-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.cast-badge {
+  width: 54px;
+  height: 54px;
+  padding: 11px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  position: relative;
+}
+.cast-badge svg { width: 100%; height: 100%; }
+
+/* Halo qui respire derrière chaque emblème. */
+.cast-badge::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.12;
+  filter: blur(9px);
+}
+
+.cast-civil { color: var(--civil); }
+.cast-undercover { color: var(--undercover); }
+.cast-white { color: var(--mrwhite); }
+
+.cast-label {
+  font-family: var(--ff-label);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: center;
 }
 
 /* ---------------- Avatars et emblèmes ---------------- */
@@ -268,7 +366,31 @@ main {
 .emblem-undercover { color: var(--undercover); }
 .emblem-white { color: var(--mrwhite); }
 
+.emblem {
+  position: relative;
+}
 .emblem.is-in { animation: emblem-in 0.5s cubic-bezier(0.2, 1.2, 0.4, 1) both; }
+
+/* Onde de détection, comme un sonar qui vient de repérer quelqu'un. */
+.emblem.is-in::before,
+.emblem.is-in::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  margin: -50% 0 0 -50%;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  animation: ping 1.5s cubic-bezier(0.1, 0.6, 0.3, 1) 2;
+}
+.emblem.is-in::after { animation-delay: 0.45s; }
+
+@keyframes ping {
+  from { opacity: 0.6; transform: scale(0.8); }
+  to   { opacity: 0; transform: scale(2.1); }
+}
 
 @keyframes emblem-in {
   from { opacity: 0; transform: scale(0.55) rotate(-12deg); }
@@ -318,9 +440,10 @@ main {
 
 .field-label {
   display: block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
+  font-family: var(--ff-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 10px;
@@ -509,9 +632,10 @@ main {
 .role-tag {
   display: inline-flex;
   align-items: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family: var(--ff-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 999px;
@@ -536,10 +660,33 @@ main {
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, var(--accent), var(--accent-dark));
   color: var(--ink);
   box-shadow: var(--shadow-accent);
 }
+
+/* Un reflet balaie le bouton de loin en loin : il reste vivant sans s'agiter. */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 38%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-18deg);
+  animation: btn-sheen 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-sheen {
+  0%, 72% { left: -60%; }
+  100%    { left: 130%; }
+}
+
+.btn-primary:disabled::after { display: none; }
 .btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
 .btn-primary:disabled { box-shadow: none; }
 
@@ -620,7 +767,9 @@ main {
 
 .card-back {
   background:
-    repeating-linear-gradient(135deg, var(--accent-mist) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(45deg, var(--accent-mist) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, var(--accent-mist) 0 1px, transparent 1px 7px),
+    radial-gradient(120% 90% at 50% 40%, rgba(246, 169, 124, 0.07), transparent 65%),
     linear-gradient(160deg, var(--surface-2), var(--surface));
   transform: rotateY(0deg);
 }
@@ -663,40 +812,60 @@ main {
 .card.is-flipped .card-shine { display: none; }
 
 .card-back-mark {
-  width: 64px;
-  height: 64px;
+  width: 86px;
+  height: 86px;
+  padding: 22px;
   border-radius: 50%;
-  border: 3px solid var(--accent);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
   position: relative;
 }
+.card-back-mark svg { width: 100%; height: 100%; }
+
+/* Deux anneaux : l'un plein, l'autre pointillé qui tourne lentement. */
+.card-back-mark::before,
 .card-back-mark::after {
-  content: "?";
+  content: "";
   position: absolute;
+  border-radius: 50%;
+}
+.card-back-mark::before {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--ff-display);
-  font-size: 38px;
-  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  opacity: 0.5;
+}
+.card-back-mark::after {
+  top: -9px;
+  right: -9px;
+  bottom: -9px;
+  left: -9px;
+  border: 1px dashed var(--accent-line);
+  opacity: 0.4;
+  animation: seal-turn 22s linear infinite;
 }
 
+@keyframes seal-turn { to { transform: rotate(360deg); } }
+
 .card-back-text {
-  font-size: 13px;
-  letter-spacing: 1.5px;
+  font-family: var(--ff-label);
+  font-size: 11px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-dim);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .card-role {
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-family: var(--ff-label);
+  font-size: 11px;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .card-word {
@@ -754,11 +923,12 @@ main {
 .turn-name { font-weight: 600; flex: 1; }
 
 .turn-flag {
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-family: var(--ff-label);
+  font-size: 10px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ---------------- Vote ---------------- */
@@ -770,6 +940,7 @@ main {
 }
 
 .vote-card {
+  position: relative;
   animation: pop-in 0.3s ease both;
   display: flex;
   flex-direction: column;
@@ -794,15 +965,41 @@ main {
 .vote-card.is-selected .avatar { box-shadow: 0 0 0 4px var(--undercover-veil); }
 
 .vote-card.is-eliminated {
-  animation: knocked-out 0.42s ease forwards;
+  animation: knocked-out 0.62s ease forwards;
   pointer-events: none;
+  overflow: hidden;
+}
+
+/* Le tampon s'abat, puis la carte s'efface. */
+.vote-card.is-eliminated::after {
+  content: "ÉLIMINÉ";
+  position: absolute;
+  top: 50%;
+  left: -12%;
+  width: 124%;
+  padding: 5px 0;
+  font-family: var(--ff-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--ink);
+  background: var(--danger);
+  transform: translateY(-50%) rotate(-11deg);
+  animation: stamp 0.34s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes stamp {
+  from { opacity: 0; transform: translateY(-50%) rotate(-11deg) scale(2.1); }
+  to   { opacity: 1; transform: translateY(-50%) rotate(-11deg) scale(1); }
 }
 
 @keyframes knocked-out {
   0%   { transform: none; opacity: 1; }
-  25%  { transform: translateX(-5px) rotate(-3deg); }
-  55%  { transform: translateX(5px) rotate(3deg); }
-  100% { transform: scale(0.72) rotate(-8deg); opacity: 0; }
+  10%  { transform: scale(0.96); }
+  22%  { transform: scale(1); }
+  70%  { opacity: 1; }
+  100% { transform: scale(0.78) rotate(-6deg); opacity: 0; }
 }
 
 .vote-name {
