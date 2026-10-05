@@ -237,10 +237,17 @@
     var used = {};
     var names = [];
     for (var i = 0; i < n; i++) {
-      var raw = (state.names[i] || "").trim();
-      var name = raw || "Joueur " + (i + 1);
-      if (used[name.toLowerCase()]) name = name + " " + (used[name.toLowerCase()] + 1);
-      used[name.toLowerCase()] = (used[name.toLowerCase()] || 0) + 1;
+      var base = (state.names[i] || "").trim() || "Joueur " + (i + 1);
+      var name = base;
+      var suffixe = 2;
+      /* On suffixe jusqu'à tomber sur un nom libre, et on enregistre le nom
+         retenu : sans cela « Ana, Ana, Ana 2 » donnait deux « Ana 2 »
+         identiques, ce qui brouillait le vote et le décompte des points. */
+      while (used[name.toLowerCase()]) {
+        name = base + " " + suffixe;
+        suffixe++;
+      }
+      used[name.toLowerCase()] = true;
       names.push(name);
     }
     return names;
@@ -554,6 +561,7 @@
   function renderVote() {
     state.selectedVote = null;
     $("confirm-vote").disabled = true;
+    $("back-round").disabled = false;
     var grid = $("vote-grid");
     grid.innerHTML = "";
 
@@ -593,7 +601,10 @@
       openRevealModal(player);
       return;
     }
+    /* Le temps du tampon, on verrouille aussi le retour en arrière : sinon on
+       pouvait repartir vers la manche et voir la modale s'ouvrir par-dessus. */
     $("confirm-vote").disabled = true;
+    $("back-round").disabled = true;
     card.classList.add("is-eliminated");
     window.setTimeout(function () { openRevealModal(player); }, 620);
   }
@@ -896,6 +907,12 @@
     $("start-game").addEventListener("click", startGame);
     $("deal-card").addEventListener("click", flipDealCard);
     $("deal-next").addEventListener("click", nextDeal);
+    /* Sans cette sortie, un « Rejouer » touché par erreur obligeait à
+       distribuer toutes les cartes avant de pouvoir abandonner. */
+    $("deal-cancel").addEventListener("click", function () {
+      state.running = false;
+      showScreen("screen-setup");
+    });
     $("go-vote").addEventListener("click", function () {
       renderVote();
       showScreen("screen-vote");

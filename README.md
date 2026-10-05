@@ -69,9 +69,9 @@ main en main.
   défilent au lieu de pousser leurs boutons hors de l'écran, mises en page
   resserrées sous 360 px de large et sous 700 px de haut, double appui qui ne
   déclenche pas le zoom.
-- **Identité typographique** : Bodoni Moda pour les titres (serif à fort
-  contraste, théâtral), Plus Jakarta Sans pour le texte, IBM Plex Mono pour
-  les étiquettes — l'esprit « dossier d'espionnage ».
+- **Identité typographique** : Bricolage Grotesque pour les titres (grotesque
+  irrégulier, très affirmé), Hanken Grotesk pour le texte, Space Mono pour les
+  étiquettes — l'esprit « dossier d'espionnage ».
 - **Atmosphère** : grain de pellicule et vignettage en surimpression, trois
   aurores qui dérivent en fond, dos de carte guilloché et sceau à l'anneau
   pointillé qui tourne.

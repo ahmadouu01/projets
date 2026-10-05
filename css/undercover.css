@@ -46,11 +46,11 @@
   --radius-lg: 26px;
   --shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
   --shadow-accent: 0 10px 26px rgba(246, 169, 124, 0.22);
-  /* Serif à fort contraste pour le théâtre, grotesque pour la lecture,
-     monospace pour les étiquettes de dossier. */
-  --ff-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
-  --ff-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ff-label: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Grotesque irrégulier pour le caractère, grotesque net pour la lecture,
+     monospace rétro-technique pour les étiquettes de dossier. */
+  --ff-display: "Bricolage Grotesque", "Helvetica Neue", Impact, sans-serif;
+  --ff-body: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ff-label: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -169,8 +169,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   gap: 10px;
   font-family: var(--ff-display);
-  font-size: clamp(24px, 7vw, 30px);
-  letter-spacing: 2px;
+  font-size: clamp(23px, 6.6vw, 29px);
+  font-weight: 800;
+  letter-spacing: -0.6px;
   color: var(--text);
   text-decoration: none;
 }
@@ -232,9 +233,9 @@ main {
 
 .screen-title {
   font-family: var(--ff-display);
-  font-size: clamp(31px, 8.4vw, 44px);
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: clamp(30px, 8.2vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
   line-height: 1.04;
   text-wrap: balance;
   margin-bottom: 10px;
@@ -334,6 +335,7 @@ main {
   display: grid;
   place-items: center;
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 18px;
   line-height: 1;
   color: var(--ink);
@@ -496,6 +498,7 @@ main {
   border: none;
   color: var(--text);
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 30px;
   text-align: center;
   -moz-appearance: textfield;
@@ -590,6 +593,7 @@ main {
   border: 2px solid var(--accent);
   color: var(--accent);
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 28px;
 }
 
@@ -625,6 +629,7 @@ main {
 
 .role-count {
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 28px;
   padding-right: 18px;
 }
@@ -870,8 +875,9 @@ main {
 
 .card-word {
   font-family: var(--ff-display);
-  font-size: clamp(30px, 9vw, 54px);
-  letter-spacing: 1px;
+  font-size: clamp(29px, 8.6vw, 50px);
+  font-weight: 800;
+  letter-spacing: -1px;
   line-height: 1.05;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -1031,6 +1037,7 @@ main {
 }
 .word-reveal-item strong {
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 26px;
   letter-spacing: 0.5px;
 }
@@ -1104,6 +1111,7 @@ main {
 }
 .modal-box-scroll h4 {
   font-family: var(--ff-display);
+  font-weight: 700;
   font-size: 22px;
   letter-spacing: 1px;
   margin: 20px 0 8px;
@@ -1112,8 +1120,9 @@ main {
 
 .modal-title {
   font-family: var(--ff-display);
-  font-size: 30px;
-  letter-spacing: 1px;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
   margin-bottom: 14px;
 }
 
@@ -1141,8 +1150,9 @@ main {
 
 .reveal-badge {
   font-family: var(--ff-display);
-  font-size: 34px;
-  letter-spacing: 2px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
   padding: 12px;
   border-radius: var(--radius);
   margin-bottom: 14px;
@@ -1157,6 +1167,8 @@ main {
 
 /* Écran court : on rogne les marges plutôt que de pousser les boutons dehors. */
 @media (max-height: 700px) {
+  /* En paysage, la hauteur plancher de la carte dépassait l'écran. */
+  .card { min-height: 170px; }
   .modal-box { padding: 20px 18px; }
   .modal-title { font-size: 26px; margin-bottom: 10px; }
   #modal-reveal .emblem { width: 46px; height: 46px; margin-bottom: 8px; }
@@ -1236,7 +1248,8 @@ main {
 }
 .score-item:first-child .score-rank { background: var(--accent); color: var(--ink); }
 .score-name { flex: 1; font-weight: 600; }
-.score-points { font-family: var(--ff-display); font-size: 20px; color: var(--accent); }
+.score-points { font-family: var(--ff-display);
+  font-weight: 700; font-size: 20px; color: var(--accent); }
 .score-empty { color: var(--text-faint); font-size: 14px; }
 
 /* ---------------- Pied de page ---------------- */
