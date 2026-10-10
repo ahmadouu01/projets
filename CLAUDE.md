@@ -44,8 +44,11 @@ Arrondi utilisé dans les calculs rapides : 1 € ≈ 656 FCFA.
 ## 4. Règles de travail (à respecter à chaque phase)
 
 1. **Phase par phase.** À la fin de chaque phase : résumé, hypothèses,
-   questions ouvertes, puis **attendre la validation d'Ahmadou** avant de
-   passer à la suivante.
+   questions ouvertes. **Depuis le 10/10/2026, Ahmadou a demandé que les
+   phases 4 à 10 soient menées en autonomie** (« fais tout tout seul ») :
+   enchaîner sans attendre de validation, en retenant par défaut les
+   propositions faites et en listant les choix à confirmer dans
+   `docs/00-synthese.md`.
 2. **Sources sénégalaises officielles.** Pour tout chiffre ou règle propre au
    Sénégal (fiscalité, droit OHADA, environnement, tarifs eau/électricité,
    salaires, etc.), chercher une **source officielle** et la **citer** (lien +
