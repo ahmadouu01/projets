@@ -123,9 +123,9 @@ comme une **borne haute**, pas comme un objectif.
 
 ## 5. Sensibilités clés
 
-Ordres de grandeur tirés des écarts entre scénarios. Pour des
-sensibilités précises, modifier une seule hypothèse à la fois dans la
-colonne « Central ».
+Tests réalisés le 10/10/2026 en modifiant **une seule hypothèse** de la
+colonne « Central » (version d'investissement frugale), puis en
+recalculant le classeur.
 
 | Si… (une seule hypothèse modifiée) | Besoin de financement | Écart avec l'épargne | Point mort (années 1 → 5) |
 |---|---|---|---|
