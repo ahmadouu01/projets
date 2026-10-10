@@ -32,10 +32,10 @@ son remplacement.
 | Financement | **Épargne personnelle uniquement** |
 | Apport actuel | ~**10 M FCFA** (≈ 15 245 €) |
 | Épargne mensuelle | ~**500 €/mois** aujourd'hui, objectif **1 000 €/mois** |
-| Relation bancaire / réseau pro au Sénégal | **Aucun** à ce jour |
+| Relation bancaire / réseau pro au Sénégal | **Aucun** à ce jour ; pas de contact Elis, pas de relais familial : terrain mené seul |
 | Calendrier | **Validation terrain d'abord**, démarrage de l'activité visé **fin 2030** |
 | Rémunération du dirigeant | **Aucun salaire avant ~4 ans** |
-| Zone d'implantation | **Non arrêtée** |
+| Zone d'implantation | **Non arrêtée** — terrain sur **toute la région de Dakar** (5 départements) |
 | Option à étudier (décidée le 10/10/2026) | **Entretien du linge appartenant au client**, en complément de la location (porte d'entrée) |
 
 Conversion : parité fixe **1 € = 655,957 FCFA** (franc CFA UEMOA, BCEAO).
@@ -92,5 +92,6 @@ livrables/                       # Phase 10 — business plan Word, pitch
 |---|---|
 | 0. Cadrage (CLAUDE.md, arborescence) | Fait |
 | 1. Modèle Elis | **Validée** le 10/10/2026 |
-| 2. Marché dakarois | Rédigée (`docs/02-marche-dakar.md`), en attente de validation |
-| 3 à 10 | À faire |
+| 2. Marché dakarois | **Validée** le 10/10/2026 (périmètre élargi à toute la région) |
+| 3. Validation terrain | Rédigée (`docs/03-validation-terrain.md`, outils dans `terrain/`), en attente de validation |
+| 4 à 10 | À faire |

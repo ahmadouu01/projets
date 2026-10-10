@@ -13,7 +13,10 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 | 2026-10-10 | 1 | **Validée** : les 6 leçons Elis deviennent le fil conducteur |
 | 2026-10-10 | 1 | Option « entretien du linge appartenant au client » à étudier (en complément de la location) |
 | 2026-10-10 | 1 | Pas de contact Elis/Initial/Anett dans le réseau → prévoir une approche LinkedIn en phase 3 |
-| 2026-10-10 | 2 | Marché dakarois rédigé (`02-marche-dakar.md`) — **en attente de validation** |
+| 2026-10-10 | 2 | **Validée avec ajustement** : couvrir **toute la région de Dakar**, sans restreindre zones ni segments d'avance |
+| 2026-10-10 | 2 | Stratégie validée : entretien du linge client d'abord, puis passage progressif à la location |
+| 2026-10-10 | 2 | Pas de LinkedIn, pas de visite, pas de relais à Dakar : terrain mené seul (à distance puis sur place) |
+| 2026-10-10 | 3 | Validation terrain rédigée (`03-validation-terrain.md` + outils `terrain/`) — **en attente de validation** |
 
 ## Enseignements clés (phase 1, validés)
 1. Vendre une disponibilité de linge, pas un lavage.
@@ -27,11 +30,11 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 - Capacité de 3 machines : ≈ 300 à 550 kg/jour [ESTIMATION].
 - Linge hôtelier de la région de Dakar : ≈ 7 à 13 t/jour [ESTIMATION] → il suffit de 3 à 5 % de ce segment pour remplir l'atelier.
 - Portefeuille cible : 15 à 25 clients, aucun au-dessus de 20 % du volume.
-- Segments prioritaires proposés : hôtels moyens et résidences, cliniques privées, restaurants haut de gamme.
+- Segments : hôtels moyens et résidences, cliniques, restaurants = pistes privilégiées, mais **tous les segments et toute la région** testés sur le terrain.
 - Prix B2B au kg : **inconnu (priorité n°1 du terrain)**.
 
 ## Questions ouvertes
-- (Ph. 2) Valider les 3 segments prioritaires et la stratégie « entretien du linge client puis conversion vers la location ».
-- (Ph. 2) Approche LinkedIn d'anciens d'Elis / Initial / Anett et visite d'une blanchisserie près de Lyon ?
-- (Ph. 2) Proches à Dakar disponibles pour un premier repérage ?
+- (Ph. 3) Valider les critères go / no-go et le calendrier des 2 voyages (T2 2027, T1 2028).
+- (Ph. 3) Recensement des prospects : préparé par Claude ou par Ahmadou ?
+- (Ph. 3) Entretiens en français et en wolof ?
 - (Ph. 1) À VÉRIFIER : durée des contrats, rétention et amortissement du linge chez Elis (document d'enregistrement universel 2025).

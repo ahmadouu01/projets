@@ -1,0 +1,2 @@
+id;nom;segment;departement;quartier;taille (chambres/lits/couverts/salaries);telephone;source;statut (a contacter/appele/rdv/vu/LOI/refus);date dernier contact;mode lavage actuel;volume kg/semaine;prix paye FCFA (kg ou piece);delai paiement jours;interet location (oui/non/?);potentiel 1-5;prochaine etape;fiche
+1;Exemple Hotel;hotel;Dakar;Almadies;40 ch.;;Google Maps;a contacter;;;;;;;;;
