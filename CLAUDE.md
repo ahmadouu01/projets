@@ -29,13 +29,16 @@ son remplacement.
 |---|---|
 | Modèle | Location-entretien **en direct** (pas de lavage sous-traité) |
 | Outil de production au lancement | **3 machines en propre** |
-| Financement | **Épargne personnelle uniquement** |
+| Financement | Épargne personnelle en base ; **complément accepté le 10/10/2026** : crédit-bail, prêt bancaire et/ou apports familiaux (écart central ≈ 43 M FCFA) |
 | Apport actuel | ~**10 M FCFA** (≈ 15 245 €) |
-| Épargne mensuelle | ~**500 €/mois** aujourd'hui, objectif **1 000 €/mois** |
+| Épargne mensuelle | ~**500 €/mois** aujourd'hui, **1 000 €/mois à partir de janvier 2028** (validé) |
 | Relation bancaire / réseau pro au Sénégal | **Aucun** à ce jour ; pas de contact Elis, pas de relais familial : terrain mené seul |
 | Calendrier | **Validation terrain d'abord**, démarrage de l'activité visé **fin 2030** |
 | Rémunération du dirigeant | **Aucun salaire avant ~4 ans** |
 | Zone d'implantation | **Non arrêtée** — terrain sur **toute la région de Dakar** (5 départements) |
+| Forme juridique | SUARL, capital ≈ 1 M FCFA + compte courant d'associé ; création début 2030 (validé) |
+| Investissement de référence | Version frugale ≈ 46 M FCFA (validé) |
+| Réserve personnelle | 12 mois × 350 000 FCFA (validé) |
 | Option à étudier (décidée le 10/10/2026) | **Entretien du linge appartenant au client**, en complément de la location (porte d'entrée) |
 
 Conversion : parité fixe **1 € = 655,957 FCFA** (franc CFA UEMOA, BCEAO).
@@ -97,11 +100,11 @@ livrables/                       # Phase 10 — business plan Word, pitch
 | 1. Modèle Elis | **Validée** le 10/10/2026 |
 | 2. Marché dakarois | **Validée** le 10/10/2026 (périmètre élargi à toute la région) |
 | 3. Validation terrain | **Validée** le 10/10/2026 (outils dans `terrain/`, 50 prospects recensés) |
-| 4. Offre et tarification | Rédigée en autonomie |
-| 5. Juridique et administratif | Rédigée en autonomie |
-| 6. Opérations | Rédigée en autonomie |
-| 7. Modèle financier | `finance/modele.xlsx` + notice `docs/07` |
-| 8. Risques | Rédigée en autonomie |
-| 9. Feuille de route | Rédigée en autonomie |
-| 10. Livrables finaux | `livrables/setal-pro-business-plan.docx` + `livrables/pitch.md` |
-| **Prochaine étape** | Relecture par Ahmadou des choix par défaut (`docs/00-synthese.md`), puis terrain (J1-J3) |
+| 4. Offre et tarification | **Validée** le 10/10/2026 |
+| 5. Juridique et administratif | **Validée** le 10/10/2026 |
+| 6. Opérations | **Validée** le 10/10/2026 |
+| 7. Modèle financier | **Validé** le 10/10/2026 (`finance/modele.xlsx` + `docs/07`) |
+| 8. Risques | **Validée** le 10/10/2026 |
+| 9. Feuille de route | **Validée** le 10/10/2026 |
+| 10. Livrables finaux | **Validés** le 10/10/2026 (`livrables/`) |
+| **Prochaine étape** | Exécution de la feuille de route : J1 (épargne automatique), J2 (recensement), J3 (entretiens à distance) |

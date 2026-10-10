@@ -25,6 +25,7 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 | 2026-10-10 | 7 | Modèle Excel : écart de financement central ≈ – 43 M FCFA (version frugale) |
 | 2026-10-10 | 8-9 | 18 risques, dont 5 rouges ; 17 jalons, décision go / no-go en mars 2028 |
 | 2026-10-10 | 10 | Business plan Word et pitch produits (`livrables/`) |
+| 2026-10-10 | 4-10 | **Tout validé par Ahmadou**, y compris : ouverture au crédit-bail, au prêt bancaire et aux apports familiaux ; 1 000 €/mois dès janvier 2028 ; réserve personnelle de 12 × 350 000 FCFA |
 
 ## Enseignements clés (phase 1, validés)
 1. Vendre une disponibilité de linge, pas un lavage.
@@ -45,9 +46,10 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 - Offre (phase 4) : Setal Entretien (linge du client) → Setal Location (clause de remplacement) → Setal Tenues (an 2 ou 3) ; engagement J+1, ≥ 98 % livré à temps.
 
 ## Questions ouvertes
-- (Ph. 3) Compléter le recensement jusqu'à 200 à 300 prospects (répertoire du ministère de la Santé, Google Maps : restaurants, industrie, sécurité, BTP).
-- (Ph. 4) Confirmer les 3 formules, les exclusions, les engagements de service et les noms.
-- (Ph. 5) 5 vérifications prioritaires : DEEC (classement, NS 05-061), seuil du Code des investissements, IMF/CEL dans le CGI 2025, gérance d'un non-résident et convention fiscale France-Sénégal, convention collective.
-- (Ph. 7) **Décision clé : es-tu ouvert au crédit-bail, à un prêt bancaire ou à des apports familiaux ?** Sans l'un d'eux, le plan central n'est pas finançable à fin 2030.
-- (Ph. 7) Confirmer la date du passage à 1 000 €/mois et les besoins personnels mensuels à Dakar (réserve de 12 mois × 350 000 FCFA retenue).
-- (Ph. 1) À VÉRIFIER : durée des contrats, rétention et amortissement du linge chez Elis (document d'enregistrement universel 2025).
+- Aucune décision en attente. Les points « À VÉRIFIER » restants se traitent sur le terrain (voir `docs/05` §10, `docs/06` §12 et `docs/09`).
+
+## Prochaines actions (feuille de route)
+1. **J1 — nov. 2026** : virement automatique de 500 €/mois vers un compte dédié « Setal Pro ».
+2. **J2 — fév. 2027** : compléter `terrain/suivi-prospects.csv` jusqu'à 200 à 300 prospects (répertoire du ministère de la Santé, Google Maps).
+3. **J3 — mars 2027** : 10 à 15 entretiens WhatsApp avec le guide ; relever les premiers prix au kg et les reporter dans `finance/modele.xlsx`.
+4. **J4 — avr. 2027** : rendez-vous du voyage 1 (prospects, APIX, DEEC, ONAS, expert-comptable).
