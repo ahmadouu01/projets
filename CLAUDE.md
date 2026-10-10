@@ -97,5 +97,11 @@ livrables/                       # Phase 10 — business plan Word, pitch
 | 1. Modèle Elis | **Validée** le 10/10/2026 |
 | 2. Marché dakarois | **Validée** le 10/10/2026 (périmètre élargi à toute la région) |
 | 3. Validation terrain | **Validée** le 10/10/2026 (outils dans `terrain/`, 50 prospects recensés) |
-| 4. Offre et tarification | Rédigée (`docs/04-offre-tarification.md`), en attente de validation |
-| 5 à 10 | À faire |
+| 4. Offre et tarification | Rédigée en autonomie |
+| 5. Juridique et administratif | Rédigée en autonomie |
+| 6. Opérations | Rédigée en autonomie |
+| 7. Modèle financier | `finance/modele.xlsx` + notice `docs/07` |
+| 8. Risques | Rédigée en autonomie |
+| 9. Feuille de route | Rédigée en autonomie |
+| 10. Livrables finaux | `livrables/setal-pro-business-plan.docx` + `livrables/pitch.md` |
+| **Prochaine étape** | Relecture par Ahmadou des choix par défaut (`docs/00-synthese.md`), puis terrain (J1-J3) |
