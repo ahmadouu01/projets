@@ -36,6 +36,7 @@ son remplacement.
 | Calendrier | **Validation terrain d'abord**, démarrage de l'activité visé **fin 2030** |
 | Rémunération du dirigeant | **Aucun salaire avant ~4 ans** |
 | Zone d'implantation | **Non arrêtée** |
+| Option à étudier (décidée le 10/10/2026) | **Entretien du linge appartenant au client**, en complément de la location (porte d'entrée) |
 
 Conversion : parité fixe **1 € = 655,957 FCFA** (franc CFA UEMOA, BCEAO).
 Arrondi utilisé dans les calculs rapides : 1 € ≈ 656 FCFA.
@@ -90,5 +91,6 @@ livrables/                       # Phase 10 — business plan Word, pitch
 | Phase | Statut |
 |---|---|
 | 0. Cadrage (CLAUDE.md, arborescence) | Fait |
-| 1. Modèle Elis | Rédigée (`docs/01-modele-elis.md`), en attente de validation |
-| 2 à 10 | À faire |
+| 1. Modèle Elis | **Validée** le 10/10/2026 |
+| 2. Marché dakarois | Rédigée (`docs/02-marche-dakar.md`), en attente de validation |
+| 3 à 10 | À faire |
