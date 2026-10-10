@@ -23,6 +23,22 @@
 Préciser : les informations restent confidentielles et ne servent que
 l'étude.
 
+### Phrases d'accroche en wolof
+
+> Proposées par Claude : **à relire et à ajuster par toi**. L'orthographe
+> suit l'usage courant, pas nécessairement la norme officielle. Passer au
+> français dès que l'interlocuteur le fait, en particulier pour les
+> questions chiffrées.
+
+| Français | Wolof |
+|---|---|
+| Bonjour (salutation) | Asalaa maalekum |
+| Comment allez-vous ? | Na nga def ? |
+| Je m'appelle Ahmadou Bamba Diop | Maa ngi tudd Ahmadou Bamba Diop |
+| Je ne viens rien vendre | Duma jaay dara |
+| Avez-vous un peu de temps ? | Ndax am nga tuuti jot ? |
+| Merci beaucoup | Jërëjëf lool |
+
 ---
 
 ## A. Tronc commun (tous les segments)

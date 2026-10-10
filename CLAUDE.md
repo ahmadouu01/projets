@@ -93,5 +93,6 @@ livrables/                       # Phase 10 — business plan Word, pitch
 | 0. Cadrage (CLAUDE.md, arborescence) | Fait |
 | 1. Modèle Elis | **Validée** le 10/10/2026 |
 | 2. Marché dakarois | **Validée** le 10/10/2026 (périmètre élargi à toute la région) |
-| 3. Validation terrain | Rédigée (`docs/03-validation-terrain.md`, outils dans `terrain/`), en attente de validation |
-| 4 à 10 | À faire |
+| 3. Validation terrain | **Validée** le 10/10/2026 (outils dans `terrain/`, 50 prospects recensés) |
+| 4. Offre et tarification | Rédigée (`docs/04-offre-tarification.md`), en attente de validation |
+| 5 à 10 | À faire |
