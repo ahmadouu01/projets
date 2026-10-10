@@ -4,7 +4,7 @@
 >
 > Il y a deux usages :
 > - **(A)** un pitch oral de 2 minutes, environ 280 mots, à dire tel quel ;
-> - **(B)** une trame de 8 diapositives pour un rendez-vous bancaire ou
+> - **(B)** une trame de 8 diapositives pour un rendez-vous avec une société de crédit-bail ou un
 >   partenaire.
 >
 > Chiffres issus du scénario central de `finance/modele.xlsx`.

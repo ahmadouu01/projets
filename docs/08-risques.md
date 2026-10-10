@@ -74,7 +74,7 @@ En gras : les risques rouges (criticité ≥ 9).
 |---|---|---|
 | 2026-2027 (depuis Lyon) | R1, R4, R16 | Plan d'épargne automatique ; formation à la gestion ; ouverture d'un compte au Sénégal (**À VÉRIFIER** : possible à distance ?) |
 | Voyage 1 (2027) | R2, R3, R10, R11 | Prix et volumes réels ; DEEC, ONAS, APIX, expert-comptable |
-| Voyage 2 (2028) | R1, R2, R3, R6, R9 | Lettres d'intention ; premier rendez-vous bancaire ; devis de machines avec service après-vente ; décision go / no-go |
+| Voyage 2 (2028) | R1, R2, R3, R6, R9 | Lettres d'intention ; offres de crédit-bail ; devis de machines avec service après-vente ; décision go / no-go |
 | 2029-2030 | R1, R5, R9, R12, R17 | Montage du financement ; choix du local (énergie, eau) ; recrutement et formation du chef d'atelier |
 | Après l'ouverture | Tous | Revue mensuelle des risques avec le tableau d'indicateurs (phase 6 §11) |
 
