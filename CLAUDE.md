@@ -90,5 +90,5 @@ livrables/                       # Phase 10 — business plan Word, pitch
 | Phase | Statut |
 |---|---|
 | 0. Cadrage (CLAUDE.md, arborescence) | Fait |
-| 1. Modèle Elis | Plan proposé, en attente de validation |
+| 1. Modèle Elis | Rédigée (`docs/01-modele-elis.md`), en attente de validation |
 | 2 à 10 | À faire |
