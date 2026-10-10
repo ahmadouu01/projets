@@ -29,11 +29,11 @@ son remplacement.
 |---|---|
 | Modèle | Location-entretien **en direct** (pas de lavage sous-traité) |
 | Outil de production au lancement | **3 machines en propre** |
-| Financement | Épargne personnelle en base ; **complément accepté le 10/10/2026** : crédit-bail, prêt bancaire et/ou apports familiaux (écart central ≈ 43 M FCFA) |
+| Financement | Épargne personnelle + **crédit-bail sur les machines uniquement** (décision du 10/10/2026). **Pas de prêt bancaire, pas d'apport familial.** Écart central restant ≈ 33 M FCFA pour une ouverture en oct. 2030 |
 | Apport actuel | ~**10 M FCFA** (≈ 15 245 €) |
 | Épargne mensuelle | ~**500 €/mois** aujourd'hui, **1 000 €/mois à partir de janvier 2028** (validé) |
 | Relation bancaire / réseau pro au Sénégal | **Aucun** à ce jour ; pas de contact Elis, pas de relais familial : terrain mené seul |
-| Calendrier | **Validation terrain d'abord**, démarrage de l'activité visé **fin 2030** |
+| Calendrier | **Validation terrain d'abord**, démarrage visé **fin 2030** ; financièrement, cela suppose ≈ 2 500 €/mois d'épargne. Sinon : 2032 (1 500 €/mois) ou 2034 (1 000 €/mois). **Date à fixer au go / no-go (mars 2028)** |
 | Rémunération du dirigeant | **Aucun salaire avant ~4 ans** |
 | Zone d'implantation | **Non arrêtée** — terrain sur **toute la région de Dakar** (5 départements) |
 | Forme juridique | SUARL, capital ≈ 1 M FCFA + compte courant d'associé ; création début 2030 (validé) |

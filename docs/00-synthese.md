@@ -25,7 +25,8 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 | 2026-10-10 | 7 | Modèle Excel : écart de financement central ≈ – 43 M FCFA (version frugale) |
 | 2026-10-10 | 8-9 | 18 risques, dont 5 rouges ; 17 jalons, décision go / no-go en mars 2028 |
 | 2026-10-10 | 10 | Business plan Word et pitch produits (`livrables/`) |
-| 2026-10-10 | 4-10 | **Tout validé par Ahmadou**, y compris : ouverture au crédit-bail, au prêt bancaire et aux apports familiaux ; 1 000 €/mois dès janvier 2028 ; réserve personnelle de 12 × 350 000 FCFA |
+| 2026-10-10 | 4-10 | **Tout validé par Ahmadou** : 1 000 €/mois dès janvier 2028 ; réserve personnelle de 12 × 350 000 FCFA |
+| 2026-10-10 | 7 | **Financement extérieur limité au crédit-bail sur les machines. Pas de prêt, pas d'apport familial.** Modèle mis à jour : écart central ≈ – 33 M FCFA pour une ouverture en oct. 2030 |
 
 ## Enseignements clés (phase 1, validés)
 1. Vendre une disponibilité de linge, pas un lavage.
@@ -41,12 +42,13 @@ avec 3 machines en propre, financée sur épargne personnelle, démarrage visé 
 - Portefeuille cible : 15 à 25 clients, aucun au-dessus de 20 % du volume.
 - Segments : hôtels moyens et résidences, cliniques, restaurants = pistes privilégiées, mais **tous les segments et toute la région** testés sur le terrain.
 - Prix B2B au kg : **inconnu (priorité n°1 du terrain)**.
-- **Financement (phase 7)** : besoin central ≈ 68 M FCFA avec coussin ; épargne mobilisable ≈ 24 M FCFA en oct. 2030 ; **écart ≈ 43 M FCFA** (≈ 84 M en version standard).
+- **Financement (phase 7, avec crédit-bail)** : besoin central ≈ 57 M FCFA avec coussin ; épargne mobilisable ≈ 24 M FCFA en oct. 2030 ; **écart ≈ 33 M FCFA**. Équilibre atteint avec une ouverture en oct. 2032 à 1 500 €/mois, ou en oct. 2034 à 1 000 €/mois (`docs/07` §0).
 - Rentabilité centrale : EBE positif au 9e mois ; point mort ≈ 170-210 kg/jour ; scénario pessimiste (550 FCFA/kg, 220 kg/jour) **non viable**.
 - Offre (phase 4) : Setal Entretien (linge du client) → Setal Location (clause de remplacement) → Setal Tenues (an 2 ou 3) ; engagement J+1, ≥ 98 % livré à temps.
 
 ## Questions ouvertes
-- Aucune décision en attente. Les points « À VÉRIFIER » restants se traitent sur le terrain (voir `docs/05` §10, `docs/06` §12 et `docs/09`).
+- **Arbitrage à faire : épargner plus (1 500 à 2 500 €/mois) ou ouvrir plus tard (2032 à 2034).** Décision définitive au go / no-go de mars 2028, avec les prix réels.
+- Les points « À VÉRIFIER » restants se traitent sur le terrain (voir `docs/05` §10, `docs/06` §12 et `docs/09`).
 
 ## Prochaines actions (feuille de route)
 1. **J1 — nov. 2026** : virement automatique de 500 €/mois vers un compte dédié « Setal Pro ».

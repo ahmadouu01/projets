@@ -36,9 +36,9 @@
 | J5 | **Voyage 1 : exploration** | mai 2027 | 🇸🇳 | 35 à 40 entretiens ; 3 locaux visités ; réponses de la DEEC et de l'APIX |
 | J6 | Synthèse du terrain, puis offre v2 et modèle financier v2 | sept. 2027 | 🇫🇷 | Mise à jour des docs 02, 04, 05 et 07 |
 | J7 | Passage à **1 000 €/mois** d'épargne | janv. 2028 | 🇫🇷 | Virement modifié |
-| J8 | **Voyage 2 : confirmation** | fév. 2028 | 🇸🇳 | Lettres d'intention (objectif ≥ 6, ≥ 300 kg/jour) ; 1er rendez-vous bancaire ; devis de machines |
+| J8 | **Voyage 2 : confirmation** | fév. 2028 | 🇸🇳 | Lettres d'intention (objectif ≥ 6, ≥ 300 kg/jour) ; rendez-vous avec 2 ou 3 sociétés de crédit-bail (Locafrique, Alios Finance, BNDE) ; devis de machines |
 | **J9** | **◆ Décision GO / NO-GO** | mars 2028 | 🇫🇷 | Grille G1 à G8 (phase 3 §6) |
-| J10 | Plan de financement bouclé sur le papier (épargne + crédit-bail / prêt / famille) | déc. 2028 | 🇫🇷 | Écart du modèle ramené à zéro |
+| J10 | Plan de financement bouclé sur le papier : épargne + **crédit-bail sur les machines** (offres écrites) ; **date d'ouverture confirmée** (2030 à 2034 selon l'épargne) | déc. 2028 | 🇫🇷 | Écart du modèle ramené à zéro |
 | J11 | Choix des machines, du fournisseur et du service après-vente | juin 2029 | 🇫🇷 + visio | Commande prête (non passée) |
 | J12 | Lettres d'intention réactualisées (contacts entretenus tous les 6 mois) | déc. 2029 | 🇫🇷 | ≥ 6 lettres d'intention toujours valables |
 | J13 | **Voyage 3 : création de la SUARL**, compte bancaire, demande d'agrément au Code des investissements, bail du local | mars 2030 | 🇸🇳 | Immatriculation (RCCM, NINEA) ; bail signé |
@@ -60,7 +60,7 @@
 | **Métier de la blanchisserie** | Formation technique (procédés de lavage, RABC) auprès d'un organisme de la branche ou d'un fabricant de machines (**À VÉRIFIER**) ; documentation technique des fabricants | Variable |
 | **Fournisseurs** | Contacts avec 3 fabricants ou distributeurs de machines (Europe, Turquie, Chine) et leurs représentants à Dakar ; textile hôtelier ; lessives | Temps |
 | **Juridique et fiscal** | Échange à distance avec un expert-comptable de Dakar (devis) ; questions sur la convention fiscale France-Sénégal | Quelques centaines d'euros |
-| **Financement** | Dossier pour la banque à partir du business plan (`livrables/`) ; veille sur les dispositifs pour la diaspora (FONGIP / FOGARISE, **À VÉRIFIER**) ; échanges familiaux sur d'éventuels apports | — |
+| **Financement** | Épargne (viser 1 500 €/mois si possible) ; dossier de crédit-bail à partir du business plan (`livrables/`) ; comparaison des offres (apport, taux, durée, financement de l'installation) | — |
 | **Méthodes** | Préparation des standards (fiches de poste, programmes de lavage, VSM cible, tableau d'indicateurs) : ton point fort | Temps |
 
 ---
@@ -76,9 +76,12 @@
 | Sept. 2030 | Déménagement (– 2,5 M) | **≈ 28,6 M** |
 | Oct. 2030 | Moins la réserve personnelle (12 mois) | **≈ 24,4 M mobilisables** |
 
-Besoin dans le scénario central : ≈ 68 M avec le coussin, soit un **écart
-d'environ 43 M FCFA** à combler d'ici fin 2029 (jalon J10, leviers en
-phase 7 §6).
+Besoin dans le scénario central, après crédit-bail : ≈ 57 M avec le
+coussin, soit un **écart d'environ 33 M FCFA** pour une ouverture en
+octobre 2030. Sans prêt ni apport familial, deux voies : épargner
+≈ 2 500 €/mois dès 2028, ou décaler l'ouverture (octobre 2032 à
+1 500 €/mois, octobre 2034 à 1 000 €/mois). Les dates des jalons J11 à J18
+se décalent d'autant (phase 7 §0).
 
 ---
 

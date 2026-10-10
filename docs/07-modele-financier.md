@@ -11,6 +11,75 @@
 
 ---
 
+## 0. Mise à jour du 10/10/2026 : crédit-bail sur les machines, sans autre financement
+
+**Décision d'Ahmadou :** le seul financement extérieur accepté est le
+**crédit-bail sur les machines** (laveuses, séchoirs, calandre). **Pas de
+prêt bancaire, pas d'apport familial.** Le modèle a été mis à jour :
+onglet « Hypotheses », section « Crédit-bail », et colonne H de l'onglet
+« Investissements ».
+
+**Hypothèses de crédit-bail** (central) : 15 % d'apport à la signature,
+12 % de taux effectif, 60 mois. Elles reposent sur les fourchettes d'un
+guide commercial (apport de 10 à 30 %, taux de 9 à 14 %, durée de 24 à
+60 mois [S1]) et sont **À VÉRIFIER** par des offres écrites
+(Locafrique, Alios Finance, BNDE [S2]). Le cadre légal a été modernisé :
+loi sur le crédit-bail adoptée le 20 mai 2026, qui transpose la loi
+uniforme de l'UEMOA [S3].
+
+| Version frugale | Pessimiste | **Central** | Optimiste |
+|---|---|---|---|
+| Montant financé en crédit-bail | 17,1 M | **15,1 M** | 15,2 M |
+| Loyer mensuel | 467 000 | **337 000** | 323 000 |
+| Besoin maximal avec coussin, après crédit-bail | 158,8 M | **56,9 M** | 41,1 M |
+| Épargne mobilisable (ouverture en oct. 2030) | 24,4 M | **24,4 M** | 24,4 M |
+| **Écart restant** | – 134,4 M | **– 32,6 M** | – 16,8 M |
+
+**Le crédit-bail réduit l'écart central de 43 à 33 M FCFA, mais ne le
+comble pas.** Sans autre financement, il ne reste que trois leviers :
+ouvrir plus tard, épargner plus, ou démarrer plus petit.
+
+**Options testées dans le modèle (scénario central, crédit-bail inclus) :**
+
+| Option | Épargne mobilisable | Écart central | Écart optimiste |
+|---|---|---|---|
+| Ouverture en oct. 2030, 1 000 €/mois dès 2028 | 24,4 M | – 32,6 M | – 16,8 M |
+| Idem, avec livraison et installation incluses dans le crédit-bail (si le bailleur l'accepte, **À VÉRIFIER**) | 24,4 M | – 29,9 M | – 13,2 M |
+| Ouverture en oct. 2030, **1 500 €/mois** dès 2028 | 35,2 M | – 21,7 M | – 6,0 M |
+| Ouverture en **oct. 2032**, 1 000 €/mois | 40,1 M | – 16,8 M | – 1,0 M |
+| Ouverture en **oct. 2033**, 1 000 €/mois | 48,0 M | – 8,9 M | + 6,8 M |
+| Ouverture en **oct. 2034**, 1 000 €/mois | 55,9 M | **≈ 0** (– 1,1 M) | + 14,7 M |
+| Ouverture en **oct. 2032**, **1 500 €/mois** dès 2028 | 58,8 M | **+ 1,9 M** ✅ | + 17,7 M |
+| Ouverture en **oct. 2031**, **2 000 €/mois** dès 2028 | 61,8 M | **+ 4,8 M** ✅ | + 20,6 M |
+
+**Lecture :**
+- Avec 1 000 €/mois, l'ouverture fin 2030 n'est **pas finançable**, même
+  avec le crédit-bail. Il faut viser **2034**.
+- Avec 1 500 €/mois dès 2028, **octobre 2032** devient possible.
+- Une ouverture **fin 2030** demanderait environ 2 500 €/mois dès 2028
+  [ESTIMATION].
+- Le prix réel relevé sur le terrain peut changer ces conclusions dans un
+  sens ou dans l'autre. **La date d'ouverture sera donc fixée à la
+  décision go / no-go (mars 2028)**, avec les vrais prix.
+
+Sources de cette section :
+- [S1] Kolonell, « Leasing d'équipement au Sénégal » (2026, source
+  commerciale) : https://kolonell.com/fr/blog/leasing-equipement-entreprise-senegal-2026
+- [S2] Financial Afrik, « La BNDE mise sur le crédit-bail » (12/2025) :
+  https://www.financialafrik.com/2025/12/11/senegal-la-bnde-mise-sur-le-credit-bail-et-laffacturage-pour-ouvrir-une-nouvelle-ere-de-financement-des-pme
+- [S3] vie-publique.sn, adoption de la loi sur le crédit-bail (05/2026) :
+  https://www.vie-publique.sn/actualites/406/adoption-projets-de-loi-sur-le-credit-bail-et-affacturage
+  ; Le Soleil : https://lesoleil.sn/actualites/economie/le-credit-bail-un-cadre-juridique-modernise-pour-financer-linvestissement/
+
+Les tableaux des §1 et §4 ci-dessous décrivent la version **sans
+crédit-bail**. Avec le crédit-bail (central) :
+- résultat net : – 17,2 / 10,4 / 17,3 / 22,4 / 32,4 M FCFA (années 1 à
+  5) ;
+- trésorerie de fin d'année après apport : – 24,6 / – 14,5 / 6,8 / 26,9 /
+  64,5 M FCFA.
+
+---
+
 ## 1. En bref
 
 1. **Le projet peut être rentable, mais seulement si le prix et le volume
@@ -146,26 +215,23 @@ recalculant le classeur.
 
 ---
 
-## 6. Comment combler l'écart : leviers, du moins risqué au plus risqué
+## 6. Comment combler l'écart (mis à jour le 10/10/2026)
 
-| Levier | Effet estimé sur l'écart central (– 43 M) | Conditions et risques |
+Leviers compatibles avec la décision « crédit-bail sur les machines
+uniquement, aucun autre apport » :
+
+| Levier | Effet estimé sur l'écart central | Conditions |
 |---|---|---|
-| **1. Investissement frugal poussé plus loin** : 2 laveuses au départ, calandre d'occasion, tricycle cargo au lieu d'un fourgon | 5 à 10 M | Moins de redondance ; risque de panne |
-| **2. Crédit-bail (leasing) sur les machines et le véhicule** | 10 à 20 M | Suppose un dossier solide (lettres d'intention, apport) ; offres de leasing au Sénégal **À VÉRIFIER** |
-| **3. Apports de la famille en compte courant d'associé**, cohérents avec le projet d'entreprise familiale | Variable | Convention écrite, remboursement planifié |
-| **4. Prêt bancaire ou dispositif public** (fonds de garantie FONGIP, Délégation à l'entrepreneuriat rapide, financements de la diaspora) | 10 à 30 M | Relation bancaire à construire dès 2027 ; dispositifs **À VÉRIFIER** |
-| **5. Réduire le BFR** : dépôt de garantie sur le linge loué, paiement à 30 jours, mobile money | 2 à 5 M | Négociation commerciale |
-| **6. Augmenter l'épargne** (par exemple +500 €/mois dès 2027) | ≈ 15 M sur 4 ans | Dépend de tes revenus |
-| **7. Ouvrir plus tard** (2031 ou 2032) | 8 M par an à 1 000 €/mois | Retarde le projet ; le marché peut évoluer |
+| **Crédit-bail sur les machines** | ≈ 10 M (déjà intégré) | Offres écrites à obtenir (voyage 2) |
+| Faire entrer la livraison et l'installation dans le contrat de crédit-bail | ≈ 3 M | Selon le bailleur, **À VÉRIFIER** |
+| **Épargne portée à 1 500 €/mois dès 2028** | ≈ 11 M d'ici 2030 | Dépend de tes revenus |
+| **Ouverture repoussée** | ≈ 8 M par an à 1 000 €/mois | Date à fixer en mars 2028 |
+| Investissement encore plus frugal (2 laveuses au départ, tricycle cargo) | 5 à 8 M | Moins de redondance |
+| Réduction du BFR (paiement à 30 jours, dépôt de garantie sur le linge loué, mobile money) | 2 à 5 M | Négociation commerciale |
+| Prix ou volumes réels meilleurs que le scénario central | Variable | Mesuré sur le terrain |
 
-**Recommandation [HYPOTHÈSE] :**
-- combiner les leviers **1, 2, 5 et 6** ;
-- préparer **4** (prêt) dès 2027 en ouvrant un compte au Sénégal et en
-  présentant le projet à une banque au voyage 2 ;
-- objectif : réduire l'écart central à moins de 10 M FCFA à fin 2029,
-  puis le combler par un prêt ou un apport familial.
-
----
+Levier **écarté** : réduire le coussin de sécurité. Sans prêt possible en
+cas de coup dur, ce coussin est la seule protection de la société.
 
 ## 7. Limites du modèle
 
@@ -192,7 +258,6 @@ recalculant le classeur.
 **À me confirmer :**
 1. La date réaliste du passage à 1 000 €/mois.
 2. Tes besoins personnels mensuels à Dakar (famille ?).
-3. Es-tu ouvert à un **crédit-bail ou à un prêt bancaire** une fois
-   l'activité prouvée ? Ou à des apports familiaux ? Sans l'un de ces
-   leviers, le plan n'est pas finançable à fin 2030 dans le scénario
-   central.
+3. ~~Ouverture au crédit-bail, au prêt ou aux apports familiaux~~ :
+   **tranché le 10/10/2026, crédit-bail sur les machines uniquement**.
+   Reste à choisir entre épargner plus et ouvrir plus tard (§0).

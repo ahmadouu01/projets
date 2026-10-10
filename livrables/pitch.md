@@ -41,10 +41,10 @@
 > chiffre d'affaires atteint environ 135 millions de FCFA en année 5.
 >
 > Nous validons d'abord le marché sur le terrain en 2027 et 2028, avec
-> 60 entretiens et des lettres d'intention, pour une ouverture fin 2030.
-> J'apporte environ 24 millions de FCFA d'épargne. Nous recherchons un
-> partenaire pour compléter le financement, soit environ 40 millions de
-> FCFA, une fois la demande prouvée.
+> 60 entretiens et des lettres d'intention. Le projet est financé par mon
+> épargne, sans emprunt : seules les machines seront en crédit-bail,
+> environ 15 millions de FCFA. L'ouverture est visée fin 2030, et au plus
+> tard en 2034 : nous ne démarrerons pas sous-financés.
 
 ---
 
@@ -59,7 +59,7 @@
 | 5 | **Le marché** | 3 à 5 % du seul linge hôtelier suffisent. | ≈ 7 à 13 t/jour de linge hôtelier dans la région de Dakar (estimation) ; cibles : hôtels moyens, cliniques, restaurants ; aucun acteur de location identifié |
 | 6 | **L'exécution** | Une petite usine pilotée en lean. | 3 laveuses, ≈ 300 kg/jour par équipe ; groupe électrogène et cuve d'eau ; 6 salariés ; indicateurs quotidiens |
 | 7 | **Les chiffres** (scénario central) | Rentable au 9e mois, environ 40 % de marge d'EBE en année 5. | CA de 31 M FCFA (A1) à 135 M FCFA (A5) ; point mort ≈ 170-210 kg/jour ; 3 scénarios présentés honnêtement |
-| 8 | **Le plan et la demande** | Valider d'abord, financer ensuite. | Terrain 2027-2028 → décision en mars 2028 → ouverture en octobre 2030 ; besoin ≈ 68 M FCFA ; apport ≈ 24 M ; recherche ≈ 40 M (crédit-bail, prêt garanti, partenaires) |
+| 8 | **Le plan et la demande** | Valider d'abord, autofinancer, sans emprunt. | Terrain 2027-2028 → décision en mars 2028 → ouverture visée en octobre 2030 (2032-2034 selon l'épargne) ; besoin ≈ 57 M FCFA après crédit-bail ; **demande : un crédit-bail d'environ 15 M FCFA sur les machines** |
 
 ---
 
